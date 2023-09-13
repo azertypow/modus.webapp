@@ -45,15 +45,33 @@ body {
   margin: auto;
 }
 
+@media (max-width: 800px) {
+  .v-home__image__logo {
+    width: 75vw;
+  }
+}
+
 .v-home__image__text {
-  display: block;
-  margin-top: 2rem;
-  height: auto;
-  margin-left: auto;
-  margin-right: auto;
-  width: 25vw;
-  min-width: 20rem;
-  max-height: 10vh;
+    display: block;
+    position: fixed;
+    top: 75%;
+    bottom: auto;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 33.33333vw;
+}
+
+@media (max-width: 800px) {
+  .v-home__image__text {
+    height: auto;
+    width: 25vw;
+    min-width: 20rem;
+    max-height: 10vh;
+    top: auto;
+    bottom: 2rem;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
 }
 
 
