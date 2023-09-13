@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "roso-modus-mailsignature": "^0.1.0"
+    "roso-modus-mailsignature": "^0.2.1"
   },
   "devDependencies": {
     "typescript": "^5.0.2",
