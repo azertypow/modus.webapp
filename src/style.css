@@ -1,0 +1,43 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+html {
+  background: #282828;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  background: linear-gradient(to right, rgb(0, 207, 0), rgb(53, 113, 101));
+}
+
+.v-signature {
+  padding-top: 2rem;
+  padding-bottom: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.v-signature__logo {
+  display: block;
+  margin-bottom: 2rem;
+  height: 2rem;
+}
+
+.v-signature__form-container {
+  background: white;
+  padding: 3rem;
+  border-radius: .5rem;
+  box-shadow: 0 20px 40px 0 hsl(0deg 0% 0% / 25%);
+}
