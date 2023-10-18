@@ -1,5 +1,6 @@
 <template>
     <section class="v-app" >
+        <app-nav/>
         <nuxt-page/>
     </section>
 </template>

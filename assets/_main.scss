@@ -1,0 +1,26 @@
+@import "var";
+
+html {
+  background: var(--app-color-main--dark);
+  font-size: 25px;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  background: white;
+  color: var(--app-color-main--dark);
+  font-size: .80rem;
+  line-height: 1rem;
+}
+
+
+h2 {
+  line-height: 2rem;
+  font-size: 1.8rem;
+  background: linear-gradient(to right, var(--app-color-main), var(--app-color-main--dark));
+  display: inline-block;
+  border-radius: 5rem;
+  padding: .5rem 8rem;
+  color: white;
+}

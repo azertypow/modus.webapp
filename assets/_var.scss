@@ -1,0 +1,21 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+
+  --app-color-main:       rgb(0, 207, 0);
+  --app-color-main--dark:  rgb(53, 113, 101);
+
+  // nav
+  --app-nav__height: 4rem;
+
+  // header
+  --app-header__signature-height: 4rem;
+
+}
