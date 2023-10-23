@@ -4,8 +4,12 @@
         <div
             class="v-app-list__content"
         >
-            <h3>{{title}}</h3>
-            <p>{{description}}</p>
+            <h3
+                class="v-app-list__content__title"
+            >{{title}}</h3>
+            <p
+                class="v-app-list__content__desc"
+            >{{description}}</p>
         </div>
 
     </section>
@@ -50,6 +54,14 @@ defineProps<{
     > * {
         margin: 0;
     }
+}
+
+.v-app-list__content__title {
+    text-transform: uppercase;
+}
+
+.v-app-list__content__desc {
+
 }
 
 

@@ -1,4 +1,5 @@
 @import "var";
+@import "font-loader";
 
 html {
   background: var(--app-color-main--dark);
@@ -23,4 +24,18 @@ h2 {
   border-radius: 5rem;
   padding: .5rem 8rem;
   color: white;
+  text-align: center;
+}
+
+
+button {
+  all: unset;
+  box-sizing: border-box;
+  line-height: 2rem;
+  font-size: 1.8rem;
+  border: solid 5px var(--app-color-main);
+  border-radius: 5rem;
+  padding: .5rem;
+  text-align: center;
+  color: var(--app-color-main);
 }

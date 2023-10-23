@@ -1,5 +1,5 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Wallop', Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -9,6 +9,10 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 
+  // grid
+  --app-gutter: 1rem;
+
+  // color
   --app-color-main:       rgb(0, 207, 0);
   --app-color-main--dark:  rgb(53, 113, 101);
 

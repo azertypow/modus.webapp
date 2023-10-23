@@ -42,6 +42,8 @@ const pageSections = [
     justify-content: flex-end;
     gap: 1rem;
     height: var(--app-nav__height);
+    box-sizing: border-box;
+    padding: var(--app-gutter);
 }
 
 .v-app-nav__item {
