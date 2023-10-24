@@ -195,3 +195,20 @@ form [class*='inf-main'] .inf-rgpd {
   padding-bottom: .7rem;
   text-align: center;
 }
+
+form [class*='inf-main'] .inf-success p {
+  margin: 0;
+  padding-bottom: 1rem;
+}
+
+form [class*='inf-main'] .inf-success a {
+  display: none;
+}
+
+form [class*='inf-main'] .inf-success h4 {
+  display: block;
+  font-size: .9rem;
+  font-weight: 500;
+  line-height: 1rem;
+  text-align: center;
+}
