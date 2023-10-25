@@ -1,15 +1,4 @@
-@font-face {
-  font-family: 'Wallop';
-  src: url('font-wallop/Wallop-Light.otf') format('opentype');
-  font-weight: 300;
-}
-
-@font-face {
-  font-family: 'Wallop';
-  src: url('font-wallop/Wallop-MediumItalic.otf') format('opentype');
-  font-style: italic;
-  font-weight: 500;
-}
+// heady
 
 @font-face {
   font-family: 'Wallop';
@@ -19,14 +8,16 @@
 
 @font-face {
   font-family: 'Wallop';
-  src: url('font-wallop/Wallop-Regular.otf') format('opentype');
-  font-weight: normal;
+  src: url('font-wallop/Wallop-HeavyItalic.otf') format('opentype');
+  font-style: italic;
+  font-weight: 900;
 }
 
+// bold
 @font-face {
   font-family: 'Wallop';
-  src: url('font-wallop/Wallop-SemiBold.otf') format('opentype');
-  font-weight: 600;
+  src: url('font-wallop/Wallop-Bold.otf') format('opentype');
+  font-weight: 700;
 }
 
 @font-face {
@@ -36,32 +27,53 @@
   font-weight: 700;
 }
 
+//semiBold
+
 @font-face {
   font-family: 'Wallop';
-  src: url('font-wallop/Wallop-ThinItalic.otf') format('opentype');
+  src: url('font-wallop/Wallop-SemiBold.otf') format('opentype');
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: 'Wallop';
+  src: url('font-wallop/Wallop-SemiBoldItalic.otf') format('opentype');
   font-style: italic;
-  font-weight: 100;
+  font-weight: 600;
+}
+
+
+// medium
+
+@font-face {
+  font-family: 'Wallop';
+  src: url('font-wallop/Wallop-Medium.otf') format('opentype');
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: 'Wallop';
+  src: url('font-wallop/Wallop-MediumItalic.otf') format('opentype');
+  font-style: italic;
+  font-weight: 500;
+}
+
+// regular
+
+@font-face {
+  font-family: 'Wallop';
+  src: url('font-wallop/Wallop-Regular.otf') format('opentype');
+  font-weight: 300;
 }
 
 @font-face {
   font-family: 'Wallop';
   src: url('font-wallop/Wallop-RegularItalic.otf') format('opentype');
   font-style: italic;
-  font-weight: normal;
+  font-weight: 300;
 }
 
-@font-face {
-  font-family: 'Wallop';
-  src: url('font-wallop/Wallop-Thin.otf') format('opentype');
-  font-weight: 100;
-}
-
-@font-face {
-  font-family: 'Wallop';
-  src: url('font-wallop/Wallop-HeavyItalic.otf') format('opentype');
-  font-style: italic;
-  font-weight: 900;
-}
+//light
 
 @font-face {
   font-family: 'Wallop';
@@ -72,19 +84,22 @@
 
 @font-face {
   font-family: 'Wallop';
-  src: url('font-wallop/Wallop-Medium.otf') format('opentype');
-  font-weight: 500;
+  src: url('font-wallop/Wallop-Light.otf') format('opentype');
+  font-weight: 300;
+}
+
+
+// thin
+
+@font-face {
+  font-family: 'Wallop';
+  src: url('font-wallop/Wallop-Thin.otf') format('opentype');
+  font-weight: 100;
 }
 
 @font-face {
   font-family: 'Wallop';
-  src: url('font-wallop/Wallop-SemiBoldItalic.otf') format('opentype');
+  src: url('font-wallop/Wallop-ThinItalic.otf') format('opentype');
   font-style: italic;
-  font-weight: 600;
-}
-
-@font-face {
-  font-family: 'Wallop';
-  src: url('font-wallop/Wallop-Bold.otf') format('opentype');
-  font-weight: 700;
+  font-weight: 100;
 }
