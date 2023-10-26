@@ -94,7 +94,7 @@
 
         <div
             class="v-app-header__signature"
-        ><strong>modus.</strong> pour une mobilité durable à Genève</div>
+        >modus.<br>pour une mobilité durable à Genève</div>
     </section>
 </template>
 
@@ -116,7 +116,7 @@
 .v-app-header {
     background: linear-gradient(to right, var(--app-color-main), var(--app-color-main--dark));
     width: 100%;
-    height: calc(100vh - var(--app-nav__height));
+    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -126,21 +126,24 @@
 }
 
 .v-app-header__signature {
-    height: var(--app-header__signature-height);
-    background: white;
+    line-height: 4rem;
+    font-size: 3.8rem;
+    font-weight: 500;
     display: flex;
     align-items: center;
     box-sizing: border-box;
     width: 100%;
     padding: var(--app-gutter);
+    color: white;
+    z-index: 100;
 }
 
 .v-app-header__graphic-box {
     position: absolute;
     top: 0;
     left: 0;
-    height: 51vh;
-    width: 195vh;;
+    height: 100vh;
+    width: 253vh;
     animation: scroll 50s linear infinite;
 
     > img {
@@ -151,78 +154,78 @@
 
         &:nth-child(1) {
             mask-image: url('../assets/module_seperate/01.svg');
-            width: 20vh;
-            height: 25vh;
-            top: 0;
+            width: 28vh;
+            height: 35vh;
+            top: 10vh;
             left: 0;
         }
         &:nth-child(2) {
             mask-image: url('../assets/module_seperate/02.svg');
-            width: 37vh;
-            height: 25vh;
-            top: 26vh;
+            width: 53vh;
+            height: 35vh;
+            top: 50vh;
             left: 0;
         }
         &:nth-child(3) {
             mask-image: url('../assets/module_seperate/03.svg');
-            width: 22vh;
-            height: 25vh;
-            top: 14vh;
-            left: 22vh;
+            width: 37vh;
+            height: 18vh;
+            top: 25vh;
+            left: 32vh;
         }
         &:nth-child(4) {
             mask-image: url('../assets/module_seperate/04.svg');
-            width: 38vh;
-            height: 37vh;
-            top: 7vh;
-            left: 46vh;
+            width: 59vh;
+            height: 57vh;
+            top: 44vh;
+            left: 65vh;
         }
         &:nth-child(5) {
             mask-image: url('../assets/module_seperate/05.svg');
-            width: 32vh;
-            height: 22vh;
-            top: -6vh;
-            left: 89vh;
+            width: 53vh;
+            height: 35vh;
+            top: 1vh;
+            left: 70vh;
         }
         &:nth-child(6) {
             mask-image: url('../assets/module_seperate/06.svg');
-            width: 20vh;
-            height: 25vh;
-            top: 20vh;
-            left: 88vh;
+            width: 28vh;
+            height: 35vh;
+            top: -15vh;
+            left: 131vh;
         }
         &:nth-child(7) {
             mask-image: url('../assets/module_seperate/07.svg');
-            width: 38vh;
-            height: 37vh;
-            top: 14vh;
-            left: 111vh;
+            width: 59vh;
+            height: 57vh;
+            top: 27vh;
+            left: 112.5vh;
         }
         &:nth-child(8) {
             mask-image: url('../assets/module_seperate/08.svg');
-            width: 24vh;
-            height: 12vh;
-            top: -3vh;
-            left: 127vh;
+            width: 37vh;
+            height: 18vh;
+            top: 21vh;
+            left: 160vh;
         }
         &:nth-child(9) {
             mask-image: url('../assets/module_seperate/09.svg');
-            width: 38vh;
-            height: 37vh;
-            top: 1vh;
-            left: 154vh;
+            width: 59vh;
+            height: 57vh;
+            top: 32vh;
+            left: 184vh;
         }
         &:nth-child(10) {
             mask-image: url('../assets/module_seperate/10.svg');
-            width: 20vh;
-            height: 50vh;
-            top: 28vh;
-            left: 152vh;
+            width: 28vh;
+            height: 35vh;
+            top: 69vh;
+            left: 176vh;
         }
     }
 
     &:nth-child(2) {
-        left: calc( 198vh );
+        left: 253vh;
     }
 }
 

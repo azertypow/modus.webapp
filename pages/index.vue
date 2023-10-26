@@ -8,7 +8,21 @@
 
         <div
             class="v-index__content"
+            ref="contentElement"
         >
+            <section
+                class="v-index__section"
+            >
+                <div
+                    class="v-index__grid__coll-full"
+                >
+                    <div
+                        class="v-index__section__video_player"
+                    >
+                        <app-video link="hello"/>
+                    </div>
+                </div>
+            </section>
             <section
                 class="v-index__section"
             >
@@ -40,7 +54,7 @@
                 </div>
 
                 <div
-                    class="v-index__section__content v-index__grid"
+                    class="v-index__section__content v-index__grid v-index__grid--with-gutter"
                 >
                     <div
                         class="v-index__grid__coll-1-2"
@@ -67,9 +81,13 @@
                         </ul>
                     </div>
                     <div
-                        class="v-index__section__content__illustration-right"
+                        class="v-index__grid__coll-1-2"
                     >
-                        ilustration à droite
+                        <div
+                            class="v-index__section__content__sticky"
+                        >
+                            ilustration à droite
+                        </div>
                     </div>
                 </div>
 
@@ -113,31 +131,6 @@
                             le secteur des transports représente aujourd’hui 31% des émissions contre 24% dans le monde. La
                             mobilité constitue donc 30% du problème mais également 30% de la solution.
                         </p>
-
-                        <app-list
-                            title="SOuTEniR LES acTEuRS"
-                            description="de la transition des mobilités à Genève"
-                        />
-
-                        <app-list
-                            title="DéVELOPPER un huB D’innOVaTiOn"
-                            description="à destination des autorités publiques et des partenaires locaux"
-                        />
-
-                        <app-list
-                            title="EncOuRaGER LES EnTREPRiSES"
-                            description="au service d’une nouvelle mobilité"
-                        />
-
-                        <app-list
-                            title="cOnSTiTuER et DOcuMEnTER LES cOnnaiSSancES"
-                            description="au sujet de la mobilité à Genève"
-                        />
-
-                        <app-list
-                            title="DéVELOPPER unE cOMMunicaTiOn ORiGinaLE"
-                            description="qui contribue au changement des imaginaires de la mobilité"
-                        />
                     </div>
                 </div>
 
@@ -368,70 +361,19 @@
             <app-newsletter/>
         </footer>
 
+        <img
+            class="v-index__bottom-image"
+            alt="image d'architecture urbaine"
+            src="https://images.unsplash.com/photo-1696945147512-745188d0ef77?auto=format&fit=crop&q=80&w=2864&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        />
+
         <div
             class="v-index__bottom"
         >
-            <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
-                 xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                 width="536.88184px" height="160.88086px" viewBox="0 0 536.88184 160.88086"
-                 enable-background="new 0 0 536.88184 160.88086"
-                 xml:space="preserve">
-                        <g>
-                          <g>
-                            <defs>
-                              <path id="SVGID_1_" d="M83.5791,45.87402c-5.3877-8.72852-14.29785-13.18457-26.93066-13.18457
-                                c-7.42578,0-17.83203,4.45605-23.96094,13.18457V34.91602H0v47.91797h32.6875v-4.08594
-                                c0-10.02734,5.19922-16.34277,13.1875-16.34277c7.24609,0,11.88672,6.12793,11.88672,15.78711v52.56348h32.69141V78.74805
-                                c0-10.02734,5.19922-16.34277,13-16.34277c7.42969,0,11.89062,6.12793,11.89062,15.78711v52.56348h32.6875V75.4043
-                                c0-27.4873-12.44531-42.71484-33.61719-42.71484C101.78125,32.68945,91.9375,37.14551,83.5791,45.87402"/>
-                            </defs>
-                              <use xlink:href="#SVGID_1_" overflow="visible" fill="#FFFFFF"/>
-                              <clipPath id="SVGID_2_">
-                              <use xlink:href="#SVGID_1_" overflow="visible"/>
-                            </clipPath>
-                          </g>
-                            <g>
-                            <defs>
-                              <path id="SVGID_3_" d="M160.15234,82.83398h33.05859c0.00391-11.70312,8.35938-20.42871,19.31641-20.42871
-                                c11.14453,0,19.5,8.72559,19.50391,20.42871h33.0625c-0.00391-28.60645-22.84766-50.14453-52.56641-50.14453
-                                C182.8125,32.68945,160.15625,54.22754,160.15234,82.83398"/>
-                            </defs>
-                                <use xlink:href="#SVGID_3_" overflow="visible" fill="#FFFFFF"/>
-                                <clipPath id="SVGID_4_">
-                              <use xlink:href="#SVGID_3_" overflow="visible"/>
-                            </clipPath>
-                          </g>
-                            <g>
-                            <defs>
-                              <path id="SVGID_5_" d="M348.21875,0v45.87402c-5.38672-8.54395-14.48828-13.18457-26.375-13.18457
-                                c-25.63281,0-45.49609,20.9873-45.5,50.14453h33.05859c0.00391-11.70312,8.35938-20.42871,19.31641-20.42871
-                                c11.11328,0,19.44922,8.68262,19.49609,20.33887h-0.01562v33.00391c0,27.30469,18.76172,45.13281,47.92578,45.13281
-                                c28.97656,0,47.92188-17.82812,47.92188-45.13281v-52.9375h-32.69043v51.63672c0,10.21484-6.12988,16.90234-15.23145,16.90234
-                                c-9.28906,0-15.23438-6.6875-15.23438-16.90234V82.83398h0.01953V0H348.21875z"/>
-                            </defs>
-                                <use xlink:href="#SVGID_5_" overflow="visible" fill="#FFFFFF"/>
-                                <clipPath id="SVGID_6_">
-                              <use xlink:href="#SVGID_5_" overflow="visible"/>
-                            </clipPath>
-                          </g>
-                            <g>
-                            <defs>
-                              <path id="SVGID_7_" d="M459.05859,93.83008c0,12.44434,6.87109,24.33203,27.85938,28.23438l10.58887,2.03809
-                                c4.8291,0.93066,6.31738,2.97363,6.31738,5.2041c0,2.78516-3.53125,5.3877-9.10156,5.3877
-                                c-9.84766,0-24.33594-4.45703-36.59082-13.19238v27.86328c5.38281,4.08594,18.57129,11.51562,36.59082,11.51562
-                                c27.30469,0,42.15918-11.14453,42.15918-31.20312c0-14.11719-6.68652-26.5625-26.19043-30.83203l-13.74219-2.97266
-                                c-3.89844-0.73828-5.57422-2.60254-5.57422-4.82715c0-2.97266,3.34766-5.2041,8.35938-5.2041
-                                c9.10156,0,22.65918,3.34375,32.69141,9.84375V69.49902c-7.61328-5.38281-19.875-8.91504-33.0625-8.91504
-                                C480.23535,60.58398,459.05859,67.83008,459.05859,93.83008"/>
-                            </defs>
-                                <use xlink:href="#SVGID_7_" overflow="visible" fill="#FFFFFF"/>
-                                <clipPath id="SVGID_8_">
-                              <use xlink:href="#SVGID_7_" overflow="visible"/>
-                            </clipPath>
-                          </g>
-                        </g>
-                        </svg>
-
+            <img
+                alt="logo Modus fin de page"
+                src="../assets/logo/Logo_Modus_blanc_sd-20230913.svg"
+            />
         </div>
 
     </main>
@@ -442,6 +384,32 @@
 
 
 <script lang="ts" setup>
+
+import {Ref} from "vue";
+import AppVideo from "~/components/AppVideo.vue";
+
+const contentElement: Ref<null | HTMLElement> = ref(null)
+
+
+onMounted(() => {
+    nextTick(() => {
+        if( ! (contentElement.value instanceof HTMLElement)) return
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    console.log('L\'élément est en intersection avec la fenêtre')
+                } else {
+                    console.log('L\'élément n\'est plus en intersection avec la fenêtre')
+                }
+            })
+        }, {
+            rootMargin: '0px 0px -500px 0px' // La marge positive pour déclencher l'événement
+        })
+
+        observer.observe(contentElement.value)
+    })
+})
 
 </script>
 
@@ -457,20 +425,27 @@
     box-sizing: border-box;
     padding-left: var(--app-gutter);
     padding-right: var(--app-gutter);
+    max-width: 1300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.v-index__section__video_player {
+    max-width: 40rem;
+    margin: auto;
 }
 
 .v-index__section__content {
     position: relative;
 
-    .v-index__section__content__illustration-right {
-        position: absolute;
-        top: 0;
-        right: 0;
-    }
-
     > img {
         display: block;
         width: 100%;
+    }
+
+    .v-index__section__content__sticky {
+        position: sticky;
+        top: 0;
     }
 }
 
@@ -495,6 +470,15 @@
 
     &.v-index__grid--centred {
         justify-content: center;
+    }
+}
+
+[class*="v-index__grid__coll"] {
+    > *:first-child {
+        margin-top: 0 !important;
+    }
+    > *:last-child {
+        margin-top: 0 !important;
     }
 }
 
@@ -599,7 +583,16 @@
     }
 }
 
-.v-index__header,
+.v-index__header {
+    background: white;
+    z-index: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+}
+
 .v-index__content {
     background: white;
     position: relative;
@@ -608,11 +601,18 @@
 }
 
 .v-index__footer {
-    padding: var(--app-gutter);
+    background: white;
     position: relative;
     z-index: 10;
-    //background: white;
-    background: linear-gradient(180deg,rgba(255, 255, 255, 255) 50%, rgba(255, 255, 255, 0) 90%);
+}
+
+.v-index__bottom-image {
+    display: block;
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    z-index: 10;
+    object-fit: cover;
 }
 
 
@@ -620,15 +620,12 @@
     position: sticky;
     bottom: 0;
     z-index: 1;
+    background: linear-gradient(to right, var(--app-color-main), var(--app-color-main--dark));
 
-    > svg {
+    > img {
         width: 100%;
         height: auto;
-
-        * {
-            fill: var(--app-color-main--dark) !important;
-            //fill: black !important;
-        }
+        display: block;
     }
 }
 </style>
