@@ -11,8 +11,8 @@ body {
   margin: 0;
   background: white;
   color: var(--app-color-main--dark);
-  font-size: 1.60rem;
-  line-height: 2rem;
+  font-size: 1.15rem;
+  line-height: 1.5rem;
 }
 
 
@@ -86,7 +86,7 @@ ul {
     margin-top: 0 !important;
   }
   > *:last-child {
-    margin-top: 0 !important;
+    margin-bottom: 0 !important;
   }
 }
 

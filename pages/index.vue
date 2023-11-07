@@ -16,6 +16,12 @@
                 <div
                     class="v-index__grid__coll-full"
                 >
+
+                    <div
+                        class="v-index__section__video_player"
+                    >
+                        <app-video link="hello"/>
+                    </div>
                     <div
                         class="v-index__section__video_player"
                     >
@@ -50,7 +56,7 @@
                 <div
                     class="v-index__section__title"
                 >
-                    <h2>Missions</h2>
+                    <h2>Objectifs</h2>
                 </div>
 
                 <div
@@ -433,6 +439,7 @@ onMounted(() => {
 .v-index__section__video_player {
     max-width: 40rem;
     margin: auto;
+    padding-top: 2rem;
 }
 
 .v-index__section__content {

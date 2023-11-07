@@ -9,6 +9,11 @@
                 v-if="src"
                 :src="src"
             >
+            <img
+                class="v-app-image__img"
+                alt="image de remplacement si pas de photo de profil"
+                src="../assets/module_seperate/04--white.svg"
+            >
         </div>
 
         <span
@@ -42,8 +47,19 @@ defineProps<{
 }
 
 .v-app-image__image-container {
+    position: relative;
     background: linear-gradient(to right, var(--app-color-main), var(--app-color-main--dark));
     padding-top: 125%;
+}
+
+.v-app-image__img {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    top: 0;
+    left: à;
 }
 
 .v-app-image__name {
