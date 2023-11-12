@@ -81,22 +81,4 @@ const pageSections = [
     color: white;
 }
 
-.v-app-nav__burger {
-    --burger-icon-width: 2rem;
-    --burger-icon-height: 1rem;
-
-    cursor: pointer;
-    height: var(--burger-icon-height);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-
-
-    > * {
-        background: white;
-        width: var(--burger-icon-width);
-        height: 3px;
-    }
-}
-
 </style>
