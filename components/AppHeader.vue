@@ -7,88 +7,18 @@
             class="v-app-header__graphic-box"
         >
             <img
+                class="v-app-header__graphic-box__module_1"
                 alt="image d'architecture urbaine"
-                src="https://source.unsplash.com/random/human"
-            />
-            <img
-                alt="image d'architecture urbaine"
-                src="https://source.unsplash.com/random/street"
-            />
-            <img
-                alt="image d'architecture urbaine"
-                src="https://source.unsplash.com/random/cars"
-            />
-            <img
-                alt="image d'architecture urbaine"
-                src="https://source.unsplash.com/random/new-york"
-            />
-            <img
-                alt="image d'architecture urbaine"
-                src="https://source.unsplash.com/random/rouge"
-            />
-            <img
-                alt="image d'architecture urbaine"
-                src="https://source.unsplash.com/random/blue"
-            />
-            <img
-                alt="image d'architecture urbaine"
-                src="https://source.unsplash.com/random/green"
-            />
-            <img
-                alt="image d'architecture urbaine"
-                src="https://source.unsplash.com/random/bonjour"
-            />
-            <img
-                alt="image d'architecture urbaine"
-                src="https://source.unsplash.com/random/train"
-            />
-            <img
-                alt="image d'architecture urbaine"
-                src="https://source.unsplash.com/random/new-york-city"
+                src="../assets/module_seperate/incorporees/global--incorporees.svg"
             />
         </div>
         <div
             class="v-app-header__graphic-box"
         >
             <img
+                class="v-app-header__graphic-box__module_1"
                 alt="image d'architecture urbaine"
-                src="https://source.unsplash.com/random/human"
-            />
-            <img
-                alt="image d'architecture urbaine"
-                src="https://source.unsplash.com/random/street"
-            />
-            <img
-                alt="image d'architecture urbaine"
-                src="https://source.unsplash.com/random/cars"
-            />
-            <img
-                alt="image d'architecture urbaine"
-                src="https://source.unsplash.com/random/new-york"
-            />
-            <img
-                alt="image d'architecture urbaine"
-                src="https://source.unsplash.com/random/rouge"
-            />
-            <img
-                alt="image d'architecture urbaine"
-                src="https://source.unsplash.com/random/blue"
-            />
-            <img
-                alt="image d'architecture urbaine"
-                src="https://source.unsplash.com/random/green"
-            />
-            <img
-                alt="image d'architecture urbaine"
-                src="https://source.unsplash.com/random/bonjour"
-            />
-            <img
-                alt="image d'architecture urbaine"
-                src="https://source.unsplash.com/random/train"
-            />
-            <img
-                alt="image d'architecture urbaine"
-                src="https://source.unsplash.com/random/new-york-city"
+                src="../assets/module_seperate/incorporees/global--incorporees.svg"
             />
         </div>
 
@@ -126,9 +56,10 @@
 }
 
 .v-app-header__signature {
-    line-height: 4rem;
-    font-size: 3.8rem;
-    font-weight: 500;
+    line-height: 1em;
+    font-size: 5.65vw;
+    letter-spacing: -.0125em;
+    font-weight: 600;
     display: flex;
     align-items: center;
     box-sizing: border-box;
@@ -143,90 +74,18 @@
     top: 0;
     left: 0;
     height: 100vh;
-    width: 253vh;
-    animation: scroll 50s linear infinite;
+    width: auto;
+    animation: scroll 400s linear infinite;
+}
 
-    > img {
-        position: absolute;
-        mask-repeat: no-repeat;
-        object-fit: cover;
-        mask-size: contain;
+[class*='v-app-header__graphic-box__module_'] {
+    height: 209%;
+    position: relative;
+}
 
-        &:nth-child(1) {
-            mask-image: url('../assets/module_seperate/01.svg');
-            width: 28vh;
-            height: 35vh;
-            top: 10vh;
-            left: 0;
-        }
-        &:nth-child(2) {
-            mask-image: url('../assets/module_seperate/02.svg');
-            width: 53vh;
-            height: 35vh;
-            top: 50vh;
-            left: 0;
-        }
-        &:nth-child(3) {
-            mask-image: url('../assets/module_seperate/03.svg');
-            width: 37vh;
-            height: 18vh;
-            top: 25vh;
-            left: 32vh;
-        }
-        &:nth-child(4) {
-            mask-image: url('../assets/module_seperate/04.svg');
-            width: 59vh;
-            height: 57vh;
-            top: 44vh;
-            left: 65vh;
-        }
-        &:nth-child(5) {
-            mask-image: url('../assets/module_seperate/05.svg');
-            width: 53vh;
-            height: 35vh;
-            top: 1vh;
-            left: 70vh;
-        }
-        &:nth-child(6) {
-            mask-image: url('../assets/module_seperate/06.svg');
-            width: 28vh;
-            height: 35vh;
-            top: -15vh;
-            left: 131vh;
-        }
-        &:nth-child(7) {
-            mask-image: url('../assets/module_seperate/07.svg');
-            width: 59vh;
-            height: 57vh;
-            top: 27vh;
-            left: 112.5vh;
-        }
-        &:nth-child(8) {
-            mask-image: url('../assets/module_seperate/08.svg');
-            width: 37vh;
-            height: 18vh;
-            top: 21vh;
-            left: 160vh;
-        }
-        &:nth-child(9) {
-            mask-image: url('../assets/module_seperate/09.svg');
-            width: 59vh;
-            height: 57vh;
-            top: 32vh;
-            left: 184vh;
-        }
-        &:nth-child(10) {
-            mask-image: url('../assets/module_seperate/10.svg');
-            width: 28vh;
-            height: 35vh;
-            top: 69vh;
-            left: 176vh;
-        }
-    }
-
-    &:nth-child(2) {
-        left: 253vh;
-    }
+.v-app-header__graphic-box__module_1 {
+    top: var(--app-nav__height);
+    height: calc( 100% - var(--app-nav__height) );
 }
 
 @keyframes scroll {

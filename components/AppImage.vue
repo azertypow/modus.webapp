@@ -10,7 +10,8 @@
                 :src="src"
             >
             <img
-                class="v-app-image__img"
+                v-else
+                class="v-app-image__img v-app-image__img--empty"
                 alt="image de remplacement si pas de photo de profil"
                 src="../assets/module_seperate/04--white.svg"
             >
@@ -59,7 +60,13 @@ defineProps<{
     height: 100%;
     object-fit: cover;
     top: 0;
-    left: à;
+    left: 0;
+
+    &.v-app-image__img--empty {
+        object-fit: contain;
+        width: 102%;
+        left: -1%;
+    }
 }
 
 .v-app-image__name {
@@ -71,5 +78,6 @@ defineProps<{
 .v-app-image__status {
     display: block;
     text-align: center;
+    font-weight: 500;
 }
 </style>

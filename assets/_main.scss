@@ -51,8 +51,8 @@ h3 {
 button {
   all: unset;
   box-sizing: border-box;
-  line-height: 2rem;
-  font-size: 1.8rem;
+  line-height: 1.5rem;
+  font-size: 1.5rem;
   border: solid 5px var(--app-color-main);
   border-radius: 5rem;
   padding: .5rem 2rem;
@@ -72,7 +72,7 @@ ul {
 
     &:before {
       position: absolute;
-      top: .5rem;
+      top: .5em;
       left: 0;
       content: '';
       display: block;
@@ -82,6 +82,15 @@ ul {
       background: var(--app-color-main);
     }
 
+  }
+
+  .v-index__section__content--sticky & {
+    font-size: 1rem;
+    line-height: 1.5rem;
+
+    > * {
+      padding-bottom: 1.5rem;
+    }
   }
 }
 
@@ -99,6 +108,8 @@ ul {
 // scroll
 
 body, html {
+  scroll-behavior: smooth;
+
   /* Barre de défilement Firefox */
   scrollbar-width: auto;
   scrollbar-color: #00FF00 #f1f1f1; /* Couleur de la poignée et de la piste de la barre de défilement pour Firefox */

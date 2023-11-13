@@ -33,6 +33,11 @@
 .v-app-newsletter {
     background: linear-gradient(to right, var(--app-color-main), var(--app-color-main--dark));
     padding: 5rem var(--app-gutter);
+
+    .v-app-newsletter__input {
+        font-size: 1.5rem;
+        line-height: 1.5rem;
+    }
 }
 
 .v-app-newsletter__title {
@@ -51,7 +56,7 @@ input[type='email'] {
     all: unset;
     font-family: inherit;
     background: white;
-    height: 5rem;
+    height: 3rem;
     border-radius: 3rem;
     padding: 0 2rem;
     width: 100%;

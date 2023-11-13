@@ -1,5 +1,7 @@
 <template>
-    <main class="v-index" >
+    <main
+        class="v-index"
+    >
         <div
             class="v-index__header"
         >
@@ -7,8 +9,7 @@
         </div>
 
         <div
-            class="v-index__content"
-            ref="contentElement"
+            class="v-index__content app-show-background-on-nav"
         >
             <section
                 class="v-index__section"
@@ -54,61 +55,6 @@
                 class="v-index__section"
             >
                 <div
-                    class="v-index__section__title"
-                >
-                    <h2>Objectifs</h2>
-                </div>
-
-                <div
-                    class="v-index__section__content v-index__grid v-index__grid--with-gutter"
-                >
-                    <div
-                        class="v-index__grid__coll-1-2"
-                    >
-                        <p>
-                            Le 21e siècle sera marqué par le défi imposé par le changement climatique. En Suisse, le secteur des transports représente aujourd’hui 31% des émissions contre 24% dans le monde. La mobili- té constitue donc 30% du problème mais égale- ment 30% de la solution. La Fondation Modus a pour vocation de participer à relever le défi de la décarbonation en soutenant les acteurs de Ge- nève pour atteindre l’objectif 0 carbone à l’hori- zon 2050.
-                        </p>
-
-                        <p>
-                            La Fondation Modus prend le parti d’agir à l’échelle locale en se positionnant comme un accélérateur du changement et un soutien aux acteurs déjà en place. Ce soutien se matérialise à travers des interventions concrètes sur le ter- ritoire et auprès des habitant.e.s du Canton de Genève.
-                        </p>
-
-                        <p>
-                            <strong>
-                                Pour poursuivre cette ambition, la Fondation Modus s’est fixée 5 missions :
-                            </strong>
-                        </p>
-                        <ul>
-                            <li>Soutenir les acteurs de la mobilité dans leurs projets ;</li>
-                            <li>Stimuler les interconnaissances entre les acteurs ;</li>
-                            <li>Mettre à disposition des approches, des idées et des connaissances nouvelles ;</li>
-                            <li>Proposer de nouveaux imaginaires et valeurs sociales de la mobilité ;</li>
-                            <li>Documenter et disséminer le changement</li>
-                        </ul>
-                    </div>
-                    <div
-                        class="v-index__grid__coll-1-2"
-                    >
-                        <div
-                            class="v-index__section__content__sticky"
-                        >
-                            ilustration à droite
-                        </div>
-                    </div>
-                </div>
-
-            </section>
-
-            <section
-                class="v-index__section"
-            >
-                <div
-                    class="v-index__section__title"
-                >
-                    <h2>Objectifs</h2>
-                </div>
-
-                <div
                     class="v-index__section__content v-index__grid v-index__grid--wrap v-index__grid--with-gutter"
                 >
                     <img
@@ -125,22 +71,51 @@
                         src="../assets/231023_schema_2-modus.jpg"
                     >
                 </div>
+            </section>
+
+            <section
+                class="v-index__section"
+            >
+                <div
+                    class="v-index__section__title"
+                >
+                    <h2>Objectifs</h2>
+                </div>
 
                 <div
-                    class="v-index__section__content v-index__grid"
+                    class="v-index__section__content v-index__section__content--sticky v-index__grid v-index__grid--with-gutter"
                 >
                     <div
-                        class="v-index__grid__coll-full"
+                        class="v-index__grid__coll-1-2"
                     >
-                        <p>
-                            Le 21e siècle sera marqué par le défi imposé par le changement climatique. En Suisse,
-                            le secteur des transports représente aujourd’hui 31% des émissions contre 24% dans le monde. La
-                            mobilité constitue donc 30% du problème mais également 30% de la solution.
-                        </p>
+                        <ul>
+                            <li>Soutenir les acteurs de la mobilité dans leurs projets ;</li>
+                            <li>Stimuler les interconnaissances entre les acteurs ;</li>
+                            <li>Mettre à disposition des approches, des idées et des connaissances nouvelles ;</li>
+                            <li>Proposer de nouveaux imaginaires et valeurs sociales de la mobilité ;</li>
+                            <li>Documenter et disséminer le changement</li>
+                        </ul>
+                    </div>
+                    <div
+                        class="v-index__grid__coll-1-2"
+                    >
+                        <div
+                            class="v-index__section__content--sticky__element-sticky"
+                        >
+<!--
+                                src="/attachments/120.jpg"
+                                src="/attachments/6.jpg"
+-->
+                            <img
+                                src="/attachments/116.jpg"
+                                alt="image de ville abstraite"
+                            />
+                        </div>
                     </div>
                 </div>
 
             </section>
+
             <section
                 class="v-index__section"
             >
@@ -160,8 +135,9 @@
                             L'équipe
                         </h3>
                         <app-image
-                            status="Secrétaire Général"
+                            src="photos-profiles/01.png"
                             name="Dr. Guillaume Drevon"
+                            status="Secrétaire Général"
                         />
                     </div>
                     <div
@@ -175,48 +151,53 @@
                                 class="v-index__grid__coll-1-3"
                             >
                                 <app-image
-                                    status="Secrétaire Général"
-                                    name="Dr. Guillaume Drevon"
+                                    src="photos-profiles/02.png"
+                                    name="Prof. Yves Delacrétaz"
+                                    status="Expert scientifique"
                                 />
                             </div>
                             <div
                                 class="v-index__grid__coll-1-3"
                             >
                                 <app-image
-                                    status="Secrétaire Général"
-                                    name="Dr. Guillaume Drevon"
+                                    src="photos-profiles/03.png"
+                                    name="Prof. Vincent Kaufmann"
+                                    status="Expert scientifique"
                                 />
                             </div>
                             <div
                                 class="v-index__grid__coll-1-3"
                             >
                                 <app-image
-                                    status="Secrétaire Général"
-                                    name="Dr. Guillaume Drevon"
+                                    src="photos-profiles/04.png"
+                                    name="Jenny Leuba"
+                                    status="Expert scientifique"
                                 />
                             </div>
                             <div
                                 class="v-index__grid__coll-1-3"
                             >
                                 <app-image
-                                    status="Secrétaire Général"
-                                    name="Dr. Guillaume Drevon"
+                                    name="Emmanuel Ravalet"
+                                    status="Expert scientifique"
                                 />
                             </div>
                             <div
                                 class="v-index__grid__coll-1-3"
                             >
                                 <app-image
-                                    status="Secrétaire Général"
-                                    name="Dr. Guillaume Drevon"
+                                    src="photos-profiles/05.png"
+                                    name="Lisa Moussaoui"
+                                    status="Experte scientifique"
                                 />
                             </div>
                             <div
                                 class="v-index__grid__coll-1-3"
                             >
                                 <app-image
-                                    status="Secrétaire Général"
-                                    name="Dr. Guillaume Drevon"
+                                    src="photos-profiles/06.png"
+                                    name="Jean Simos"
+                                    status="Experte scientifique"
                                 />
                             </div>
                         </div>
@@ -230,54 +211,7 @@
                             Le conseil scientifique
                         </h3>
                         <div class="v-index__section__content v-index__grid v-index__grid--wrap v-index__grid--with-gutter" >
-                            <div
-                                class="v-index__grid__coll-1-4"
-                            >
-                                <app-image
-                                    status="Secrétaire Général"
-                                    name="Dr. Guillaume Drevon"
-                                />
-                            </div>
-                            <div
-                                class="v-index__grid__coll-1-4"
-                            >
-                                <app-image
-                                    status="Secrétaire Général"
-                                    name="Dr. Guillaume Drevon"
-                                />
-                            </div>
-                            <div
-                                class="v-index__grid__coll-1-4"
-                            >
-                                <app-image
-                                    status="Secrétaire Général"
-                                    name="Dr. Guillaume Drevon"
-                                />
-                            </div>
-                            <div
-                                class="v-index__grid__coll-1-4"
-                            >
-                                <app-image
-                                    status="Secrétaire Général"
-                                    name="Dr. Guillaume Drevon"
-                                />
-                            </div>
-                            <div
-                                class="v-index__grid__coll-1-4"
-                            >
-                                <app-image
-                                    status="Secrétaire Général"
-                                    name="Dr. Guillaume Drevon"
-                                />
-                            </div>
-                            <div
-                                class="v-index__grid__coll-1-4"
-                            >
-                                <app-image
-                                    status="Secrétaire Général"
-                                    name="Dr. Guillaume Drevon"
-                                />
-                            </div>
+
                         </div>
                     </div>
 
@@ -365,13 +299,22 @@
 
         <footer class="v-index__footer">
             <app-newsletter/>
+
+
+<!--
+
+                    src="/attachments/8.jpg"
+                    src="/attachments/222.jpg"
+                    src="/attachments/102.jpg"
+                    src="/attachments/116.jpg"
+-->
+            <img
+                    src="/attachments/166.jpg"
+                class="v-index__bottom-image"
+                alt="image d'architecture urbaine"
+            />
         </footer>
 
-        <img
-            class="v-index__bottom-image"
-            alt="image d'architecture urbaine"
-            src="https://images.unsplash.com/photo-1696945147512-745188d0ef77?auto=format&fit=crop&q=80&w=2864&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-        />
 
         <div
             class="v-index__bottom"
@@ -391,29 +334,25 @@
 
 <script lang="ts" setup>
 
-import {Ref} from "vue";
 import AppVideo from "~/components/AppVideo.vue";
+import {arrayOfH2TitleIdInCurrentPage} from "~/composable/main";
 
-const contentElement: Ref<null | HTMLElement> = ref(null)
-
+const h2TitleIdInCurrentPage = arrayOfH2TitleIdInCurrentPage()
 
 onMounted(() => {
     nextTick(() => {
-        if( ! (contentElement.value instanceof HTMLElement)) return
+        h2TitleIdInCurrentPage.value =
+            Array.from(document.querySelectorAll('h2') )
+                .map( (htmlHeadingElement) => {
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    console.log('L\'élément est en intersection avec la fenêtre')
-                } else {
-                    console.log('L\'élément n\'est plus en intersection avec la fenêtre')
-                }
-            })
-        }, {
-            rootMargin: '0px 0px -500px 0px' // La marge positive pour déclencher l'événement
-        })
+                    if ( ! htmlHeadingElement.id)
+                        htmlHeadingElement.id = encodeURIComponent( htmlHeadingElement.textContent || 'generateID' )
 
-        observer.observe(contentElement.value)
+                    return {
+                        anchor: htmlHeadingElement.id,
+                        name: htmlHeadingElement.innerText,
+                    }
+                })
     })
 })
 
@@ -434,10 +373,12 @@ onMounted(() => {
     max-width: 1300px;
     margin-left: auto;
     margin-right: auto;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
 }
 
 .v-index__section__video_player {
-    max-width: 40rem;
+    max-width: 25rem;
     margin: auto;
     padding-top: 2rem;
 }
@@ -450,9 +391,17 @@ onMounted(() => {
         width: 100%;
     }
 
-    .v-index__section__content__sticky {
+    .v-index__section__content--sticky__element-sticky {
         position: sticky;
         top: 0;
+
+        > img {
+            display: block;
+            //width: 50vw;
+            height: 50vw;
+            transform-origin: top left;
+            transform: translate(0, 75%) rotate(-90deg);
+        }
     }
 }
 
@@ -461,6 +410,10 @@ onMounted(() => {
     display: flex;
     flex-direction: column;
     align-items: center;
+    > * {
+        margin-top: 0;
+        margin-bottom: 2rem;
+    }
 }
 
 .v-index__grid {
