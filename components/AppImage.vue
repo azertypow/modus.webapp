@@ -50,7 +50,7 @@ defineProps<{
 .v-app-image__image-container {
     position: relative;
     background: linear-gradient(to right, var(--app-color-main), var(--app-color-main--dark));
-    padding-top: 125%;
+    padding-top: 140%;
 }
 
 .v-app-image__img {
@@ -73,11 +73,15 @@ defineProps<{
     font-weight: 600;
     display: block;
     text-align: center;
+    font-size: .75rem;
+    line-height: 1rem;
 }
 
 .v-app-image__status {
     display: block;
     text-align: center;
     font-weight: 500;
+    font-size: .75rem;
+    line-height: 1rem;
 }
 </style>

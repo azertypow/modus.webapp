@@ -2,24 +2,28 @@
     <section
         class="v-app-header"
     >
-
         <div
-            class="v-app-header__graphic-box"
+            class="v-app-header__container"
+            :style="`transform: translate(0, -${bodyScrollInfoStore.top / 4}px)`"
         >
-            <img
-                class="v-app-header__graphic-box__module_1"
-                alt="image d'architecture urbaine"
-                src="../assets/module_seperate/incorporees/global--incorporees.svg"
-            />
-        </div>
-        <div
-            class="v-app-header__graphic-box"
-        >
-            <img
-                class="v-app-header__graphic-box__module_1"
-                alt="image d'architecture urbaine"
-                src="../assets/module_seperate/incorporees/global--incorporees.svg"
-            />
+            <div
+                class="v-app-header__container__graphic-box"
+            >
+                <img
+                    class="v-app-header__graphic-box__module_1"
+                    alt="image d'architecture urbaine"
+                    src="../assets/_dev_images/header--incorporee.svg"
+                />
+            </div>
+            <div
+                class="v-app-header__container__graphic-box"
+            >
+                <img
+                    class="v-app-header__graphic-box__module_1"
+                    alt="image d'architecture urbaine"
+                    src="../assets/_dev_images/header--incorporee.svg"
+                />
+            </div>
         </div>
 
         <div
@@ -36,6 +40,10 @@
 // defineProps<{
 // }>()
 
+import {bodyScrollInfo} from "~/composable/main";
+
+const bodyScrollInfoStore = bodyScrollInfo()
+
 </script>
 
 
@@ -44,15 +52,23 @@
 
 <style lang="scss" scoped >
 .v-app-header {
-    background: linear-gradient(to right, var(--app-color-main), var(--app-color-main--dark));
+    background: white;
     width: 100%;
     height: 100vh;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-end;
     position: relative;
-    overflow: hidden;
+}
+
+.v-app-header__container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
 .v-app-header__signature {
@@ -65,11 +81,11 @@
     box-sizing: border-box;
     width: 100%;
     padding: var(--app-gutter);
-    color: white;
+    color: var(--app-color-main);
     z-index: 100;
 }
 
-.v-app-header__graphic-box {
+.v-app-header__container__graphic-box {
     position: absolute;
     top: 0;
     left: 0;
@@ -78,14 +94,11 @@
     animation: scroll 400s linear infinite;
 }
 
-[class*='v-app-header__graphic-box__module_'] {
-    height: 209%;
-    position: relative;
-}
-
 .v-app-header__graphic-box__module_1 {
+    position: relative;
     top: var(--app-nav__height);
     height: calc( 100% - var(--app-nav__height) );
+    height: calc( 125% );
 }
 
 @keyframes scroll {

@@ -2,7 +2,8 @@
     <section class="v-app-newsletter child-remove-margin" >
         <h2
             class="v-app-newsletter__title"
-        >Pour recevoir plus d’information sur modus</h2>
+        >Pour recevoir plus d’information sur&nbsp;modus</h2
+        >
 
         <form>
             <input

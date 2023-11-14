@@ -75,6 +75,8 @@ function playerLoaded(e: Event) {
     background: linear-gradient(to right, var(--app-color-main), var(--app-color-main--dark));
     width: 100%;
     padding-top: 56.25%;
+    border-radius: 1rem;
+    overflow: hidden;
 }
 
 img {

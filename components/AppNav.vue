@@ -9,6 +9,12 @@
              xml:space="preserve"
              class="v-app-nav__logo"
         >
+            <defs>
+                <linearGradient id="Gradient1">
+                    <stop class="stop1" offset="0%"   style="stop-color: var(--app-color-main)"/>
+                    <stop class="stop2" offset="100%" style="stop-color: var(--app-color-main--dark)"/>
+                  </linearGradient>
+            </defs>
             <g>
               <g>
                 <defs>
@@ -18,21 +24,16 @@
                     c0-10.02734,5.19922-16.34277,13-16.34277c7.42969,0,11.89062,6.12793,11.89062,15.78711v52.56348h32.6875V75.4043
                     c0-27.4873-12.44531-42.71484-33.61719-42.71484C101.78125,32.68945,91.9375,37.14551,83.5791,45.87402"/>
                 </defs>
-                  <use xlink:href="#SVGID_1_" overflow="visible"/>
-                  <clipPath id="SVGID_2_">
-                  <use xlink:href="#SVGID_1_" overflow="visible"/>
-                </clipPath>
+                <use xlink:href="#SVGID_1_" overflow="visible" fill="url(#Gradient1)"/>
               </g>
                 <g>
                 <defs>
-                  <path id="SVGID_3_" d="M160.15234,82.83398h33.05859c0.00391-11.70312,8.35938-20.42871,19.31641-20.42871
+                  <path
+                          id="SVGID_3_" d="M160.15234,82.83398h33.05859c0.00391-11.70312,8.35938-20.42871,19.31641-20.42871
                     c11.14453,0,19.5,8.72559,19.50391,20.42871h33.0625c-0.00391-28.60645-22.84766-50.14453-52.56641-50.14453
                     C182.8125,32.68945,160.15625,54.22754,160.15234,82.83398"/>
                 </defs>
-                    <use xlink:href="#SVGID_3_" overflow="visible"/>
-                    <clipPath id="SVGID_4_">
-                  <use xlink:href="#SVGID_3_" overflow="visible"/>
-                </clipPath>
+                <use xlink:href="#SVGID_3_" overflow="visible" fill="url(#Gradient1)"/>
               </g>
                 <g>
                 <defs>
@@ -42,10 +43,7 @@
                     c28.97656,0,47.92188-17.82812,47.92188-45.13281v-52.9375h-32.69043v51.63672c0,10.21484-6.12988,16.90234-15.23145,16.90234
                     c-9.28906,0-15.23438-6.6875-15.23438-16.90234V82.83398h0.01953V0H348.21875z"/>
                 </defs>
-                    <use xlink:href="#SVGID_5_" overflow="visible"/>
-                    <clipPath id="SVGID_6_">
-                  <use xlink:href="#SVGID_5_" overflow="visible"/>
-                </clipPath>
+                <use xlink:href="#SVGID_5_" overflow="visible" fill="url(#Gradient1)"/>
               </g>
                 <g>
                 <defs>
@@ -57,10 +55,7 @@
                     c9.10156,0,22.65918,3.34375,32.69141,9.84375V69.49902c-7.61328-5.38281-19.875-8.91504-33.0625-8.91504
                     C480.23535,60.58398,459.05859,67.83008,459.05859,93.83008"/>
                 </defs>
-                    <use xlink:href="#SVGID_7_" overflow="visible"/>
-                    <clipPath id="SVGID_8_">
-                  <use xlink:href="#SVGID_7_" overflow="visible"/>
-                </clipPath>
+                <use xlink:href="#SVGID_7_" overflow="visible" fill="url(#Gradient1)"/>
               </g>
             </g>
         </svg>
@@ -99,47 +94,69 @@ const h2TitleIdInCurrentPage = arrayOfH2TitleIdInCurrentPage()
 
 <style lang="scss" scoped >
 .v-app-nav {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  height: var(--app-nav__height);
+  box-sizing: border-box;
+  position: relative;
+
+  transition: padding .5s .0s ease-in-out;
+  padding:
+		  calc(var(--app-gutter) / 2)
+		  calc( var(--app-gutter) / 1)
+		  0;
+
+  &:before {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    content: "";
+    display: block;
     width: 100%;
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    height: var(--app-nav__height);
-    box-sizing: border-box;
-    padding: calc( var(--app-gutter) / 2 ) var(--app-gutter);
+    background: rgba(255, 255, 255, 0.75);
+    transition: height .25s ease-in-out;
+    height: 0;
+    z-index: -1;
+    backdrop-filter: blur(10px);
+  }
 
-    .is-intersected & {
-        background: white;
+  .is-intersected & {
+    padding:
+		    calc(var(--app-gutter) / 4)
+            calc( var(--app-gutter) / 1)
+		    0;
+
+    &:before {
+      height: 100%;
     }
+  }
 }
-
 
 
 .v-app-nav__logo {
-    display: block;
-    height: calc( var(--app-nav__height) - ( var(--app-gutter) ) );
-    width: auto;
-    fill: white;
+  display: block;
+  height: calc( var(--app-nav__height) - (var(--app-gutter) / 2) );
+  width: auto;
+  fill: var(--app-color-main);
 
-    .is-intersected & {
-        transition: fill ease-in-out .5s;
-        fill: var(--app-color-main);
-    }
+  .is-intersected & {
+  }
 }
 
 .v-app-nav__links {
-    display: flex;
-    gap: 1rem;
-    align-items: center;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
 }
 
 .v-app-nav__links__item {
-    text-decoration: none;
-    color: white;
+  text-decoration: none;
+  color: var(--app-color-main);
 
-    .is-intersected & {
-        transition: color ease-in-out .5s;
-        color: var(--app-color-main);
-    }
+  .is-intersected & {
+  }
 }
 
 </style>

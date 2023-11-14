@@ -22,11 +22,13 @@
                         class="v-index__section__video_player"
                     >
                         <app-video link="hello"/>
+                        <div class="v-index__section__video_player__title">Titre pour la première vidéo</div>
                     </div>
                     <div
                         class="v-index__section__video_player"
                     >
                         <app-video link="hello"/>
+                        <div class="v-index__section__video_player__title">Titre pour la seconde vidéo, exemple avec quelque chose de plus long</div>
                     </div>
                 </div>
             </section>
@@ -218,96 +220,10 @@
                 </div>
 
             </section>
-            <section
-                class="v-index__section"
-            >
-                <div
-                    class="v-index__section__title"
-                >
-                    <h2>Projets</h2>
-                </div>
-
-                <div
-                    class="v-index__section__content v-index__grid v-index__grid--wrap v-index__grid--with-gutter"
-                >
-                    <div
-                        class="v-index__grid__coll-1-3"
-                    >
-                        <app-large-image
-                            title=" Expérimentation Mobility Rewarding"
-                        />
-                    </div>
-
-                    <div
-                        class="v-index__grid__coll-1-3"
-                    >
-                        <app-large-image
-                            title=" Expérimentation Mobility Rewarding"
-                        />
-                    </div>
-
-                    <div
-                        class="v-index__grid__coll-1-3"
-                    >
-                        <app-large-image
-                            title=" Expérimentation Mobility Rewarding"
-                        />
-                    </div>
-                </div>
-            </section>
-
-            <section
-                class="v-index__section"
-            >
-                <div
-                    class="v-index__section__title"
-                >
-                    <h2>Proposer un projet</h2>
-                </div>
-
-                <div
-                    class="v-index__section__content v-index__grid v-index__grid--wrap"
-                >
-                    <div
-                        class="v-index__grid__coll-full"
-                    >
-                        <p>
-                            La Fondation Modus s’est donnée comme mission de soutenir les initiatives des acteurs locaux. Afin de
-                            proposer un projet, nous vous demandons de bien vouloir vous reporter au formulaire de demande à
-                            télécharger ici. Vous pourrez soumettre ensuite votre projet via le formulaire ci-dessous.
-                        </p>
-                    </div>
-                </div>
-                <div
-                    class="v-index__section__content v-index__grid v-index__grid--centred v-index__grid--wrap"
-                >
-                    <div style="
-                                    background: var(--app-color-main);
-                                    width: 30vw;
-                                    height: 30vw;
-                                " ></div>
-                </div>
-                <div
-                    class="v-index__section__content v-index__grid v-index__grid--centred v-index__grid--wrap"
-                >
-                    <button>Soumettre une demande de soutien</button>
-                </div>
-
-
-            </section>
         </div>
 
         <footer class="v-index__footer">
             <app-newsletter/>
-
-
-<!--
-
-                    src="/attachments/8.jpg"
-                    src="/attachments/222.jpg"
-                    src="/attachments/102.jpg"
-                    src="/attachments/116.jpg"
--->
             <img
                     src="/attachments/166.jpg"
                 class="v-index__bottom-image"
@@ -321,7 +237,7 @@
         >
             <img
                 alt="logo Modus fin de page"
-                src="../assets/logo/Logo_Modus_blanc_sd-20230913.svg"
+                src="../assets/logo/logo_with_image.svg"
             />
         </div>
 
@@ -342,15 +258,16 @@ const h2TitleIdInCurrentPage = arrayOfH2TitleIdInCurrentPage()
 onMounted(() => {
     nextTick(() => {
         h2TitleIdInCurrentPage.value =
-            Array.from(document.querySelectorAll('h2') )
+            Array.from(document.querySelectorAll('.v-index__section__title h2') )
                 .map( (htmlHeadingElement) => {
+
 
                     if ( ! htmlHeadingElement.id)
                         htmlHeadingElement.id = encodeURIComponent( htmlHeadingElement.textContent || 'generateID' )
 
                     return {
                         anchor: htmlHeadingElement.id,
-                        name: htmlHeadingElement.innerText,
+                        name: (htmlHeadingElement as HTMLElement).innerText,
                     }
                 })
     })
@@ -554,7 +471,7 @@ onMounted(() => {
 }
 
 .v-index__content {
-    background: white;
+    background: var(--app-color-grey);
     position: relative;
     z-index: 10;
     width: 100%;
@@ -580,9 +497,11 @@ onMounted(() => {
     position: sticky;
     bottom: 0;
     z-index: 1;
-    background: linear-gradient(to right, var(--app-color-main), var(--app-color-main--dark));
+    background: white;
 
     > img {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
         width: 100%;
         height: auto;
         display: block;

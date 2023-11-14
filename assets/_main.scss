@@ -11,8 +11,8 @@ body {
   margin: 0;
   background: white;
   color: var(--app-color-main--dark);
-  font-size: .75rem;
-  line-height: 1rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
   font-weight: 600;
   overflow-x: hidden;
 }
@@ -84,13 +84,8 @@ ul {
 
   }
 
-  .v-index__section__content--sticky & {
-    font-size: 1rem;
-    line-height: 1.5rem;
-
-    > * {
-      padding-bottom: 1.5rem;
-    }
+  > * {
+    padding-bottom: 1.5rem;
   }
 }
 

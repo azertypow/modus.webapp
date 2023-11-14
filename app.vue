@@ -5,7 +5,6 @@
             'is-intersected': isIntersected
         }"
     >
-
         <div class="v-app__nav" >
             <app-nav/>
         </div>
@@ -23,9 +22,15 @@
 
 <script lang="ts" setup>
 
+import {bodyScrollInfo} from "~/composable/main";
+
 const isIntersected = ref(false)
 
 onMounted(() => {
+    window.addEventListener('scroll', () => {
+        bodyScrollInfo().value = {top: window.scrollY }
+    })
+
     nextTick(() => {
         const elementsToSetBackgroundNav = document.querySelectorAll('.app-show-background-on-nav')
 
@@ -66,10 +71,6 @@ onMounted(() => {
     left: 0;
     width: 100%;
     z-index: 100;
-
-    .is-intersected & {
-        background: white;
-    }
 }
 
 </style>
