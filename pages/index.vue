@@ -39,15 +39,15 @@
                     class="v-index__grid__coll-full"
                 >
                     <p>
-                        Le 21e siècle sera marqué par le défi imposé par le changement clima- tique. En Suisse, le secteur des
+                        Le 21e siècle sera marqué par le défi imposé par le changement climatique. En Suisse, le secteur des
                         transports représente aujourd’hui 31% des émissions contre 24% dans le monde. La mobilité constitue donc 30%
                         du problème mais également 30% de la solution. La Fondation Modus a pour vocation de participer à relever le
-                        défi de la décarbo- nation en soutenant les acteurs de Genève pour atteindre l’objectif 0 carbone à
+                        défi de la décarbonation en soutenant les acteurs de Genève pour atteindre l’objectif 0 carbone à
                         l’horizon 2050.
                     </p>
                     <p>
-                        La Fondation Modus prend le parti d’agir à l’échelle locale en se po- sitionnant comme un accélérateur du
-                        changement et un soutien aux acteurs déjà en place. Ce soutien se matérialise à travers des interven- tions
+                        La Fondation Modus prend le parti d’agir à l’échelle locale en se positionnant comme un accélérateur du
+                        changement et un soutien aux acteurs déjà en place. Ce soutien se matérialise à travers des interventions
                         concrètes sur le territoire et auprès des habitant.e.s du Canton de Genève.
                     </p>
                 </div>
@@ -91,11 +91,11 @@
                         class="v-index__grid__coll-1-2"
                     >
                         <ul>
-                            <li>Soutenir les acteurs de la mobilité dans leurs projets ;</li>
-                            <li>Stimuler les interconnaissances entre les acteurs ;</li>
-                            <li>Mettre à disposition des approches, des idées et des connaissances nouvelles ;</li>
-                            <li>Proposer de nouveaux imaginaires et valeurs sociales de la mobilité ;</li>
-                            <li>Documenter et disséminer le changement</li>
+                            <li>Soutenir les acteurs de la mobilité dans leurs projets</li>
+                            <li>Stimuler les interconnaissances entre les&nbsp;acteurs</li>
+                            <li>Mettre à disposition des approches, des idées et des connaissances nouvelles</li>
+                            <li>Proposer de nouveaux imaginaires et valeurs sociales de la&nbsp;mobilité</li>
+                            <li>Documenter et disséminer le&nbsp;changement</li>
                         </ul>
                     </div>
                     <div
@@ -139,7 +139,7 @@
                         <app-image
                             src="photos-profiles/01.png"
                             name="Dr. Guillaume Drevon"
-                            status="Secrétaire Général"
+                            status="Directeur"
                         />
                     </div>
                     <div
@@ -154,7 +154,7 @@
                             >
                                 <app-image
                                     src="photos-profiles/02.png"
-                                    name="Prof. Yves Delacrétaz"
+                                    name="Dr. Yves Delacrétaz"
                                     status="Expert scientifique"
                                 />
                             </div>
@@ -163,7 +163,7 @@
                             >
                                 <app-image
                                     src="photos-profiles/03.png"
-                                    name="Prof. Vincent Kaufmann"
+                                    name="Dr. Vincent Kaufmann"
                                     status="Expert scientifique"
                                 />
                             </div>
@@ -172,7 +172,7 @@
                             >
                                 <app-image
                                     src="photos-profiles/04.png"
-                                    name="Jenny Leuba"
+                                    name="Dr. Jenny Leuba"
                                     status="Expert scientifique"
                                 />
                             </div>
@@ -180,7 +180,7 @@
                                 class="v-index__grid__coll-1-3"
                             >
                                 <app-image
-                                    name="Emmanuel Ravalet"
+                                    name="Dr. Emmanuel Ravalet"
                                     status="Expert scientifique"
                                 />
                             </div>
@@ -189,7 +189,7 @@
                             >
                                 <app-image
                                     src="photos-profiles/05.png"
-                                    name="Lisa Moussaoui"
+                                    name="Dr. Lisa Moussaoui"
                                     status="Experte scientifique"
                                 />
                             </div>
@@ -198,7 +198,7 @@
                             >
                                 <app-image
                                     src="photos-profiles/06.png"
-                                    name="Jean Simos"
+                                    name="Dr. ean Simos"
                                     status="Experte scientifique"
                                 />
                             </div>
@@ -210,10 +210,61 @@
                         class="v-index__grid__coll-full"
                     >
                         <h3>
-                            Le conseil scientifique
+                            Le conseil de fondation
                         </h3>
                         <div class="v-index__section__content v-index__grid v-index__grid--wrap v-index__grid--with-gutter" >
-
+                            <div
+                                class="v-index__grid__coll-1-4"
+                            >
+                                <app-image
+                                    src="photos-profiles/02.png"
+                                    name="Dr. Yves Delacrétaz"
+                                    status="Membre"
+                                />
+                            </div>
+                            <div
+                                class="v-index__grid__coll-1-4"
+                            >
+                                <app-image
+                                    src="photos-profiles/03.png"
+                                    name="Dr. Vincent Kaufmann"
+                                    status="Membre"
+                                />
+                            </div>
+                            <div
+                                class="v-index__grid__coll-1-4"
+                            >
+                                <app-image
+                                    src="photos-profiles/09.png"
+                                    name="Marc Maugué"
+                                    status="Membre"
+                                />
+                            </div>
+                            <div
+                                class="v-index__grid__coll-1-4"
+                            >
+                                <app-image
+                                    src="photos-profiles/10.png"
+                                    name="Thierry Renaud"
+                                    status="Membre"
+                                />
+                            </div>
+                            <div
+                                class="v-index__grid__coll-1-4"
+                            >
+                                <app-image
+                                    name="Patrick Saudan"
+                                    status="Président"
+                                />
+                            </div>
+                            <div
+                                class="v-index__grid__coll-1-4"
+                            >
+                                <app-image
+                                    name="Yves Bersier"
+                                    status="Membre"
+                                />
+                            </div>
                         </div>
                     </div>
 
@@ -239,6 +290,9 @@
                 alt="logo Modus fin de page"
                 src="../assets/logo/logo_with_image.svg"
             />
+            <div
+                class="v-index__bottom__mailto"
+            ><a href="mailto:info@modus-ge.ch" >info@modus-ge.ch</a></div>
         </div>
 
     </main>
@@ -505,6 +559,20 @@ onMounted(() => {
         width: 100%;
         height: auto;
         display: block;
+    }
+}
+
+.v-index__bottom__mailto {
+    margin: auto;
+    text-align: center;
+    width: 100%;
+    max-width: none;
+    padding-bottom: 2rem;
+
+    > a {
+        color: var(--app-color-main);
+        display: block;
+        text-decoration: none;
     }
 }
 </style>
