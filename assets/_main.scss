@@ -16,7 +16,7 @@ body {
   background: white;
   color: var(--app-color-main--dark);
   font-size: 1rem;
-  line-height: 1.5rem;
+  line-height: 1.25rem;
   font-weight: 600;
   overflow-x: hidden;
 
@@ -81,7 +81,7 @@ ul {
 
     &:before {
       position: absolute;
-      top: .5em;
+      top: .35em;
       left: 0;
       content: '';
       display: block;
@@ -90,11 +90,9 @@ ul {
       height: var(--app-bullet-size);
       background: var(--app-color-main);
     }
-
   }
-
-  > * {
-    padding-bottom: 1.5rem;
+  li + li {
+    margin-top: 3.5em;
   }
 }
 

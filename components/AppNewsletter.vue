@@ -33,7 +33,7 @@
 <style lang="scss" scoped >
 .v-app-newsletter {
     background: linear-gradient(to right, var(--app-color-main), var(--app-color-main--dark));
-    padding: 5rem var(--app-gutter);
+    padding: 3rem var(--app-gutter);
 
     .v-app-newsletter__input {
         font-size: 1.5rem;

@@ -23,6 +23,10 @@
         <span
             class="v-app-image__status"
         >{{status}}</span>
+        <span
+            v-if="desc"
+            class="v-app-image__desc"
+        >{{desc}}</span>
     </div>
 </template>
 
@@ -35,6 +39,7 @@ defineProps<{
     src?: string,
     name: string,
     status: string,
+    desc?: string,
 }>()
 
 </script>
@@ -83,5 +88,13 @@ defineProps<{
     font-weight: 500;
     font-size: .75rem;
     line-height: 1rem;
+}
+
+.v-app-image__desc {
+    display: block;
+    text-align: center;
+    font-weight: 500;
+    font-size: .5rem;
+    line-height: .75rem;
 }
 </style>

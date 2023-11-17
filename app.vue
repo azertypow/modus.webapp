@@ -10,9 +10,9 @@
         </div>
 
         <div class="v-app__content" >
-
+            <nuxt-page/>
+            <div id="app-mailto" ></div>
         </div>
-        <nuxt-page/>
     </section>
 </template>
 

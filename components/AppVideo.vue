@@ -3,11 +3,10 @@
         <iframe
                 width="720"
                 height="405"
-                :src="`https://www.youtube.com/embed/vhK6o26OV4Q?si=Cl6GSYXWJGR9EyDI${youtubeEmbedParams}`"
+                :src="`https://www.youtube.com/embed/F7WWwnNUOmI?si=8xTpxx30jTTE8jrZ${youtubeEmbedParams}`"
                 frameborder="0"
                 allowfullscreen
                 v-if="youtubeEmbed"
-                @load="playerLoaded"
         />
         <img
             v-else
@@ -23,7 +22,9 @@
 
 
 <script lang="ts" setup>
-defineProps<{
+import {declareExportAllDeclaration} from "@babel/types";
+
+const props = defineProps<{
     link: string,
 }>()
 
@@ -31,36 +32,32 @@ const youtubeEmbed = ref(false)
 
 const youtubeEmbedParams = '?autoplay=1&enablejsapi=0&color=white&iv_load_policy=3'
 
-function playerLoaded(e: Event) {
-    const iframeElement = e.target
+onMounted(() => {
+    nextTick(() => {
+        onYouTubeIframeAPIReady()
+    })
+})
 
-    if(! (iframeElement instanceof HTMLIFrameElement) ) return
+declare const YT: any
+let player
+function onYouTubeIframeAPIReady() {
+    player = new YT.Player('player', {
+        height: '360',
+        width: '640',
+        videoId: props.link, // Remplace VIDEO_ID par l'ID de ta vidéo YouTube
+        playerVars: {
+            autoplay: 0, // 1 pour démarrer automatiquement la vidéo
+            controls: 1,
+            modestbranding: 1,
+            rel: 0,
+            showinfo: 0,
+        },
+        events: {
+            'onReady': () => {console.log("youtube ready")},
+        },
+    })
 
-    console.log( iframeElement )
-
-    const iframeContent = iframeElement.contentDocument
-
-    console.log( iframeContent?.readyState )
-
-    if( ! iframeContent ) return
-
-    console.log( iframeContent )
-
-    const youtubePlayerButton = iframeContent.querySelector('#player')
-
-
-    // if(! youtubePlayerButton) return
-    //
-    // const clickEvent = new MouseEvent('click', {
-    //     bubbles: true,
-    //     cancelable: true,
-    //     view: window,
-    // })
-    //
-    // console.log( youtubePlayerButton )
-    //
-    // youtubePlayerButton.dispatchEvent(clickEvent)
-
+    console.log(player)
 }
 
 </script>

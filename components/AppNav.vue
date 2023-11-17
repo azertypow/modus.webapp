@@ -71,6 +71,15 @@
             >
                 {{ section.name }}
             </a>
+            <a
+                    href="#app-mailto"
+                    class="v-app-nav__links__item"
+            >
+                <img
+                        alt="bouton pour scroller jusqu'au contact mailto"
+                        src="../assets/mail_FILL0_wght400_GRAD0_opsz24.svg"
+                />
+            </a>
         </div>
 
     </nav>
@@ -110,7 +119,7 @@ const h2TitleIdInCurrentPage = arrayOfH2TitleIdInCurrentPage()
 
   &:before {
     position: absolute;
-    bottom: 0;
+    top: 0;
     left: 0;
     content: "";
     display: block;
@@ -154,8 +163,15 @@ const h2TitleIdInCurrentPage = arrayOfH2TitleIdInCurrentPage()
 .v-app-nav__links__item {
   text-decoration: none;
   color: var(--app-color-main);
+  cursor: pointer;
 
   .is-intersected & {
+  }
+
+  img {
+    user-select: none;
+    display: block;
+    height: .75rem;
   }
 }
 
