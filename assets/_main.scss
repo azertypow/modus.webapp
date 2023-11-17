@@ -4,6 +4,10 @@
 html {
   background: var(--app-color-main--dark);
   font-size: 35px;
+
+  @media (max-width: 900px) {
+    font-size: 30px;
+  }
 }
 
 body {
@@ -15,6 +19,11 @@ body {
   line-height: 1.5rem;
   font-weight: 600;
   overflow-x: hidden;
+
+  @media (max-width: 900px) {
+    font-size: .8rem;
+    line-height: 1rem;
+  }
 }
 
 h1 {
