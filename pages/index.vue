@@ -336,7 +336,7 @@ function interactionWithElementToAnimated() {
             if (entry.isIntersecting) {
                 entry.target.classList.add('is-active')
             } else {
-                // entry.target.classList.add('is-active')
+                entry.target.classList.remove('is-active')
             }
         })
     }, {
@@ -646,20 +646,16 @@ function interactionWithElementToAnimated() {
 
         &:not(.not-animated) {
             transform-origin: center center;
-            transition: opacity .75s cubic-bezier(.25, 0, .75, 0), transform .75s cubic-bezier(0, 0, 1, 1);
+            transition: opacity 0s cubic-bezier(.25, 0, .75, 0), transform 0s cubic-bezier(0, 0, 1, 1);
+            transition-duration: .25s;
+            transition-delay: .25s;
             opacity: 0;
             transform: translate(0, 10%) scale(.75) rotate(5deg);
-
-            $increment: 0.05s;
-            @for $i from 1 through 20 {
-                &:nth-child(#{$i}n) {
-                    transition-delay: #{($i - 1) * $increment};
-                }
-            }
         }
 
         &.is-circle {
-            transition: opacity .5s cubic-bezier(.25, 0, .75, 0), transform .5s cubic-bezier(0, 0, 1, 1);
+            transition: opacity 0s cubic-bezier(.25, 0, .75, 0), transform 0s cubic-bezier(0, 0, 1, 1);
+            transition-duration: .25s;
             opacity: 0;
             transform: translate(0, 0) scale(.85) rotate(5deg);
             transition-delay: .5s !important;
@@ -668,6 +664,19 @@ function interactionWithElementToAnimated() {
 
     &.is-active > img {
         opacity: 1;
+        &:not(.not-animated) {
+            transition-duration: .75s;
+
+            $increment: 0.05s;
+            @for $i from 1 through 20 {
+                &:nth-child(#{$i}n) {
+                    transition-delay: #{($i - 1) * $increment};
+                }
+            }
+        }
+        &.is-circle {
+            transition-duration: .5s;
+        }
         transform: translate(0, 0) scale(1) rotate(0);
     }
 }
