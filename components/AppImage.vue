@@ -79,11 +79,6 @@ defineProps<{
         width: 102%;
         left: -1%;
     }
-
-    .is-variante & {
-        outline: solid 10px var(--app-color-main);
-        outline-offset: -10px;
-    }
 }
 
 .v-app-image__name {
