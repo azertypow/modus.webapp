@@ -353,7 +353,6 @@ function interactionWithElementToAnimated() {
 
 <style lang="scss" scoped >
 .v-index {
-    overflow: hidden;
 }
 
 .v-index__section {
