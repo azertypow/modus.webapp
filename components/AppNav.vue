@@ -158,6 +158,10 @@ const h2TitleIdInCurrentPage = arrayOfH2TitleIdInCurrentPage()
   display: flex;
   gap: 1rem;
   align-items: center;
+
+  @media (max-width: 700px) {
+    display: none;
+  }
 }
 
 .v-app-nav__links__item {
