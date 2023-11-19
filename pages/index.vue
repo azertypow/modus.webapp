@@ -32,7 +32,7 @@
                     class="v-index__grid__coll-full"
                 >
                     <p>
-                        Le 21e siècle sera marqué par le défi imposé par le changement climatique. En Suisse, le secteur des
+                        Le 21<sup>e</sup> siècle sera marqué par le défi imposé par le changement climatique. En Suisse, le secteur des
                         transports représente aujourd’hui 31% des émissions contre 24% dans le monde. La mobilité constitue donc 30%
                         du problème mais également 30% de la solution. La Fondation Modus a pour vocation de participer à relever le
                         défi de la décarbonation en soutenant les acteurs de Genève pour atteindre l’objectif 0 carbone à
@@ -52,17 +52,17 @@
                 <div
                     class="v-index__section__content v-index__grid v-index__grid--wrap v-index__grid--with-gutter app-schema_1 app-schema_animation"
                 >
+                    <img class="app-schema_1_7" alt="icon" src="../assets/schema_1/1-7.svg"/>
+                    <img class="app-schema_1_8" alt="icon" src="../assets/schema_1/1-8.svg"/>
+                    <img class="app-schema_1_9" alt="icon" src="../assets/schema_1/1-9.svg"/>
                     <img class="app-schema_1_3" alt="icon" src="../assets/schema_1/1-3.svg"/>
                     <img class="app-schema_1_4" alt="icon" src="../assets/schema_1/1-4.svg"/>
                     <img class="app-schema_1_5" alt="icon" src="../assets/schema_1/1-5.svg"/>
                     <img class="app-schema_1_6" alt="icon" src="../assets/schema_1/1-6.svg"/>
-                    <img class="app-schema_1_7" alt="icon" src="../assets/schema_1/1-7.svg"/>
-                    <img class="app-schema_1_8" alt="icon" src="../assets/schema_1/1-8.svg"/>
-                    <img class="app-schema_1_9" alt="icon" src="../assets/schema_1/1-9.svg"/>
                     <img class="app-schema_1_10 is-circle" alt="icon" src="../assets/schema_1/1-10.svg"/>
+                    <img class="app-schema_1_1 is-circle" alt="icon" src="../assets/schema_1/1-1.svg"/>
+                    <img class="app-schema_1_2 is-circle" alt="icon" src="../assets/schema_1/1-2.svg"/>
                     <img class="app-schema_1_0 not-animated" alt="icon" src="../assets/schema_1/1-0.svg"/>
-                    <img class="app-schema_1_1 not-animated" alt="icon" src="../assets/schema_1/1-1.svg"/>
-                    <img class="app-schema_1_2 not-animated" alt="icon" src="../assets/schema_1/1-2.svg"/>
                     <img class="app-schema_1_11 not-animated" alt="icon" src="../assets/schema_1/1-11.svg"/>
                 </div>
 
@@ -137,14 +137,15 @@
                             src="photos-profiles/01.png"
                             name="Dr. Guillaume Drevon"
                             status="Directeur"
+                            is-variante="true"
                         />
                     </div>
                     <div
-                        class="v-index__grid__coll-3-4"
+                        class="v-index__grid__coll-full"
                     >
                         <div class="v-index__section__content v-index__grid v-index__grid--wrap v-index__grid--with-gutter" >
                             <div
-                                class="v-index__grid__coll-1-3"
+                                class="v-index__grid__coll-1-4"
                             >
                                 <app-image
                                     name="Yves Bersier"
@@ -153,7 +154,7 @@
                                 />
                             </div>
                             <div
-                                class="v-index__grid__coll-1-3"
+                                class="v-index__grid__coll-1-4"
                             >
                                 <app-image
                                     src="photos-profiles/02.png"
@@ -163,7 +164,7 @@
                                 />
                             </div>
                             <div
-                                class="v-index__grid__coll-1-3"
+                                class="v-index__grid__coll-1-4"
                             >
                                 <app-image
                                     src="photos-profiles/03.png"
@@ -173,7 +174,7 @@
                                 />
                             </div>
                             <div
-                                class="v-index__grid__coll-1-3"
+                                class="v-index__grid__coll-1-4"
                             >
                                 <app-image
                                     src="photos-profiles/04.png"
@@ -183,7 +184,7 @@
                                 />
                             </div>
                             <div
-                                class="v-index__grid__coll-1-3"
+                                class="v-index__grid__coll-1-4"
                             >
                                 <app-image
                                     src="photos-profiles/09.png"
@@ -193,7 +194,7 @@
                                 />
                             </div>
                             <div
-                                class="v-index__grid__coll-1-3"
+                                class="v-index__grid__coll-1-4"
                             >
                                 <app-image
                                     src="photos-profiles/05.png"
@@ -203,7 +204,7 @@
                                 />
                             </div>
                             <div
-                                class="v-index__grid__coll-1-3"
+                                class="v-index__grid__coll-1-4"
                             >
                                 <app-image
                                     name="Dr. Emmanuel Ravalet"
@@ -212,7 +213,7 @@
                                 />
                             </div>
                             <div
-                                class="v-index__grid__coll-1-3"
+                                class="v-index__grid__coll-1-4"
                             >
                                 <app-image
                                     src="photos-profiles/10.png"
@@ -222,7 +223,7 @@
                                 />
                             </div>
                             <div
-                                class="v-index__grid__coll-1-3"
+                                class="v-index__grid__coll-1-4"
                             >
                                 <app-image
                                     name="Patrick Saudan"
@@ -231,7 +232,7 @@
                                 />
                             </div>
                             <div
-                                class="v-index__grid__coll-1-3"
+                                class="v-index__grid__coll-1-4"
                             >
                                 <app-image
                                     src="photos-profiles/06.png"
@@ -330,9 +331,6 @@ function interactionWithElementToAnimated() {
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-
-            console.log(entry.target)
-
             if (entry.isIntersecting) {
                 entry.target.classList.add('is-active')
             } else {
@@ -340,7 +338,7 @@ function interactionWithElementToAnimated() {
             }
         })
     }, {
-        rootMargin: `0px 0px ${window.innerHeight / 2 * -1}px 0px`
+        rootMargin: `0px 0px ${window.innerHeight / 5 * -1}px 0px`
     })
 
     elementsToSetBackgroundNav.forEach((value) => {
@@ -355,6 +353,7 @@ function interactionWithElementToAnimated() {
 
 <style lang="scss" scoped >
 .v-index {
+    overflow: hidden;
 }
 
 .v-index__section {
@@ -573,7 +572,7 @@ function interactionWithElementToAnimated() {
     top: 0;
     left: 0;
     width: 100%;
-    height: 100vh;
+    height: var(--app-header-height);
     position: fixed;
 }
 
@@ -607,8 +606,8 @@ function interactionWithElementToAnimated() {
     background: white;
 
     > img {
-        padding-top: 2rem;
-        padding-bottom: 2rem;
+        box-sizing: border-box;
+        padding: 2rem 1rem;
         width: 100%;
         height: auto;
         display: block;
@@ -657,7 +656,7 @@ function interactionWithElementToAnimated() {
             transition: opacity 0s cubic-bezier(.25, 0, .75, 0), transform 0s cubic-bezier(0, 0, 1, 1);
             transition-duration: .25s;
             opacity: 0;
-            transform: translate(0, 0) scale(.85) rotate(5deg);
+            transform: translate(0, 0) scale(.85) rotate(0);
             transition-delay: .5s !important;
         }
     }

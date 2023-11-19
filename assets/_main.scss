@@ -41,6 +41,13 @@ h2 {
   text-align: center;
   font-weight: 600;
   max-width: 16em;
+
+
+  @media (max-width: 900px) {
+    line-height: 1.5rem;
+    font-size: 1rem;
+    padding: .5rem 1rem;
+  }
 }
 
 h3 {
@@ -93,6 +100,11 @@ ul {
   }
   li + li {
     margin-top: 3.5em;
+
+    @media (max-width: 700px) {
+      margin-top: 1.5em;
+    }
+
   }
 }
 

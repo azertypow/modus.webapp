@@ -23,4 +23,10 @@
   // typo
   --app-bullet-size: .5rem;
 
+  // header
+  --app-header-height: 100vh;
+  @media (max-width: 900px) {
+    --app-header-height: 50vh;
+  }
+
 }

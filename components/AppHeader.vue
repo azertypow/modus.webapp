@@ -363,7 +363,7 @@
 
         <div
             class="v-app-header__signature"
-            :style="`transform: translate(0, -${bodyScrollInfoStore.top / 1.25}px)`"
+            :style="`transform: translate(0, -${bodyScrollInfoStore.top / 1.05}px)`"
         >modus.<br>pour une mobilité durable à Genève</div>
     </section>
 </template>
@@ -390,7 +390,7 @@ const bodyScrollInfoStore = bodyScrollInfo()
 .v-app-header {
     background: white;
     width: 100%;
-    height: 100vh;
+    height: var(--app-header-height);
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -419,13 +419,18 @@ const bodyScrollInfoStore = bodyScrollInfo()
     padding: var(--app-gutter);
     color: var(--app-color-main);
     z-index: 100;
+
+
+    @media (max-width: 900px) {
+        font-size: 10vw;
+    }
 }
 
 .v-app-header__container__graphic-box {
     position: absolute;
     top: 0;
     left: 0;
-    height: 100vh;
+    height: var(--app-header-height);
     width: auto;
     animation: scroll 400s linear infinite;
 }

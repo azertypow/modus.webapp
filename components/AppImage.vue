@@ -1,5 +1,10 @@
 <template>
-    <div class="v-app-image" >
+    <div
+        :class="{
+            'is-variante': isVariante
+        }"
+        class="v-app-image"
+    >
         <div
             class="v-app-image__image-container"
         >
@@ -40,6 +45,7 @@ defineProps<{
     name: string,
     status: string,
     desc?: string,
+    isVariante?: boolean
 }>()
 
 </script>
@@ -72,14 +78,24 @@ defineProps<{
         width: 102%;
         left: -1%;
     }
+
+    .is-variante & {
+        outline: solid 10px var(--app-color-main);
+        outline-offset: -10px;
+    }
 }
 
 .v-app-image__name {
+    margin-top: .25rem;
     font-weight: 600;
     display: block;
     text-align: center;
     font-size: .75rem;
     line-height: 1rem;
+
+    .is-variante & {
+        color: var(--app-color-main);
+    }
 }
 
 .v-app-image__status {
@@ -88,6 +104,9 @@ defineProps<{
     font-weight: 500;
     font-size: .75rem;
     line-height: 1rem;
+    .is-variante & {
+        color: var(--app-color-main);
+    }
 }
 
 .v-app-image__desc {
@@ -95,6 +114,11 @@ defineProps<{
     text-align: center;
     font-weight: 500;
     font-size: .5rem;
-    line-height: .75rem;
+    line-height: .65rem;
+    padding-top: .25rem;
+
+    .is-variante & {
+        color: var(--app-color-main);
+    }
 }
 </style>

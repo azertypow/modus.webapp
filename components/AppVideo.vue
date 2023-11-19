@@ -1,5 +1,10 @@
 <template>
-    <div class="v-app-video" >
+    <div
+        class="v-app-video"
+        :class="{
+            'youtube-embed': youtubeEmbed
+        }"
+    >
         <iframe
                 width="720"
                 height="405"
@@ -72,20 +77,37 @@ function onYouTubeIframeAPIReady() {
     background: linear-gradient(to right, var(--app-color-main), var(--app-color-main--dark));
     width: 100%;
     padding-top: 56.25%;
-    border-radius: 1rem;
     overflow: hidden;
+    cursor: pointer;
+
+    transition: border-radius .75s ease-in-out;
+    border-radius: 1rem;
+
+    &.youtube-embed {
+        background: transparent;
+    }
+
+    img {
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 20%;
+        height: auto;
+
+        transition: transform 2s ease-in-out;
+        transform: translate(-50%, -50%);
+    }
+
+    &:hover {
+        border-radius: .5rem;
+
+        img {
+            transform: translate(-50%, -50%) scale(1.25, 1.25);
+        }
+    }
 }
 
-img {
-    display: block;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 20%;
-    height: auto;
-    cursor: pointer;
-}
 
 iframe {
     display: block;

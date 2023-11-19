@@ -24,7 +24,7 @@ async function main() {
 async function runFFMpeg(image: Deno.DirEntry) {
     if( ! (image.isFile && image.name.endsWith(".jpg")) ) return
 
-    const ffmpegCommand = `ffmpeg -i ${imagePath}/${image.name} -vf "scale='min(${maxDimension}\\,iw):-2'" -q:v 10 ${imagePath}/${outputDirName}/${image.name}`
+    const ffmpegCommand = `ffmpeg -i ${imagePath}/${image.name} -vf "scale='min(${maxDimension}\\,iw):-2'" -q:v 5 ${imagePath}/${outputDirName}/${image.name}`
 
     const create = await exec  ( ffmpegCommand )
     console.log( create )
