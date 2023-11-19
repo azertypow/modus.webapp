@@ -56,6 +56,7 @@ defineProps<{
 
 <style lang="scss" scoped >
 .v-app-image {
+    overflow: hidden;
 }
 
 .v-app-image__image-container {
