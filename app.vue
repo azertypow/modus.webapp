@@ -63,6 +63,10 @@ onMounted(() => {
 <style lang="scss" scoped >
 .v-app {
     padding-top: var(--app-header-height);
+
+    @media (max-width: 700px) {
+        padding-top: calc( var(--app-header-height) + 8rem );
+    }
 }
 
 .v-app__nav {

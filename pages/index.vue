@@ -28,6 +28,10 @@
             <section
                 class="v-index__section v-index__section--intro"
             >
+                <img class="v-index__section__graphic-items v-index__section__graphic-items--m" alt="graphic image" src="../assets/items/m.svg" />
+                <img class="v-index__section__graphic-items v-index__section__graphic-items--o" alt="graphic image" src="../assets/items/o.svg" />
+                <img class="v-index__section__graphic-items v-index__section__graphic-items--du" alt="graphic image" src="../assets/items/du.svg" />
+                <img class="v-index__section__graphic-items v-index__section__graphic-items--s" alt="graphic image" src="../assets/items/s.svg" />
                 <div
                     class="v-index__grid__coll-full"
                 >
@@ -94,13 +98,17 @@
                     <div
                         class="v-index__grid__coll-1-2"
                     >
-                        <ul>
-                            <li>Soutenir les acteurs de la mobilité dans leurs projets</li>
-                            <li>Stimuler les interconnaissances entre les&nbsp;acteurs</li>
-                            <li>Mettre à disposition des approches, des idées et des connaissances nouvelles</li>
-                            <li>Proposer de nouveaux imaginaires et valeurs sociales de la&nbsp;mobilité</li>
-                            <li>Documenter et disséminer le&nbsp;changement</li>
-                        </ul>
+                        <div
+                            class="v-index__section__content--sticky__coll__text-sticky"
+                        >
+                            <ul>
+                                <li>Soutenir les acteurs de la mobilité dans leurs projets</li>
+                                <li>Stimuler les interconnaissances entre les&nbsp;acteurs</li>
+                                <li>Mettre à disposition des approches, des idées et des connaissances nouvelles</li>
+                                <li>Proposer de nouveaux imaginaires et valeurs sociales de la&nbsp;mobilité</li>
+                                <li>Documenter et disséminer le&nbsp;changement</li>
+                            </ul>
+                        </div>
                     </div>
                     <div
                         class="v-index__grid__coll-1-2 v-index__section__content--sticky__coll"
@@ -261,7 +269,7 @@
         <footer class="v-index__footer">
             <app-newsletter/>
             <img
-                    src="/attachments/166.jpg"
+                    src="/images/166.jpg"
                 class="v-index__bottom-image"
                 alt="image d'architecture urbaine"
             />
@@ -273,7 +281,7 @@
         >
             <img
                 alt="logo Modus fin de page"
-                src="../assets/logo/logo_with_image.svg"
+                src="/modus-webapp-footer--web.jpeg"
             />
             <div
                 :class="{'with-opacity-1': transformYValue > 92}"
@@ -368,6 +376,7 @@ function interactionWithElementToAnimated() {
     &.v-index__section--intro {
         max-width: 27.5rem;
         box-sizing: content-box;
+        position: relative;
 
         p:nth-child(1n + 1) {
             color: var(--app-color-main);
@@ -375,6 +384,35 @@ function interactionWithElementToAnimated() {
         p:nth-child(2n + 1) {
             color: var(--app-color-main--dark);
         }
+    }
+
+    .v-index__section__graphic-items {
+        position: absolute;
+    }
+
+    .v-index__section__graphic-items--m {
+        top: 0;
+        left: 0;
+        transform: translate(-100%, 0);
+        height: 16vw;
+    }
+    .v-index__section__graphic-items--o {
+        bottom: 0;
+        left: 0;
+        transform: translate(-100%, 0);
+        height: 10vw;
+    }
+    .v-index__section__graphic-items--du {
+        top: 0;
+        right: 0;
+        transform: translate(100%, 0);
+        height: 20vw;
+    }
+    .v-index__section__graphic-items--s {
+        bottom: 0;
+        right: 0;
+        transform: translate(100%, 0);
+        height: 16vw;
     }
 }
 
@@ -393,6 +431,10 @@ function interactionWithElementToAnimated() {
     }
 
     &.v-index__section__content--sticky {
+        @media (max-width: 700px) {
+            flex-direction: column;
+        }
+
         > * {
             @media (max-width: 900px) {
                 width: calc( ( (100% + var(--app-gutter) ) / 5 * 3) - var( --app-gutter ) ) !important;
@@ -407,20 +449,36 @@ function interactionWithElementToAnimated() {
                 width: calc(((100% + var(--app-gutter)) / 5 * 2) - var(--app-gutter)) !important;
             }
             @media (max-width: 700px) {
-                display: none;
+                width: 100% !important;
             }
+        }
+
+        .v-index__section__content--sticky__coll__text-sticky {
+            position: sticky;
+            top: calc( var(--app-nav__height) * 2 );
         }
 
         .v-index__section__content--sticky__coll__element-sticky {
             position: sticky;
-            top: 0;
+            top: var(--app-nav__height);
 
             > img {
                 display: block;
                 width: 50vw;
+                height: calc( 100vh - var(--app-nav__height) );
+                object-fit: cover;
+                object-position: bottom;
 
                 @media (max-width: 900px) {
                     width: calc(100vw / 5 * 2);
+                }
+
+                @media (max-width: 700px) {
+                    margin-left:    calc( -1 * var(--app-gutter) );
+                    margin-right:   calc( -1 * var(--app-gutter) );
+                    height: 50vh;
+                    margin-bottom: -2rem;
+                    width: calc( 100% + var(--app-gutter) * 2 );
                 }
             }
         }
@@ -573,6 +631,10 @@ function interactionWithElementToAnimated() {
     width: 100%;
     height: var(--app-header-height);
     position: fixed;
+
+    @media (max-width: 700px) {
+        height: calc( var(--app-header-height) + 8rem );
+    }
 }
 
 .v-index__content {

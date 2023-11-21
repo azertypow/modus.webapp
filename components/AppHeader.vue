@@ -12,7 +12,7 @@
                 <img
                     class="v-app-header__graphic-box__module_1"
                     alt="image graphique de ville pour habiller le header du site"
-                    src="/header-images/modus-webapp-header@x2.jpg"
+                    src="/header-images/modus-webapp-header@x2--web.jpeg"
                 />
             </div>
             <div
@@ -21,7 +21,7 @@
                 <img
                     class="v-app-header__graphic-box__module_1"
                     alt="image graphique de ville pour habiller le header du site"
-                    src="/header-images/modus-webapp-header@x2.jpg"
+                    src="/header-images/modus-webapp-header@x2--web.jpeg"
                 />
             </div>
         </div>
@@ -62,6 +62,11 @@ const bodyScrollInfoStore = bodyScrollInfo()
     align-items: flex-start;
     justify-content: flex-end;
     position: relative;
+
+
+    @media (max-width: 700px) {
+        height: calc( var(--app-header-height) + 8rem );
+    }
 }
 
 .v-app-header__container {
@@ -88,6 +93,11 @@ const bodyScrollInfoStore = bodyScrollInfo()
 
     @media (max-width: 900px) {
         font-size: 10vw;
+    }
+
+    @media (max-width: 700px) {
+
+        background: var(--app-color-grey);
     }
 }
 
