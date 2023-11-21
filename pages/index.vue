@@ -109,7 +109,7 @@
                             class="v-index__section__content--sticky__coll__element-sticky"
                         >
                             <img
-                                src="/images/compress/116-2.jpg"
+                                src="/images/compress/116.jpg"
                                 alt="image de ville abstraite"
                             />
                         </div>
@@ -218,7 +218,7 @@
                                 <app-image
                                     src="photos-profiles/10.png"
                                     name="Thierry Renaud"
-                                    status="Secrétaire"
+                                    status="Membre"
                                     desc="Membre du Conseil de Fondation"
                                 />
                             </div>
@@ -606,7 +606,7 @@ function interactionWithElementToAnimated() {
 
     > img {
         box-sizing: border-box;
-        padding: 2rem 1rem;
+        padding: 2rem 1rem 1.5rem;
         width: 100%;
         height: auto;
         display: block;
@@ -618,7 +618,7 @@ function interactionWithElementToAnimated() {
     text-align: center;
     width: 100%;
     max-width: none;
-    padding-bottom: 2rem;
+    padding-bottom: 1.5rem;
     transition: opacity 1s ease-in-out;
     opacity: 0;
 

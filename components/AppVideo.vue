@@ -80,11 +80,12 @@ function onYouTubeIframeAPIReady() {
     overflow: hidden;
     cursor: pointer;
 
-    transition: border-radius .75s ease-in-out;
+    transition: border-radius 1s cubic-bezier(.42, 0, 0, 1);
     border-radius: 1rem;
 
     &.youtube-embed {
         background: transparent;
+        border-radius: .25rem;
     }
 
     img {
@@ -95,12 +96,12 @@ function onYouTubeIframeAPIReady() {
         width: 20%;
         height: auto;
 
-        transition: transform 2s ease-in-out;
+        transition: transform 2s cubic-bezier(.42, 0, 0, 1);
         transform: translate(-50%, -50%);
     }
 
     &:hover {
-        border-radius: .5rem;
+        border-radius: .25rem;
 
         img {
             transform: translate(-50%, -50%) scale(1.25, 1.25);

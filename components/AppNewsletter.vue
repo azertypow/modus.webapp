@@ -2,7 +2,7 @@
     <section class="v-app-newsletter child-remove-margin" >
         <h2
             class="v-app-newsletter__title"
-        >Pour recevoir plus d’information sur&nbsp;modus</h2
+        >Rejoignez-nous<br>et proposez-nous vos&nbsp;projets</h2
         >
 
         <form>
@@ -33,11 +33,16 @@
 <style lang="scss" scoped >
 .v-app-newsletter {
     background: linear-gradient(to right, var(--app-color-main), var(--app-color-main--dark));
-    padding: 3rem var(--app-gutter);
+    padding: 2rem var(--app-gutter) 3rem;
 
     .v-app-newsletter__input {
         font-size: 1.5rem;
         line-height: 1.5rem;
+
+        @media (max-width: 900px) {
+            font-size: 1rem;
+            line-height: 1rem;
+        }
     }
 }
 
@@ -51,6 +56,11 @@
 form {
     display: flex;
     gap: var(--app-gutter);
+
+    @media (max-width: 900px) {
+        flex-direction: column;
+        align-items: center;
+    }
 }
 
 input[type='email'] {
@@ -62,10 +72,17 @@ input[type='email'] {
     padding: 0 2rem;
     width: 100%;
     font-style: italic;
+    box-sizing: border-box;
 
     &::placeholder {
         color: black;
         font-style: italic;
+    }
+
+    @media (max-width: 900px) {
+        height: 2.5rem;
+        padding: 0 1rem;
+        width: 100%;
     }
 }
 
@@ -73,6 +90,11 @@ button {
     background: linear-gradient(to right, var(--app-color-main), var(--app-color-main--dark));
     border: none;
     color: white;
+
+    @media (max-width: 900px) {
+        display: block;
+        width: auto;
+    }
 }
 
 </style>
