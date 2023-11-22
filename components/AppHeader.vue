@@ -107,7 +107,7 @@ const bodyScrollInfoStore = bodyScrollInfo()
     left: 0;
     height: var(--app-header-height);
     width: auto;
-    animation: scroll 300s linear infinite;
+    animation: scroll 200s linear infinite;
 }
 
 .v-app-header__graphic-box__module_1 {
