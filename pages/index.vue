@@ -485,7 +485,7 @@ function interactionWithElementToAnimated() {
                 @media (max-width: 700px) {
                     margin-left:    calc( -1 * var(--app-gutter) );
                     margin-right:   calc( -1 * var(--app-gutter) );
-                    height: 50vh;
+                    height: 75vh;
                     margin-bottom: -2rem;
                     width: calc( 100% + var(--app-gutter) * 2 );
                 }
@@ -651,6 +651,12 @@ function interactionWithElementToAnimated() {
     position: relative;
     z-index: 10;
     width: 100%;
+
+    @media (max-width: 900px) {
+        > section:first-child {
+            padding-top: 0;
+        }
+    }
 }
 
 .v-index__footer {
