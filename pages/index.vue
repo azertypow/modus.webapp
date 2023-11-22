@@ -25,30 +25,35 @@
                     </div>
                 </div>
             </section>
-            <section
-                class="v-index__section v-index__section--intro"
+
+            <div
+                style="width: 100%; overflow: hidden"
             >
-                <img class="v-index__section__graphic-items v-index__section__graphic-items--m" alt="graphic image" src="../assets/items/m.svg" />
-                <img class="v-index__section__graphic-items v-index__section__graphic-items--o" alt="graphic image" src="../assets/items/o.svg" />
-                <img class="v-index__section__graphic-items v-index__section__graphic-items--du" alt="graphic image" src="../assets/items/du.svg" />
-                <img class="v-index__section__graphic-items v-index__section__graphic-items--s" alt="graphic image" src="../assets/items/s.svg" />
-                <div
-                    class="v-index__grid__coll-full"
+                <section
+                    class="v-index__section v-index__section--intro"
                 >
-                    <p>
-                        Le 21<sup>e</sup> siècle sera marqué par le défi imposé par le changement climatique. En Suisse, le secteur des
-                        transports représente aujourd’hui 31% des émissions contre 24% dans le monde. La mobilité constitue donc 30%
-                        du problème mais également 30% de la solution. La Fondation Modus a pour vocation de participer à relever le
-                        défi de la décarbonation en soutenant les acteurs de Genève pour atteindre l’objectif 0 carbone à
-                        l’horizon 2050.
-                    </p>
-                    <p>
-                        La Fondation Modus prend le parti d’agir à l’échelle locale en se positionnant comme un accélérateur du
-                        changement et un soutien aux acteurs déjà en place. Ce soutien se matérialise à travers des interventions
-                        concrètes sur le territoire et auprès des habitant.e.s du Canton de Genève.
-                    </p>
-                </div>
-            </section>
+                    <img class="v-index__section__graphic-items v-index__section__graphic-items--m" alt="graphic image" src="../assets/items/m.svg" />
+                    <img class="v-index__section__graphic-items v-index__section__graphic-items--o" alt="graphic image" src="../assets/items/o.svg" />
+                    <img class="v-index__section__graphic-items v-index__section__graphic-items--du" alt="graphic image" src="../assets/items/du.svg" />
+                    <img class="v-index__section__graphic-items v-index__section__graphic-items--s" alt="graphic image" src="../assets/items/s.svg" />
+                    <div
+                        class="v-index__grid__coll-full"
+                    >
+                        <p>
+                            Le 21<sup>e</sup> siècle sera marqué par le défi imposé par le changement climatique. En Suisse, le secteur des
+                            transports représente aujourd’hui 31% des émissions contre 24% dans le monde. La mobilité constitue donc 30%
+                            du problème mais également 30% de la solution. La Fondation Modus a pour vocation de participer à relever le
+                            défi de la décarbonation en soutenant les acteurs de Genève pour atteindre l’objectif 0 carbone à
+                            l’horizon 2050.
+                        </p>
+                        <p>
+                            La Fondation Modus prend le parti d’agir à l’échelle locale en se positionnant comme un accélérateur du
+                            changement et un soutien aux acteurs déjà en place. Ce soutien se matérialise à travers des interventions
+                            concrètes sur le territoire et auprès des habitant.e.s du Canton de Genève.
+                        </p>
+                    </div>
+                </section>
+            </div>
 
             <section
                 class="v-index__section"
@@ -374,7 +379,6 @@ function interactionWithElementToAnimated() {
     padding-bottom: 2rem;
 
     &.v-index__section--intro {
-        max-width: 27.5rem;
         box-sizing: content-box;
         position: relative;
 
@@ -388,30 +392,34 @@ function interactionWithElementToAnimated() {
 
     .v-index__section__graphic-items {
         position: absolute;
+
+        @media (max-width: 900px) {
+            display: none;
+        }
     }
 
     .v-index__section__graphic-items--m {
         top: 0;
         left: 0;
-        transform: translate(-100%, 0);
+        transform: translate(-100%, -25%);
         height: 16vw;
     }
     .v-index__section__graphic-items--o {
         bottom: 0;
         left: 0;
-        transform: translate(-100%, 0);
+        transform: translate(-100%, 25%);
         height: 10vw;
     }
     .v-index__section__graphic-items--du {
         top: 0;
         right: 0;
-        transform: translate(100%, 0);
+        transform: translate(90%, -10%);
         height: 20vw;
     }
     .v-index__section__graphic-items--s {
         bottom: 0;
         right: 0;
-        transform: translate(100%, 0);
+        transform: translate(100%, 50%);
         height: 16vw;
     }
 }
@@ -464,7 +472,7 @@ function interactionWithElementToAnimated() {
 
             > img {
                 display: block;
-                width: 50vw;
+                width: calc( 100% + var(--app-gutter));
                 height: calc( 100vh - var(--app-nav__height) );
                 object-fit: cover;
                 object-position: bottom;
