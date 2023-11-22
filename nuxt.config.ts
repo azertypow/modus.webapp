@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
 
     app: {
-        baseURL: '/modus.webapp/',
+        baseURL: '/',
         head: {
             script: [
             ]
