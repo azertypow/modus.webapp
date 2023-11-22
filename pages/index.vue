@@ -161,6 +161,16 @@
                                 class="v-index__grid__coll-1-4"
                             >
                                 <app-image
+                                    name="Prof. Patrick Saudan"
+                                    status="Président"
+                                    desc="Pésident du Conseil de Fondaiton"
+                                    is-variante="true"
+                                />
+                            </div>
+                            <div
+                                class="v-index__grid__coll-1-4"
+                            >
+                                <app-image
                                     name="Yves Bersier"
                                     status="Membre"
                                     desc="Membre du Conseil de Fondation"
@@ -233,15 +243,6 @@
                                     name="Thierry Renaud"
                                     status="Membre"
                                     desc="Membre du Conseil de Fondation"
-                                />
-                            </div>
-                            <div
-                                class="v-index__grid__coll-1-4"
-                            >
-                                <app-image
-                                    name="Patrick Saudan"
-                                    status="Président"
-                                    desc="Pésident du Conseil de Fondaiton"
                                 />
                             </div>
                             <div
