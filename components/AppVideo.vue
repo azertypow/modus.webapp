@@ -6,12 +6,13 @@
         }"
     >
         <iframe
-                width="720"
-                height="405"
-                :src="`https://www.youtube.com/embed/F7WWwnNUOmI?si=8xTpxx30jTTE8jrZ${youtubeEmbedParams}`"
+                width="640"
+                height="360"
+                src="https://player.vimeo.com/video/886956196?h=2af64ba800"
                 frameborder="0"
                 allowfullscreen
                 v-if="youtubeEmbed"
+                title="vimeo-player"
         />
         <img
             v-else
@@ -34,8 +35,6 @@ const props = defineProps<{
 }>()
 
 const youtubeEmbed = ref(false)
-
-const youtubeEmbedParams = '?autoplay=1&enablejsapi=0&color=white&iv_load_policy=3'
 
 onMounted(() => {
     nextTick(() => {

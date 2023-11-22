@@ -5,11 +5,6 @@ export default defineNuxtConfig({
         baseURL: '/modus.webapp/',
         head: {
             script: [
-                {
-                    src: "https://www.youtube.com/iframe_api",
-                    async: 'false',
-                    defer: 'false',
-                }
             ]
         }
     },
