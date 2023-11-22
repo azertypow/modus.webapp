@@ -163,8 +163,7 @@
                                 <app-image
                                     name="Prof. Patrick Saudan"
                                     status="Président"
-                                    desc="Pésident du Conseil de Fondaiton"
-                                    is-variante="true"
+                                    desc="Pésident du Conseil de Fondation"
                                 />
                             </div>
                             <div
@@ -193,7 +192,7 @@
                                     src="photos-profiles/03.png"
                                     name="Prof. Vincent Kaufmann"
                                     status="Membre"
-                                    desc="Vice-président du Conseil de Fondaiton et membre du Conseil Scientifique"
+                                    desc="Vice-président du Conseil de Fondation et membre du Conseil Scientifique"
                                 />
                             </div>
                             <div
