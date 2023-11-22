@@ -402,26 +402,30 @@ function interactionWithElementToAnimated() {
     .v-index__section__graphic-items--m {
         top: 0;
         left: 0;
-        transform: translate(-100%, -25%);
+        transform: translate(-100%, 0%);
         height: 16vw;
+        max-height: 298px;
     }
     .v-index__section__graphic-items--o {
         bottom: 0;
         left: 0;
-        transform: translate(-100%, 25%);
-        height: 10vw;
+        transform: translate(-100%, 0%);
+        height: 8vw;
+        max-height: 148px;
     }
     .v-index__section__graphic-items--du {
         top: 0;
         right: 0;
         transform: translate(90%, -10%);
         height: 20vw;
+        max-height: 372px;
     }
     .v-index__section__graphic-items--s {
         bottom: 0;
         right: 0;
-        transform: translate(100%, 50%);
-        height: 16vw;
+        transform: translate(100%, 0%);
+        height: 12vw;
+        max-height: 224px;
     }
 }
 
