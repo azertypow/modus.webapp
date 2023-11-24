@@ -212,7 +212,7 @@
                             >
                                 <app-image
                                         src="photos-profiles/04©RaphaelleMueller.jpeg"
-                                        name="Dre. Jenny Leuba"
+                                        name="Jenny Leuba"
                                         status="Membre"
                                         desc="Membre du Conseil Scientifique"
                                 />
