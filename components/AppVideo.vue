@@ -2,24 +2,30 @@
     <div
         class="v-app-video"
         :class="{
-            'youtube-embed': youtubeEmbed
+            'show-video': showVideo
         }"
     >
         <iframe
+                ref="vimeoIframe"
                 width="640"
                 height="360"
-                src="https://player.vimeo.com/video/886956196?h=2af64ba800"
+                :src="`https://player.vimeo.com/video/${vimeoId}?h=2af64ba800`"
                 frameborder="0"
                 allowfullscreen
-                v-if="youtubeEmbed"
                 title="vimeo-player"
+                allow="autoplay"
         />
-        <img
-            v-else
-            src="../assets/play_circle_FILL0_wght400_GRAD0_opsz24.svg"
-            alt="icon pour lancer la lecture d'une video YouTube"
-            @click="youtubeEmbed = true"
+        <div
+            class="v-app-video__cache"
+            v-if='!showVideo'
+            @click="showVideoUiClicked"
         >
+            <img
+                class="v-app-video__cache__img"
+                src="../assets/play_circle_FILL0_wght400_GRAD0_opsz24.svg"
+                alt="icon pour lancer la lecture d'une video YouTube"
+            >
+        </div>
     </div>
 </template>
 
@@ -29,39 +35,30 @@
 
 <script lang="ts" setup>
 import {declareExportAllDeclaration} from "@babel/types";
+import Player from "@vimeo/player";
+import {Ref, UnwrapRef} from "vue";
 
 const props = defineProps<{
-    link: string,
+    vimeoId: string,
 }>()
 
-const youtubeEmbed = ref(false)
+const vimeoIframe: Ref<UnwrapRef<null | HTMLIFrameElement>> = ref(null)
+
+const showVideo = ref(false)
+
+let player: Player | null = null
 
 onMounted(() => {
     nextTick(() => {
-        onYouTubeIframeAPIReady()
+        if(vimeoIframe.value) {
+            player = new Player(vimeoIframe.value)
+        }
     })
 })
 
-declare const YT: any
-let player
-function onYouTubeIframeAPIReady() {
-    player = new YT.Player('player', {
-        height: '360',
-        width: '640',
-        videoId: props.link, // Remplace VIDEO_ID par l'ID de ta vidéo YouTube
-        playerVars: {
-            autoplay: 0, // 1 pour démarrer automatiquement la vidéo
-            controls: 1,
-            modestbranding: 1,
-            rel: 0,
-            showinfo: 0,
-        },
-        events: {
-            'onReady': () => {console.log("youtube ready")},
-        },
-    })
-
-    console.log(player)
+function showVideoUiClicked() {
+    showVideo.value = true
+    if( player ) player.play()
 }
 
 </script>
@@ -73,21 +70,30 @@ function onYouTubeIframeAPIReady() {
 <style lang="scss" scoped >
 .v-app-video {
     position: relative;
-    background: linear-gradient(to right, var(--app-color-main), var(--app-color-main--dark));
+    background: transparent;
     width: 100%;
     padding-top: 56.25%;
     overflow: hidden;
-    cursor: pointer;
-
     transition: border-radius 1s cubic-bezier(.42, 0, 0, 1);
     border-radius: 1rem;
 
-    &.youtube-embed {
+    &.show-video {
         background: transparent;
         border-radius: .25rem;
     }
 
-    img {
+
+    .v-app-video__cache {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+        background: linear-gradient(to right, var(--app-color-main), var(--app-color-main--dark));
+    }
+
+    .v-app-video__cache__img {
         display: block;
         position: absolute;
         top: 50%;

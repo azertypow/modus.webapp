@@ -21,7 +21,12 @@
                     <div
                             class="v-index__section__video_player"
                     >
-                        <app-video link="Cl6GSYXWJGR9EyDI"/>
+                        <app-video vimeo-id="886956196"/>
+                    </div>
+                    <div
+                        class="v-index__section__video_player"
+                    >
+                        <app-video vimeo-id="891096988"/>
                     </div>
                 </div>
             </section>

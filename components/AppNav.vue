@@ -1,6 +1,7 @@
 <template>
     <nav class="v-app-nav">
         <svg
+                @click="scrollToTop"
                 class="v-app-nav__logo"
                 width="970"
                 height="300"
@@ -67,6 +68,10 @@ import {arrayOfH2TitleIdInCurrentPage} from "~/composable/main";
 
 const h2TitleIdInCurrentPage = arrayOfH2TitleIdInCurrentPage()
 
+function scrollToTop() {
+    window.scrollTo({top: 0, behavior: 'smooth'})
+}
+
 </script>
 
 
@@ -82,6 +87,7 @@ const h2TitleIdInCurrentPage = arrayOfH2TitleIdInCurrentPage()
   height: var(--app-nav__height);
   box-sizing: border-box;
   position: relative;
+    user-select: none;
 
   transition: padding .5s .0s ease-in-out;
   padding:
@@ -121,6 +127,7 @@ const h2TitleIdInCurrentPage = arrayOfH2TitleIdInCurrentPage()
   height: calc( var(--app-nav__height) - (var(--app-gutter) / 2) );
   width: auto;
   fill: var(--app-color-main);
+    cursor: pointer;
 
   .is-intersected & {
   }

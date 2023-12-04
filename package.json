@@ -11,6 +11,8 @@
     "build.github.page": "rm -rf ./docs && rm -rf ./.output && npm run generate && cp -r ./.output/public ./docs"
   },
   "dependencies": {
+    "@types/vimeo__player": "^2.18.3",
+    "@vimeo/player": "^2.20.1",
     "roso-modus-mailsignature": "^0.2.1"
   },
   "devDependencies": {
