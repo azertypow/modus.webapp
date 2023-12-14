@@ -93,10 +93,6 @@ const bodyScrollInfoStore = bodyScrollInfo()
 
     @media (max-width: 900px) {
         font-size: 10vw;
-    }
-
-    @media (max-width: 700px) {
-
         background: var(--app-color-grey);
     }
 }
