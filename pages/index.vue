@@ -12,21 +12,30 @@
                 class="v-index__content app-show-background-on-nav"
         >
             <section
-                    class="v-index__section"
+                    class="v-index__section v-index__section--no-padding"
             >
                 <div
                         class="v-index__grid__coll-full"
                 >
 
                     <div
-                            class="v-index__section__video_player"
+                        class="v-index__section__video-box"
                     >
-                        <app-video vimeo-id="886956196"/>
-                    </div>
-                    <div
-                        class="v-index__section__video_player"
-                    >
-                        <app-video vimeo-id="891096988"/>
+                        <div
+                            class="v-index__section__video-box__player v-index__section__video-box__player--xl"
+                        >
+                            <app-video vimeo-id="886956196"/>
+                        </div>
+                        <div
+                            class="v-index__section__video-box__player"
+                        >
+                            <app-video vimeo-id="891096988"/>
+                        </div>
+                        <div
+                            class="v-index__section__video-box__player"
+                        >
+                            <app-video vimeo-id="894309606"/>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -435,10 +444,27 @@ function interactionWithElementToAnimated() {
   }
 }
 
-.v-index__section__video_player {
-  max-width: 25rem;
-  margin: auto;
-  padding-top: 2rem;
+.v-index__section__video-box {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(2, .5fr);
+    gap: var(--app-gutter);
+    padding-top: 2rem;
+}
+
+.v-index__section__video-box__player {
+    width: 100%;
+    max-width: 20rem;
+    margin: auto;
+
+    &.v-index__section__video-box__player--xl {
+        grid-column-end: span 2;
+        max-width: 28rem;
+    }
+
+    @media (max-width: 1200px) {
+        grid-column-end: span 2;
+    }
 }
 
 .v-index__section__content {
