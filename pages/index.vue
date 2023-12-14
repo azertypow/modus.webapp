@@ -390,6 +390,11 @@ function interactionWithElementToAnimated() {
   padding-top: 2rem;
   padding-bottom: 2rem;
 
+  &.v-index__section--no-padding {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
   &.v-index__section--intro {
     box-sizing: content-box;
     position: relative;
