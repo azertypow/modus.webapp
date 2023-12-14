@@ -64,7 +64,7 @@ const bodyScrollInfoStore = bodyScrollInfo()
     position: relative;
 
 
-    @media (max-width: 700px) {
+    @media (max-width: 900px) {
         height: calc( var(--app-header-height) + 8rem );
     }
 }
@@ -111,7 +111,7 @@ const bodyScrollInfoStore = bodyScrollInfo()
     top: var(--app-nav__height);
     height: calc( 125% );
 
-    @media (max-width: 700px) {
+    @media (max-width: 900px) {
         height: calc( 110% );
     }
 }

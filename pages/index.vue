@@ -684,7 +684,7 @@ function interactionWithElementToAnimated() {
   height: var(--app-header-height);
   position: fixed;
 
-  @media (max-width: 700px) {
+  @media (max-width: 900px) {
     height: calc(var(--app-header-height) + 8rem);
   }
 }

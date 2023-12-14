@@ -64,7 +64,7 @@ onMounted(() => {
 .v-app {
     padding-top: var(--app-header-height);
 
-    @media (max-width: 700px) {
+    @media (max-width: 900px) {
         padding-top: calc( var(--app-header-height) + 8rem );
     }
 }
