@@ -326,6 +326,16 @@ import {getValueToPercent} from "~/utils/precent";
 
 import {bodyScrollInfo} from "~/composable/main";
 
+useHead({
+    title: 'modus',
+    meta: [
+        {
+            name: 'description',
+            content: 'modus. pour une mobilité durable à Genève',
+        }
+    ],
+})
+
 const bodyScrollInfoStore = bodyScrollInfo()
 
 const transformYValue: ComputedRef<number> = computed(() => {
