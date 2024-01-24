@@ -38,7 +38,7 @@
             class="v-app-nav__links font-small"
         >
             <a
-                class="v-app-nav__links__item"
+                class="v-app-nav__links__item v-app-nav__links__item--rm-mobile"
                 v-for="section of h2TitleIdInCurrentPage"
                 :href="`#${section.anchor}`"
             >
@@ -46,7 +46,7 @@
             </a>
             <a
                     href="#app-mailto"
-                    class="v-app-nav__links__item"
+                    class="v-app-nav__links__item v-app-nav__links__item--rm-mobile"
             >
                 <img
                         alt="bouton pour scroller jusqu'au contact mailto"
@@ -148,10 +148,6 @@ function scrollToTop() {
   display: flex;
   gap: 1rem;
   align-items: center;
-
-  @media (max-width: 700px) {
-    display: none;
-  }
 }
 
 .v-app-nav__links__item {
@@ -160,6 +156,12 @@ function scrollToTop() {
   cursor: pointer;
 
   .is-intersected & {
+  }
+
+  &.v-app-nav__links__item--rm-mobile {
+    @media (max-width: 700px) {
+      display: none;
+    }
   }
 
   img {
