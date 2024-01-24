@@ -174,7 +174,7 @@
                                 src="photos-profiles/01©RaphaelleMueller.jpeg"
                                 name="Dr. Guillaume Drevon"
                                 status="Directeur"
-                                is-variante="true"
+                                :is-variante="true"
                         />
                     </div>
                     <div
