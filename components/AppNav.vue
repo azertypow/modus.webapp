@@ -53,6 +53,17 @@
                         src="../assets/mail_FILL0_wght400_GRAD0_opsz24.svg"
                 />
             </a>
+
+            <a
+              href="https://www.linkedin.com/company/fondation-modus/"
+              target="_blank"
+              class="v-app-nav__links__item"
+            >
+              <img
+                alt="bouton pour scroller jusqu'au contact mailto"
+                src="../assets/LinkedIn_icon.svg"
+              />
+            </a>
         </div>
 
     </nav>
