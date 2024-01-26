@@ -188,7 +188,7 @@
                                         src="photos-profiles/11©RaphaelleMueller.jpeg"
                                         name="Prof. Patrick Saudan"
                                         status="Président"
-                                        desc="Pésident du Conseil de Fondation"
+                                        desc="Président du Conseil de Fondation"
                                 />
                             </div>
                             <div
