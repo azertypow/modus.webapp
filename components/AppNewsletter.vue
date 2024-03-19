@@ -2,7 +2,7 @@
     <section class="v-app-newsletter child-remove-margin" >
         <h2
             class="v-app-newsletter__title"
-        >Rejoignez-nous<br>et proposez-nous vos&nbsp;projets</h2
+        >Laissez vos coordonnées pour recevoir nos informations</h2
         >
 
         <form>

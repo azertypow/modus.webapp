@@ -11,35 +11,6 @@
         <div
                 class="v-index__content app-show-background-on-nav"
         >
-            <section
-                    class="v-index__section v-index__section--no-padding"
-            >
-                <div
-                        class="v-index__grid__coll-full"
-                >
-
-                    <div
-                        class="v-index__section__video-box"
-                    >
-                        <div
-                            class="v-index__section__video-box__player v-index__section__video-box__player--xl"
-                        >
-                            <app-video vimeo-id="886956196"/>
-                        </div>
-                        <div
-                            class="v-index__section__video-box__player"
-                        >
-                            <app-video vimeo-id="891096988"/>
-                        </div>
-                        <div
-                            class="v-index__section__video-box__player"
-                        >
-                            <app-video vimeo-id="894309606"/>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
             <div
                     style="width: 100%; overflow: hidden"
             >
@@ -57,23 +28,13 @@
                     <div
                             class="v-index__grid__coll-full"
                     >
+                        <div
+                            class="v-index__section__title"
+                        >
+                            <h2>Que fait Modus ?</h2>
+                        </div>
                         <p>
-                            Le 21<sup>e</sup> siècle sera marqué par le défi imposé par le changement climatique. En
-                            Suisse, le secteur des
-                            transports représente aujourd’hui 31% des émissions contre 24% dans le monde. La mobilité
-                            constitue donc 30%
-                            du problème mais également 30% de la solution. La Fondation Modus a pour vocation de
-                            participer à relever le
-                            défi de la décarbonation en soutenant les acteurs de Genève pour atteindre l’objectif 0
-                            carbone à
-                            l’horizon 2050.
-                        </p>
-                        <p>
-                            La Fondation Modus prend le parti d’agir à l’échelle locale en se positionnant comme un
-                            accélérateur du
-                            changement et un soutien aux acteurs déjà en place. Ce soutien se matérialise à travers des
-                            interventions
-                            concrètes sur le territoire et auprès des habitant·e·s du Canton de Genève.
+                            La Fondation Modus participe à la décarbonation des mobilités à Genève. Elle est un accélérateur du changement en soutenant et en mettant en réseau les acteurs de la transition des mobilités, en expérimentant des solutions concrètes, en impulsant des idées originales, en créant de nouvelles connaissances et en développant des services innovants. La Fondation Modus n’est pas partisane, elle agit comme un laboratoire consacré à la transition des mobilités à Genève et dans sa région.
                         </p>
                     </div>
                 </section>
@@ -83,42 +44,9 @@
                     class="v-index__section"
             >
                 <div
-                        class="v-index__section__content v-index__grid v-index__grid--wrap v-index__grid--with-gutter app-schema_1 app-schema_animation"
-                >
-                    <img class="app-schema_1_7" alt="icon" src="../assets/schema_1/1-7.svg"/>
-                    <img class="app-schema_1_8" alt="icon" src="../assets/schema_1/1-8.svg"/>
-                    <img class="app-schema_1_9" alt="icon" src="../assets/schema_1/1-9.svg"/>
-                    <img class="app-schema_1_3" alt="icon" src="../assets/schema_1/1-3.svg"/>
-                    <img class="app-schema_1_4" alt="icon" src="../assets/schema_1/1-4.svg"/>
-                    <img class="app-schema_1_5" alt="icon" src="../assets/schema_1/1-5.svg"/>
-                    <img class="app-schema_1_6" alt="icon" src="../assets/schema_1/1-6.svg"/>
-                    <img class="app-schema_1_10 is-circle" alt="icon" src="../assets/schema_1/1-10.svg"/>
-                    <img class="app-schema_1_1 is-circle" alt="icon" src="../assets/schema_1/1-1.svg"/>
-                    <img class="app-schema_1_2 is-circle" alt="icon" src="../assets/schema_1/1-2.svg"/>
-                    <img class="app-schema_1_0 not-animated" alt="icon" src="../assets/schema_1/1-0.svg"/>
-                    <img class="app-schema_1_11 not-animated" alt="icon" src="../assets/schema_1/1-11.svg"/>
-                </div>
-
-                <div
-                        class="v-index__section__content v-index__grid v-index__grid--wrap v-index__grid--with-gutter app-schema_2 app-schema_animation"
-                >
-                    <img class="app-schema_2_0" alt="schema" src="../assets/schema_2/2_0.svg"/>
-                    <img class="app-schema_2_1" alt="schema" src="../assets/schema_2/2-1.svg"/>
-                    <img class="app-schema_2_2" alt="schema" src="../assets/schema_2/2-2.svg"/>
-                    <img class="app-schema_2_3" alt="schema" src="../assets/schema_2/2-3.svg"/>
-                    <img class="app-schema_2_4" alt="schema" src="../assets/schema_2/2-4.svg"/>
-                    <img class="app-schema_2_6 is-circle" alt="schema" src="../assets/schema_2/2-6.svg"/>
-                    <img class="app-schema_2_5 not-animated" alt="schema" src="../assets/schema_2/2-5.svg"/>
-                </div>
-            </section>
-
-            <section
-                    class="v-index__section"
-            >
-                <div
                         class="v-index__section__title"
                 >
-                    <h2>Objectifs</h2>
+                    <h2>Ses objectifs</h2>
                 </div>
 
                 <div
@@ -132,9 +60,9 @@
                         >
                             <ul>
                                 <li>Soutenir les acteurs de la mobilité dans leurs projets</li>
-                                <li>Stimuler les interconnaissances entre les&nbsp;acteurs</li>
-                                <li>Mettre à disposition des approches, des idées et des connaissances nouvelles</li>
-                                <li>Proposer de nouveaux imaginaires et valeurs sociales de la&nbsp;mobilité</li>
+                                <li>Stimuler les rencontres entre les&nbsp;acteurs</li>
+                                <li>Fournir des approches, des idées et des connaissances originales</li>
+                                <li>Proposer de nouveaux imaginaires de la&nbsp;mobilité</li>
                                 <li>Documenter et disséminer le&nbsp;changement</li>
                             </ul>
                         </div>
@@ -154,6 +82,181 @@
                 </div>
 
             </section>
+
+
+            <section
+                class="v-index__section v-index__section--no-padding"
+            >
+                <div
+                    class="v-index__grid__coll-full"
+                >
+                    <div
+                        class="v-index__section__video-box"
+                    >
+                        <div
+                            class="v-index__section__video-box__player v-index__section__video-box__player--xl"
+                        >
+                            <app-video vimeo-id="886956196"/>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section
+                class="v-index__section"
+                style="margin-top: 2rem"
+            >
+                <div
+                    class="v-index__section__title"
+                >
+                    <h2>Les outils de Modus</h2>
+                </div>
+                <div
+                    class="v-index__section__content v-index__grid v-index__grid--wrap v-index__grid--with-gutter"
+                >
+                    <img style="max-width: 25rem; margin: 2rem auto;" alt="icon" src="../assets/shema_new/intro.svg"/>
+                </div>
+
+                <div
+                    class="v-index__section__content v-index__section__content--list-with-img"
+                >
+                    <div class="v-index__section__content--list-with-img__item">
+                        <img class="v-index__section__content--list-with-img__item__img"
+                             alt="illustre une liste"
+                             src="../assets/shemat_3/01.svg"
+                        />
+                        <div class="v-index__section__content--list-with-img__item__text"
+                        >
+                            <div class="v-index__section__content--list-with-img__item__text__title"
+                            >La plateforme:
+                                <br>servir et réunir les acteurs de la&nbsp;mobilité
+                            </div>
+                            <div class="v-index__section__content--list-with-img__item__text__content"
+                            >La Fondation
+                                Modus participe à l’animation de l’écosystème de la mobilité en organisant des
+                                événements, en mettant en relation les secteurs privés, publics, académiques et
+                                associatifs tout en leur fournissant des rendez-vous et des idées de projets.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="v-index__section__content--list-with-img__item">
+                        <img class="v-index__section__content--list-with-img__item__img"
+                             alt="illustre une liste"
+                             src="../assets/shemat_3/02.svg"
+                        />
+                        <div class="v-index__section__content--list-with-img__item__text"
+                        >
+                            <div class="v-index__section__content--list-with-img__item__text__title"
+                            >Le laboratoire:
+                                <br>innover et partager pour améliorer la&nbsp;mobilité
+                            </div>
+                            <div class="v-index__section__content--list-with-img__item__text__content"
+                            >La Fondation Modus teste de nouvelles approches pour transformer les comportements de mobilité en améliorant la com- préhension des besoins et en expérimentant des solutions innovantes. Celles-ci sont ensuite mises à disposition des pouvoirs publics.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="v-index__section__content--list-with-img__item">
+                        <img class="v-index__section__content--list-with-img__item__img"
+                             alt="illustre une liste"
+                             src="../assets/shemat_3/03.svg"
+                        />
+                        <div class="v-index__section__content--list-with-img__item__text"
+                        >
+                            <div class="v-index__section__content--list-with-img__item__text__title"
+                            >La bibliothèque:
+                                <br>réunir et conserver les connaissances sur la&nbsp;mobilité
+                            </div>
+                            <div class="v-index__section__content--list-with-img__item__text__content"
+                            >La Fondation Modus regroupe et produit des connaissances ouvertes sur la mobilité à Genève pour les mettre à disposition de ses acteurs.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="v-index__section__content--list-with-img__item">
+                        <img class="v-index__section__content--list-with-img__item__img"
+                             alt="illustre une liste"
+                             src="../assets/shemat_3/04.svg"
+                        />
+                        <div class="v-index__section__content--list-with-img__item__text"
+                        >
+                            <div class="v-index__section__content--list-with-img__item__text__title"
+                            >La Fabrique des imaginaires:
+                                <br>communiquer et changer les imaginaires de la&nbsp;mobilité
+                            </div>
+                            <div class="v-index__section__content--list-with-img__item__text__content"
+                            >La Fondation Modus essaie de transformer les comportements en bousculant les imaginaires, symboles et valeurs sociales liées à la mobilité. Grâce à une large communication et à la production de contenu, elle veut toucher les experts et le grand public.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="v-index__section__content--list-with-img__item">
+                        <img class="v-index__section__content--list-with-img__item__img"
+                             alt="illustre une liste"
+                             src="../assets/shemat_3/05.svg"
+                        />
+                        <div class="v-index__section__content--list-with-img__item__text"
+                        >
+                            <div class="v-index__section__content--list-with-img__item__text__title"
+                            >La Plantation:
+                                <br>financer et incuber les initiatives innovantes en prise avec mobilité
+                            </div>
+                            <div class="v-index__section__content--list-with-img__item__text__content"
+                            >La Fondation Modus soutient des initiatives originales et innovantes qui favorisent ainsi la transition des mobilités.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <section
+                class="v-index__section"
+            >
+                <div
+                    class="v-index__section__title"
+                >
+                    <h2>Pourquoi Modus ?</h2>
+                </div>
+
+                <div
+                    class="v-index__section__content v-index__grid v-index__grid--with-gutter"
+                >
+                    <p>Le changement climatique est le défi du 21e siècle. En Suisse, les transports représentent 31% des émissions de gaz à effet de serre contre 24% dans le monde. La mobilité constitue donc 30% du problème, mais également 30% de la solution. La Fondation Modus relève ce défi en soutenant les acteurs de la décarbonation à Genève pour tomber à 0% de carbone dans la mobilité vers 2050.</p>
+                </div>
+
+            </section>
+
+            <section
+                class="v-index__section"
+            >
+                <div
+                    class="v-index__section__content v-index__grid v-index__grid--wrap v-index__grid--with-gutter app-schema_1 app-schema_animation"
+                >
+                    <img class="app-schema_1_7" alt="icon" src="../assets/schema_1/1-7.svg"/>
+                    <img class="app-schema_1_8" alt="icon" src="../assets/schema_1/1-8.svg"/>
+                    <img class="app-schema_1_9" alt="icon" src="../assets/schema_1/1-9.svg"/>
+                    <img class="app-schema_1_3" alt="icon" src="../assets/schema_1/1-3.svg"/>
+                    <img class="app-schema_1_4" alt="icon" src="../assets/schema_1/1-4.svg"/>
+                    <img class="app-schema_1_5" alt="icon" src="../assets/schema_1/1-5.svg"/>
+                    <img class="app-schema_1_6" alt="icon" src="../assets/schema_1/1-6.svg"/>
+                    <img class="app-schema_1_10 is-circle" alt="icon" src="../assets/schema_1/1-10.svg"/>
+                    <img class="app-schema_1_1 is-circle" alt="icon" src="../assets/schema_1/1-1.svg"/>
+                    <img class="app-schema_1_2 is-circle" alt="icon" src="../assets/schema_1/1-2.svg"/>
+                    <img class="app-schema_1_0 not-animated" alt="icon" src="../assets/schema_1/1-0.svg"/>
+                    <img class="app-schema_1_11 not-animated" alt="icon" src="../assets/schema_1/1-11.svg"/>
+                </div>
+
+                <div
+                    class="v-index__section__content v-index__grid v-index__grid--wrap v-index__grid--with-gutter app-schema_2 app-schema_animation"
+                >
+                    <img class="app-schema_2_0" alt="schema" src="../assets/schema_2/2_0.svg"/>
+                    <img class="app-schema_2_1" alt="schema" src="../assets/schema_2/2-1.svg"/>
+                    <img class="app-schema_2_2" alt="schema" src="../assets/schema_2/2-2.svg"/>
+                    <img class="app-schema_2_3" alt="schema" src="../assets/schema_2/2-3.svg"/>
+                    <img class="app-schema_2_4" alt="schema" src="../assets/schema_2/2-4.svg"/>
+                    <img class="app-schema_2_6 is-circle" alt="schema" src="../assets/schema_2/2-6.svg"/>
+                    <img class="app-schema_2_5 not-animated" alt="schema" src="../assets/schema_2/2-5.svg"/>
+                </div>
+            </section>
+
 
             <section
                     class="v-index__section"
@@ -541,6 +644,60 @@ function interactionWithElementToAnimated() {
           width: calc(100% + var(--app-gutter) * 2);
         }
       }
+    }
+  }
+
+  &.v-index__section__content--list-with-img {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 2rem;
+    column-gap: 2rem;
+    margin-top: 2rem;
+
+    .v-index__section__content--list-with-img__item {
+      box-sizing: border-box;
+      width: calc(50% - 1rem);
+        align-items: center;
+      display: flex;
+        flex-wrap: nowrap;
+
+        @media (max-width: 900px) {
+            width: 100%;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+    }
+
+    .v-index__section__content--list-with-img__item__img {
+      display: block;
+      width: 4rem;
+      height: 4rem;
+      flex-shrink: 0;
+
+        @media (max-width: 900px) {
+            width: 5rem;
+            height: 5rem;
+        }
+    }
+
+    .v-index__section__content--list-with-img__item__text {
+      width: 100%;
+      flex-shrink: 1;
+      box-sizing: border-box;
+      padding-left: .5rem;
+      font-size: .55rem;
+      line-height: 1.25em;
+        @media (max-width: 900px) {
+            margin-top: 1rem;
+        }
+    }
+
+    .v-index__section__content--list-with-img__item__text__title {
+
+    }
+    .v-index__section__content--list-with-img__item__text__content {
+      color: var(--app-color-main);
     }
   }
 }
