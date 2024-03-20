@@ -694,7 +694,8 @@ function interactionWithElementToAnimated() {
     }
 
     .v-index__section__content--list-with-img__item__text__title {
-
+        margin-bottom: .5rem;
+        font-size: .65rem;
     }
     .v-index__section__content--list-with-img__item__text__content {
       color: var(--app-color-main);
