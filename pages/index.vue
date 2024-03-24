@@ -206,6 +206,22 @@
                 </div>
             </section>
 
+            <section class="v-index__section"
+            >
+                <div
+                    class="v-index__section__title"
+                >
+                    <h2>Soumettre un projet</h2>
+                </div>
+
+                <div
+                    class="v-index__section__content v-index__grid v-index__grid--with-gutter"
+                >
+                    <app-form/>
+                </div>
+
+            </section>
+
 
             <section
                 class="v-index__section"
