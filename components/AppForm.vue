@@ -14,7 +14,6 @@
                   v-model="formData.description" required
                   placeholder="Courte description du projet"
         ></textarea>
-        <button type="submit">Envoyer</button>
     </form>
 </template>
 
