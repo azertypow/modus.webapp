@@ -59,6 +59,7 @@ form {
     flex-direction: column;
     width: 100%;
     gap: .5rem;
+    font-size: .7rem;
 }
 
 button {
@@ -93,9 +94,9 @@ input, textarea {
     font-size: inherit;
     line-height: inherit;
     font-family: inherit;
-    padding: .5rem;
+    padding: .15rem .5rem;
     resize: none;
-    border: solid var(--app-color-main) 3px;
+    border: solid var(--app-color-main) 2px;
 
     &::placeholder {
         color: inherit;

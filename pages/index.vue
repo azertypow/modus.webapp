@@ -125,7 +125,7 @@
                 <div
                     class="v-index__section__title"
                 >
-                    <h3>Présentation de la Fondation&nbsp;Modus</h3>
+                    <h3>Présentation des dispositifs</h3>
                 </div>
 
                 <div
