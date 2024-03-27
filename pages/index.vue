@@ -90,7 +90,7 @@
                 <div
                     class="v-index__section__title"
                 >
-                    <h3>Présentation de la fondation&nbsp;modus</h3>
+                    <h3>Présentation de la Fondation&nbsp;Modus</h3>
                 </div>
                 <div
                     class="v-index__grid__coll-full"
@@ -115,12 +115,17 @@
                     class="v-index__section__title"
                 >
                     <h2>Les dispositifs de Modus</h2>
-                    <h3>Présentation de la fondation&nbsp;modus</h3>
                 </div>
                 <div
                     class="v-index__section__content v-index__grid v-index__grid--wrap v-index__grid--with-gutter"
                 >
                     <img style="max-width: 25rem; margin: 2rem auto;" alt="icon" src="../assets/shema_new/intro.svg"/>
+                </div>
+
+                <div
+                    class="v-index__section__title"
+                >
+                    <h3>Présentation de la Fondation&nbsp;Modus</h3>
                 </div>
 
                 <div
@@ -320,8 +325,8 @@
                                 <app-image
                                         src="photos-profiles/01©RaphaelleMueller.jpeg"
                                         name="Dr. Guillaume Drevon"
-                                        desc="Directeur de la fondation"
-                                        :is-variante="true"
+                                        desc="Directeur de la Fondation"
+                                        :is-variante="false"
                                 />
                             </div>
                             <div
@@ -331,7 +336,7 @@
                                     src=""
                                     name="Sarah Clozel"
                                     desc="Cheffe de projet"
-                                    :is-variante="true"
+                                    :is-variante="false"
                                 />
                             </div>
                             <div
@@ -341,7 +346,7 @@
                                     src=""
                                     name="Damien Cataldi"
                                     desc="Chef de projet"
-                                    :is-variante="true"
+                                    :is-variante="false"
                                 />
                             </div>
                             <div
@@ -351,7 +356,7 @@
                                     src=""
                                     name="Matthieu Gautrot"
                                     desc="Stagiaire EPFL"
-                                    :is-variante="true"
+                                    :is-variante="false"
                                 />
                             </div>
                             <div
@@ -361,7 +366,7 @@
                                     src=""
                                     name="Gabriela Zwicky"
                                     desc="Responsable administrative"
-                                    :is-variante="true"
+                                    :is-variante="false"
                                 />
                             </div>
                         </div>
@@ -740,7 +745,7 @@ function interactionWithElementToAnimated() {
       > img {
         display: block;
         width: calc(100% + var(--app-gutter));
-        height: calc(100vh - var(--app-nav__height));
+        height: auto;
         object-fit: cover;
         object-position: bottom;
 
@@ -770,14 +775,13 @@ function interactionWithElementToAnimated() {
     .v-index__section__content--list-with-img__item {
       box-sizing: border-box;
       width: calc(50% - 1rem);
-        align-items: center;
+        align-items: flex-start;
       display: flex;
-        flex-wrap: nowrap;
+        flex-direction: column;
 
         @media (max-width: 900px) {
             width: 100%;
-            flex-wrap: wrap;
-            justify-content: center;
+            align-items: center;
         }
     }
 
@@ -786,10 +790,14 @@ function interactionWithElementToAnimated() {
       width: 4rem;
       height: 4rem;
       flex-shrink: 0;
+        padding-bottom: .5rem;
+        padding-left: .5rem;
 
         @media (max-width: 900px) {
             width: 5rem;
             height: 5rem;
+            padding-bottom: 0;
+            padding-left: 0;
         }
     }
 
@@ -829,7 +837,7 @@ function interactionWithElementToAnimated() {
     h3 {
         text-align: center;
         margin-bottom: 0;
-        line-height: 1em;
+        line-height: 1.25em;
 
     }
     h2 + h3 {

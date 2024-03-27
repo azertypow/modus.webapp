@@ -91,6 +91,8 @@ function showVideoUiClicked() {
         height: 100%;
         cursor: pointer;
         background: linear-gradient(to right, var(--app-color-main), var(--app-color-main--dark));
+        background-image: url(../assets/cache.jpeg);
+        background-size: cover;
     }
 
     .v-app-video__cache__img {
