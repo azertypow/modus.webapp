@@ -88,6 +88,11 @@
                 class="v-index__section v-index__section--no-padding"
             >
                 <div
+                    class="v-index__section__title"
+                >
+                    <h3>Présentation de la fondation&nbsp;modus</h3>
+                </div>
+                <div
                     class="v-index__grid__coll-full"
                 >
                     <div
@@ -109,7 +114,8 @@
                 <div
                     class="v-index__section__title"
                 >
-                    <h2>Les outils de Modus</h2>
+                    <h2>Les dispositifs de Modus</h2>
+                    <h3>Présentation de la fondation&nbsp;modus</h3>
                 </div>
                 <div
                     class="v-index__section__content v-index__grid v-index__grid--wrap v-index__grid--with-gutter"
@@ -244,6 +250,11 @@
                 class="v-index__section"
             >
                 <div
+                    class="v-index__section__title"
+                >
+                    <h3 style="margin-top: 0; margin-bottom: 2rem">Notre diagnostic</h3>
+                </div>
+                <div
                     class="v-index__section__content v-index__grid v-index__grid--wrap v-index__grid--with-gutter app-schema_1 app-schema_animation"
                 >
                     <img class="app-schema_1_7" alt="icon" src="../assets/schema_1/1-7.svg"/>
@@ -260,6 +271,11 @@
                     <img class="app-schema_1_11 not-animated" alt="icon" src="../assets/schema_1/1-11.svg"/>
                 </div>
 
+                <div
+                    class="v-index__section__title"
+                >
+                    <h3 style="margin-top: 5rem">Nos compétences</h3>
+                </div>
                 <div
                     class="v-index__section__content v-index__grid v-index__grid--wrap v-index__grid--with-gutter app-schema_2 app-schema_animation"
                 >
@@ -283,126 +299,206 @@
                     <h2>Le collectif</h2>
                 </div>
 
+
+
                 <div
                         class="v-index__section__content v-index__grid v-index__grid--wrap v-index__grid--with-gutter"
                 >
                     <div
-                            class="v-index__grid__coll-1-4"
+                        style="width: 100%"
+                        class="v-index__section__title"
                     >
-                        <app-image
-                                src="photos-profiles/01©RaphaelleMueller.jpeg"
-                                name="Dr. Guillaume Drevon"
-                                status="Directeur"
-                                :is-variante="true"
-                        />
+                        <h3 style="margin-bottom: 1rem">Le Hub</h3>
                     </div>
                     <div
-                            class="v-index__grid__coll-full"
+                        class="v-index__grid__coll-full"
                     >
                         <div class="v-index__section__content v-index__grid v-index__grid--wrap v-index__grid--with-gutter">
                             <div
                                     class="v-index__grid__coll-1-4"
                             >
                                 <app-image
-                                        src="photos-profiles/11©RaphaelleMueller.jpeg"
-                                        name="Prof. Patrick Saudan"
-                                        status="Président"
-                                        desc="Président du Conseil de Fondation"
+                                        src="photos-profiles/01©RaphaelleMueller.jpeg"
+                                        name="Dr. Guillaume Drevon"
+                                        desc="Directeur de la fondation"
+                                        :is-variante="true"
                                 />
                             </div>
                             <div
-                                    class="v-index__grid__coll-1-4"
+                                class="v-index__grid__coll-1-4"
                             >
                                 <app-image
-                                        src="photos-profiles/12©RaphaelleMueller.jpeg"
-                                        name="Yves Bersier"
-                                        status="Membre"
-                                        desc="Membre du Conseil de Fondation"
+                                    src=""
+                                    name="Sarah Clozel"
+                                    desc="Cheffe de projet"
+                                    :is-variante="true"
                                 />
                             </div>
                             <div
-                                    class="v-index__grid__coll-1-4"
+                                class="v-index__grid__coll-1-4"
                             >
                                 <app-image
-                                        src="photos-profiles/02©RaphaelleMueller.jpeg"
-                                        name="Prof. Yves Delacrétaz"
-                                        status="Membre"
-                                        desc="Membre du Conseil de Fondation et membre du Conseil Scientifique"
+                                    src=""
+                                    name="Damien Cataldi"
+                                    desc="Chef de projet"
+                                    :is-variante="true"
                                 />
                             </div>
                             <div
-                                    class="v-index__grid__coll-1-4"
+                                class="v-index__grid__coll-1-4"
                             >
                                 <app-image
-                                        src="photos-profiles/03©RaphaelleMueller.jpeg"
-                                        name="Prof. Vincent Kaufmann"
-                                        status="Membre"
-                                        desc="Vice-président du Conseil de Fondation et membre du Conseil Scientifique"
+                                    src=""
+                                    name="Matthieu Gautrot"
+                                    desc="Stagiaire EPFL"
+                                    :is-variante="true"
                                 />
                             </div>
                             <div
-                                    class="v-index__grid__coll-1-4"
+                                class="v-index__grid__coll-1-4"
                             >
                                 <app-image
-                                        src="photos-profiles/04©RaphaelleMueller.jpeg"
-                                        name="Jenny Leuba"
-                                        status="Membre"
-                                        desc="Membre du Conseil Scientifique"
+                                    src=""
+                                    name="Gabriela Zwicky"
+                                    desc="Responsable administrative"
+                                    :is-variante="true"
                                 />
                             </div>
-                            <div
-                                    class="v-index__grid__coll-1-4"
-                            >
-                                <app-image
-                                        src="photos-profiles/09©RaphaelleMueller.jpeg"
-                                        name="Marc Maugué"
-                                        status="Membre"
-                                        desc="Membre du Conseil de Fondation"
-                                />
-                            </div>
-                            <div
-                                    class="v-index__grid__coll-1-4"
-                            >
-                                <app-image
-                                        src="photos-profiles/05©RaphaelleMueller.jpeg"
-                                        name="Dre. Lisa Moussaoui"
-                                        status="Membre"
-                                        desc="Membre du Conseil Scientifique"
-                                />
-                            </div>
-                            <div
-                                    class="v-index__grid__coll-1-4"
-                            >
-                                <app-image
-                                        name="Dr. Emmanuel Ravalet"
-                                        status="Membre"
-                                        desc="Membre du Conseil Scientifique"
-                                />
-                            </div>
-                            <div
-                                    class="v-index__grid__coll-1-4"
-                            >
-                                <app-image
-                                        src="photos-profiles/10©RaphaelleMueller.jpeg"
-                                        name="Thierry Renaud"
-                                        status="Membre"
-                                        desc="Membre du Conseil de Fondation"
-                                />
-                            </div>
-                            <div
-                                    class="v-index__grid__coll-1-4"
-                            >
-                                <app-image
-                                        src="photos-profiles/06©RaphaelleMueller.jpeg"
-                                        name="Dr. Jean Simos"
-                                        status="Membre"
-                                        desc="Membre du Conseil Scientifique"
-                                />
-                            </div>
-
-
                         </div>
                     </div>
+
+
+                    <div
+                        style="width: 100%"
+                        class="v-index__section__title"
+                    >
+                        <h3 style="margin-bottom: 1rem">Conseil Scientifique</h3>
+                    </div>
+                    <div
+                            class="v-index__grid__coll-full"
+                    >
+                        <div class="v-index__section__content v-index__grid v-index__grid--wrap v-index__grid--with-gutter">
+                            <div
+                                class="v-index__grid__coll-1-4"
+                            >
+                                <app-image
+                                    src="photos-profiles/02©RaphaelleMueller.jpeg"
+                                    name="Prof. Yves Delacrétaz"
+                                    desc="Membre du Conseil de Fondation et membre du Conseil Scientifique"
+                                />
+                            </div>
+                            <div
+                                class="v-index__grid__coll-1-4"
+                            >
+                                <app-image
+                                    src="photos-profiles/03©RaphaelleMueller.jpeg"
+                                    name="Prof. Vincent Kaufmann"
+                                    desc="Vice-président du Conseil de Fondation et membre du Conseil Scientifique"
+                                />
+                            </div>
+                            <div
+                                class="v-index__grid__coll-1-4"
+                            >
+                                <app-image
+                                    src="photos-profiles/04©RaphaelleMueller.jpeg"
+                                    name="Jenny Leuba"
+                                    desc="Membre du Conseil Scientifique"
+                                />
+                            </div>
+                            <div
+                                class="v-index__grid__coll-1-4"
+                            >
+                                <app-image
+                                    src="photos-profiles/05©RaphaelleMueller.jpeg"
+                                    name="Dre. Lisa Moussaoui"
+                                    desc="Membre du Conseil Scientifique"
+                                />
+                            </div>
+                            <div
+                                class="v-index__grid__coll-1-4"
+                            >
+                                <app-image
+                                    name="Dr. Emmanuel Ravalet"
+                                    desc="Membre du Conseil Scientifique"
+                                />
+                            </div>
+                            <div
+                                class="v-index__grid__coll-1-4"
+                            >
+                                <app-image
+                                    src="photos-profiles/06©RaphaelleMueller.jpeg"
+                                    name="Dr. Jean Simos"
+                                    desc="Membre du Conseil Scientifique"
+                                />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div
+                        style="width: 100%"
+                        class="v-index__section__title"
+                    >
+                        <h3 style="margin-bottom: 1rem">Conseil de Fondation</h3>
+                    </div>
+                    <div
+                        class="v-index__grid__coll-full"
+                    >
+                        <div
+                            class="v-index__section__content v-index__grid v-index__grid--wrap v-index__grid--with-gutter">
+
+                            <div
+                                class="v-index__grid__coll-1-4"
+                            >
+                                <app-image
+                                    src="photos-profiles/11©RaphaelleMueller.jpeg"
+                                    name="Prof. Patrick Saudan"
+                                    desc="Président du Conseil de Fondation"
+                                />
+                            </div>
+                            <div
+                                class="v-index__grid__coll-1-4"
+                            >
+                                <app-image
+                                    src="photos-profiles/12©RaphaelleMueller.jpeg"
+                                    name="Yves Bersier"
+                                    desc="Membre du Conseil de Fondation"
+                                />
+                            </div>
+                            <div
+                                class="v-index__grid__coll-1-4"
+                            >
+                                <app-image
+                                    src="photos-profiles/09©RaphaelleMueller.jpeg"
+                                    name="Marc Maugué"
+                                    desc="Membre du Conseil de Fondation"
+                                />
+                            </div>
+                            <div
+                                class="v-index__grid__coll-1-4"
+                            >
+                                <app-image
+                                    src="photos-profiles/10©RaphaelleMueller.jpeg"
+                                    name="Thierry Renaud"
+                                    desc="Membre du Conseil de Fondation"
+                                />
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 </div>
 
             </section>
@@ -729,6 +825,16 @@ function interactionWithElementToAnimated() {
     margin-top: 2rem;
     margin-bottom: 2rem;
   }
+
+    h3 {
+        text-align: center;
+        margin-bottom: 0;
+        line-height: 1em;
+
+    }
+    h2 + h3 {
+        margin-top: 0;
+    }
 }
 
 .v-index__grid {
@@ -1078,7 +1184,7 @@ function interactionWithElementToAnimated() {
 .app-schema_2 {
   max-width: 25rem;
   margin: auto;
-  margin-top: 5rem;
+  margin-top: 2rem;
 
   > img {
     display: block;

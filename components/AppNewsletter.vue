@@ -29,7 +29,6 @@
                 required="required"
                 data-inf-error="Merci de renseigner une adresse email"
             />
-            <button>Envoyer</button>
             <input class="app-button" type="submit" name="" value="Envoyer">
         </form>
     </section>

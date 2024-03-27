@@ -6,14 +6,17 @@
             <input type="text" id="prenom" placeholder="Prénom" v-model="formData.prenom" required>
         </div>
         <div class="app-form__group">
-            <input type="email" id="email" placeholder="e-mail" v-model="formData.email" required>
-            <input type="tel" id="telephone" placeholder="Téléphone" v-model="formData.telephone" required>
+            <input type="text" id="institution" placeholder="Institution" v-model="formData.institution" required>
+            <input type="email" id="email" placeholder="E-mail" v-model="formData.email" required>
         </div>
-        <input type="text" id="nomProjet" placeholder="Titre" v-model="formData.nomProjet" required>
+        <input type="text" id="nomProjet" placeholder="Titre du projet" v-model="formData.nomProjet" required>
         <textarea id="description"
-                  v-model="formData.description" required
-                  placeholder="Courte description du projet"
+                  v-model="formData.description"
+                  required
+                  maxlength="1250"
+                  placeholder="Courte description du projet (Objectifs, partenaires, etc) environs 250 mots"
         ></textarea>
+        <button class="app-button--small" type="submit">Envoyer</button>
     </form>
 </template>
 
@@ -22,7 +25,7 @@ const formData = reactive({
     nom: "",
     prenom: "",
     email: "",
-    telephone: "",
+    institution: "",
     nomProjet: "",
     description: "",
 });
@@ -42,7 +45,7 @@ const handleSubmit = async () => {
     formData.nom = "";
     formData.prenom = "";
     formData.email = "";
-    formData.telephone = "";
+    formData.institution = "";
     formData.nomProjet = "";
     formData.description = "";
 };

@@ -59,6 +59,12 @@ h3 {
   max-width: 16em;
 }
 
+p {
+  max-width: 30em;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .font-small {
   line-height: .75rem;
   font-size: .5rem;
@@ -78,6 +84,21 @@ button,
   color: var(--app-color-main);
   user-select: none;
   cursor: pointer;
+
+  &.app-button--small {
+    line-height: 1em;
+    font-size: .75rem;
+    padding: .5rem 1rem;
+    background: transparent;
+    color: var(--app-color-main--dark);
+    border: solid 3px var(--app-color-main--dark);
+    transition: all 250ms ease-in-out;
+
+    &:hover {
+      color: white;
+      background: var(--app-color-main--dark);
+    }
+  }
 
   @media (max-width: 900px) {
     font-size: 1rem;
@@ -106,12 +127,7 @@ ul {
     }
   }
   li + li {
-    margin-top: 3.5em;
-
-    @media (max-width: 900px) {
       margin-top: 1.5em;
-    }
-
   }
 }
 
