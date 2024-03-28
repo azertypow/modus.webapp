@@ -140,13 +140,12 @@
                         >
                             <div class="v-index__section__content--list-with-img__item__text__title"
                             >La plateforme:
-                                <br>servir et réunir les acteurs de la&nbsp;mobilité
+                                <br>servir et réunir les acteurs de la mobilité
                             </div>
                             <div class="v-index__section__content--list-with-img__item__text__content"
-                            >La Fondation
-                                Modus participe à l’animation de l’écosystème de la mobilité en organisant des
-                                événements, en mettant en relation les secteurs privés, publics, académiques et
-                                associatifs tout en leur fournissant des rendez-vous et des idées de projets.
+                            >La plateforme anime l’écosystème de la mobilité en organisant des événements, en mettant en
+                                relation les secteurs privés, publics, académiques et associatifs tout en leur
+                                fournissant des outils et des moyens.
                             </div>
                         </div>
                     </div>
@@ -159,10 +158,10 @@
                         >
                             <div class="v-index__section__content--list-with-img__item__text__title"
                             >Le laboratoire:
-                                <br>innover et partager pour améliorer la&nbsp;mobilité
+                                <br>innover et partager pour améliorer la mobilité
                             </div>
                             <div class="v-index__section__content--list-with-img__item__text__content"
-                            >La Fondation Modus teste de nouvelles approches pour transformer les comportements de mobilité en améliorant la com- préhension des besoins et en expérimentant des solutions innovantes. Celles-ci sont ensuite mises à disposition des pouvoirs publics.
+                            >Le laboratoire expérimente de nouvelles approches pour transformer les comportements de mobilité en améliorant la compréhension des besoins et en expérimentant des solutions innovantes. Celles-ci sont alors mises à disposition des pouvoirs publics.
                             </div>
                         </div>
                     </div>
@@ -175,10 +174,10 @@
                         >
                             <div class="v-index__section__content--list-with-img__item__text__title"
                             >La bibliothèque:
-                                <br>réunir et conserver les connaissances sur la&nbsp;mobilité
+                                <br>réunir et conserver les connaissances sur la mobilité
                             </div>
                             <div class="v-index__section__content--list-with-img__item__text__content"
-                            >La Fondation Modus regroupe et produit des connaissances ouvertes sur la mobilité à Genève pour les mettre à disposition de ses acteurs.
+                            >La bibliothèque regroupe et produit des informations ouvertes sur la mobilité à Genève pour les mettre à disposition de ses acteurs.
                             </div>
                         </div>
                     </div>
@@ -191,10 +190,10 @@
                         >
                             <div class="v-index__section__content--list-with-img__item__text__title"
                             >La Fabrique des imaginaires:
-                                <br>communiquer et changer les imaginaires de la&nbsp;mobilité
+                                <br>communiquer et changer les imaginaires de la mobilité
                             </div>
                             <div class="v-index__section__content--list-with-img__item__text__content"
-                            >La Fondation Modus essaie de transformer les comportements en bousculant les imaginaires, symboles et valeurs sociales liées à la mobilité. Grâce à une large communication et à la production de contenu, elle veut toucher les experts et le grand public.
+                            >La fabrique des imaginaires cherche à transformer les comportements en changeant les images et les valeurs sociales liées à la mobilité. Grâce à une large communication et à la production de contenu, elle veut toucher les experts et le grand public.
                             </div>
                         </div>
                     </div>
@@ -207,10 +206,10 @@
                         >
                             <div class="v-index__section__content--list-with-img__item__text__title"
                             >La Plantation:
-                                <br>financer et incuber les initiatives innovantes en prise avec mobilité
+                                <br>financer et incuber les entreprises innovantes de mobilité
                             </div>
                             <div class="v-index__section__content--list-with-img__item__text__content"
-                            >La Fondation Modus soutient des initiatives originales et innovantes qui favorisent ainsi la transition des mobilités.
+                            >La plantation finance de jeunes entreprises et soutient leur développement, favorisant ainsi la transition des mobilités.
                             </div>
                         </div>
                     </div>
@@ -355,7 +354,7 @@
                                 <app-image
                                     src=""
                                     name="Matthieu Gautrot"
-                                    desc="Stagiaire EPFL"
+                                    desc="Chef de projet"
                                     :is-variante="false"
                                 />
                             </div>
@@ -377,12 +376,30 @@
                         style="width: 100%"
                         class="v-index__section__title"
                     >
-                        <h3 style="margin-bottom: 1rem">Conseil Scientifique</h3>
+                        <h3 style="margin-bottom: 1rem">Conseil scientifique et conseil de fondation</h3>
                     </div>
                     <div
                             class="v-index__grid__coll-full"
                     >
                         <div class="v-index__section__content v-index__grid v-index__grid--wrap v-index__grid--with-gutter">
+                            <div
+                                class="v-index__grid__coll-1-4"
+                            >
+                                <app-image
+                                    src="photos-profiles/11©RaphaelleMueller.jpeg"
+                                    name="Prof. Patrick Saudan"
+                                    desc="Président du Conseil de Fondation"
+                                />
+                            </div>
+                            <div
+                                class="v-index__grid__coll-1-4"
+                            >
+                                <app-image
+                                    src="photos-profiles/12©RaphaelleMueller.jpeg"
+                                    name="Yves Bersier"
+                                    desc="Membre du Conseil de Fondation"
+                                />
+                            </div>
                             <div
                                 class="v-index__grid__coll-1-4"
                             >
@@ -414,6 +431,15 @@
                                 class="v-index__grid__coll-1-4"
                             >
                                 <app-image
+                                    src="photos-profiles/09©RaphaelleMueller.jpeg"
+                                    name="Marc Maugué"
+                                    desc="Membre du Conseil de Fondation"
+                                />
+                            </div>
+                            <div
+                                class="v-index__grid__coll-1-4"
+                            >
+                                <app-image
                                     src="photos-profiles/05©RaphaelleMueller.jpeg"
                                     name="Dre. Lisa Moussaoui"
                                     desc="Membre du Conseil Scientifique"
@@ -431,62 +457,21 @@
                                 class="v-index__grid__coll-1-4"
                             >
                                 <app-image
-                                    src="photos-profiles/06©RaphaelleMueller.jpeg"
-                                    name="Dr. Jean Simos"
-                                    desc="Membre du Conseil Scientifique"
-                                />
-                            </div>
-                        </div>
-                    </div>
-
-                    <div
-                        style="width: 100%"
-                        class="v-index__section__title"
-                    >
-                        <h3 style="margin-bottom: 1rem">Conseil de Fondation</h3>
-                    </div>
-                    <div
-                        class="v-index__grid__coll-full"
-                    >
-                        <div
-                            class="v-index__section__content v-index__grid v-index__grid--wrap v-index__grid--with-gutter">
-
-                            <div
-                                class="v-index__grid__coll-1-4"
-                            >
-                                <app-image
-                                    src="photos-profiles/11©RaphaelleMueller.jpeg"
-                                    name="Prof. Patrick Saudan"
-                                    desc="Président du Conseil de Fondation"
-                                />
-                            </div>
-                            <div
-                                class="v-index__grid__coll-1-4"
-                            >
-                                <app-image
-                                    src="photos-profiles/12©RaphaelleMueller.jpeg"
-                                    name="Yves Bersier"
-                                    desc="Membre du Conseil de Fondation"
-                                />
-                            </div>
-                            <div
-                                class="v-index__grid__coll-1-4"
-                            >
-                                <app-image
-                                    src="photos-profiles/09©RaphaelleMueller.jpeg"
-                                    name="Marc Maugué"
-                                    desc="Membre du Conseil de Fondation"
-                                />
-                            </div>
-                            <div
-                                class="v-index__grid__coll-1-4"
-                            >
-                                <app-image
                                     src="photos-profiles/10©RaphaelleMueller.jpeg"
                                     name="Thierry Renaud"
                                     desc="Membre du Conseil de Fondation"
                                 />
                             </div>
+                            <div
+                                class="v-index__grid__coll-1-4"
+                            >
+                                <app-image
+                                    src="photos-profiles/06©RaphaelleMueller.jpeg"
+                                    name="Dr. Jean Simos"
+                                    desc="Membre du Conseil Scientifique"
+                                />
+                            </div>
+
                         </div>
                     </div>
 

@@ -78,7 +78,7 @@ async function sendMessageData() {
         return
     }
 
-    const contactUrl = new URL('http://localhost:8000/contact?')
+    const contactUrl = new URL('https://modus-admin.sdrvl.ch/contact?')
 
     for(const itemKey in formData) {
         contactUrl.searchParams.append(itemKey, formData[itemKey] )
