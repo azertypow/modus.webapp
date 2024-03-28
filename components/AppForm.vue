@@ -16,39 +16,108 @@
                   maxlength="1250"
                   placeholder="Courte description du projet (objectifs, partenaires, etc./ 250 mots max)"
         ></textarea>
-        <button class="app-button--small" type="submit">Envoyer</button>
+        <button class="app-button--small"
+                v-if="status === 'nothing' || status === 'sending ERROR'"
+                type="submit"
+        >Envoyer</button>
+        <div style="text-align: center"
+                v-else-if="status === 'sending PROGRESS'"
+        >Envoie en cours…</div>
+
+        <div style="text-align: center"
+             v-if="responseMassage.length > 0"
+        >{{responseMassage}}</div>
     </form>
 </template>
 
-<script setup>
-const formData = reactive({
+<script setup lang="ts">
+
+import {UnwrapNestedRefs, UnwrapRef} from "vue";
+
+let status: Ref<UnwrapRef<"sending PROGRESS" | "sending ERROR" | "sending OK" | "nothing">> = ref("nothing")
+let responseMassage = ref('')
+
+const formData: UnwrapNestedRefs<{
+    [key: string]: any
+    institution: string;
+    nomProjet: string;
+    description: string;
+    nom: string;
+    prenom: string;
+    email: string
+}> = reactive({
     nom: "",
     prenom: "",
-    email: "",
     institution: "",
+    email: "",
     nomProjet: "",
     description: "",
 });
 
 const handleSubmit = async () => {
-    // Envoyer les données du formulaire à votre API ou serveur
-    console.log("Envoi du formulaire...");
-    console.log(formData);
-
-    // Exemple d'appel d'API (remplacer avec votre implémentation)
-    // await fetch('/api/submit-form', {
-    //   method: 'POST',
-    //   body: JSON.stringify(formData),
-    // });
-
     // Réinitialiser le formulaire
-    formData.nom = "";
-    formData.prenom = "";
-    formData.email = "";
-    formData.institution = "";
-    formData.nomProjet = "";
-    formData.description = "";
+    // formData.nom = "";
+    // formData.prenom = "";
+    // formData.email = "";
+    // formData.institution = "";
+    // formData.nomProjet = "";
+    // formData.description = "";
+
+    sendMessageData()
+
 };
+
+
+async function sendMessageData() {
+    status.value = "sending PROGRESS"
+    responseMassage.value  = ''
+
+    if(formData.email.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g) === null) {
+        status.value           = 'sending ERROR'
+        responseMassage.value  = 'Adresse mail incorrecte'
+        return
+    }
+
+    const contactUrl = new URL('http://localhost:8000/contact?')
+
+    for(const itemKey in formData) {
+        contactUrl.searchParams.append(itemKey, formData[itemKey] )
+    }
+
+    try {
+        const response = await fetch(
+            contactUrl.href,
+            {
+                method: 'POST',
+            }
+        )
+
+        const jsonResponse = await response.json()
+
+        console.log(jsonResponse)
+
+        window.setTimeout(() => {
+
+            if(jsonResponse.succes === false) {
+                responseMassage.value  = 'Problème(s):'
+                    + '-' + 'error: ' + jsonResponse.alert.error
+                    + '-' + 'name: ' + jsonResponse.alert.name
+                status.value           = 'sending ERROR'
+
+            } else {
+                responseMassage.value = "Votre message a bien été envoyé. Nous revenons vers vous au plus vite!\n"
+                status.value           = 'sending OK'
+            }
+
+        }, 2500)
+
+
+    } catch {
+        responseMassage.value  = 'Erreur de connection, réesséyez…'
+        status.value           = 'sending ERROR'
+    }
+
+}
 </script>
 
 <style lang="scss">
