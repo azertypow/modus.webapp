@@ -81,6 +81,7 @@ const h2TitleIdInCurrentPage = arrayOfH2TitleIdInCurrentPage()
 
 function scrollToTop() {
     window.scrollTo({top: 0, behavior: 'smooth'})
+    useRouter().push('/')
 }
 
 </script>
