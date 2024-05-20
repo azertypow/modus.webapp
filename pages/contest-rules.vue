@@ -11,6 +11,8 @@
                 <div
                     class="v-page-en__section__content v-page-en__grid v-page-en__grid--with-gutter"
                 >
+                    <div>
+
                         <div
                             class="v-page-en__section__title"
                         >
@@ -42,6 +44,7 @@
                         <h4>Acceptance of the terms and conditions</h4>
                         <p>By entering, participants confirm that they accept the terms and conditions in full. They also acknowledge that Yougov’s decisions before, during and after the Contest are final and may not be appealed legally.</p>
                     </div>
+                </div>
             </section>
 
         </div>
