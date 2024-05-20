@@ -593,6 +593,11 @@ function interactionWithElementToAnimated() {
 
 <style lang="scss" scoped>
 .v-index {
+    padding-top: var(--app-header-height);
+
+    @media (max-width: 900px) {
+        padding-top: calc( var(--app-header-height) + 8rem );
+    }
 }
 
 .v-index__section {
