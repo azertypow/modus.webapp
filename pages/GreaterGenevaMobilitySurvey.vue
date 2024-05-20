@@ -3,11 +3,6 @@
             class="v-page-en"
     >
         <div
-            class="v-page-en__header"
-        >
-            <app-header/>
-        </div>
-        <div
                 class="v-page-en__content app-show-background-on-nav"
         >
             <section
@@ -16,22 +11,37 @@
                 <div
                     class="v-page-en__section__content v-page-en__grid v-page-en__grid--with-gutter"
                 >
-                    <div>
+                        <div
+                            class="v-page-en__section__title"
+                        >
+                            <h2>Contest rules</h2>
+                        </div>
                         <h3>Contest rules for participants in the Greater Geneva Mobility Survey</h3>
-                        <p>By entering the contest, you agree to the following terms and conditions:</p>
-                        <p>Organizer: Yougov for Fondation Modus</p>
-                        <p>Who can participate: Only individuals who have participated in the GREATER GENEVA MOBILITY survey and have completed the online questionnaire in full (i.e. the participant has filled in all of the required responses) can participate in the contest. The GREATER GENEVA MOBILITY survey is open to all permanent residents of Greater Geneva, who were contacted personally via a written invitation sent by the Fondation Modus.</p>
-                        <p>How to enter: individuals can participate in the contest by answering “yes” to the relevant question at the end of the online survey. They will then be asked to provide their email address, which will be used only to contact the contest winners. Under no circumstances will it be used for other purposes or shared with third parties.</p>
-                        <p>The contest is open from June 4, 2024 through August 2, 2024 (the same period as the GREATER GENEVA MOBILITY survey).</p>
-                        <p>Conditions: participants who do not complete the online survey in full or do not provide a valid email address will not be eligible to compete.</p>
-                        <p>Drawing of winners and prizes:</p>
-                        <p>200 winners will be selected randomly at the end of August 2024. The drawing is definitive. Any legal recourse is strictly prohibited. The prize is non-transferable, non-negotiable, non-exchangeable and cannot be redeemed for cash.</p>
-                        <p>Awarding of prizes: prize winners will be informed individually by email at the email address they provided in the online survey. They will be asked to provide their home address, to which the prize will be sent. No prize-awarding ceremony will be held, and there will be no further correspondence concerning the contest.</p>
-                        <p>Yougov reserves the right to verify the accuracy of participants’ personal information at the time the prizes are awarded. In the event that an identity is non-verifiable, Yougov reserves the right to not allocate or remit prizes.</p>
-                        <p>Acceptance of the terms and conditions: By entering, participants confirm that they accept the terms and conditions in full. They also acknowledge that Yougov’s decisions before, during and after the Contest are final and may not be appealed legally.</p>
-                    </div>
-                </div>
+                        <p style="color: var(--app-color-main--dark)">By entering the contest, you agree to the following terms and conditions:</p>
 
+                        <h4>Organizer</h4>
+                        <p>Yougov for Fondation Modus</p>
+
+                        <h4>Who can participate</h4>
+                        <p>Only individuals who have participated in the GREATER GENEVA MOBILITY survey and have completed the online questionnaire in full (i.e. the participant has filled in all of the required responses) can participate in the contest. The GREATER GENEVA MOBILITY survey is open to all permanent residents of Greater Geneva, who were contacted personally via a written invitation sent by the Fondation Modus.</p>
+
+                        <h4>How to enter</h4>
+                        <p>individuals can participate in the contest by answering “yes” to the relevant question at the end of the online survey. They will then be asked to provide their email address, which will be used only to contact the contest winners. Under no circumstances will it be used for other purposes or shared with third parties.</p>
+                        <p>The contest is open from June 4, 2024 through August 2, 2024 (the same period as the GREATER GENEVA MOBILITY survey).</p>
+
+                        <h4>Conditions</h4>
+                        <p>participants who do not complete the online survey in full or do not provide a valid email address will not be eligible to compete.</p>
+
+                        <h4>Drawing of winners and prizes</h4>
+                        <p>200 winners will be selected randomly at the end of August 2024. The drawing is definitive. Any legal recourse is strictly prohibited. The prize is non-transferable, non-negotiable, non-exchangeable and cannot be redeemed for cash.</p>
+
+                        <h4>Awarding of prizes</h4>
+                        <p>prize winners will be informed individually by email at the email address they provided in the online survey. They will be asked to provide their home address, to which the prize will be sent. No prize-awarding ceremony will be held, and there will be no further correspondence concerning the contest.</p>
+                        <p>Yougov reserves the right to verify the accuracy of participants’ personal information at the time the prizes are awarded. In the event that an identity is non-verifiable, Yougov reserves the right to not allocate or remit prizes.</p>
+
+                        <h4>Acceptance of the terms and conditions</h4>
+                        <p>By entering, participants confirm that they accept the terms and conditions in full. They also acknowledge that Yougov’s decisions before, during and after the Contest are final and may not be appealed legally.</p>
+                    </div>
             </section>
 
         </div>
@@ -140,10 +150,26 @@ function interactionWithElementToAnimated() {
         line-height: 1em;
     }
 
-    p {
+    h4, p {
+        font-weight: 600;
         font-size: .85rem;
         line-height: 1.2em;
-        font-weight: 500;
+    }
+
+    h4 {
+        margin-top: 1rem;
+        margin-bottom: 0;
+        + p {
+            margin-top: 0;
+        }
+    }
+
+    p {
+        max-width: none;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        color: var(--app-color-main);
+
     }
 
     @media (max-width: 900px) {
@@ -151,8 +177,18 @@ function interactionWithElementToAnimated() {
             font-size: 1rem;
         }
 
-        p {
+        h4, p {
             font-size: .75rem;
+        }
+    }
+
+    @media (max-width: 700px) {
+        h3 {
+            font-size: 1rem;
+        }
+
+        h4, p {
+            font-size: .65rem;
         }
     }
 }
@@ -251,6 +287,9 @@ function interactionWithElementToAnimated() {
 
 .v-page-en__section__content {
   position: relative;
+  max-width: 28rem;
+  margin-left: auto;
+  margin-right: auto;
 
   > img {
     display: block;
@@ -517,20 +556,6 @@ function interactionWithElementToAnimated() {
     .v-page-en__grid--with-gutter & {
       width: 100%;
     }
-  }
-}
-
-.v-page-en__header {
-  background: white;
-  z-index: 0;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: var(--app-header-height);
-  position: fixed;
-
-  @media (max-width: 900px) {
-    height: calc(var(--app-header-height) + 8rem);
   }
 }
 
