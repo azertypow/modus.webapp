@@ -5,26 +5,34 @@
             'show-video': showVideo
         }"
     >
-        <iframe
-                ref="vimeoIframe"
-                width="640"
-                height="360"
-                :src="`https://player.vimeo.com/video/${vimeoId}?h=2af64ba800`"
-                frameborder="0"
-                allowfullscreen
-                title="vimeo-player"
-                allow="autoplay"
-        />
-        <div
-            class="v-app-video__cache"
-            v-if='!showVideo'
-            @click="showVideoUiClicked"
-        >
-            <img
-                class="v-app-video__cache__img"
-                src="../assets/play_circle_FILL0_wght400_GRAD0_opsz24.svg"
-                alt="icon pour lancer la lecture d'une video YouTube"
+        <template v-if="cookieIsValidate().value" >
+            <iframe
+                    ref="vimeoIframe"
+                    width="640"
+                    height="360"
+                    :src="`https://player.vimeo.com/video/${vimeoId}?h=2af64ba800`"
+                    frameborder="0"
+                    allowfullscreen
+                    title="vimeo-player"
+                    allow="autoplay"
+            />
+            <div
+                class="v-app-video__cache"
+                v-if='!showVideo'
+                @click="showVideoUiClicked"
             >
+                <img
+                    class="v-app-video__cache__img"
+                    src="../assets/play_circle_FILL0_wght400_GRAD0_opsz24.svg"
+                    alt="icon pour lancer la lecture d'une video YouTube"
+                >
+            </div>
+        </template>
+        <div v-else
+             class="v-app-video__cookie-msg"
+        >
+            <div>Vous devez accépter les cookies pour voir la vidéo</div>
+            <button @click="cookieIsValidate().value = true">Accepter les cookies Vimeo</button>
         </div>
     </div>
 </template>
@@ -71,7 +79,7 @@ function showVideoUiClicked() {
 <style lang="scss" scoped >
 .v-app-video {
     position: relative;
-    background: transparent;
+    background: #DDDDDD;
     width: 100%;
     padding-top: 56.25%;
     overflow: hidden;
@@ -126,5 +134,25 @@ iframe {
     transform: translate(-50%, -50%);
     width: 100%;
     height: 100%;
+}
+
+.v-app-video__cookie-msg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    button {
+        font-size: .5rem;
+        padding: .5em;
+        line-height: 1em;
+    }
 }
 </style>
