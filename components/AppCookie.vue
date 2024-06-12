@@ -3,7 +3,7 @@
         class="v-app-cookie"
     >
         <div>
-            Pour améliorer votre expérience, nous intégrons des vidéos qui utilisent des cookies. En cliquant sur « Accepter » vous validerez leur utilisation.
+            Pour améliorer votre expérience, nous intégrons des vidéos qui utilisent des cookies. En cliquant sur « Accepter » vous validez leur utilisation.
         </div>
         <div>
             <button
