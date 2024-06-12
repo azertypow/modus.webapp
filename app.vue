@@ -13,6 +13,10 @@
             <nuxt-page/>
             <div id="app-mailto" ></div>
         </div>
+
+        <div class="v-app__cookie" v-if="!cookieIsValidate().value">
+            <app-cookie/>
+        </div>
     </section>
 </template>
 
@@ -22,7 +26,8 @@
 
 <script lang="ts" setup>
 
-import {bodyScrollInfo} from "~/composable/main";
+import {bodyScrollInfo, cookieIsValidate} from "~/composable/main";
+import AppCookie from "~/components/AppCookie.vue";
 
 const isIntersected = ref(false)
 
@@ -67,6 +72,14 @@ onMounted(() => {
 .v-app__nav {
     position: fixed;
     top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+.v-app__cookie {
+    position: fixed;
+    bottom: 0;
     left: 0;
     width: 100%;
     z-index: 100;

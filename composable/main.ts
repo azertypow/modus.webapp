@@ -18,3 +18,9 @@ export const bodyScrollInfo: () => Ref<{ top: number }> = () => {
         }
     )
 }
+
+export const cookieIsValidate: () => Ref<boolean> = () => {
+    return useState('cookieIsValidate', () => {
+        return false
+    })
+}

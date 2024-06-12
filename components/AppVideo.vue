@@ -37,6 +37,7 @@
 import {declareExportAllDeclaration} from "@babel/types";
 import Player from "@vimeo/player";
 import {Ref, UnwrapRef} from "vue";
+import {cookieIsValidate} from "~/composable/main";
 
 const props = defineProps<{
     vimeoId: string,

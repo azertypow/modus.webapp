@@ -86,6 +86,7 @@
 
             <section
                 class="v-index__section v-index__section--no-padding"
+                v-if="cookieIsValidate().value"
             >
                 <div
                     class="v-index__section__title"
@@ -525,7 +526,7 @@
 <script lang="ts" setup>
 
 import AppVideo from "~/components/AppVideo.vue";
-import {arrayOfH2TitleIdInCurrentPage} from "~/composable/main";
+import {arrayOfH2TitleIdInCurrentPage, cookieIsValidate} from "~/composable/main";
 import {getValueToPercent} from "~/utils/precent";
 
 
