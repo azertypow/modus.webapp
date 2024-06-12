@@ -31,7 +31,6 @@
         <div v-else
              class="v-app-video__cookie-msg"
         >
-            <div>Vous devez accépter les cookies pour voir la vidéo</div>
             <button @click="cookieIsValidate().value = true">Accepter les cookies Vimeo</button>
         </div>
     </div>
