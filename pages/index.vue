@@ -332,7 +332,7 @@
                                 class="v-index__grid__coll-1-4"
                             >
                                 <app-image
-                                    src=""
+                                    src="photos-profiles/MODUS-Portrait_SarahClozel©RaphaelleMueller-1.jpg"
                                     name="Sarah Clozel"
                                     desc="Cheffe de projet"
                                     :is-variante="false"
@@ -342,7 +342,7 @@
                                 class="v-index__grid__coll-1-4"
                             >
                                 <app-image
-                                    src=""
+                                    src="photos-profiles/MODUS-Portrait_DamienCataldi©RaphaelleMueller-1.jpg"
                                     name="Damien Cataldi"
                                     desc="Chef de projet"
                                     :is-variante="false"
@@ -352,7 +352,7 @@
                                 class="v-index__grid__coll-1-4"
                             >
                                 <app-image
-                                    src=""
+                                    src="photos-profiles/MODUS-Portrait_MatthieuGautrot©RaphaelleMueller-1.jpg"
                                     name="Matthieu Gautrot"
                                     desc="Chef de projet"
                                     :is-variante="false"
@@ -362,7 +362,7 @@
                                 class="v-index__grid__coll-1-4"
                             >
                                 <app-image
-                                    src=""
+                                    src="photos-profiles/MODUS-Portrait_GabrielaZwicky©RaphaelleMueller-1.jpg"
                                     name="Gabriela Zwicky"
                                     desc="Responsable administrative"
                                     :is-variante="false"
