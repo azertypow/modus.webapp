@@ -3,12 +3,12 @@
         class="v-app-cookie"
     >
         <div>
-            Pour améliorer votre expérience, nous intégrons des vidéos Vimeo qui utilisent des cookies. En cliquant sur "accépter", vous validez leur utilisation et les vidéos seront chargées.
+            Pour améliorer votre expérience, nous intégrons des vidéos qui utilisent des cookies. En cliquant sur « Accepter » vous validerez leur utilisation.
         </div>
         <div>
             <button
                 @click="cookieIsValidate().value = true"
-            >accépter</button>
+            >Accepter</button>
         </div>
     </section>
 </template>
