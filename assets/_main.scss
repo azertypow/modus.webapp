@@ -3,11 +3,7 @@
 
 html {
   background: var(--app-color-main--dark);
-  font-size: 35px;
-
-  @media (max-width: 900px) {
-    font-size: 30px;
-  }
+  font-size: 18px;
 }
 
 body {
@@ -16,46 +12,32 @@ body {
   background: white;
   color: var(--app-color-main--dark);
   font-size: 1rem;
-  line-height: 1.25rem;
-  font-weight: 600;
+  line-height: 1.25em;
+  font-weight: 500;
   overflow-x: hidden;
-
-  @media (max-width: 900px) {
-    font-size: .8rem;
-    line-height: 1rem;
-  }
 }
 
 h1 {
-
+  font-size: 3.3rem;
+  line-height: 1.05em;
+  font-weight: 900;
 }
 
 h2 {
-  line-height: 2rem;
-  font-size: 1.65rem;
-  background: linear-gradient(to right, var(--app-color-main), var(--app-color-main--dark));
-  display: inline-block;
-  border-radius: 5rem;
-  padding: .5rem 4rem;
-  color: white;
-  text-align: center;
-  font-weight: 600;
-  max-width: 16em;
-  scroll-margin-top: 100px;
-
-
-  @media (max-width: 900px) {
-    line-height: 1em;
-    font-size: 1rem;
-    padding: .5rem 1rem;
-  }
+  line-height: 1.05em;
+  font-size: 2.3rem;
+  font-weight: 500;
 }
 
 h3 {
-  line-height: 2rem;
-  font-size: 1.25rem;
-  display: inline-block;
-  font-weight: 600;
+  line-height: 1.05em;
+  font-size: 2.3rem;
+  font-weight: 900;
+}
+
+h4 {
+  font-size: 1.45rem;
+  line-height: 1.225em;
 }
 
 p {
@@ -83,6 +65,7 @@ button,
   color: var(--app-color-main);
   user-select: none;
   cursor: pointer;
+  display: inline-block;
 
   &.app-button--small {
     line-height: 1em;
