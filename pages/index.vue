@@ -14,17 +14,17 @@
         <div
                 class="v-index__content app-show-background-on-nav"
         >
-          <div class="v-index__section">
-            <app-citation
-              text="Lorem Que fait Modus ?"
-            />
-          </div>
+            <div class="v-index__section">
+                <app-citation
+                    text="Lorem Que fait Modus ?"
+                />
+            </div>
 
-          <div class="v-index__section">
-            <app-citation
-              text="Lorem Que fait Modus avec un texte plus long pour voir?"
-            />
-          </div>
+            <div class="v-index__section">
+                <app-citation
+                    text="Lorem Que fait Modus avec un texte plus long pour voir?"
+                />
+            </div>
 
             <div
                     style="width: 100%; overflow: hidden"
