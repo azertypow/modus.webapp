@@ -35,35 +35,11 @@
 
 
         <div
-            class="v-app-nav__links font-small"
+            class="v-app-nav__menu font-small"
         >
-            <a
-                class="v-app-nav__links__item v-app-nav__links__item--rm-mobile"
-                v-for="section of h2TitleIdInCurrentPage"
-                :href="`#${section.anchor}`"
-            >
-                {{ section.name }}
-            </a>
-            <a
-                    href="#app-mailto"
-                    class="v-app-nav__links__item v-app-nav__links__item--rm-mobile"
-            >
-                <img
-                        alt="bouton pour scroller jusqu'au contact mailto"
-                        src="../assets/mail_FILL0_wght400_GRAD0_opsz24.svg"
-                />
-            </a>
-
-            <a
-              href="https://www.linkedin.com/company/fondation-modus/"
-              target="_blank"
-              class="v-app-nav__links__item"
-            >
-              <img
-                alt="bouton pour scroller jusqu'au contact mailto"
-                src="../assets/LinkedIn_icon.svg"
-              />
-            </a>
+          <img alt="ouvrire le menu"
+               src="@/assets/menu_icon.svg"
+          />
         </div>
 
     </nav>
@@ -145,7 +121,7 @@ function scrollToTop() {
   }
 }
 
-.v-app-nav__links {
+.v-app-nav__menu {
   display: flex;
   gap: 1rem;
   align-items: center;
