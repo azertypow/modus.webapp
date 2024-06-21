@@ -32,8 +32,8 @@ const props = defineProps<{
 }
 
 .v-citation__text {
-  padding-top: 4rem;
-  padding-bottom: 4rem;
+  padding: 4rem 3rem 4rem;
+    width: 100%;
   border-radius: var(--app-radius-small) var(--app-radius-reg) var(--app-radius-reg) var(--app-radius-large);
 }
 </style>
