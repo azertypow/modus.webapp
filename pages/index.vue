@@ -5,7 +5,10 @@
         <div
                 class="v-index__header"
         >
-            <app-header/>
+            <app-header
+              text="lorem, modus.</br>Pour une mobilité durable à Genève"
+              bg-image="/images/temp.jpg"
+            />
         </div>
 
         <div

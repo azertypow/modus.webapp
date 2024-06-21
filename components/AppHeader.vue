@@ -12,16 +12,7 @@
                 <img
                     class="v-app-header__graphic-box__module_1"
                     alt="image graphique de ville pour habiller le header du site"
-                    src="/header-images/modus-webapp-header@x2--web.jpeg"
-                />
-            </div>
-            <div
-                class="v-app-header__container__graphic-box"
-            >
-                <img
-                    class="v-app-header__graphic-box__module_1"
-                    alt="image graphique de ville pour habiller le header du site"
-                    src="/header-images/modus-webapp-header@x2--web.jpeg"
+                    :src="bgImage"
                 />
             </div>
         </div>
@@ -29,7 +20,9 @@
         <div
             class="v-app-header__signature"
             :style="`transform: translate(0, -${bodyScrollInfoStore.top / 1.05}px)`"
-        >modus.<br>pour une mobilité durable à Genève</div>
+            v-if="text"
+            v-html="text"
+        ></div>
     </section>
 </template>
 
@@ -38,8 +31,10 @@
 
 
 <script lang="ts" setup>
-// defineProps<{
-// }>()
+defineProps<{
+  bgImage: string,
+  text?: string,
+}>()
 
 import {bodyScrollInfo} from "~/composable/main";
 
@@ -103,7 +98,6 @@ const bodyScrollInfoStore = bodyScrollInfo()
     left: 0;
     height: var(--app-header-height);
     width: auto;
-    animation: scroll 200s linear infinite;
 }
 
 .v-app-header__graphic-box__module_1 {
@@ -113,15 +107,6 @@ const bodyScrollInfoStore = bodyScrollInfo()
 
     @media (max-width: 900px) {
         height: calc( 110% );
-    }
-}
-
-@keyframes scroll {
-    0% {
-        transform: translateX(0%);
-    }
-    100% {
-        transform: translateX(-100%);
     }
 }
 
