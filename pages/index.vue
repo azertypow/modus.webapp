@@ -15,13 +15,16 @@
                 class="v-index__content app-show-background-on-nav"
         >
 
-            <h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur enim iure odit? Atque aut corporis dicta eligendi explicabo, iusto numquam odit. Accusamus assumenda deserunt fugiat id nisi pariatur ratione! Dignissimos?</h1>
-            <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aliquid amet animi at culpa, distinctio eaque earum et id incidunt magni neque quos, sequi tempora veniam. Illum nulla quas ratione.</h2>
-            <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda debitis distinctio expedita id illum itaque magnam minus odio ullam vel? Ad amet, ipsa mollitia necessitatibus officia quae saepe sequi sint.</h3>
-            <h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam animi blanditiis delectus doloribus eius, exercitationem fuga id impedit iusto magnam obcaecati perferendis, perspiciatis praesentium quas, quidem repudiandae sapiente totam veniam.</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad commodi dolor esse facere illum laborum nam non quidem quos rerum! Ab architecto delectus doloribus eveniet natus nesciunt quisquam totam vitae?</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum fugit harum ipsum iusto laudantium praesentium ratione tenetur. Est laborum libero maxime non sapiente. Asperiores assumenda mollitia nobis placeat ratione soluta?</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto numquam ratione suscipit! Autem deleniti deserunt dicta enim exercitationem, facilis illum iste magnam magni numquam obcaecati, placeat rerum soluta tempore tenetur.</p>
+            <div class="child-remove-margin">
+                <h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur enim iure odit? Atque aut corporis dicta eligendi explicabo, iusto numquam odit. Accusamus assumenda deserunt fugiat id nisi pariatur ratione! Dignissimos?</h1>
+                <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aliquid amet animi at culpa, distinctio eaque earum et id incidunt magni neque quos, sequi tempora veniam. Illum nulla quas ratione.</h2>
+                <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda debitis distinctio expedita id illum itaque magnam minus odio ullam vel? Ad amet, ipsa mollitia necessitatibus officia quae saepe sequi sint.</h3>
+                <h4>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam animi blanditiis delectus doloribus eius, exercitationem fuga id impedit iusto magnam obcaecati perferendis, perspiciatis praesentium quas, quidem repudiandae sapiente totam veniam.</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad commodi dolor esse facere illum laborum nam non quidem quos rerum! Ab architecto delectus doloribus eveniet natus nesciunt quisquam totam vitae?</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum fugit harum ipsum iusto laudantium praesentium ratione tenetur. Est laborum libero maxime non sapiente. Asperiores assumenda mollitia nobis placeat ratione soluta?</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto numquam ratione suscipit! Autem deleniti deserunt dicta enim exercitationem, facilis illum iste magnam magni numquam obcaecati, placeat rerum soluta tempore tenetur.</p>
+            </div>
+
 
 
             <div class="v-index__section">
