@@ -35,7 +35,7 @@
 
 
         <div
-            class="v-app-nav__menu font-small"
+            class="v-app-nav__menu"
         >
           <img alt="ouvrire le menu"
                src="@/assets/menu_icon.svg"
@@ -125,6 +125,7 @@ function scrollToTop() {
   display: flex;
   gap: 1rem;
   align-items: center;
+    height: 100%;
 }
 
 .v-app-nav__links__item {
