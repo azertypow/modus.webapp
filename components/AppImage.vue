@@ -27,6 +27,7 @@
         >{{name}}</span>
         <span
             class="v-app-image__status"
+            v-if="status"
         >{{status}}</span>
         <span
             v-if="desc"
@@ -43,7 +44,7 @@
 defineProps<{
     src?: string,
     name: string,
-    status: string,
+    status?: string,
     desc?: string,
     isVariante?: boolean
 }>()
