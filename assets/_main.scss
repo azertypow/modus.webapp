@@ -56,7 +56,7 @@ button,
 .app-button {
   all: unset;
   box-sizing: border-box;
-  line-height: 1.5rem;
+  line-height: 1.5em;
   font-size: 1.5rem;
   border: solid 5px var(--app-color-main);
   border-radius: 5rem;
@@ -69,11 +69,11 @@ button,
 
   &.app-button--small {
     line-height: 1em;
-    font-size: .75rem;
+    font-size: 1rem;
     padding: .5rem 1rem;
     background: transparent;
     color: var(--app-color-main--dark);
-    border: solid 3px var(--app-color-main--dark);
+    border: solid 1px var(--app-color-main--dark);
     transition: all 250ms ease-in-out;
 
     &:hover {

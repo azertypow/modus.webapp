@@ -57,12 +57,17 @@
                 />
             </div>
 
-
-
-
-
-
-
+            <div class="v-index__section">
+                <app-internal-link
+                    src="images/8.jpg"
+                    title="Les outils de modus"
+                    description="
+                        <p>lorem</p>
+                        <p>La plateforme, le laboratoire, la bibliothèque, la fabrique des imaginaires</p>
+                    "
+                    href="https://google.com"
+                />
+            </div>
 
 
 
