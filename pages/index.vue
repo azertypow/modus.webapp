@@ -26,6 +26,37 @@
                 />
             </div>
 
+            <div class="v-index__section">
+                <app-text-content
+                    text="
+                        <p>La Fondation Modus participe à la décarbonation des mobilités à Genève.</p>
+                        <p>Elle est un accélérateur du changement en soutenant et en mettant en réseau les acteurs de la transition des mobilités, en expérimentant des solutions concrètes, en impulsant des idées originales, en créant de nouvelles connaissances et en développant des services innovants.</p>
+                        <p>La Fondation Modus n’est pas partisane, elle agit comme un laboratoire consacré à la transition des mobilités à Genève et dans sa région.</p>
+                    "
+                />
+            </div>
+
+            <div class="v-index__section">
+                <app-text-content
+                    text="
+                        <p>La Fondation Modus participe à la décarbonation des mobilités à Genève.</p>
+                        <p>Elle est un accélérateur du changement en soutenant et en mettant en réseau les acteurs de la transition des mobilités, en expérimentant des solutions concrètes, en impulsant des idées originales, en créant de nouvelles connaissances et en développant des services innovants.</p>
+                        <p>La Fondation Modus n’est pas partisane, elle agit comme un laboratoire consacré à la transition des mobilités à Genève et dans sa région.</p>
+                    "
+                    variant="yellow-block"
+                />
+            </div>
+
+
+
+
+
+
+
+
+
+
+
             <div
                     style="width: 100%; overflow: hidden"
             >
