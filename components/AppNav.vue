@@ -70,7 +70,7 @@ function scrollToTop() {
 .v-app-nav {
   width: 100%;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
   height: var(--app-nav__height);
   box-sizing: border-box;
@@ -112,7 +112,7 @@ function scrollToTop() {
 
 .v-app-nav__logo {
   display: block;
-  height: calc( var(--app-nav__height) - (var(--app-gutter) / 2) );
+  height: 2rem;
   width: auto;
   fill: var(--app-color-main);
     cursor: pointer;
