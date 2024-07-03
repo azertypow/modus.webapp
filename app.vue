@@ -26,36 +26,14 @@
 
 <script lang="ts" setup>
 
-import {bodyScrollInfo, cookieIsValidate} from "~/composable/main";
+import {bodyScrollInfo, cookieIsValidate, useIsIntersected} from "~/composable/main";
 import AppCookie from "~/components/AppCookie.vue";
 
-const isIntersected = ref(false)
+const isIntersected = useIsIntersected()
 
 onMounted(() => {
     window.addEventListener('scroll', () => {
         bodyScrollInfo().value = {top: window.scrollY }
-    })
-
-    nextTick(() => {
-        const elementsToSetBackgroundNav = document.querySelectorAll('.app-show-background-on-nav')
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    console.log('L\'élément est en intersection avec la fenêtre')
-                    isIntersected.value = true
-                } else {
-                    console.log('L\'élément n\'est plus en intersection avec la fenêtre')
-                    isIntersected.value = false
-                }
-            })
-        }, {
-            rootMargin: `0px 0px ${window.innerHeight * -1}px 0px`
-        })
-
-        elementsToSetBackgroundNav.forEach((value) => {
-            observer.observe(value)
-        })
     })
 })
 

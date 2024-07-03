@@ -32,7 +32,7 @@ const props = defineProps<{
 }
 
 .v-citation__text {
-    padding: 4rem 3rem 4rem;
+    padding: 4rem 2rem 4rem;
     width: 100%;
     box-sizing: border-box;
     max-width: none;

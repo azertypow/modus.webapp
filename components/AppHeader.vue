@@ -97,13 +97,15 @@ const bodyScrollInfoStore = bodyScrollInfo()
     top: 0;
     left: 0;
     height: var(--app-header-height);
-    width: auto;
+    width: 100%;
 }
 
 .v-app-header__graphic-box__module_1 {
     position: relative;
     top: var(--app-nav__height);
     height: calc( 125% );
+    width: 100%;
+    object-fit: cover;
 
     @media (max-width: 900px) {
         height: calc( 110% );

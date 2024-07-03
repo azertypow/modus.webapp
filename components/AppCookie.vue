@@ -36,7 +36,7 @@ const props = defineProps<{
     width: 100%;
     background: var(--app-color-main);
     color: white;
-    font-size: .5rem;
+    font-size: 1rem;
     display: flex;
     justify-content: center;
     gap: 1rem;
@@ -44,18 +44,19 @@ const props = defineProps<{
     align-items: center;
     line-height: 1.15em;
     box-sizing: border-box;
-    padding: .25rem;
+    padding: .5rem;
 
     @media (max-width: 800px) {
         flex-direction: column;
-        gap: .25rem;
+        gap: .5rem;
     }
 }
 
 button {
-    font-size: .5rem;
+    font-size: 1rem;
     padding: .5em;
     line-height: 1em;
     background: var(--app-color-main--dark);
+    color: white;
 }
 </style>
