@@ -16,67 +16,67 @@
         </template>
       </div>
 
-      <div class="v-demo__content app-show-background-on-nav">
-        <template v-if="bodyContent">
+      <div class="v-app-page__content app-show-background-on-nav">
+        <div class="v-app-page__content__grid">
+          <template v-if="bodyContent">
 
-          <template v-for="bodyContentItem of bodyContent">
+            <template v-for="bodyContentItem of bodyContent">
 
-            <template v-if="bodyContentItem.content.type === 'mdheading'">
+              <template v-if="bodyContentItem.content.type === 'mdheading'">
 
-              <template v-if="bodyContentItem.content.content.level === 'h2'">
+                <template v-if="bodyContentItem.content.content.level === 'h2'">
+                  <div class="v-app-page__section">
+                    <app-citation
+                      :text="bodyContentItem.content.content.text"
+                    />
+                  </div>
+                </template>
+
+                <template v-else-if="bodyContentItem.content.content.level === 'h3'">
+                  <div class="v-app-page__section">
+                    <h3>{{bodyContentItem.content.content.text}}</h3>
+                  </div>
+                </template>
+
+              </template>
+
+
+              <template v-else-if="bodyContentItem.content.type === 'simpleText'">
                 <div class="v-app-page__section">
-                  <app-citation
+                  <app-text-content
                     :text="bodyContentItem.content.content.text"
+                    variant="yellow-block"
                   />
                 </div>
               </template>
 
-              <template v-else-if="bodyContentItem.content.content.level === 'h3'">
+
+              <template v-else-if="bodyContentItem.content.type === 'profiles'">
                 <div class="v-app-page__section">
-                  <h3>{{bodyContentItem.content.content.text}}</h3>
+                  <app-profiles
+                    :profiles-data="bodyContentItem.content.content"
+                  />
+                </div>
+              </template>
+
+              <template v-else-if="bodyContentItem.content.type === 'internalLink'">
+                <div class="v-app-page__section">
+                  <app-internal-link
+                    :src="bodyContentItem.image[0].resize.reg"
+                    :title="bodyContentItem.content.content.linktitle"
+                    :description="bodyContentItem.content.content.text"
+                    :href="bodyContentItem.content.content.link"
+                  />
                 </div>
               </template>
 
             </template>
-
-
-            <template v-else-if="bodyContentItem.content.type === 'simpleText'">
-              <div class="v-app-page__section">
-                <app-text-content
-                  :text="bodyContentItem.content.content.text"
-                  variant="yellow-block"
-                />
-              </div>
-            </template>
-
-
-            <template v-else-if="bodyContentItem.content.type === 'profiles'">
-              <div class="v-app-page__section">
-                <app-profiles
-                  :profiles-data="bodyContentItem.content.content"
-                />
-              </div>
-            </template>
-
-            <template v-else-if="bodyContentItem.content.type === 'internalLink'">
-              <div class="v-app-page__section">
-                <app-internal-link
-                  :src="bodyContentItem.image[0].resize.reg"
-                  :title="bodyContentItem.content.content.linktitle"
-                  :description="bodyContentItem.content.content.text"
-                  :href="bodyContentItem.content.content.link"
-                />
-              </div>
-            </template>
-
           </template>
 
-
-        </template>
-        <template v-else>
-          chargement du contenu…
-        </template>
-
+          <template v-else>
+            chargement du contenu…
+          </template>
+        </div>
       </div>
 
 
@@ -134,10 +134,6 @@ nextTick(() => {
 <style lang="scss" scoped >
 .v-app-page {
   padding-top: var(--app-header-height);
-
-  @media (max-width: 900px) {
-    padding-top: calc(var(--app-header-height) + 8rem);
-  }
 }
 
 .v-app-page__header {
@@ -154,17 +150,26 @@ nextTick(() => {
   }
 }
 
-.v-demo__content {
+.v-app-page__content {
   background: var(--app-color-grey);
   position: relative;
   z-index: 10;
   width: 100%;
+}
 
-  @media (max-width: 900px) {
-    > section:first-child {
-      padding-top: 0;
-    }
-  }
+.v-app-page__content__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: 100%;
+  box-sizing: border-box;
+  max-width: 1300px;
+  margin-left: auto;
+  margin-right: auto;
+  gap: 2rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  padding-left: var(--app-gutter);
+  padding-right: var(--app-gutter);
 }
 
 .v-app-page__section {
@@ -172,8 +177,12 @@ nextTick(() => {
   max-width: 1300px;
   margin-left: auto;
   margin-right: auto;
-  padding: 2rem var(--app-gutter);
   position: relative;
+  width: 100%;
+
+  @media (max-width: 900px) {
+    grid-column: span 2;
+  }
 
   &.v-app-page__section--no-padding {
     padding-top: 0;

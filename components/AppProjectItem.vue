@@ -5,8 +5,12 @@
         <div class="v-app-project-item__header"
         >
             <img class="v-app-project-item__header__img"
+                 v-if="imgSrc"
                  alt="project cover"
                  :src="imgSrc"
+            />
+            <div class="v-app-project-item__header__img"
+                 v-else
             />
             <div class="v-app-project-item__header__bottom">
                 <img class="v-app-project-item__header__icon"
@@ -82,9 +86,14 @@ const iconUrl = computed(() => imageUrlMap[props.projectType])
 .v-app-project-item__header__img {
     display: block;
     width: 100%;
-    aspect-ratio: 1/1;
     border-bottom-left-radius: 2rem;
     border-bottom-right-radius: 2rem;
+    background-color: #D3DABF;
+    aspect-ratio: 3/2;
+
+    @media (max-width: 900px) {
+        aspect-ratio: 1/1;
+    }
 }
 
 .v-app-project-item__header__bottom {

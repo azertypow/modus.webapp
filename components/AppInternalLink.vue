@@ -14,7 +14,7 @@
         >
             <h4 class="v-app-internal-link__content__title"
             >{{title}}</h4>
-            <div class="v-app-internal-link__content__desc"
+            <div class="v-app-internal-link__content__desc child-remove-margin"
                  v-if="description"
                  v-html="description"
             />
@@ -67,6 +67,11 @@ const props = defineProps<{
 .v-app-internal-link__content {
     box-sizing: border-box;
     padding: 0 1rem 1rem;
+}
+
+.v-app-internal-link__content__title {
+  margin-top: 1em;
+  margin-bottom: .25em;
 }
 
 .v-app-internal-link__content__desc {

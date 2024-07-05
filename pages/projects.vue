@@ -3,8 +3,13 @@
         class="v-projects"
         @click="updateQuery('trois')"
     >
-        hello
-        {{filter}}
+      <app-page
+        :header-cover="null"
+        :header-text="null"
+        :body-content="null"
+      />
+
+      <app-page-footer/>
     </section>
 </template>
 
@@ -14,6 +19,7 @@
 
 <script setup lang="ts">
 import {defineProps, Ref, UnwrapRef} from 'vue'
+import AppPage from "~/components/AppPage.vue";
 
 // const props = defineProps<{
 //     message?: string

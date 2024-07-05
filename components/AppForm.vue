@@ -166,6 +166,7 @@ input, textarea {
     padding: .15rem .5rem;
     resize: none;
     border: solid var(--app-color-main) 2px;
+    border-radius: 2em;
 
     &::placeholder {
         color: inherit;

@@ -7,7 +7,17 @@
         :header-text="headerText"
         :body-content="bodyContent"
       />
-
+        <div
+            class="v-index__bottom_content"
+        >
+            <div class="v-index__bottom_content__section">
+                <app-actuality
+                    title="Actualité | les derniers projets modus"
+                    description="L’association Genève en selle veut changer le regard sur la mobilité décarbonée en promouvant le vélo."
+                    src="images/8.jpg"
+                />
+            </div>
+        </div>
       <app-page-footer/>
     </div>
 </template>
@@ -58,6 +68,25 @@ onMounted(async () => {
 
 <style lang="scss" scoped >
 .v-index {
+}
+
+.v-index__bottom_content {
+    background: var(--app-color-grey);
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    padding-bottom: 2rem;
+}
+
+.v-index__bottom_content__section {
+    box-sizing: border-box;
+    max-width: 1300px;
+    margin: auto;
+    padding: var(--app-gutter);
+
+    @media (max-width: 1300px) {
+        padding: 0;
+    }
 }
 
 </style>

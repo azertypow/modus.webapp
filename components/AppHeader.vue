@@ -57,11 +57,6 @@ const bodyScrollInfoStore = bodyScrollInfo()
     align-items: flex-start;
     justify-content: flex-end;
     position: relative;
-
-
-    @media (max-width: 900px) {
-        height: calc( var(--app-header-height) + 8rem );
-    }
 }
 
 .v-app-header__container {
@@ -88,7 +83,6 @@ const bodyScrollInfoStore = bodyScrollInfo()
 
     @media (max-width: 900px) {
         font-size: 10vw;
-        background: var(--app-color-grey);
     }
 }
 
@@ -106,10 +100,6 @@ const bodyScrollInfoStore = bodyScrollInfo()
     height: calc( 125% );
     width: 100%;
     object-fit: cover;
-
-    @media (max-width: 900px) {
-        height: calc( 110% );
-    }
 }
 
 .v-app-header__graphic-box__item {
