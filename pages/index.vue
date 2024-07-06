@@ -12,7 +12,7 @@
         >
             <div class="v-index__bottom_content__section">
                 <app-actuality
-                    title="Actualité | les derniers projets modus"
+                    title="Actualités"
                     description="L’association Genève en selle veut changer le regard sur la mobilité décarbonée en promouvant le vélo."
                     src="images/8.jpg"
                 />

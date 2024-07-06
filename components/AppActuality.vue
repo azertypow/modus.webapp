@@ -2,7 +2,7 @@
     <section
         class="v-app-actuality"
     >
-        <div class="v-app-actuality__title">
+        <div class="v-app-actuality__title child-remove-margin">
             <h4>{{title}}</h4>
         </div>
         <div class="v-app-actuality__img"
@@ -22,7 +22,7 @@
                  v-html="description"
             />
             <div class="v-app-actuality__content__bottom">
-                <nuxt-link class="app-button app-button--small" href="projects">-> découvrir des projets</nuxt-link>
+                <nuxt-link class="app-button app-button--small" href="projects">-> Découvrir des projets</nuxt-link>
             </div>
         </div>
 
@@ -56,22 +56,31 @@ const props = defineProps<{
     box-sizing: border-box;
     flex-wrap: wrap;
     align-items: center;
+    position: relative;
 }
 
 .v-app-actuality__title {
-    padding-left: 1rem;
-    padding-right: 1rem;
-    width: 100%;
+    padding: .5em 1rem;
+    position: absolute;
+    top: var(--app-gutter);
+    left: var(--app-gutter);
+    width: auto;
+    background:var(--app-color-green-light);
+    border-radius: 2rem;
+
+    @media (max-width: 900px) {
+        width: 100%;
+        position: static;
+        background: none;
+    }
 }
 
 .v-app-actuality__img {
     box-sizing: border-box;
     width: 50%;
-    padding: 0 var(--app-gutter) var(--app-gutter);
 
     @media (max-width: 900px) {
         width: 100%;
-        padding: 0;
     }
 }
 
@@ -79,8 +88,12 @@ const props = defineProps<{
     aspect-ratio: 1/1;
     display: block;
     background: lightgrey;
-    border-radius: var(--app-radius-small) var(--app-radius-small) var(--app-radius-large) var(--app-radius-large);
+    border-radius: var(--app-radius-small);
     width: 100%;
+
+    @media (max-width: 900px) {
+        border-radius: var(--app-radius-small) var(--app-radius-small) var(--app-radius-large) var(--app-radius-large);
+    }
 }
 
 .v-app-actuality__content {

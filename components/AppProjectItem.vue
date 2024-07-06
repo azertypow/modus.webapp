@@ -32,7 +32,7 @@
         <div class="v-app-project-item__bottom">
             <nuxt-link class="app-button app-button--small"
                        :href="`projects?q=${projectType}`"
-            >découvrire les projets</nuxt-link>
+            >Découvrire les projets</nuxt-link>
         </div>
     </section>
 </template>

@@ -52,7 +52,7 @@
 
 
               <template v-else-if="bodyContentItem.content.type === 'profiles'">
-                <div class="v-app-page__section">
+                <div class="v-app-page__section v-app-page__section--full">
                   <app-profiles
                     :profiles-data="bodyContentItem.content.content"
                   />
@@ -60,12 +60,16 @@
               </template>
 
               <template v-else-if="bodyContentItem.content.type === 'internalLink'">
-                <div class="v-app-page__section">
+                <div class="v-app-page__section"
+                     :class="{'v-app-page__section--full': bodyContentItem.content.content.width === 'true'}"
+                >
                   <app-internal-link
                     :src="bodyContentItem.image[0].resize.reg"
                     :title="bodyContentItem.content.content.linktitle"
                     :description="bodyContentItem.content.content.text"
                     :href="bodyContentItem.content.content.link"
+                    :style-design="bodyContentItem.content.content.style"
+                    :is-full="bodyContentItem.content.content.width === 'true'"
                   />
                 </div>
               </template>
@@ -181,6 +185,10 @@ nextTick(() => {
   width: 100%;
 
   @media (max-width: 900px) {
+    grid-column: span 2;
+  }
+
+  &.v-app-page__section--full {
     grid-column: span 2;
   }
 

@@ -65,13 +65,14 @@ const props = defineProps<{
 }
 
 .v-app-profiles__content {
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
   gap: var(--app-gutter);
-  grid-template-columns: repeat(2, 1fr);
 }
 
 .v-app-profiles__content__coll {
-  grid-column: span 1;
+  width: 100%;
+  max-width: 20rem;
 }
 
 .v-app-profiles__item {
