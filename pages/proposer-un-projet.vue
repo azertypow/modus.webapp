@@ -61,6 +61,10 @@ onMounted(async () => {
     z-index: 10;
     width: 100%;
     padding-bottom: 2rem;
+    min-height: calc(100vh - var(--app-nav__height) - 10rem);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .v-project-form__bottom_content__section {
@@ -68,6 +72,7 @@ onMounted(async () => {
     max-width: 900px;
     margin: auto;
     padding: 0;
+    width: 100%;
 
     @media (max-width: 900px) {
         padding-left: var(--app-gutter);

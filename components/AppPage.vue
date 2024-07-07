@@ -24,7 +24,9 @@
         </template>
       </div>
 
-      <div class="v-app-page__content app-show-background-on-nav">
+      <div class="v-app-page__content app-show-background-on-nav"
+           v-if="withoutBody !== true"
+      >
         <div class="v-app-page__content__grid">
           <template v-if="bodyContent">
 
@@ -112,6 +114,7 @@ const props = defineProps<{
   headerText?: string
   headerCover?: string
   bodyContent?: IApiBody
+    withoutBody?: boolean
 }>()
 
 

@@ -127,8 +127,7 @@ form {
     justify-content: center;
     flex-direction: column;
     width: 100%;
-    gap: .5rem;
-    font-size: .7rem;
+    gap: var(--app-gutter);
 }
 
 button {
@@ -147,7 +146,7 @@ button {
 .app-form__group {
     display: flex;
     justify-content: center;
-    gap: .5rem;
+    gap: var(--app-gutter);
     flex-wrap: nowrap;
 
     @media (max-width: 900px) {
@@ -163,10 +162,10 @@ input, textarea {
     font-size: inherit;
     line-height: inherit;
     font-family: inherit;
-    padding: .15rem .5rem;
+    padding: .3rem 1rem;
     resize: none;
     border: solid var(--app-color-main) 2px;
-    border-radius: 2em;
+    border-radius: var(--app-radius-small);
 
     &::placeholder {
         color: inherit;
