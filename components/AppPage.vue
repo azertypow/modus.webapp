@@ -6,10 +6,18 @@
         class="v-app-page__header"
       >
         <template v-if="headerCover">
-          <app-header
-            :text="headerText"
-            :bg-image="headerCover"
-          />
+          <template v-if="useRoute().path === '/'">
+            <app-header-home
+              :text="headerText"
+              :bg-image="headerCover"
+            />
+          </template>
+          <template v-else>
+            <app-header
+                    :text="headerText"
+                    :bg-image="headerCover"
+            />
+          </template>
         </template>
         <template v-else>
           Chargement du header…
