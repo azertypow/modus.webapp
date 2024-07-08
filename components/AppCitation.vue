@@ -2,9 +2,9 @@
     <section
         class="v-citation"
     >
-      <h2 class="v-citation__text">
-        {{text}}
-      </h2>
+      <h2 class="v-citation__text"
+          v-html="text"
+      />
     </section>
 </template>
 
