@@ -93,16 +93,6 @@ const props = defineProps<{
     }
 }
 
-.v-app-internal-link__img__img {
-    display: block;
-    background: rebeccapurple;
-    width: 100%;
-    object-fit: cover;
-    aspect-ratio: 1/1;
-    border-radius: var(--app-radius-small) var(--app-radius-small) var(--app-radius-large) var(--app-radius-large);
-    flex-shrink: 0;
-}
-
 .v-app-internal-link__content {
     box-sizing: border-box;
     padding: 0 1rem 1rem;
@@ -112,6 +102,28 @@ const props = defineProps<{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+
+.v-app-internal-link__img__img {
+  display: block;
+  background: rebeccapurple;
+  width: 100%;
+  object-fit: cover;
+  border-radius: var(--app-radius-small) var(--app-radius-small) var(--app-radius-large) var(--app-radius-large);
+  flex-shrink: 0;
+  aspect-ratio: 5/3;
+
+  .v-app-internal-link--circle & {
+    aspect-ratio: 1/1;
+  }
+
+  .v-app-internal-link--full & {
+    aspect-ratio: 1/1;
+  }
+
+  @media (max-width: 900px) {
+    aspect-ratio: 1/1;
+  }
 }
 
 .v-app-internal-link__content__title {
