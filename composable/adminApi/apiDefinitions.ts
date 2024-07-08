@@ -9,7 +9,7 @@ export type ApiProjectMap = {[key in ApiProjectType]: string}
 export const apiProjectMap: ApiProjectMap = {
     'imaginaires' : 'La fabrique des imaginaires',
     'laboratoire' : 'Le laboratoire',
-    'bibliotheque' : 'La bibliothèque',
+    'bibliotheque' : 'La Bibliothèque',
     'plateforme' : 'La plateforme',
     'plantation' : 'La plantation',
 }
