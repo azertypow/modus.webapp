@@ -93,6 +93,19 @@ export interface IApiBody {
 
             }
         }
+        |
+        {
+            image: [ ],
+            content: {
+                content: {
+                    titlecontent: string,
+                    text: string,
+                },
+                id: string,
+                isHidden: false,
+                type: "listPoints"
+            }
+        },
 }
 
 export interface IApiProfiles {

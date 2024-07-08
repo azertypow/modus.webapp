@@ -91,6 +91,15 @@
                 </div>
               </template>
 
+              <template v-else-if="bodyContentItem.content.type === 'listPoints'">
+                <div class="v-app-page__section">
+                  <app-list-points
+                          :title="bodyContentItem.content.content.titlecontent"
+                          :content="bodyContentItem.content.content.text"
+                  />
+                </div>
+              </template>
+
             </template>
           </template>
 
@@ -116,6 +125,7 @@ import { defineProps } from 'vue'
 import {useIsIntersected} from "~/composable/main";
 import {IApiBody} from "~/composable/adminApi/apiDefinitions";
 import AppProfiles from "~/components/AppProfiles.vue";
+import AppListPoints from "~/components/AppListPoints.vue";
 
 const props = defineProps<{
   headerText?: string

@@ -13,7 +13,7 @@ body {
   color: var(--app-color-main--dark);
   font-size: 1rem;
   line-height: 1.25em;
-  font-weight: 500;
+  font-weight: 600;
   overflow-x: hidden;
 }
 
@@ -91,9 +91,10 @@ ul {
   padding: 0;
 
   li {
-    padding-left: 1rem;
+    padding-left: calc( var(--app-bullet-size) + .15em );
     display: block;
     position: relative;
+    line-height: 1em;
 
     &:before {
       position: absolute;
@@ -108,7 +109,7 @@ ul {
     }
   }
   li + li {
-      margin-top: 1.5em;
+      margin-top: .5em;
   }
 }
 
