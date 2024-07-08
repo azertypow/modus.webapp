@@ -28,6 +28,7 @@
            v-if="withoutBody !== true"
       >
         <div class="v-app-page__content__grid">
+
           <template v-if="bodyContent">
 
             <template v-for="bodyContentItem of bodyContent">
@@ -57,6 +58,12 @@
                     :text="bodyContentItem.content.content.text"
                     variant="yellow-block"
                   />
+                </div>
+              </template>
+
+              <template v-else-if="bodyContentItem.content.type === 'body'">
+                <div class="v-app-page__section v-app-page__section--full">
+                  <div v-html="bodyContentItem.content.content.text"/>
                 </div>
               </template>
 

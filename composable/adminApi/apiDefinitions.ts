@@ -52,6 +52,17 @@ export interface IApiBody {
         }
         }
         | {
+            "image": IApiImage[],
+            "content": {
+                "content": {
+                    "text": string
+                },
+                "id": string,
+                "isHidden": boolean,
+                "type": "body"
+            }
+        }
+        | {
         "image": IApiImage[],
         "content": {
             "content": IApiProfiles,
