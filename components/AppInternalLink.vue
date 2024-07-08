@@ -67,12 +67,10 @@ const props = defineProps<{
     overflow: hidden;
 
     &.v-app-internal-link--circle {
-        border-top-left-radius:     300rem;
-        border-top-right-radius:  300rem;
+        border-top-left-radius:     16rem;
+        border-top-right-radius:    16rem;
 
         &.v-app-internal-link--full {
-            border-top-left-radius:     300rem;
-            border-top-right-radius:  300rem;
             border-top-left-radius:     15rem;
             border-bottom-left-radius:  15rem;
             border-top-right-radius:    1rem;
