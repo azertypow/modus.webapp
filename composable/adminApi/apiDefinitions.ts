@@ -28,7 +28,8 @@ export interface IApiPage {
 }
 
 export interface IApiBody {
-    [key: string]: {
+    [key: string]:
+        {
             "image": IApiImage[],
             "content": {
                 "content": {
@@ -40,18 +41,20 @@ export interface IApiBody {
                 "type": "mdheading"
             }
         }
-        | {
-        "image": IApiImage[],
-        "content": {
+        |
+        {
+            "image": IApiImage[],
             "content": {
-                "text": string
-            },
-            "id": string,
-            "isHidden": boolean,
-            "type": "simpleText"
+                "content": {
+                    "text": string
+                },
+                "id": string,
+                "isHidden": boolean,
+                "type": "simpleText"
+            }
         }
-        }
-        | {
+        |
+        {
             "image": IApiImage[],
             "content": {
                 "content": {
@@ -62,32 +65,34 @@ export interface IApiBody {
                 "type": "body"
             }
         }
-        | {
-        "image": IApiImage[],
-        "content": {
-            "content": IApiProfiles,
-            "id": string,
-            "isHidden": boolean,
-            "type": "profiles"
-        }
-        }
-        | {
-        "image": IApiImage[],
-        "content": {
+        |
+        {
+            "image": IApiImage[],
             "content": {
-                "image": string[],
-                "linktitle": string,
-                "text": string,
-                "link": string
-                "style": "circle" | 'default',
-                "width": "true" |'false',
-            },
-            "id": string,
-            "isHidden": boolean,
-            "type": "internalLink"
-
+                "content": IApiProfiles,
+                "id": string,
+                "isHidden": boolean,
+                "type": "profiles"
+            }
         }
-    }
+        |
+        {
+            "image": IApiImage[],
+            "content": {
+                "content": {
+                    "image": string[],
+                    "linktitle": string,
+                    "text": string,
+                    "link": string
+                    "style": "circle" | 'default',
+                    "width": "true" | 'false',
+                },
+                "id": string,
+                "isHidden": boolean,
+                "type": "internalLink"
+
+            }
+        }
 }
 
 export interface IApiProfiles {
