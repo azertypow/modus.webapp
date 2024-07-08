@@ -54,7 +54,7 @@ const bodyContent: Ref<UnwrapRef<undefined | IApiBody>> = ref(undefined)
 onMounted(async () => {
   const pageData = await ApiFetchPage('home')
 
-  headerCover.value = pageData.options.headerImage?.resize.large
+  headerCover.value = pageData.options.headerImage?.mediaUrl
   headerText.value = pageData.options.headerTitle
 
   bodyContent.value = pageData.body

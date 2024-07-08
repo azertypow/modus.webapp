@@ -53,7 +53,7 @@ const projects: Ref<UnwrapRef<undefined | {[key: string]: IApiSingleProject}>> =
 onMounted(async () => {
     const pageData = await ApiFetchProjects('projects')
 
-    headerCover.value = pageData.options.headerImage?.mediaUrl
+    headerCover.value = pageData.options.headerImage?.resize.large
     headerText.value = pageData.options.headerTitle
     projects.value = pageData.children
 })

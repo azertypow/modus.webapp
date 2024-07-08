@@ -96,7 +96,7 @@ import {ApiFetchPage} from "~/composable/adminApi/apiFetch";
 
 
 useHead({
-    title: 'les outils modus',
+    title: 'les dispositifs modus',
     meta: [
         {
             name: 'description',
@@ -111,7 +111,7 @@ const headerText: Ref<UnwrapRef<undefined | string>> = ref(undefined)
 const bodyContent: Ref<UnwrapRef<undefined | IApiBody>> = ref(undefined)
 
 onMounted(async () => {
-    const pageData = await ApiFetchPage('les-outils-modus')
+    const pageData = await ApiFetchPage('dispositifs')
 
     headerCover.value = pageData.options.headerImage?.resize.large
     headerText.value = pageData.options.headerTitle
