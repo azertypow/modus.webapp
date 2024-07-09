@@ -5,12 +5,8 @@
         <div class="v-app-project-item__header"
         >
             <img class="v-app-project-item__header__img"
-                 v-if="imgSrc"
                  alt="project cover"
                  :src="imgSrc"
-            />
-            <div class="v-app-project-item__header__img"
-                 v-else
             />
             <div class="v-app-project-item__header__bottom">
                 <img class="v-app-project-item__header__icon"
@@ -22,7 +18,7 @@
             </div>
         </div>
 
-        <div class="v-app-project-item__body"
+        <div class="v-app-project-item__body child-remove-margin"
         >
             <h4 class="v-app-project-item__title">{{title}}</h4>
             <div class="v-app-project-item__content child-remove-margin"
@@ -32,7 +28,7 @@
         <div class="v-app-project-item__bottom">
             <nuxt-link class="app-button app-button--small"
                        :href="`projects?q=${projectType}`"
-            >Découvrire les projets</nuxt-link>
+            >Découvrir les projets</nuxt-link>
         </div>
     </section>
 </template>
@@ -46,7 +42,6 @@ import { defineProps } from 'vue'
 import {ApiProjectMap, apiProjectMap, ApiProjectType} from "~/composable/adminApi/apiDefinitions";
 
 const props = defineProps<{
-    imgSrc?: string
     projectType?: ApiProjectType
     title?: string
     content?: string
@@ -60,7 +55,16 @@ const imageUrlMap: ApiProjectMap = {
     'plateforme':  'img_plateforme.svg',
 }
 
-const iconUrl = computed(() => imageUrlMap[props.projectType])
+const imgSrcMap: ApiProjectMap = {
+    'bibliotheque': '240603_Modus-bibliothque.jpg',
+    'imaginaires':  '240603_Modus-fabriquedesimaginaires.jpg',
+    'laboratoire':  '240603_Modus-laboratoire.jpg',
+    'plantation':   '240603_Modus-plantation.jpg',
+    'plateforme':   '240603_Modus-plateforme.jpg',
+}
+
+const iconUrl   = computed(() => imageUrlMap[props.projectType] )
+const imgSrc    = computed(() => `/images_dispositifs/${imgSrcMap[props.projectType]}` )
 
 </script>
 
@@ -74,13 +78,32 @@ const iconUrl = computed(() => imageUrlMap[props.projectType])
     box-sizing: border-box;
     width: 100%;
     padding-bottom: 2rem;
-    border-bottom-right-radius: 2rem;
-    border-bottom-left-radius: 2rem;
+    border-radius: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    position: relative;
+    overflow: hidden;
+
+    @media (max-width: 900px) {
+        border-top-right-radius: 0;
+        border-top-left-radius: 0;
+    }
 }
 
 .v-app-project-item__header {
-    position: relative;
-    width: 100%;
+    box-sizing: border-box;
+    width: 50%;
+    top: 0;
+    left: 0;
+    position: absolute;
+    height: 100%;
+
+    @media (max-width: 900px) {
+        position: relative;
+        height: auto;
+        width: 100%;
+    }
 }
 
 .v-app-project-item__header__img {
@@ -89,7 +112,8 @@ const iconUrl = computed(() => imageUrlMap[props.projectType])
     border-bottom-left-radius: 2rem;
     border-bottom-right-radius: 2rem;
     background-color: #D3DABF;
-    aspect-ratio: 3/2;
+    height: 100%;
+    object-fit: cover;
 
     @media (max-width: 900px) {
         aspect-ratio: 1/1;
@@ -120,8 +144,13 @@ const iconUrl = computed(() => imageUrlMap[props.projectType])
 
 .v-app-project-item__body {
     box-sizing: border-box;
+    padding: 3rem var(--app-gutter);
     width: 100%;
-    padding: var(--app-gutter);
+    padding-left: calc(50% + var(--app-gutter));
+
+    @media (max-width: 900px) {
+        padding-left: var(--app-gutter);
+    }
 }
 
 .v-app-project-item__bottom {
