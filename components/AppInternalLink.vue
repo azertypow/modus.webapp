@@ -20,6 +20,10 @@
             <div>
                 <h4 class="v-app-internal-link__content__title"
                 >{{ title }}</h4>
+                <div class="v-app-internal-link__content__desc child-remove-margin"
+                     v-if="description"
+                     v-html="description"
+                />
                 <div class="v-app-internal-link__content__illustration"
                      v-if="styleDesign === 'device'"
                 >
@@ -251,10 +255,6 @@
                         </g>
                     </svg>
                 </div>
-                <div class="v-app-internal-link__content__desc child-remove-margin"
-                     v-if="description"
-                     v-html="description"
-                />
             </div>
             <div class="v-app-internal-link__content__button">
                 <nuxt-link class="app-button app-button--small" :href="href">En savoir plus +</nuxt-link>
@@ -349,7 +349,8 @@ const props = defineProps<{
   aspect-ratio: 5/3;
 
   .v-app-internal-link--circle & {
-    aspect-ratio: 1/1;
+        border-bottom-left-radius: var(--app-radius-small);
+        border-bottom-right-radius: var(--app-radius-small);
   }
 
   .v-app-internal-link--full & {
