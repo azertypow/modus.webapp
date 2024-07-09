@@ -24,7 +24,7 @@
 
       <div class="v-demo__section v-demo__section--no-margin">
         <app-project-item
-          img-src="/temp/project_item_cover.png"
+          img_src="/temp/project_item_cover.png"
           project-type="bibliotheque"
           title="lorem title"
           content="

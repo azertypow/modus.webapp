@@ -13,7 +13,7 @@
         >
 
             <div class="v-les-outils-modus__bottom_content__section">
-                <app-project-item
+                <app-project-theme
                     :img-src="null"
                     project-type="plateforme"
                     title="Un pôle à disposition de tout l’écosystème"
@@ -25,7 +25,7 @@
                 />
             </div>
             <div class="v-les-outils-modus__bottom_content__section">
-                <app-project-item
+                <app-project-theme
                     :img-src="null"
                     project-type="laboratoire"
                     title="Un hub d’innovation pour les autorités et les partenaires"
@@ -37,7 +37,7 @@
                 />
             </div>
             <div class="v-les-outils-modus__bottom_content__section">
-                <app-project-item
+                <app-project-theme
                     :img-src="null"
                     project-type="bibliotheque"
                     title="Un fonds de connaissance sur les mobilités"
@@ -49,7 +49,7 @@
                 />
             </div>
             <div class="v-les-outils-modus__bottom_content__section">
-                <app-project-item
+                <app-project-theme
                     :img-src="null"
                     project-type="imaginaires"
                     title="Un vecteur de transformation des représentations"
@@ -61,7 +61,7 @@
                 />
             </div>
             <div class="v-les-outils-modus__bottom_content__section">
-                <app-project-item
+                <app-project-theme
                     :img-src="null"
                     project-type="plantation"
                     title="Un incubateur d’entreprises de mobilités innovantes"

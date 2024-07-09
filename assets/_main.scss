@@ -91,14 +91,14 @@ ul {
   padding: 0;
 
   li {
-    padding-left: calc( var(--app-bullet-size) + .15em );
+    padding-left: calc( var(--app-bullet-size) + .5em );
     display: block;
     position: relative;
-    line-height: 1em;
+    line-height: 1.2em;
 
     &:before {
       position: absolute;
-      top: .35em;
+      top: .25em;
       left: 0;
       content: '';
       display: block;

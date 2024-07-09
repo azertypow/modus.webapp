@@ -18,7 +18,7 @@
                     :title="projectItem.content.title"
                     :content="projectItem.content.headertitle"
                     project-type="bibliotheque"
-                    :img-src="projectItem.headerImage[0].resize.reg"
+                    :img_src="projectItem.headerImage[0].resize.reg"
             />
           </div>
         </div>
