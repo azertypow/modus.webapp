@@ -4,6 +4,18 @@
     >
         <footer class="v-app-page-footer__footer">
 
+            <div class="v-app-page-footer__footer__mailto">
+                <a class="v-app-page-footer__footer__mailto__link"
+                   href="mailto:info@modus-ge.ch"
+                >
+                    <div class="v-app-page-footer__footer__mailto__link__text"
+                    >
+                        <div>Vous avez des questions&nbsp;?</div>
+                        <div>Vous pouvez nous écrire à cette adresse&nbsp;</div>
+                    </div>
+                    <button class="app-button app-button--small">info@modus-ge.ch</button>
+                </a>
+            </div>
 
             <app-newsletter/>
             <img
@@ -56,6 +68,25 @@ const transformYValue: ComputedRef<number> = computed(() => {
     background: white;
     position: relative;
     z-index: 10;
+}
+
+.v-app-page-footer__footer__mailto__link {
+    color: var(--app-color-main--dark);
+    text-decoration: none;
+    box-sizing: border-box;
+    padding: var(--app-gutter);
+    display: flex;
+    align-items: center;
+    gap: var(--app-gutter);
+    margin: auto;
+    max-width: 1300px;
+    justify-content: center;
+    font-size: 1.5rem;
+    line-height: 1.15em;
+
+    @media(max-width: 900px) {
+        flex-direction: column;
+    }
 }
 
 .v-app-page-footer__bottom {
