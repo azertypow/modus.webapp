@@ -53,6 +53,7 @@ onMounted(async () => {
 
 <style lang="scss" scoped >
 .v-project-form {
+    min-height: calc(100vh);
 }
 
 .v-project-form__bottom_content {
@@ -61,7 +62,6 @@ onMounted(async () => {
     z-index: 10;
     width: 100%;
     padding-bottom: 2rem;
-    min-height: calc(100vh - var(--app-nav__height) - 10rem);
     display: flex;
     justify-content: center;
     align-items: center;

@@ -64,6 +64,20 @@
 
               </template>
 
+                <template v-else-if="bodyContentItem.content.type === 'mdimage'">
+                    <div class="v-app-page__section v-app-page__section--full">
+                        <div class="v-app-page__section__img">
+                            <img class="v-app-page__section__img__item"
+                                 :alt="bodyContentItem.image[0].alt"
+                                 :src="bodyContentItem.image[0].resize.large"
+                            />
+                            <div class="v-app-page__section__img__caption"
+                                 v-if="bodyContentItem.image[0].caption"
+                            >{{bodyContentItem.image[0].caption}}</div>
+                        </div>
+                    </div>
+                </template>
+
 
               <template v-else-if="bodyContentItem.content.type === 'simpleText'">
                 <div class="v-app-page__section">
@@ -85,6 +99,7 @@
                 <div class="v-app-page__section v-app-page__section--full">
                   <app-profiles
                     :profiles-data="bodyContentItem.content.content"
+                    :profiles-images-data="bodyContentItem.profilesImages"
                   />
                 </div>
               </template>
@@ -222,6 +237,17 @@ nextTick(() => {
   padding-bottom: 2rem;
   padding-left: var(--app-gutter);
   padding-right: var(--app-gutter);
+}
+
+.v-app-page__section__img {
+    width: 100%;
+}
+
+.v-app-page__section__img__item {
+    display: block;
+    width: 100%;
+    max-height: 80vh;
+    margin: auto;
 }
 
 .v-app-page__section {

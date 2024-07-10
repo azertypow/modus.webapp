@@ -17,7 +17,7 @@
             <app-project-item
                     :title="projectItem.content.title"
                     :content="projectItem.content.headertitle"
-                    project-type="bibliotheque"
+                    project-type="imaginaires"
                     :img_src="projectItem.headerImage[0].resize.reg"
                     :slug="projectItem.slug"
             />

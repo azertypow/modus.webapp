@@ -46,6 +46,22 @@ export interface IApiBody {
             "image": IApiImage[],
             "content": {
                 "content": {
+                    image: [
+                        "file://MFDDVR1e0EFYnsDD"
+                    ],
+                    alt: "",
+                    caption: ""
+                },
+                "id": string,
+                "isHidden": boolean,
+                "type": "mdimage"
+            }
+        }
+        |
+        {
+            "image": IApiImage[],
+            "content": {
+                "content": {
                     "text": string
                 },
                 "id": string,
@@ -73,7 +89,8 @@ export interface IApiBody {
                 "id": string,
                 "isHidden": boolean,
                 "type": "profiles"
-            }
+            },
+            profilesImages: IApiProfilesImages[]
         }
         |
         {
@@ -95,7 +112,7 @@ export interface IApiBody {
         }
         |
         {
-            image: [ ],
+            image: IApiImage[],
             content: {
                 content: {
                     titlecontent: string,
@@ -115,6 +132,16 @@ export interface IApiProfiles {
         "name": string,
         "description": string
     }[]
+}
+
+export interface IApiProfilesImages {
+    content: {
+        description: string,
+        id: string,
+        image: string[],
+        name: string
+    },
+    image: IApiImage[]
 }
 
 

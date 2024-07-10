@@ -4,25 +4,28 @@
       <h3 class="v-app-profiles__title">{{profilesData.title}}</h3>
 
       <div class="v-app-profiles__content">
-        <template v-for="profileItem of profilesData?.profiles">
-          <div class="v-app-profiles__content__coll">
-            <div class="v-app-profiles__item child-remove-margin">
-              <img class="v-app-profiles__item__cover"
-                   :src="profileItem.image[0]"
-                   alt="profiles image"
-                   v-if="profileItem.image[0]"
-              />
-              <div class="v-app-profiles__item__cover"
-                   v-else
-              />
-              <div class="v-app-profiles__item__bottom">
-                <div class="v-app-profiles__item__name"
-                >{{profileItem.name}}</div>
-                <div class="v-app-profiles__item__description"
-                >{{profileItem.description}}</div>
+        <template v-for="profileImageItem of profilesImagesData">
+              <div class="v-app-profiles__content__coll">
+                <div class="v-app-profiles__item child-remove-margin">
+                    <template v-if="profileImageItem.image.length > 0">
+                        <template v-for="profileItem of profileImageItem.image">
+                          <img class="v-app-profiles__item__cover"
+                               :src="profileItem.resize.large"
+                               alt="profiles image"
+                          />
+                        </template>
+                    </template>
+                      <div class="v-app-profiles__item__cover"
+                           v-else
+                      />
+                  <div class="v-app-profiles__item__bottom">
+                    <div class="v-app-profiles__item__name"
+                    >{{profileImageItem.content.name}}</div>
+                    <div class="v-app-profiles__item__description"
+                    >{{profileImageItem.content.description}}</div>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
         </template>
       </div>
 
@@ -35,10 +38,11 @@
 
 <script setup lang="ts">
 import { defineProps } from 'vue'
-import {IApiProfiles} from "~/composable/adminApi/apiDefinitions";
+import {IApiProfiles, IApiProfilesImages} from "~/composable/adminApi/apiDefinitions";
 
 const props = defineProps<{
     profilesData?: IApiProfiles
+    profilesImagesData?: IApiProfilesImages[]
 }>()
 </script>
 
@@ -59,9 +63,10 @@ const props = defineProps<{
   display: block;
   background: #C4C4C4;
   width: 100%;
-  aspect-ratio: 1/1;
+  aspect-ratio: 2/3;
   border-bottom-left-radius: 2rem;
   border-bottom-right-radius: 2rem;
+    object-fit: cover;
 }
 
 .v-app-profiles__content {
