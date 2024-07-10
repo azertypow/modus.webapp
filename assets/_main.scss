@@ -11,43 +11,66 @@ body {
   margin: 0;
   background: white;
   color: var(--app-color-main--dark);
-  font-size: 1rem;
+  font-size: 1.2rem;
   line-height: 1.25em;
   font-weight: 600;
   overflow-x: hidden;
+
+  @media (max-width: 900px) {
+    font-size: 1rem;
+  }
 }
 
 h1 {
   font-size: 3.3rem;
   line-height: 1.05em;
   font-weight: 900;
+  color: var(--app-color-main);
+
+  @media (max-width: 900px) {
+    font-size: 2.3rem;
+  }
 }
 
 h2 {
   line-height: 1.05em;
-  font-size: 2.3rem;
-  font-weight: 600;
+  font-size: 2.5rem;
+  font-weight: 900;
+
+  @media (max-width: 900px) {
+    font-size: 1.8rem;
+  }
 }
 
 h3 {
   line-height: 1.05em;
-  font-size: 2.3rem;
+  font-size: 1.8rem;
   font-weight: 900;
+
+  @media (max-width: 900px) {
+    font-size: 1.5rem;
+  }
 }
 
 h4 {
   font-size: 1.45rem;
   line-height: 1.225em;
+  font-weight: 900;
 }
 
 p {
   margin-left: auto;
   margin-right: auto;
+  max-width: 50em;
 }
 
 .font-small {
   line-height: .75rem;
   font-size: .5rem;
+}
+
+a {
+  color: inherit;
 }
 
 
@@ -65,6 +88,7 @@ button,
   user-select: none;
   cursor: pointer;
   display: inline-block;
+  font-weight: 600;
 
   &.app-button--small {
     line-height: 1em;

@@ -76,7 +76,7 @@ const transformYValue: ComputedRef<number> = computed(() => {
     box-sizing: border-box;
     padding: var(--app-gutter);
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     gap: var(--app-gutter);
     margin: auto;
     max-width: 1300px;
@@ -87,6 +87,10 @@ const transformYValue: ComputedRef<number> = computed(() => {
     @media(max-width: 900px) {
         flex-direction: column;
     }
+}
+
+.v-app-page-footer__footer__mailto__link__text {
+    font-weight: 700;
 }
 
 .v-app-page-footer__bottom {

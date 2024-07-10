@@ -113,6 +113,7 @@ const props = defineProps<{
 
 .v-app-actuality__content__desc {
     color: var(--app-color-main);
+    font-weight: 600;
 }
 
 

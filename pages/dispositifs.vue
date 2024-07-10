@@ -28,7 +28,7 @@
                 <app-project-theme
                     :img-src="null"
                     project-type="laboratoire"
-                    title="Un hub d’innovation pour les autorités et les partenaires"
+                    title="Un centre d’innovation pour les autorités et les partenaires"
                     content="
                             <p>Le Laboratoire expérimente de nouvelles approches pour encourager la transition vers des comportements de mobilité plus durable. Nous nous concentrons sur la compréhension approfondie des demandes et des besoins ainsi que sur l'acceptation de nouveaux services.</p>
                             <p>Pour y parvenir, nous en testons une grande variété ainsi que des pratiques centrées sur l'utilisateur, comme les systèmes de récompenses. Ces initiatives visent à créer des connaissances précieuses qui, une fois évaluées, sont mises à la disposition des pouvoirs publics et des partenaires locaux.</p>

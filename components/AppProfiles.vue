@@ -89,6 +89,7 @@ const props = defineProps<{
 
 .v-app-profiles__item__name {
   color: var(--app-color-main--dark);
+    font-weight: 700;
 }
 
 .v-app-profiles__item__description {

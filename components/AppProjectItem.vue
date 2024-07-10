@@ -28,7 +28,7 @@
             </div>
             <div class="v-app-project-item__bottom__container">
                 <nuxt-link class="app-button app-button--small"
-                           :href="`projects?q=${projectType}`"
+                           :href="`/project/${slug}`"
                 >Découvrir</nuxt-link>
             </div>
         </div>
@@ -48,6 +48,7 @@ const props = defineProps<{
     title?: string
     content?: string
     img_src?: string
+    slug?: string
 }>()
 
 const imageUrlMap: ApiProjectMap = {
@@ -77,7 +78,7 @@ const iconUrl   = computed(() => imageUrlMap[props.projectType] )
 
 <style lang="scss" scoped >
 .v-app-project-item {
-    background: white;
+    background: var(--app-color-green-light);
     box-sizing: border-box;
     width: 100%;
     padding-bottom: 2rem;
@@ -92,6 +93,13 @@ const iconUrl   = computed(() => imageUrlMap[props.projectType] )
         border-top-right-radius: 0;
         border-top-left-radius: 0;
     }
+}
+
+.v-app-project-item__title {
+}
+
+.v-app-project-item__content {
+    font-weight: 600;
 }
 
 .v-app-project-item__header {

@@ -333,6 +333,7 @@ const props = defineProps<{
     flex-direction: column;
     justify-content: space-between;
     position: relative;
+    gap: 1rem;
 
     .v-app-internal-link--full & {
       justify-content: center;
@@ -387,5 +388,6 @@ const props = defineProps<{
 
 .v-app-internal-link__content__desc {
     color: var(--app-color-main);
+    font-weight: 600;
 }
 </style>

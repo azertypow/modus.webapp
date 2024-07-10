@@ -1,6 +1,9 @@
 <template>
     <section
         class="v-app-header"
+        :class="{
+            'v-app-header--small': headerSize === 'small'
+        }"
     >
         <div
             class="v-app-header__container"
@@ -34,6 +37,7 @@
 defineProps<{
   bgImage: string,
   text?: string,
+    headerSize?: 'small',
 }>()
 
 import {bodyScrollInfo} from "~/composable/main";

@@ -150,15 +150,16 @@ export interface IApiProjects {
 
 export interface IApiSingleProject {
     "headerImage": IApiImage[],
-        "content": {
+    slug: string
+    "content": {
         "title": string,
-            "headerimage": string,
-            "showinnav": "false" | "true",
-            "shownewsletter": "true" | "false",
-            "headertitle": string,
-            "body": IApiBody,
-            "pdffile": string,
-            "uuid": string
+        "headerimage": string,
+        "showinnav": "false" | "true",
+        "shownewsletter": "true" | "false",
+        "headertitle": string,
+        "body": IApiBody,
+        "pdffile": string,
+        "uuid": string
     }
 }
 

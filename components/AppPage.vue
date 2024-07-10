@@ -14,6 +14,7 @@
           </template>
           <template v-else>
             <app-header
+                    :headerSize="headerSize"
                     :text="headerText"
                     :bg-image="headerCover"
             />
@@ -29,6 +30,20 @@
       >
         <div class="v-app-page__content__grid">
 
+            <template v-if="path">
+                <div class="v-app-page__section v-app-page__section--full">
+                    <div class="v-app-page__content__path"
+                    ><nuxt-link href="/">Home</nuxt-link> / <nuxt-link href="/projects/">les projets modus</nuxt-link> / {{titleContent?.split(' ').slice(0, 3).join(' ')}}… </div>
+                </div>
+            </template>
+
+            <template v-if="titleContent">
+                <div class="v-app-page__section v-app-page__section--full">
+                    <h1>{{titleContent}}</h1>
+                </div>
+            </template>
+
+
           <template v-if="bodyContent">
 
             <template v-for="bodyContentItem of bodyContent">
@@ -36,16 +51,14 @@
               <template v-if="bodyContentItem.content.type === 'mdheading'">
 
                 <template v-if="bodyContentItem.content.content.level === 'h2'">
-                  <div class="v-app-page__section">
-                    <app-citation
-                      :text="bodyContentItem.content.content.text"
-                    />
+                  <div class="v-app-page__section v-app-page__section--full">
+                    <h2 v-html="bodyContentItem.content.content.text" />
                   </div>
                 </template>
 
                 <template v-else-if="bodyContentItem.content.content.level === 'h3'">
-                  <div class="v-app-page__section">
-                    <h3>{{bodyContentItem.content.content.text}}</h3>
+                  <div class="v-app-page__section v-app-page__section--full">
+                    <h3 v-html="bodyContentItem.content.content.text" />
                   </div>
                 </template>
 
@@ -131,7 +144,10 @@ const props = defineProps<{
   headerText?: string
   headerCover?: string
   bodyContent?: IApiBody
+    headerSize?: 'small'
     withoutBody?: boolean
+    titleContent?: string
+    path?: string
 }>()
 
 
@@ -187,6 +203,10 @@ nextTick(() => {
   position: relative;
   z-index: 10;
   width: 100%;
+}
+
+.v-app-page__content__path {
+    font-weight: 600;
 }
 
 .v-app-page__content__grid {

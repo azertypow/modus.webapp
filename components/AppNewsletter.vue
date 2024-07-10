@@ -69,6 +69,7 @@
     background: transparent !important;
     text-align: left;
     padding: 0;
+    font-weight: 600;
 }
 
 form {
