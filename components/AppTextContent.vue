@@ -48,7 +48,7 @@ const props = withDefaults(defineProps<{
 
 </style>
 
-<style>
+<style lang="scss">
 .v-app-text-content {
     p {
         color: black;
