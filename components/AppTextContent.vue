@@ -49,7 +49,13 @@ const props = withDefaults(defineProps<{
 </style>
 
 <style>
-p {
-    color: black;
+.v-app-text-content {
+    p {
+        color: black;
+    }
+
+    h4 {
+        color: black;
+    }
 }
 </style>
