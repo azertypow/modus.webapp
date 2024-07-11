@@ -336,3 +336,16 @@ nextTick(() => {
   }
 }
 </style>
+
+<style lang="scss">
+.v-app-page {
+    h1 {
+        margin-bottom: 0;
+    }
+
+    h2, h3, h4, p {
+        color: black;
+    }
+
+}
+</style>

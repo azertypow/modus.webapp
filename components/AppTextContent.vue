@@ -47,15 +47,3 @@ const props = withDefaults(defineProps<{
 
 
 </style>
-
-<style lang="scss">
-.v-app-text-content {
-    p {
-        color: black;
-    }
-
-    h4 {
-        color: black;
-    }
-}
-</style>
