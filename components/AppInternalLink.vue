@@ -292,7 +292,6 @@ const props = defineProps<{
     background: var(--app-color-green-light);
     border-radius: var(--app-radius-small);
     box-sizing: border-box;
-    box-shadow: 0 2px 0 0 var(--app-color-main--dark);
     height: 100%;
     flex-wrap: nowrap;
     align-items: flex-start;
