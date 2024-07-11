@@ -119,9 +119,9 @@ const iconUrl   = computed(() => imageUrlMap[props.projectType] )
     background-color: #D3DABF;
     height: 100%;
     object-fit: cover;
+    aspect-ratio: 7/5;
 
     @media (max-width: 900px) {
-        aspect-ratio: 1/1;
     }
 }
 
