@@ -24,7 +24,10 @@ export interface IApiPage {
         "headerTitle": string,
         "headerImage": IApiImage | null
     },
-    "body": IApiBody
+    "body": IApiBody,
+    title?: {
+        value: string
+    }
 }
 
 export interface IApiBody {

@@ -4,10 +4,11 @@
     >
         <app-page
             :header-cover="headerCover"
-            :title-content="headerText"
+            :title-content="bodyTitle"
             :body-content="bodyContent"
             :path="`Home / Les projets Modus / ${headerText}`"
             :header-size="'small'"
+            :header-text="headerText"
         />
         <app-page-footer/>
     </section>
@@ -26,6 +27,7 @@ import {ApiFetchPage} from "~/composable/adminApi/apiFetch";
 const headerCover: Ref<UnwrapRef<undefined | string>> = ref(undefined)
 const headerText: Ref<UnwrapRef<undefined | string>> = ref(undefined)
 
+const bodyTitle: Ref<UnwrapRef<undefined | string>> = ref(undefined)
 const bodyContent: Ref<UnwrapRef<undefined | IApiBody>> = ref(undefined)
 
 onMounted(async () => {
@@ -36,8 +38,9 @@ onMounted(async () => {
     const pageData = await ApiFetchPage(`projects/${slug}`)
 
     headerCover.value = pageData.options.headerImage?.mediaUrl
-    headerText.value = pageData.options.headerTitle
+    headerText.value = pageData?.title?.value
 
+    bodyTitle.value = pageData.options.headerTitle
     bodyContent.value = pageData.body
 })
 </script>

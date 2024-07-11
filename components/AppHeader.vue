@@ -84,6 +84,12 @@ const bodyScrollInfoStore = bodyScrollInfo()
     color: var(--app-color-main);
     z-index: 100;
 
+    .v-app-header--small & {
+        background: var(--app-color-grey);
+        padding-bottom: 5rem;
+        padding-top: 5rem;
+    }
+
 
     @media (max-width: 900px) {
         font-size: 10vw;
