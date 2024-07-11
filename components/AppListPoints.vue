@@ -30,12 +30,5 @@ const props = defineProps<{
 
 <style lang="scss" >
 .v-app-list-points__content {
-  --v-app-list-points__content--font-size: 1.5vw;
-
-  font-size: clamp(1.15rem, var(--v-app-list-points__content--font-size),1.8rem);
-
-  @media (max-width: 900px) {
-    --v-app-list-points__content--font-size: 5vw;
-  }
 }
 </style>
