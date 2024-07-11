@@ -218,6 +218,11 @@ nextTick(() => {
   position: relative;
   z-index: 10;
   width: 100%;
+    padding-bottom: 10rem;
+
+    @media (max-width: 900px) {
+        padding-bottom: 2rem;
+    }
 }
 
 .v-app-page__content__path {
@@ -248,6 +253,7 @@ nextTick(() => {
     width: 100%;
     max-height: 80vh;
     margin: auto;
+    object-fit: contain;
 }
 
 .v-app-page__section {

@@ -99,6 +99,7 @@ const iconUrl   = computed(() => imageUrlMap[props.projectType] )
 }
 
 .v-app-project-item__content {
+    color: var(--app-color-main);
     font-weight: 600;
 }
 

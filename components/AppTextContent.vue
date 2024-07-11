@@ -47,3 +47,9 @@ const props = withDefaults(defineProps<{
 
 
 </style>
+
+<style>
+p {
+    color: black;
+}
+</style>
