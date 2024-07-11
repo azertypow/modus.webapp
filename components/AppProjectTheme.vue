@@ -99,6 +99,7 @@ const imgSrc    = computed(() => `/images_dispositifs/${imgSrcMap[props.projectT
     color: var(--app-color-main);
     font-size: 1rem;
     font-weight: 600;
+    line-height: 1.15em;
 }
 
 .v-app-project-theme__header {
