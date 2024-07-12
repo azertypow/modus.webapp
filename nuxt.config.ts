@@ -9,7 +9,11 @@ export default defineNuxtConfig({
             },
             script: [
             ]
-        }
+        },
+        pageTransition: {
+            name: 'page',
+            mode: 'out-in',
+        },
     },
 
     devtools: {enabled: true},

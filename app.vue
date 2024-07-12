@@ -63,3 +63,30 @@ onMounted(() => {
 }
 
 </style>
+
+<style lang="scss">
+.page-enter-active, .page-leave-active {
+    position: relative;
+    transition: all .5s ease-in-out;
+}
+
+.page-enter-from {
+    transform: translate3d(5vw, 0, 0);
+    opacity: 0;
+}
+
+.page-enter-to {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+}
+
+.page-leave-from {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+}
+
+.page-leave-to {
+    transform: translate3d(-5vw, 0, 0);
+    opacity: 0;
+}
+</style>
