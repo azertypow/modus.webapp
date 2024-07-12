@@ -62,6 +62,13 @@ const transformYValue: ComputedRef<number> = computed(() => {
 
 <style lang="scss" scoped>
 .v-app-page-footer {
+    position: relative;
+    padding-top: 10rem;
+    background: var(--app-color-grey);
+
+    @media (max-width: 900px) {
+        padding-top: 2rem;
+    }
 }
 
 .v-app-page-footer__footer {
