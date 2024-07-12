@@ -11,7 +11,6 @@
 
         <div class="v-app__content" >
             <nuxt-page/>
-            <div id="app-mailto" ></div>
         </div>
 
         <div class="v-app__cookie" v-if="!cookieIsValidate().value">
