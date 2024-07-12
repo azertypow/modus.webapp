@@ -44,7 +44,7 @@
 
 
 <script setup lang="ts">
-import {defineProps} from 'vue'
+import {ComputedRef, defineProps} from 'vue'
 import {bodyScrollInfo} from "~/composable/main";
 import {getValueToPercent} from "~/utils/precent";
 
