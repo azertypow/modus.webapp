@@ -110,9 +110,11 @@ const bodyScrollInfoStore = bodyScrollInfo()
 }
 
 .v-app-header__signature__content {
+    .v-app-header--small & {
         max-width: 1300px;
         margin-left: auto;
         margin-right: auto;
+    }
 }
 
 .v-app-header__container__graphic-box {
