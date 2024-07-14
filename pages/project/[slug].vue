@@ -6,7 +6,7 @@
             :header-cover="headerCover"
             :title-content="bodyTitle"
             :body-content="bodyContent"
-            :path="`Home / Les projets Modus / ${headerText}`"
+            :path="true"
             :header-size="'small'"
             :header-text="headerText"
         />

@@ -24,6 +24,8 @@
                          alt="project icon"
                          :src="`/project_type_icons/${iconUrl}`"
                     />
+                    <h4 class="v-app-project-item__header__type"
+                    >{{ apiProjectMap[projectType] }}</h4>
                 </div>
             </div>
             <div class="v-app-project-item__bottom__container">
@@ -142,8 +144,9 @@ const iconUrl   = computed(() => imageUrlMap[props.projectType] )
 }
 
 .v-app-project-item__header__type {
-    color: white;
     margin: 0;
+    font-size: .75rem;
+    color: var(--app-color-main);
 }
 
 .v-app-project-item__body {

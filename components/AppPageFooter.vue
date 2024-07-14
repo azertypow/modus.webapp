@@ -31,7 +31,7 @@
         >
             <img
                 alt="logo Modus fin de page"
-                src="/modus-webapp-footer--web.jpeg"
+                src="/modus-webapp-footer--web--v2.jpg"
             />
             <div
                 :class="{'with-opacity-1': transformYValue > 92}"
@@ -93,6 +93,7 @@ const transformYValue: ComputedRef<number> = computed(() => {
 
     @media(max-width: 900px) {
         flex-direction: column;
+        align-items: center;
     }
 }
 

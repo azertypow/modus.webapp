@@ -8,11 +8,13 @@
                  alt="project cover"
                  :src="imgSrc"
             />
-            <div class="v-app-project-theme__header__bottom">
-                <img class="v-app-project-theme__header__icon"
+            <div class="v-app-project-theme__header__bottom__theme-icon">
+                <img class="v-app-project-theme__header__bottom__theme-icon__item"
                      alt="project icon"
                      :src="`/project_type_icons/${iconUrl}`"
                 />
+            </div>
+            <div class="v-app-project-theme__header__bottom">
                 <h4 class="v-app-project-theme__header__type"
                 >{{ apiProjectMap[projectType] }}</h4>
             </div>
@@ -20,7 +22,13 @@
 
         <div class="v-app-project-theme__body child-remove-margin"
         >
-            <h4 class="v-app-project-theme__title">{{title}}</h4>
+            <div class="v-app-project-theme__body__header child-remove-margin">
+                <img class="v-app-project-theme__theme-icon"
+                     alt="project icon"
+                     :src="`/project_type_icons/${iconUrl}`"
+                />
+                <h4 class="v-app-project-theme__title">{{title}}</h4>
+            </div>
             <div class="v-app-project-theme__content child-remove-margin"
                  v-html="content"
             />
@@ -92,6 +100,7 @@ const imgSrc    = computed(() => `/images_dispositifs/${imgSrcMap[props.projectT
 }
 
 .v-app-project-theme__title {
+    margin-top: 0;
     color: var(--app-color-main);
 }
 
@@ -116,6 +125,30 @@ const imgSrc    = computed(() => `/images_dispositifs/${imgSrcMap[props.projectT
     }
 }
 
+.v-app-project-theme__header__bottom__theme-icon {
+    display: none;
+
+    @media (max-width: 900px) {
+        background: var(--app-color-green-light);
+        border-radius: 100%;
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -100%);
+        padding: 1rem;
+        width: 4rem;
+        aspect-ratio: 1/1;
+    }
+}
+
+.v-app-project-theme__header__bottom__theme-icon__item {
+    display: block;
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+
 .v-app-project-theme__header__img {
     display: block;
     width: 100%;
@@ -133,23 +166,39 @@ const imgSrc    = computed(() => `/images_dispositifs/${imgSrcMap[props.projectT
 .v-app-project-theme__header__bottom {
     display: flex;
     position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
+    top: var(--app-gutter);
+    left: var(--app-gutter);
     gap: var(--app-gutter);
     box-sizing: border-box;
     padding: var(--app-gutter);
     align-items: center;
+    background: var(--app-color-green-light);
+    border-radius: 5rem;
+
+    @media (max-width: 900px) {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, var(--app-gutter));
+    }
 }
 
 .v-app-project-theme__header__type {
-    color: white;
     margin: 0;
+    color: var(--app-color-main);
+
+    @media (max-width: 900px) {
+        text-align: center;
+    }
 }
 
-.v-app-project-theme__header__icon {
+.v-app-project-theme__theme-icon {
     display: block;
-    width: 4rem;
+    height: 4rem;
+
+    @media (max-width: 900px) {
+        display: none;
+    }
 }
 
 .v-app-project-theme__body {
@@ -161,6 +210,13 @@ const imgSrc    = computed(() => `/images_dispositifs/${imgSrcMap[props.projectT
     @media (max-width: 900px) {
         padding-left: var(--app-gutter);
     }
+}
+
+.v-app-project-theme__body__header {
+    display: flex;
+    gap: var(--app-gutter);
+    align-items: flex-start;
+    padding-bottom: 1rem;
 }
 
 .v-app-project-theme__bottom {

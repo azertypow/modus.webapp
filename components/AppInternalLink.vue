@@ -365,6 +365,7 @@ const props = defineProps<{
 .v-app-internal-link__content__title {
   margin-top: 1em;
   margin-bottom: .25em;
+    color: var(--app-color-main--dark);
 }
 
 .v-app-internal-link__content__illustration {
@@ -386,7 +387,13 @@ const props = defineProps<{
 }
 
 .v-app-internal-link__content__desc {
-    color: var(--app-color-main);
     font-weight: 600;
+}
+</style>
+<style lang="scss">
+.v-app-internal-link__content__desc {
+    > * {
+        color: var(--app-color-main) !important;
+    }
 }
 </style>

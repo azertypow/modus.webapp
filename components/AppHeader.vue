@@ -20,12 +20,14 @@
             </div>
         </div>
 
-        <div
-            class="v-app-header__signature"
-            :style="`transform: translate(0, -${bodyScrollInfoStore.top / 1.05}px)`"
-            v-if="text"
-            v-html="text"
-        ></div>
+        <div class="v-app-header__signature"
+             :style="`transform: translate(0, -${bodyScrollInfoStore.top / 1.05}px)`"
+             v-if="text"
+        >
+            <div class="v-app-header__signature__content"
+                 v-html="text"
+            ></div>
+        </div>
     </section>
 </template>
 
@@ -84,16 +86,33 @@ const bodyScrollInfoStore = bodyScrollInfo()
     color: var(--app-color-main);
     z-index: 100;
 
+    @media (max-width: 900px) {
+        font-size: 10vw;
+    }
+
     .v-app-header--small & {
         background: var(--app-color-grey);
         padding-bottom: 5rem;
         padding-top: 5rem;
-    }
+        font-size: 4.5rem;
+        font-weight: 900;
+        color: var(--app-color-main--dark);
+        box-sizing: border-box;
 
+        @media (max-width: 900px) {
+            font-size: 2.5rem;
+        }
 
-    @media (max-width: 900px) {
-        font-size: 10vw;
+        @media (max-width: 700px) {
+            font-size: 2rem;
+        }
     }
+}
+
+.v-app-header__signature__content {
+        max-width: 1300px;
+        margin-left: auto;
+        margin-right: auto;
 }
 
 .v-app-header__container__graphic-box {

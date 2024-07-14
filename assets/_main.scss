@@ -28,7 +28,11 @@ h1 {
   color: var(--app-color-main);
 
   @media (max-width: 900px) {
-    font-size: 2.3rem;
+    font-size: 2.25rem;
+  }
+
+  @media (max-width: 700px) {
+    font-size: 1.8rem;
   }
 }
 
@@ -39,6 +43,10 @@ h2 {
 
   @media (max-width: 900px) {
     font-size: 1.8rem;
+  }
+
+  @media (max-width: 700px) {
+    font-size: 1.5rem;
   }
 }
 

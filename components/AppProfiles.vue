@@ -59,6 +59,11 @@ const props = defineProps<{
   border-radius: 2rem;
 }
 
+.v-app-profiles__title {
+    text-align: left;
+    color: var(--app-color-main--dark);
+}
+
 .v-app-profiles__item__cover {
   display: block;
   background: #C4C4C4;

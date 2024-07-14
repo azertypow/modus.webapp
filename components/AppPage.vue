@@ -25,18 +25,18 @@
         </template>
       </div>
 
+        <div class="v-app-page__path"
+             v-if="path"
+        >
+            <div class="v-app-page__path__content">
+                <nuxt-link href="/">Home</nuxt-link> / <nuxt-link href="/projects/">Les Projets Modus</nuxt-link> / {{titleContent?.split(' ').slice(0, 3).join(' ')}}…
+            </div>
+        </div>
+
       <div class="v-app-page__content app-show-background-on-nav"
            v-if="withoutBody !== true"
       >
         <div class="v-app-page__content__grid">
-
-            <template v-if="path">
-                <div class="v-app-page__section v-app-page__section--full">
-                    <div class="v-app-page__content__path"
-                    ><nuxt-link href="/">Home</nuxt-link> / <nuxt-link href="/projects/">les projets modus</nuxt-link> / {{titleContent?.split(' ').slice(0, 3).join(' ')}}… </div>
-                </div>
-            </template>
-
             <template v-if="titleContent">
                 <div class="v-app-page__section v-app-page__section--full">
                     <h1>{{titleContent}}</h1>
@@ -162,7 +162,7 @@ const props = defineProps<{
     headerSize?: 'small'
     withoutBody?: boolean
     titleContent?: string
-    path?: string
+    path?: boolean
 }>()
 
 
@@ -220,8 +220,23 @@ nextTick(() => {
   width: 100%;
 }
 
-.v-app-page__content__path {
+.v-app-page__path {
     font-weight: 600;
+    position: sticky;
+    top: var(--app-nav__height);
+    z-index: 1000;
+    box-sizing: border-box;
+    width: 100%;
+    background: var(--app-color-grey);
+    box-shadow: 0 10px 10px 0 var(--app-color-grey);
+}
+
+.v-app-page__path__content {
+    box-sizing: border-box;
+    padding-left: var(--app-gutter);
+    padding-right: var(--app-gutter);
+    margin: auto;
+    max-width: 1300px;
 }
 
 .v-app-page__content__grid {
@@ -338,7 +353,12 @@ nextTick(() => {
         margin-bottom: 0;
     }
 
-    h2, h3, h4, p {
+    h2, h3 {
+        color: var(--app-color-main);
+        text-align: center;
+    }
+
+    h4, p {
         color: black;
     }
 
