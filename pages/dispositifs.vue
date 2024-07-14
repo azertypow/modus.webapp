@@ -8,8 +8,8 @@
             :body-content="bodyContent"
         />
 
-        <div
-            class="v-les-outils-modus__bottom_content"
+        <div class="v-les-outils-modus__bottom_content"
+             id="content"
         >
             <div class="v-les-outils-modus__bottom_content__flex">
                 <div class="v-les-outils-modus__bottom_content__section">
