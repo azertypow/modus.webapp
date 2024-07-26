@@ -67,7 +67,7 @@ defineProps<{
 
 
   @media (max-width: 900px) {
-    height: calc( var(--app-header-height) + 8rem );
+    height: calc( var(--app-header-height) );
   }
 }
 
