@@ -163,7 +163,8 @@ onMounted(async () => {
     grid-column: span 2;
 
     @media (max-width: 1300px) {
-        padding: 0;
+        padding-left: 0;
+        padding-right: 0;
     }
 }
 </style>
