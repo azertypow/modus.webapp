@@ -68,7 +68,7 @@
                     <div class="v-app-page__section v-app-page__section--full">
                         <div class="v-app-page__section__img">
                             <img class="v-app-page__section__img__item"
-                                 :alt="bodyContentItem.image[0].alt"
+                                 :alt="bodyContentItem.image[0].alt || 'Pas de description pour cette image'"
                                  :src="bodyContentItem.image[0].resize.large"
                             />
                             <div class="v-app-page__section__img__caption"
@@ -167,25 +167,28 @@ const props = defineProps<{
 
 
 nextTick(() => {
-  const elementsToSetBackgroundNav = document.querySelectorAll('.app-show-background-on-nav')
+    window.setTimeout(() => {
+        const elementsToSetBackgroundNav = document.querySelectorAll('.app-show-background-on-nav')
+        console.log('couscous!!!', elementsToSetBackgroundNav)
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        console.log('L\'élément est en intersection avec la fenêtre')
-        useIsIntersected().value = true
-      } else {
-        console.log('L\'élément n\'est plus en intersection avec la fenêtre')
-        useIsIntersected().value = false
-      }
-    })
-  }, {
-    rootMargin: `0px 0px ${window.innerHeight * -1}px 0px`
-  })
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    console.log('L\'élément est en intersection avec la fenêtre')
+                    useIsIntersected().value = true
+                } else {
+                    console.log('L\'élément n\'est plus en intersection avec la fenêtre')
+                    useIsIntersected().value = false
+                }
+            })
+        }, {
+            rootMargin: `0px 0px ${window.innerHeight * -1}px 0px`
+        })
 
-  elementsToSetBackgroundNav.forEach((value) => {
-    observer.observe(value)
-  })
+        elementsToSetBackgroundNav.forEach((value) => {
+            observer.observe(value)
+        })
+    }, 2_000)
 })
 
 </script>
@@ -218,6 +221,10 @@ nextTick(() => {
   position: relative;
   z-index: 10;
   width: 100%;
+
+  @media (max-width: 900px) {
+    box-shadow: 0 -5px 5px 0 var(--app-color-grey);
+  }
 }
 
 .v-app-page__path {
