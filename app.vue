@@ -45,13 +45,16 @@
 
 import {bodyScrollInfo, cookieIsValidate, showMenu, siteInfo, useIsIntersected} from "~/composable/main";
 import AppCookie from "~/components/AppCookie.vue";
+import {ApiFetchPagesInfo} from "~/composable/adminApi/apiFetch";
 
 const isIntersected = useIsIntersected()
 
-onMounted(() => {
+onMounted(async () => {
     window.addEventListener('scroll', () => {
         bodyScrollInfo().value = {top: window.scrollY }
     })
+
+    siteInfo().value = await ApiFetchPagesInfo()
 })
 
 useRouter().beforeEach((to, from, next) => {

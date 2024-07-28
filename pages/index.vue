@@ -56,8 +56,6 @@ onMounted(async () => {
   headerText.value = pageData.options.headerTitle
 
   bodyContent.value = pageData.body
-
-  siteInfo().value = await ApiFetchPagesInfo()
 })
 
 </script>
