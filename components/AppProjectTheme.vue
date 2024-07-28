@@ -35,7 +35,7 @@
         </div>
         <div class="v-app-project-theme__bottom">
             <nuxt-link class="app-button app-button--small"
-                       :href="`projects?q=${projectType}`"
+                       href="projects"
             >Découvrir les projets</nuxt-link>
         </div>
     </section>
