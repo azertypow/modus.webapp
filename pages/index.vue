@@ -23,14 +23,12 @@
 </template>
 
 
-
-
-
 <script setup lang="ts">
 import {defineProps, Ref, UnwrapRef} from 'vue'
 import AppPage from "~/components/AppPage.vue";
-import {ApiFetchPage} from "~/composable/adminApi/apiFetch";
+import {ApiFetchPage, ApiFetchPagesInfo} from "~/composable/adminApi/apiFetch";
 import {IApiBody} from "~/composable/adminApi/apiDefinitions";
+import {siteInfo} from "~/composable/main";
 
 // const props = defineProps<{
 //     message?: string
@@ -58,6 +56,8 @@ onMounted(async () => {
   headerText.value = pageData.options.headerTitle
 
   bodyContent.value = pageData.body
+
+  siteInfo().value = await ApiFetchPagesInfo()
 })
 
 </script>

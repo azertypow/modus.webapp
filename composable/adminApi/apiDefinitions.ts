@@ -193,3 +193,43 @@ export interface IApiSingleProject {
     }
 }
 
+export interface IApiSiteInfo {
+    "title": {
+        "value": string
+    },
+    "children": IApiSiteInfoChildren[]
+}
+
+export interface IApiSiteInfoChildren {
+    "children": {
+        "data": []
+    },
+    "title": {
+        "value": string
+    },
+    "headerimage": {
+        "value": string
+    },
+    "showinnav": {
+        "value": "false" | "true"
+    },
+    "shownewsletter": {
+        "value": "true" | "false"
+    },
+    "headertitle": {
+        "value": string
+    },
+    "id": string,
+    "mediaUrl": string,
+    "mediaRoot": string,
+    "num": number,
+    "parent": null,
+    "slug": string,
+    "template": {},
+    "translations": {
+        "data": []
+    },
+    "uid": string
+    "uri": string
+    "url": string
+}

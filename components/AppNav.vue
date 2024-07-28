@@ -1,5 +1,9 @@
 <template>
-    <nav class="v-app-nav">
+    <nav class="v-app-nav"
+         :class="{
+          'menu-is-open' : showMenu().value
+         }"
+    >
         <svg
                 @click="scrollToTop"
                 class="v-app-nav__logo"
@@ -36,6 +40,7 @@
 
         <div
             class="v-app-nav__menu"
+            @click="toggleNav"
         >
           <img alt="ouvrire le menu"
                src="@/assets/menu_icon.svg"
@@ -51,7 +56,7 @@
 
 <script lang="ts" setup>
 
-import {arrayOfH2TitleIdInCurrentPage} from "~/composable/main";
+import {arrayOfH2TitleIdInCurrentPage, showMenu, siteInfo} from "~/composable/main";
 
 const h2TitleIdInCurrentPage = arrayOfH2TitleIdInCurrentPage()
 
@@ -60,14 +65,16 @@ function scrollToTop() {
     useRouter().push('/')
 }
 
+function toggleNav() {
+    showMenu().value = !showMenu().value
+}
+
 </script>
 
 
-
-
-
-<style lang="scss" scoped >
+<style lang="scss" scoped>
 .v-app-nav {
+  pointer-events: none;
   width: 100%;
   display: flex;
   align-items: center;
@@ -75,13 +82,10 @@ function scrollToTop() {
   height: var(--app-nav__height);
   box-sizing: border-box;
   position: relative;
-    user-select: none;
+  user-select: none;
 
   transition: padding .5s .0s ease-in-out;
-  padding:
-		  calc(var(--app-gutter) / 2)
-		  calc( var(--app-gutter) / 1)
-		  0;
+  padding: calc(var(--app-gutter) / 2) calc(var(--app-gutter) / 1) 0;
 
   &:before {
     position: absolute;
@@ -90,18 +94,23 @@ function scrollToTop() {
     content: "";
     display: block;
     width: 100%;
+    pointer-events: none;
+    z-index: -1;
     background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(10px);
     transition: height .25s ease-in-out;
     height: 0;
-    z-index: -1;
-    backdrop-filter: blur(10px);
+  }
+
+  &.menu-is-open {
+    &:before {
+      background: rgba(255, 255, 255, 0);
+      backdrop-filter: blur(0px);
+    }
   }
 
   .is-intersected & {
-    padding:
-		    calc(var(--app-gutter) / 4)
-            calc( var(--app-gutter) / 1)
-		    0;
+    padding: calc(var(--app-gutter) / 4) calc(var(--app-gutter) / 1) 0;
 
     &:before {
       height: 100%;
@@ -115,7 +124,8 @@ function scrollToTop() {
   height: 2rem;
   width: auto;
   fill: var(--app-color-main);
-    cursor: pointer;
+  cursor: pointer;
+  pointer-events: all;
 
   .is-intersected & {
   }
@@ -125,28 +135,8 @@ function scrollToTop() {
   display: flex;
   gap: 1rem;
   align-items: center;
-    height: 100%;
-}
-
-.v-app-nav__links__item {
-  text-decoration: none;
-  color: var(--app-color-main);
+  height: 100%;
   cursor: pointer;
-
-  .is-intersected & {
-  }
-
-  &.v-app-nav__links__item--rm-mobile {
-    @media (max-width: 700px) {
-      display: none;
-    }
-  }
-
-  img {
-    user-select: none;
-    display: block;
-    height: .75rem;
-  }
+  pointer-events: all;
 }
-
 </style>

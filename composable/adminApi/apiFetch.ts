@@ -12,5 +12,5 @@ export async function ApiFetchProjects(apiPath: string): Promise<IApiProjects> {
 }
 
 export async function ApiFetchPagesInfo() {
-    return ((await fetch(`${baseUrl}pagesInfo.json`)).json())
+    return ((await fetch(`${baseUrl}pages-info.json`)).json())
 }

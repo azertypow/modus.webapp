@@ -1,4 +1,5 @@
 import {Ref} from "vue";
+import {IApiSiteInfo} from "~/composable/adminApi/apiDefinitions";
 
 export const arrayOfH2TitleIdInCurrentPage: () => Ref<{ anchor: string; name: string }[]> = () => {
     return useState(
@@ -30,3 +31,9 @@ export const cookieIsValidate: () => Ref<boolean> = () => {
         return false
     })
 }
+
+export const showMenu: () => Ref<boolean> =
+    () => useState('showMenu', () => false)
+
+export const siteInfo: () => Ref<IApiSiteInfo | null > =
+    () => useState('siteInfo', () => null)
