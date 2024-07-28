@@ -90,6 +90,7 @@ const iconUrl   = computed(() => imageUrlMap[props.projectType] )
     flex-direction: row;
     position: relative;
     overflow: hidden;
+    height: 100%;
 
     @media (max-width: 900px) {
         border-top-right-radius: 0;
