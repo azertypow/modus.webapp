@@ -138,7 +138,7 @@ const imgSrc    = computed(() => `/images_dispositifs/${imgSrcMap[props.projectT
         transform: translate(-50%, -100%);
         padding: 1rem;
         width: 4rem;
-        aspect-ratio: 1/1;
+        height: 4rem;
     }
 }
 
