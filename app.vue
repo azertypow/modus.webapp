@@ -8,10 +8,13 @@
         <div class="v-app__menu"
              v-if="showMenu().value"
         >
+          <template v-for="item of siteInfo().value?.children"
+          >
             <nuxt-link class="v-app__menu__item"
-                       v-for="item of siteInfo().value?.children"
+                       v-if="item.showinnav.value === 'true'"
                        :href="item.slug === 'home' ? '/' : item.slug"
             >{{item.title.value}}</nuxt-link>
+          </template>
         </div>
 
         <div class="v-app__cache"
@@ -104,11 +107,9 @@ useRouter().beforeEach((to, from, next) => {
     font-size: 2rem;
     line-height: 1em;
     font-weight: 700;
-    box-shadow: 0 0 0 0 var(--app-color-main);
 
     &:hover {
-      transition: box-shadow .5s ease-in-out;
-      box-shadow: 0 10px 10px -10px var(--app-color-main);
+      color: var(--app-color-main);
     }
 
     @media (max-width: 900px) {
