@@ -187,7 +187,7 @@ const props = defineProps<{
 
 .v-app-internal-link__img__img {
   display: block;
-  background: rebeccapurple;
+  background: var(--app-color-main);
   width: 100%;
   object-fit: cover;
   border-radius: var(--app-radius-small) var(--app-radius-small) var(--app-radius-large) var(--app-radius-large);
