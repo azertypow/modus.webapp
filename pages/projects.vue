@@ -1,7 +1,6 @@
 <template>
     <section
         class="v-projects"
-        @click="updateQuery('trois')"
     >
       <app-page
         :header-cover="headerCover"
@@ -64,10 +63,6 @@ const filter: Ref<UnwrapRef<string | LocationQueryValue[] | null>> = ref( route.
 watch(() => route.query.q, (newSearch) => {
     filter.value = newSearch
 })
-
-function updateQuery(q) {
-    router.push({ query: { q } })
-}
 
 </script>
 
