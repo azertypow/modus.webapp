@@ -21,10 +21,12 @@
             <div class="v-app-project-item__bottom__container" >
                 <div class="v-app-project-item__bottom__icon-box">
                     <img class="v-app-project-item__bottom__icon-box__img"
+                         v-if="iconUrl"
                          alt="project icon"
                          :src="`/project_type_icons/${iconUrl}`"
                     />
                     <h4 class="v-app-project-item__header__type"
+                        v-if="projectType"
                     >{{ apiProjectMap[projectType] }}</h4>
                 </div>
             </div>
@@ -42,7 +44,7 @@
 
 
 <script setup lang="ts">
-import { defineProps } from 'vue'
+import {ComputedRef, defineProps} from 'vue'
 import {ApiProjectMap, apiProjectMap, ApiProjectType} from "~/composable/adminApi/apiDefinitions";
 
 const props = defineProps<{
@@ -61,16 +63,7 @@ const imageUrlMap: ApiProjectMap = {
     'plateforme':  'img_plateforme.svg',
 }
 
-const imgSrcMap: ApiProjectMap = {
-    'bibliotheque': '240603_Modus-bibliothque.jpg',
-    'imaginaires':  '240603_Modus-fabriquedesimaginaires.jpg',
-    'laboratoire':  '240603_Modus-laboratoire.jpg',
-    'plantation':   '240603_Modus-plantation.jpg',
-    'plateforme':   '240603_Modus-plateforme.jpg',
-}
-
-const iconUrl   = computed(() => imageUrlMap[props.projectType] )
-// const imgSrc    = computed(() => `/images_dispositifs/${imgSrcMap[props.projectType]}` )
+const iconUrl: ComputedRef<string | null> = computed(() => props.projectType ? imageUrlMap[props.projectType] : null )
 
 </script>
 
