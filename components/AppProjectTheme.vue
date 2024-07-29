@@ -92,6 +92,7 @@ const imgSrc    = computed(() => `/images_dispositifs/${imgSrcMap[props.projectT
     flex-direction: row;
     position: relative;
     overflow: hidden;
+    min-height: 100%;
 
     @media (max-width: 900px) {
         border-top-right-radius: 0;
@@ -226,5 +227,6 @@ const imgSrc    = computed(() => `/images_dispositifs/${imgSrcMap[props.projectT
     width: 100%;
     display: flex;
     justify-content: flex-end;
+  align-items: flex-end;
 }
 </style>
