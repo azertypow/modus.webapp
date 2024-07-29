@@ -145,6 +145,10 @@ const iconUrl: ComputedRef<string | null> = computed(() => props.projectType ? i
     box-sizing: border-box;
     padding: 3rem var(--app-gutter);
     width: 100%;
+
+    @media (max-width: 700px) {
+        padding-bottom: var(--app-gutter);
+    }
 }
 
 .v-app-project-item__bottom {
@@ -155,6 +159,12 @@ const iconUrl: ComputedRef<string | null> = computed(() => props.projectType ? i
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
+
+    @media (max-width: 700px) {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--app-gutter);
+    }
 }
 
 .v-app-project-item__bottom__container {
