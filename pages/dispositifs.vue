@@ -18,7 +18,7 @@
                         project-type="plateforme"
                         title="Un espace à disposition de tout l’écosystème"
                         content="
-                                <p>La plateforme vise à faciliter la collaboration entre les acteurs de Genève. Elle cherche également à inviter d'autres intervenant.e.s régionaux et internationaux.</p>
+                                <p>La Plateforme vise à faciliter la collaboration entre les acteurs de Genève. Elle cherche également à inviter d'autres intervenant.e.s régionaux et internationaux.</p>
                                 <p>La Plateforme s'appuie notamment par l'organisation d'événements réguliers comme les afterworks de la mobilité.</p>
                                 <p>Modus aspire à servir et à réunir efficacement l’ensemble de l’écosystème pour contribuer à une mobilité plus intégrée et plus durable à Genève.</p>
                                 "
