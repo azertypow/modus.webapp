@@ -104,7 +104,6 @@ const iconUrl: ComputedRef<string | null> = computed(() => props.projectType ? i
     top: 0;
     left: 0;
     position: relative;
-    height: auto;
     width: 100%;
 }
 
@@ -114,7 +113,6 @@ const iconUrl: ComputedRef<string | null> = computed(() => props.projectType ? i
     border-bottom-left-radius: 2rem;
     border-bottom-right-radius: 2rem;
     background-color: #D3DABF;
-    height: 100%;
     object-fit: cover;
     aspect-ratio: 7/5;
 
