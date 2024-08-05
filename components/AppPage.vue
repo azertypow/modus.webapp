@@ -169,15 +169,14 @@ const props = defineProps<{
 nextTick(() => {
     window.setTimeout(() => {
         const elementsToSetBackgroundNav = document.querySelectorAll('.app-show-background-on-nav')
-        console.log('couscous!!!', elementsToSetBackgroundNav)
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    console.log('L\'élément est en intersection avec la fenêtre')
+                    // console.log('L\'élément est en intersection avec la fenêtre')
                     useIsIntersected().value = true
                 } else {
-                    console.log('L\'élément n\'est plus en intersection avec la fenêtre')
+                    // console.log('L\'élément n\'est plus en intersection avec la fenêtre')
                     useIsIntersected().value = false
                 }
             })
