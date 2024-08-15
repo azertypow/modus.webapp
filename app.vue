@@ -15,6 +15,9 @@
                        :href="item.slug === 'home' ? '/' : item.slug"
             >{{item.title.value}}</nuxt-link>
           </template>
+          <nuxt-link class="v-app__menu__item"
+                     href="proto"
+          >Proto Embed</nuxt-link>
         </div>
 
         <div class="v-app__cache"
