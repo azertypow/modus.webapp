@@ -2,11 +2,12 @@
     <section
         class="v-app-header"
         :class="{
-            'v-app-header--small': headerSize === 'small'
+            'v-app-header--small': headerSize === 'small',
+            'v-app-header--no-bg': !bgImage,
         }"
     >
-        <div
-            class="v-app-header__container"
+        <div class="v-app-header__container"
+             v-if="bgImage"
             :style="`transform: translate(0, -${bodyScrollInfoStore.top / 4}px)`"
         >
             <div
@@ -37,7 +38,7 @@
 
 <script lang="ts" setup>
 defineProps<{
-  bgImage: string,
+  bgImage?: string,
   text?: string,
     headerSize?: 'small',
 }>()
@@ -63,6 +64,11 @@ const bodyScrollInfoStore = bodyScrollInfo()
     align-items: flex-start;
     justify-content: flex-end;
     position: relative;
+
+    &.v-app-header--no-bg {
+        height: auto;
+        padding-top: var(--app-nav__height);
+    }
 }
 
 .v-app-header__container {
@@ -90,7 +96,8 @@ const bodyScrollInfoStore = bodyScrollInfo()
         font-size: 10vw;
     }
 
-    .v-app-header--small & {
+    .v-app-header--small &,
+    .v-app-header--no-bg & {
         background: var(--app-color-grey);
         padding-bottom: 5rem;
         padding-top: 5rem;
@@ -110,7 +117,8 @@ const bodyScrollInfoStore = bodyScrollInfo()
 }
 
 .v-app-header__signature__content {
-    .v-app-header--small & {
+    .v-app-header--small &,
+    .v-app-header--no-bg {
         max-width: 1300px;
         margin-left: auto;
         margin-right: auto;
