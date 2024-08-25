@@ -7,7 +7,6 @@
         }"
     >
         <div class="v-app-header__container"
-             v-if="bgImage"
             :style="`transform: translate(0, -${bodyScrollInfoStore.top / 4}px)`"
         >
             <div
@@ -16,7 +15,7 @@
                 <img
                     class="v-app-header__graphic-box__module_1"
                     alt="image graphique de ville pour habiller le header du site"
-                    :src="bgImage"
+                    :src="bgImage ? bgImage : '/header--default.jpg'"
                 />
             </div>
         </div>
@@ -64,11 +63,6 @@ const bodyScrollInfoStore = bodyScrollInfo()
     align-items: flex-start;
     justify-content: flex-end;
     position: relative;
-
-    &.v-app-header--no-bg {
-        height: auto;
-        padding-top: var(--app-nav__height);
-    }
 }
 
 .v-app-header__container {
@@ -118,7 +112,7 @@ const bodyScrollInfoStore = bodyScrollInfo()
 
 .v-app-header__signature__content {
     .v-app-header--small &,
-    .v-app-header--no-bg {
+    .v-app-header--no-bg & {
         max-width: 1300px;
         margin-left: auto;
         margin-right: auto;
