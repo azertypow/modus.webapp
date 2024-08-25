@@ -5,7 +5,7 @@
       <div
         class="v-app-page__header"
       >
-        <template v-if="headerCover">
+        <template v-if="headerCover || headerText">
           <template v-if="useRoute().path === '/'">
             <app-header-home
               :text="headerText"
@@ -21,7 +21,7 @@
           </template>
         </template>
         <template v-else>
-            <div>
+            <div class="v-app-page__header__loading">
 
             </div>
         </template>
@@ -91,7 +91,7 @@
               </template>
 
               <template v-else-if="bodyContentItem.content.type === 'body'">
-                <div class="v-app-page__section v-app-page__section--full">
+                <div class="v-app-page__section v-app-page__section--body v-app-page__section--full">
                   <div v-html="bodyContentItem.content.content.text"/>
                 </div>
               </template>
@@ -211,6 +211,12 @@ nextTick(() => {
   }
 }
 
+.v-app-page__header__loading {
+    background: var(--app-color-grey);
+    width: 100%;
+    height: 100%;
+}
+
 .v-app-page__content {
   background: var(--app-color-grey);
   position: relative;
@@ -278,6 +284,20 @@ nextTick(() => {
 
   @media (max-width: 900px) {
     grid-column: span 2;
+  }
+
+  &.v-app-page__section--body {
+    &:deep(h2) {
+      text-align: left;
+    }
+
+    &:deep(ul),
+    &:deep(ol) {
+      box-sizing: border-box;
+      max-width: 60rem;
+      margin-left: auto;
+      margin-right: auto;
+    }
   }
 
   &.v-app-page__section--full {
