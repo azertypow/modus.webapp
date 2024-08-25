@@ -16,6 +16,7 @@
         </div>
 
         <div class="v-app-internal-link__content"
+             :class="isHover"
         >
             <div>
                 <h4 class="v-app-internal-link__content__title"
@@ -26,6 +27,7 @@
                 />
                 <div class="v-app-internal-link__content__illustration"
                      v-if="styleDesign === 'device'"
+                     ref="illustrationContainer"
                 >
                     <svg id="Calque_2" data-name="Calque 2" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1974.6 1649.6">
                         <g id="Calque_1-2" data-name="Calque 1-2">
@@ -94,11 +96,11 @@
                                 </g>
                             </g>
                         </g>
-                        <path @click="navigateTo('/dispositifs')" id="cache--plateforme" class="cls-3"      style="cursor: pointer;stroke-width: 0;opacity: 0" d="M1172.7,440.7c68.9,117,219.6,156,336.6,87.1,117-68.9,156-219.6,87.1-336.6-68.9-117-219.6-156-336.6-87.1-117,68.9-156,219.6-87.1,336.6"/>
-                        <path @click="navigateTo('/dispositifs')" id="cache--bibliotheque" class="cls-3"    style="cursor: pointer;stroke-width: 0;opacity: 0" d="M1644.8,773.7c-135.8,0-245.9,110.1-245.9,245.9s110.1,245.9,245.9,245.9,245.9-110.1,245.9-245.9-110.1-245.9-245.9-245.9"/>
-                        <path @click="navigateTo('/dispositifs')" id="cache--plantation" class="cls-3"      style="cursor: pointer;stroke-width: 0;opacity: 0" d="M1121.6,1157.9c-135.8,0-245.9,110.1-245.9,245.9s110.1,245.9,245.9,245.9,245.9-110.1,245.9-245.9-110.1-245.9-245.9-245.9"/>
-                        <path @click="navigateTo('/dispositifs')" id="cache--imaginaire" class="cls-3"      style="cursor: pointer;stroke-width: 0;opacity: 0" d="M106.9,1220.9c68.9,117,219.6,156,336.6,87.1s156-219.6,87.1-336.6c-68.9-117-219.6-156-336.6-87.1-117,68.9-156,219.6-87.1,336.6"/>
-                        <path @click="navigateTo('/dispositifs')" id="cache--laboratoire" class="cls-3"     style="cursor: pointer;stroke-width: 0;opacity: 0" d="M252.2,532.5c68.9,117,219.6,156,336.6,87.1s156-219.6,87.1-336.6c-68.9-117-219.6-156-336.6-87.1-117,68.9-156,219.6-87.1,336.6"/>
+                        <path @mouseover="setHoverStatus('plateforme-is-hover')" @click="navigateTo('/dispositifs?a=plateforme')" id="cache--plateforme" class="cls-3"      style="cursor: pointer;stroke-width: 0;opacity: 0" d="M1172.7,440.7c68.9,117,219.6,156,336.6,87.1,117-68.9,156-219.6,87.1-336.6-68.9-117-219.6-156-336.6-87.1-117,68.9-156,219.6-87.1,336.6"/>
+                        <path @mouseover="setHoverStatus('bibliotheque-is-hover')" @click="navigateTo('/dispositifs?a=bibliotheque')" id="cache--bibliotheque" class="cls-3"    style="cursor: pointer;stroke-width: 0;opacity: 0" d="M1644.8,773.7c-135.8,0-245.9,110.1-245.9,245.9s110.1,245.9,245.9,245.9,245.9-110.1,245.9-245.9-110.1-245.9-245.9-245.9"/>
+                        <path @mouseover="setHoverStatus('plantation-is-hover')" @click="navigateTo('/dispositifs?a=plantation')" id="cache--plantation" class="cls-3"      style="cursor: pointer;stroke-width: 0;opacity: 0" d="M1121.6,1157.9c-135.8,0-245.9,110.1-245.9,245.9s110.1,245.9,245.9,245.9,245.9-110.1,245.9-245.9-110.1-245.9-245.9-245.9"/>
+                        <path @mouseover="setHoverStatus('imaginaire-is-hover')" @click="navigateTo('/dispositifs?a=imaginaire')" id="cache--imaginaire" class="cls-3"      style="cursor: pointer;stroke-width: 0;opacity: 0" d="M106.9,1220.9c68.9,117,219.6,156,336.6,87.1s156-219.6,87.1-336.6c-68.9-117-219.6-156-336.6-87.1-117,68.9-156,219.6-87.1,336.6"/>
+                        <path @mouseover="setHoverStatus('laboratoire-is-hover')" @click="navigateTo('/dispositifs?a=laboratoire')" id="cache--laboratoire" class="cls-3"     style="cursor: pointer;stroke-width: 0;opacity: 0" d="M252.2,532.5c68.9,117,219.6,156,336.6,87.1s156-219.6,87.1-336.6c-68.9-117-219.6-156-336.6-87.1-117,68.9-156,219.6-87.1,336.6"/>
                     </svg>
                 </div>
             </div>
@@ -115,7 +117,7 @@
 
 
 <script setup lang="ts">
-import { defineProps } from 'vue'
+import {defineProps, UnwrapRef} from 'vue'
 
 const props = defineProps<{
     src: string
@@ -125,6 +127,32 @@ const props = defineProps<{
     styleDesign?: "circle" | 'default' | 'device',
     isFull?: boolean
 }>()
+
+const isHover: Ref<UnwrapRef<'any-is-hover' | 'laboratoire-is-hover' | 'plateforme-is-hover' | 'bibliotheque-is-hover' | 'plantation-is-hover' | 'imaginaire-is-hover'>> = ref('any-is-hover')
+
+const illustrationContainer: Ref<UnwrapRef<null | HTMLElement>> = ref(null)
+
+onMounted(() => {
+    nextTick(() => {
+        if (!(illustrationContainer.value instanceof HTMLElement)) return
+
+        const intersectionObserver = new IntersectionObserver((entries, observer) => {
+            for(const entry of entries) {
+                if(entry.isIntersecting) entry.target.classList.add('is-intersecting')
+                else entry.target.classList.remove('is-intersecting')
+            }
+        }, {
+            // rootMargin: '-500px'
+        })
+
+        intersectionObserver.observe(illustrationContainer.value)
+
+    })
+})
+
+function setHoverStatus(statu: 'any-is-hover' | 'laboratoire-is-hover' | 'plateforme-is-hover' | 'bibliotheque-is-hover' | 'plantation-is-hover' | 'imaginaire-is-hover') {
+    isHover.value = statu
+}
 </script>
 
 
@@ -226,6 +254,54 @@ const props = defineProps<{
         margin-right: auto;
     }
 }
+
+#modus {
+    transform-origin: center;
+    //transform: rotate(-15deg);
+    transform: scale(1.15);
+
+
+    .is-intersecting & {
+        transition: transform 3s ease-in-out;
+        //transform: rotate(0);
+        transform: scale(1);
+    }
+}
+
+@mixin txt-transition {
+    transform-origin: center;
+    opacity: 0;
+    transform: scale(.95);
+
+    .is-intersecting & {
+        transition: transform 3s ease-in-out, opacity 1s 1s ease-in-out;
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@mixin item-transition {
+    transform-origin: center;
+    transform: scale(.9) rotate(-5deg);
+
+    .is-intersecting & {
+        transition: transform 3s ease-in-out;
+        transform: scale(1) rotate(0);
+
+    }
+}
+
+
+//#bibliotheque_txt   {@include txt-transition; .bibliotheque-is-hover  & { transition-duration: .75s; transform: rotate(2.5deg); }}
+//#laboratoire_txt    {@include txt-transition; .laboratoire-is-hover   & { transition-duration: .75s; transform: rotate(2.5deg); }}
+//#imaginaire_txt     {@include txt-transition; .imaginaire-is-hover    & { transition-duration: .75s; transform: rotate(2.5deg); }}
+//#plantation_txt     {@include txt-transition; .plantation-is-hover    & { transition-duration: .75s; transform: rotate(2.5deg); }}
+//#plateforme_txt     {@include txt-transition; .plateforme-is-hover    & { transition-duration: .75s; transform: rotate(2.5deg); }}
+//#bibliotheque   {@include item-transition; .bibliotheque-is-hover  & { transition-duration: .75s; transform: rotate(2.5deg); }}
+//#laboratoire    {@include item-transition; .laboratoire-is-hover   & { transition-duration: .75s; transform: rotate(2.5deg); }}
+//#imaginaire     {@include item-transition; .imaginaire-is-hover    & { transition-duration: .75s; transform: rotate(2.5deg); }}
+//#plantation     {@include item-transition; .plantation-is-hover    & { transition-duration: .75s; transform: rotate(2.5deg); }}
+//#plateforme     {@include item-transition; .plateforme-is-hover    & { transition-duration: .75s; transform: rotate(2.5deg); }}
 
 .v-app-internal-link__content__button {
   display: flex;

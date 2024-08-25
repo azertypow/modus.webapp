@@ -12,7 +12,9 @@
              id="content"
         >
             <div class="v-les-outils-modus__bottom_content__flex">
-                <div class="v-les-outils-modus__bottom_content__section">
+                <div class="v-les-outils-modus__bottom_content__section"
+                     id="plateforme"
+                >
                     <app-project-theme
                         :img-src="null"
                         project-type="plateforme"
@@ -24,7 +26,9 @@
                                 "
                     />
                 </div>
-                <div class="v-les-outils-modus__bottom_content__section">
+                <div class="v-les-outils-modus__bottom_content__section"
+                     id="laboratoire"
+                >
                     <app-project-theme
                         :img-src="null"
                         project-type="laboratoire"
@@ -36,7 +40,9 @@
                                 "
                     />
                 </div>
-                <div class="v-les-outils-modus__bottom_content__section">
+                <div class="v-les-outils-modus__bottom_content__section"
+                     id="bibliotheque"
+                >
                     <app-project-theme
                         :img-src="null"
                         project-type="bibliotheque"
@@ -48,7 +54,9 @@
                                 "
                     />
                 </div>
-                <div class="v-les-outils-modus__bottom_content__section">
+                <div class="v-les-outils-modus__bottom_content__section"
+                     id="imaginaire"
+                >
                     <app-project-theme
                         :img-src="null"
                         project-type="imaginaires"
@@ -60,7 +68,9 @@
                                 "
                     />
                 </div>
-                <div class="v-les-outils-modus__bottom_content__section">
+                <div class="v-les-outils-modus__bottom_content__section"
+                     id="plantation"
+                >
                     <app-project-theme
                         :img-src="null"
                         project-type="plantation"
@@ -71,7 +81,6 @@
                                 "
                     />
                 </div>
-
             </div>
         </div>
 

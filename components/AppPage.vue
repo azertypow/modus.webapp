@@ -21,7 +21,9 @@
           </template>
         </template>
         <template v-else>
-          Chargement du header…
+            <div>
+
+            </div>
         </template>
       </div>
 
@@ -172,13 +174,7 @@ nextTick(() => {
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    // console.log('L\'élément est en intersection avec la fenêtre')
-                    useIsIntersected().value = true
-                } else {
-                    // console.log('L\'élément n\'est plus en intersection avec la fenêtre')
-                    useIsIntersected().value = false
-                }
+                useIsIntersected().value = entry.isIntersecting;
             })
         }, {
             rootMargin: `0px 0px ${window.innerHeight * -1}px 0px`
