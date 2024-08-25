@@ -292,16 +292,16 @@ function setHoverStatus(statu: 'any-is-hover' | 'laboratoire-is-hover' | 'platef
 }
 
 
-//#bibliotheque_txt   {@include txt-transition; .bibliotheque-is-hover  & { transition-duration: .75s; transform: rotate(2.5deg); }}
-//#laboratoire_txt    {@include txt-transition; .laboratoire-is-hover   & { transition-duration: .75s; transform: rotate(2.5deg); }}
-//#imaginaire_txt     {@include txt-transition; .imaginaire-is-hover    & { transition-duration: .75s; transform: rotate(2.5deg); }}
-//#plantation_txt     {@include txt-transition; .plantation-is-hover    & { transition-duration: .75s; transform: rotate(2.5deg); }}
-//#plateforme_txt     {@include txt-transition; .plateforme-is-hover    & { transition-duration: .75s; transform: rotate(2.5deg); }}
-//#bibliotheque   {@include item-transition; .bibliotheque-is-hover  & { transition-duration: .75s; transform: rotate(2.5deg); }}
-//#laboratoire    {@include item-transition; .laboratoire-is-hover   & { transition-duration: .75s; transform: rotate(2.5deg); }}
-//#imaginaire     {@include item-transition; .imaginaire-is-hover    & { transition-duration: .75s; transform: rotate(2.5deg); }}
-//#plantation     {@include item-transition; .plantation-is-hover    & { transition-duration: .75s; transform: rotate(2.5deg); }}
-//#plateforme     {@include item-transition; .plateforme-is-hover    & { transition-duration: .75s; transform: rotate(2.5deg); }}
+#bibliotheque_txt   {@include txt-transition;}
+#laboratoire_txt    {@include txt-transition;}
+#imaginaire_txt     {@include txt-transition;}
+#plantation_txt     {@include txt-transition;}
+#plateforme_txt     {@include txt-transition;}
+#bibliotheque       {@include item-transition;}
+#laboratoire        {@include item-transition;}
+#imaginaire         {@include item-transition;}
+#plantation         {@include item-transition;}
+#plateforme         {@include item-transition;}
 
 .v-app-internal-link__content__button {
   display: flex;
