@@ -78,7 +78,7 @@ useRouter().beforeEach((to, from, next) => {
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 50;
+  z-index: 500;
   background-color: rgba(0, 0, 0, .5);
   backdrop-filter: blur(10px);
   cursor: pointer;
@@ -89,7 +89,7 @@ useRouter().beforeEach((to, from, next) => {
   top: 0;
   right: 0;
   height: 100%;
-  z-index: 100;
+  z-index: 1000;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -130,7 +130,7 @@ useRouter().beforeEach((to, from, next) => {
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 100;
+    z-index: 1000;
   pointer-events: none;
 }
 

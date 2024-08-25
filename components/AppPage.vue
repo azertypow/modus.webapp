@@ -226,7 +226,7 @@ nextTick(() => {
     font-weight: 600;
     position: sticky;
     top: var(--app-nav__height);
-    z-index: 1000;
+    z-index: 100;
     box-sizing: border-box;
     width: 100%;
     background: var(--app-color-grey);
