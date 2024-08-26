@@ -133,6 +133,8 @@ const bodyScrollInfoStore = bodyScrollInfo()
     height: calc( 125% );
     width: 100%;
     object-fit: cover;
+    user-select: none;
+    pointer-events: none;
 }
 
 .v-app-header__graphic-box__item {
