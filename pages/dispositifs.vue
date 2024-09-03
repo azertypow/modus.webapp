@@ -21,7 +21,7 @@
                         title="Un espace à disposition de tout l’écosystème"
                         content="
                                 <p>La Plateforme vise à faciliter la collaboration entre les acteurs de Genève. Elle cherche également à inviter d'autres intervenant.e.s régionaux et internationaux.</p>
-                                <p>La Plateforme s'appuie notamment par l'organisation d'événements réguliers comme les afterworks de la mobilité.</p>
+                                <p>La Plateforme s'appuie notamment sur l'organisation d'événements réguliers comme les afterworks de la mobilité.</p>
                                 <p>Modus aspire à servir et à réunir efficacement l’ensemble de l’écosystème pour contribuer à une mobilité plus intégrée et plus durable à Genève.</p>
                                 "
                     />
@@ -34,8 +34,8 @@
                         project-type="laboratoire"
                         title="Un lieu d'expérimentation à destination des partenaires"
                         content="
-                                <p>Le Laboratoire expérimente des approches originales pour encourager la transition vers des comportements de mobilité plus durable. Celles-ci se concentrent sur la compréhension approfondie des demandes et des besoins ainsi que sur l'acceptation de nouveaux systèmes.</p>
-                                <p>Il s'agit de tester une grande variété de services et de pratiques. Ces initiatives visent à créer des connaissances précieuses qui, une fois évaluées, sont mises à la disposition des pouvoirs publics et des partenaires locaux.</p>
+                                <p>Le Laboratoire expérimente des approches originales pour encourager la transition vers des comportements de mobilité plus durable. Elles se concentrent sur la compréhension approfondie des demandes et des besoins ainsi que sur l'acceptation de nouveaux systèmes.</p>
+                                <p>Il s'agit de tester divers services et de pratiques. Ces initiatives visent à créer des connaissances précieuses qui, une fois évaluées, sont mises à la disposition des pouvoirs publics et des partenaires locaux.</p>
                                 <p>Le Laboratoire s'engage à produire du savoir et à le diffuser largement, garantissant que toutes les parties prenantes en bénéficient et contribuent à une mobilité plus efficace et plus respectueuse de l'environnement à Genève.</p>
                                 "
                     />
@@ -46,11 +46,11 @@
                     <app-project-theme
                         :img-src="null"
                         project-type="bibliotheque"
-                        title="Un fonds de connaissance sur les mobilités"
+                        title="Un fonds de connaissances sur les mobilités"
                         content="
-                                <p>La Bibliothèque constitue une source de connaissance essentielle sur les mobilités à Genève. Son objectif est de réunir, conserver et produire des informations pertinentes sur les mobilités et de les rendre accessibles à l'ensemble de l'écosystème socio-économique de la région, soit les acteurs publics, les associations, les citoyens et les ONG.</p>
-                                <p>Plusieurs types d'informations sont à disposition : archives en ligne de rapports et de publications, site centralisant les données et les études sur les mobilités et enfin la parutions d’analyses détaillées sur les solutions innovantes identifiées.</p>
-                                <p>La Bibliothèque compile les connaissances passées, présentes et futures sur les mobilités pour les diffuser aux acteurs concernés afin d’éclairer leurs décisions et engagements en matière de mobilité urbaine.</p>
+                                <p>La Bibliothèque constitue une source de connaissance essentielle sur les mobilités à Genève. Son objectif est de réunir, conserver et produire des informations pertinentes sur les mobilités et de les rendre accessibles à l'ensemble de l'écosystème socio-économique de la région, soit les acteurs publics, les associations, les citoyen·nes et les ONG.</p>
+                                <p>Plusieurs types d'informations sont à disposition : archives en ligne de rapports et de publications, site centralisant les données et les études sur les mobilités et enfin la parution d’analyses détaillées sur les solutions innovantes identifiées.</p>
+                                <p>La Bibliothèque compile les connaissances sur les mobilités passées, présentes et futures pour les diffuser aux acteurs concernés afin d’éclairer leurs décisions et engagements en matière de mobilité urbaine.</p>
                                 "
                     />
                 </div>
@@ -62,9 +62,9 @@
                         project-type="imaginaires"
                         title="Un vecteur de transformation des comportements"
                         content="
-                                <p>La Fabrique des imaginaires doit faire évoluer la perception et permettre de valoriser certaines pratiques de mobilités durables. Son objectif est de devenir un moteur de communication essentiel pour transformer les représentations et les valeurs sociales liées aux mobilités, tout en proposant des alternatives pour modifier en profondeur les comportements.</p>
-                                <p>Ce dispositif s'appuie sur la mise en œuvre d’une stratégie de diffusion étendue qui s'adresse à la fois aux experts et au grand public, de production de contenus originaux et percutants qui visent à enrichir les connaissances, d'élargissement des perspectives et enfin de renforcement des compétences sur les enjeux de la mobilité.</p>
-                                <p>En favorisant un changement de perception et en frappant les esprits, La Fabrique des imaginaires encourage tout le monde à adopter de nouvelles valeurs de mobilité.</p>
+                                <p>La Fabrique des Imaginaires doit faire évoluer la perception et permettre de valoriser certaines pratiques de mobilité durable. Son objectif est de devenir un moteur de communication essentiel pour transformer les représentations et les valeurs sociales liées aux mobilités, tout en proposant des alternatives pour modifier en profondeur les comportements.</p>
+                                <p>Ce dispositif s'appuie sur le déploiement d’une stratégie de diffusion étendue qui s'adresse à la fois aux experts et au grand public en produisant de contenus originaux et percutants qui visent à enrichir les connaissances, d'élargissement des perspectives et enfin de renforcement des compétences sur les enjeux de la mobilité.</p>
+                                <p>En favorisant un changement de perception et en frappant les esprits, la Fabrique des Imaginaires encourage tout le monde à adopter de nouvelles valeurs de mobilité.</p>
                                 "
                     />
                 </div>
@@ -76,8 +76,8 @@
                         project-type="plantation"
                         title="Un catalyseur d'initiatives innovantes dans la mobilité"
                         content="
-                                <p>La Plantation se positionne comme un catalyseur pour les initiatives innovantes qui participent à la transition vers de nouvelles formes de mobilité. Elle les soutient financièrement et accompagne leur croissance. Elle propose un accès à des ressources essentielles, à des réseaux d'expert·es et à des collaborations qui leur permettent de créer des solutions novatrices et durables. Elle joue un rôle dans la transformation des mobilités et dans leur promotion.</p>
-                                <p>Le principe directeur de La Plantation est de stimuler les initiatives dans les nouveaux services de mobilité.</p>
+                                <p>La Plantation se positionne comme un catalyseur pour les initiatives innovantes qui participent à la transition vers de nouvelles formes de mobilité. Elle les soutient financièrement et accompagne leur croissance. Elle propose un accès à des ressources essentielles, à des réseaux d'expert·es et à des collaborations qui leur permettent de créer des solutions novatrices et durables. Elle joue un rôle clé dans la transformation et la promotion des mobilités.</p>
+                                <p>Son principe directeur est de stimuler les initiatives dans les nouveaux services de mobilité.</p>
                                 "
                     />
                 </div>
