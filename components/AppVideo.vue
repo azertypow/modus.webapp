@@ -16,20 +16,20 @@
                   referrerpolicy="strict-origin-when-cross-origin" allowfullscreen
           ></iframe>
 
-            <div
-                class="v-app-video__cache"
-                v-if='!showVideo'
-                @click="showVideoUiClicked"
-                :style="{
-                    'background': `url(${videoCover})`
-                }"
-            >
-                <img
-                    class="v-app-video__cache__img"
-                    src="../assets/play_circle_FILL0_wght400_GRAD0_opsz24.svg"
-                    alt="icon pour lancer la lecture d'une video YouTube"
-                >
-            </div>
+<!--            <div-->
+<!--                class="v-app-video__cache"-->
+<!--                v-if='!showVideo'-->
+<!--                @click="showVideoUiClicked"-->
+<!--                :style="{-->
+<!--                    'background': `url(${videoCover})`-->
+<!--                }"-->
+<!--            >-->
+<!--                <img-->
+<!--                    class="v-app-video__cache__img"-->
+<!--                    src="../assets/play_circle_FILL0_wght400_GRAD0_opsz24.svg"-->
+<!--                    alt="icon pour lancer la lecture d'une video YouTube"-->
+<!--                >-->
+<!--            </div>-->
         </template>
         <div v-else
              class="v-app-video__cookie-msg"
