@@ -34,7 +34,7 @@
         <div v-else
              class="v-app-video__cookie-msg"
         >
-            <button @click="cookieIsValidate().value = true">Accepter les cookies Vimeo</button>
+            <button @click="cookieIsValidate().value = true">Accepter les cookies</button>
         </div>
     </div>
 </template>
@@ -145,7 +145,7 @@ iframe {
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-    width: 100%;
+    width: auto;
     box-sizing: border-box;
     padding: 1rem;
     display: flex;
@@ -153,9 +153,9 @@ iframe {
     gap: 1rem;
 
     button {
-        font-size: .5rem;
-        padding: .5em;
-        line-height: 1em;
+        //font-size: .5rem;
+        //padding: .5em;
+        //line-height: 1em;
     }
 }
 </style>
