@@ -6,20 +6,23 @@
         }"
     >
         <template v-if="cookieIsValidate().value" >
-            <iframe
-                    ref="vimeoIframe"
-                    width="640"
-                    height="360"
-                    :src="`https://player.vimeo.com/video/${vimeoId}?h=2af64ba800`"
-                    frameborder="0"
-                    allowfullscreen
-                    title="vimeo-player"
-                    allow="autoplay"
-            />
+
+          <iframe width="560"
+                  height="315"
+                  :src="`https://www.youtube-nocookie.com/embed/${video_id}?si=SAxUi0YavSnxZa-b&amp;controls=0`"
+                  title="YouTube video player"
+                  frameborder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerpolicy="strict-origin-when-cross-origin" allowfullscreen
+          ></iframe>
+
             <div
                 class="v-app-video__cache"
                 v-if='!showVideo'
                 @click="showVideoUiClicked"
+                :style="{
+                    'background': `url(${videoCover})`
+                }"
             >
                 <img
                     class="v-app-video__cache__img"
@@ -47,7 +50,8 @@ import {Ref, UnwrapRef} from "vue";
 import {cookieIsValidate} from "~/composable/main";
 
 const props = defineProps<{
-    vimeoId: string,
+    video_id: string,
+    videoCover?: string,
 }>()
 
 const vimeoIframe: Ref<UnwrapRef<null | HTMLIFrameElement>> = ref(null)
@@ -59,7 +63,7 @@ let player: Player | null = null
 onMounted(() => {
     nextTick(() => {
         if(vimeoIframe.value) {
-            player = new Player(vimeoIframe.value)
+            vimeoIframe.value.src = ''
         }
     })
 })

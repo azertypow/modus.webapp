@@ -121,6 +121,15 @@
                 </div>
               </template>
 
+              <template v-else-if="bodyContentItem.content.type === 'video'">
+                <div class="v-app-page__section v-app-page__section--full">
+                  <app-video
+                          :video_id="getIdParamInVideoYoutubeURL(bodyContentItem.content.content.url)"
+                          :video-cover="bodyContentItem.image[0]?.resize.reg"
+                  />
+                </div>
+              </template>
+
               <template v-else-if="bodyContentItem.content.type === 'listPoints'">
                 <div class="v-app-page__section">
                   <app-list-points
@@ -166,6 +175,10 @@ const props = defineProps<{
     titleContent?: string
     path?: boolean
 }>()
+
+function getIdParamInVideoYoutubeURL(url: string): string {
+    return new URL(url).searchParams.get('v') || ''
+}
 
 
 nextTick(() => {
