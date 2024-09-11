@@ -1,17 +1,18 @@
-export type ApiProjectType =    'imaginaires'
-                                | 'laboratoire'
-                                | 'bibliotheque'
-                                | 'plateforme'
-                                | 'plantation'
+export type ApiProjectType =
+    'platform'
+    | 'laboratory'
+    | 'library'
+    | 'imaginary'
+    | 'planting'
 
 export type ApiProjectMap = {[key in ApiProjectType]: string}
 
 export const apiProjectMap: ApiProjectMap = {
-    'imaginaires' : 'La Fabrique des Imaginaires',
-    'laboratoire' : 'Le Laboratoire',
-    'bibliotheque' : 'La Bibliothèque',
-    'plateforme' : 'La Plateforme',
-    'plantation' : 'La Plantation',
+    'imaginary' : 'La Fabrique des Imaginaires',
+    'laboratory' : 'Le Laboratoire',
+    'library' : 'La Bibliothèque',
+    'platform' : 'La Plateforme',
+    'planting' : 'La Plantation',
 }
 
 
@@ -203,7 +204,8 @@ export interface IApiSingleProject {
         "headertitle": string,
         "body": IApiBody,
         "pdffile": string,
-        "uuid": string
+        "uuid": string,
+        device: ApiProjectType
     }
 }
 

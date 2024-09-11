@@ -122,7 +122,7 @@
               </template>
 
               <template v-else-if="bodyContentItem.content.type === 'video'">
-                <div class="v-app-page__section v-app-page__section--full">
+                <div class="v-app-page__section v-app-page__section--full" style="max-width: 60rem">
                   <app-video
                           :video_id="getIdParamInVideoYoutubeURL(bodyContentItem.content.content.url)"
                           :video-cover="bodyContentItem.image[0]?.resize.reg"

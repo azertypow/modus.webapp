@@ -126,6 +126,14 @@ onMounted(async () => {
     headerText.value = pageData.options.headerTitle
 
     bodyContent.value = pageData.body
+
+    await nextTick(() => {
+      const idSection = useRoute().query.a
+
+      if(typeof idSection === 'string') {
+          window.setTimeout(() => document.querySelector(`#${idSection}`)?.scrollIntoView({ behavior: 'smooth' }), 1_000)
+      }
+    })
 })
 
 

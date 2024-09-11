@@ -56,11 +56,11 @@ const props = defineProps<{
 }>()
 
 const imageUrlMap: ApiProjectMap = {
-    'bibliotheque':   'img_bibliotheque.svg',
-    'imaginaires':   'img_imaginaires.svg',
-    'laboratoire': 'img_laboratoire.svg',
-    'plantation':  'img_plantation.svg',
-    'plateforme':  'img_plateforme.svg',
+    'library':   'img_bibliotheque.svg',
+    'imaginary':   'img_imaginaires.svg',
+    'laboratory': 'img_laboratoire.svg',
+    'planting':  'img_plantation.svg',
+    'platform':  'img_plateforme.svg',
 }
 
 const iconUrl: ComputedRef<string | null> = computed(() => props.projectType ? imageUrlMap[props.projectType] : null )

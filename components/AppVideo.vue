@@ -34,7 +34,7 @@
         <div v-else
              class="v-app-video__cookie-msg"
         >
-            <button @click="cookieIsValidate().value = true">Accepter les cookies</button>
+            <button @click="cookieIsValidate().value = true" style="max-width: none">Accepter les cookies</button>
         </div>
     </div>
 </template>
