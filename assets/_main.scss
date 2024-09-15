@@ -199,3 +199,29 @@ body, html {
     display: none;
   }
 }
+
+.app__icon {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+
+  a {
+    display: block;
+  }
+
+  svg {
+    display: block;
+    height: 2rem;
+    width: auto;
+  }
+}
+
+.app-transition-default-enter-active,
+.app-transition-default-leave-active {
+  transition: opacity .4s, filter .4s;
+}
+.app-transition-default-enter-from,
+.app-transition-default-leave-to {
+  opacity: 0;
+  filter: blur(.5rem);
+}
