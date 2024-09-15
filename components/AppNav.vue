@@ -152,4 +152,11 @@ function toggleNav() {
   cursor: pointer;
   pointer-events: all;
 }
+
+.app__icon {
+    pointer-events: all;
+    svg {
+        height: 1.5rem;
+    }
+}
 </style>
