@@ -140,7 +140,22 @@ export interface IApiBody {
                 isHidden: false,
                 type: "listPoints"
             }
-        },
+        }
+        |
+        {
+            image: IApiImage[],
+            content: {
+                content: {
+                    image: string[],
+                    linktitle: string,
+                    text: string,
+                    link: string
+                },
+                id: string,
+                isHidden: boolean,
+                type: "actuality"
+            }
+        }
 }
 
 export interface IApiProfiles {

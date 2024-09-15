@@ -3,12 +3,12 @@
         class="v-app-actuality"
     >
         <div class="v-app-actuality__title child-remove-margin">
-            <h4>{{title}}</h4>
+            <h4>Actualités</h4>
         </div>
         <div class="v-app-actuality__img"
         >
             <img alt="image du project"
-                 :src="src"
+                 :src="src ? src.resize?.reg : 'images/8.jpg'"
                  class="v-app-actuality__img__img"
             />
         </div>
@@ -16,13 +16,14 @@
         <div class="v-app-actuality__content"
         >
             <h4 class="v-app-actuality__content__title"
-            >Organisation d’un village durant le Tour de Romandie</h4>
+            >{{title}}</h4>
             <div class="v-app-actuality__content__desc child-remove-margin"
                  v-if="description"
                  v-html="description"
             />
             <div class="v-app-actuality__content__bottom">
-                <nuxt-link class="app-button app-button--small" href="projects">-> Découvrir des projets</nuxt-link>
+                <nuxt-link v-if="url" class="app-button app-button--small" href="projects">-> Découvrir</nuxt-link>
+                <nuxt-link v-else class="app-button app-button--small" href="projects">-> Découvrir des projets</nuxt-link>
             </div>
         </div>
 
@@ -35,11 +36,13 @@
 
 <script setup lang="ts">
 import { defineProps } from 'vue'
+import {IApiImage} from "~/composable/adminApi/apiDefinitions";
 
 const props = defineProps<{
-    src: string
+    src?: IApiImage
     title: string
     description?: string
+    url?: string
 }>()
 </script>
 
@@ -57,6 +60,10 @@ const props = defineProps<{
     flex-wrap: wrap;
     align-items: center;
     position: relative;
+
+    h4 {
+        color: var(--app-color-main--dark);
+    }
 }
 
 .v-app-actuality__title {
@@ -90,6 +97,7 @@ const props = defineProps<{
     background: lightgrey;
     border-radius: var(--app-radius-small);
     width: 100%;
+    object-fit: cover;
 
     @media (max-width: 900px) {
         border-radius: var(--app-radius-small) var(--app-radius-small) var(--app-radius-large) var(--app-radius-large);

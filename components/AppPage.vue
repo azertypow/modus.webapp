@@ -139,6 +139,18 @@
                 </div>
               </template>
 
+              <template v-else-if="bodyContentItem.content.type === 'actuality'">
+                <div class="v-app-page__section v-app-page__section--full">
+                  <app-actuality
+                          :title="bodyContentItem.content.content.linktitle"
+                          :url="bodyContentItem.content.content.link"
+                          :description="bodyContentItem.content.content.text"
+                          :src="bodyContentItem.image[0]"
+                  />
+                </div>
+              </template>
+
+
             </template>
           </template>
 
