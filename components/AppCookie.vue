@@ -36,7 +36,7 @@ const props = defineProps<{
     width: 100%;
     background: var(--app-color-main);
     color: white;
-    font-size: 1rem;
+    font-size: .85rem;
     display: flex;
     justify-content: center;
     gap: 1rem;
