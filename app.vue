@@ -57,7 +57,7 @@
             <nuxt-page/>
         </div>
 
-        <div class="v-app__cookie" v-if="!cookieIsValidate().value">
+        <div class="v-app__cookie" v-if="!cookieIsValidate().value && showCookieBanner().value">
             <app-cookie/>
         </div>
     </section>
@@ -69,7 +69,14 @@
 
 <script lang="ts" setup>
 
-import {bodyScrollInfo, cookieIsValidate, showMenu, siteInfo, useIsIntersected} from "~/composable/main";
+import {
+    bodyScrollInfo,
+    cookieIsValidate,
+    showCookieBanner,
+    showMenu,
+    siteInfo,
+    useIsIntersected
+} from "~/composable/main";
 import AppCookie from "~/components/AppCookie.vue";
 import {ApiFetchPagesInfo} from "~/composable/adminApi/apiFetch";
 
