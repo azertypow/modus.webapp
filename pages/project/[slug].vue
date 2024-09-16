@@ -9,6 +9,7 @@
             :path="true"
             :header-size="'small'"
             :header-text="headerText"
+            :category="category"
         />
         <app-page-footer/>
     </section>
@@ -21,7 +22,7 @@
 <script setup lang="ts">
 import {defineProps, Ref, UnwrapRef} from 'vue'
 import AppPage from "~/components/AppPage.vue";
-import {IApiBody} from "~/composable/adminApi/apiDefinitions";
+import {ApiProjectType, IApiBody} from "~/composable/adminApi/apiDefinitions";
 import {ApiFetchPage} from "~/composable/adminApi/apiFetch";
 
 const headerCover: Ref<UnwrapRef<undefined | string>> = ref(undefined)
@@ -29,6 +30,8 @@ const headerText: Ref<UnwrapRef<undefined | string>> = ref(undefined)
 
 const bodyTitle: Ref<UnwrapRef<undefined | string>> = ref(undefined)
 const bodyContent: Ref<UnwrapRef<undefined | IApiBody>> = ref(undefined)
+
+const category: Ref<UnwrapRef<ApiProjectType | undefined>> = ref(undefined)
 
 onMounted(async () => {
     const slug = useRoute()?.params?.slug
@@ -42,6 +45,8 @@ onMounted(async () => {
 
     bodyTitle.value = pageData.options.headerTitle
     bodyContent.value = pageData.body
+
+    category.value = pageData.options.category
 })
 </script>
 

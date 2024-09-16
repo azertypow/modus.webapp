@@ -32,6 +32,18 @@
         >
             <div class="v-app-page__path__content">
                 <nuxt-link href="/">Home</nuxt-link> / <nuxt-link href="/projects/">Les Projets Modus</nuxt-link> / {{titleContent?.split(' ').slice(0, 3).join(' ')}}…
+                <div style="padding-top: .5rem"
+                     v-if="category"
+                >
+                  <div style="
+                          font-weight: 500;
+                          font-size: 1rem;
+                          border: solid;
+                          display: inline-block;
+                          border-radius: 2rem;
+                          padding: .15rem .5rem .25rem;
+                        ">{{apiProjectMap[category]}}</div>
+                </div>
             </div>
         </div>
 
@@ -174,7 +186,7 @@
 <script setup lang="ts">
 import { defineProps } from 'vue'
 import {useIsIntersected} from "~/composable/main";
-import {IApiBody} from "~/composable/adminApi/apiDefinitions";
+import {apiProjectMap, ApiProjectMap, ApiProjectType, IApiBody} from "~/composable/adminApi/apiDefinitions";
 import AppProfiles from "~/components/AppProfiles.vue";
 import AppListPoints from "~/components/AppListPoints.vue";
 
@@ -186,6 +198,7 @@ const props = defineProps<{
     withoutBody?: boolean
     titleContent?: string
     path?: boolean
+    category?: ApiProjectType
 }>()
 
 function getIdParamInVideoYoutubeURL(url: string): string {

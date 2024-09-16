@@ -24,6 +24,7 @@ export interface IApiPage {
         "showNewsletter": boolean,
         "headerTitle": string,
         "headerImage": IApiImage | null
+        "category": ApiProjectType | undefined
     },
     "body": IApiBody,
     title?: {
