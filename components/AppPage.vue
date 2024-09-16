@@ -162,6 +162,15 @@
                 </div>
               </template>
 
+              <template v-else-if="bodyContentItem.content.type === 'linksSection'">
+                <div class="v-app-page__section v-app-page__section--full">
+                  <app-link-section
+                          :title="bodyContentItem.content.content.title"
+                          :links="bodyContentItem.content.content.links"
+                  />
+                </div>
+              </template>
+
 
             </template>
           </template>

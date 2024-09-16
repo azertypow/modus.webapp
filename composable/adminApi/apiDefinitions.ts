@@ -157,6 +157,21 @@ export interface IApiBody {
                 type: "actuality"
             }
         }
+        |
+        {
+            content: {
+                content: {
+                    title: string,
+                    links: {
+                        name: "Instagram.com, Genève en selle",
+                        url: "https://www.instagram.com/geneve_en_selle/"
+                    }[]
+                },
+                id: string,
+                isHidden: boolean,
+                type: "linksSection"
+            }
+        }
 }
 
 export interface IApiProfiles {
