@@ -39,7 +39,7 @@
       <div style="display: flex; align-items: center; gap: 1rem">
         <transition name="app-transition-default">
           <div class="app__icon" v-if=" !showMenu().value ">
-            <a href="https://www.youtube.com/@modus-ge" target="_blank">
+            <a href="https://ch.linkedin.com/company/fondation-modus" target="_blank">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-linkedin"
                    viewBox="0 0 16 16"
                    style="color: var(--app-color-main)"
