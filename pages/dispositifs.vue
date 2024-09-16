@@ -17,7 +17,7 @@
                 >
                     <app-project-theme
                         :img-src="null"
-                        project-type="plateforme"
+                        project-type="platform"
                         title="Un espace à disposition de tout l’écosystème"
                         content="
                                 <p>La Plateforme vise à faciliter la collaboration entre les acteurs de Genève. Elle cherche également à inviter d'autres intervenant.e.s régionaux et internationaux.</p>
@@ -31,7 +31,7 @@
                 >
                     <app-project-theme
                         :img-src="null"
-                        project-type="laboratoire"
+                        project-type="laboratory"
                         title="Un lieu d'expérimentation à destination des partenaires"
                         content="
                                 <p>Le Laboratoire expérimente des approches originales pour encourager la transition vers des comportements de mobilité plus durable. Elles se concentrent sur la compréhension approfondie des demandes et des besoins ainsi que sur l'acceptation de nouveaux systèmes.</p>
@@ -45,7 +45,7 @@
                 >
                     <app-project-theme
                         :img-src="null"
-                        project-type="bibliotheque"
+                        project-type="library"
                         title="Un fonds de connaissances sur les mobilités"
                         content="
                                 <p>La Bibliothèque constitue une source de connaissance essentielle sur les mobilités à Genève. Son objectif est de réunir, conserver et produire des informations pertinentes sur les mobilités et de les rendre accessibles à l'ensemble de l'écosystème socio-économique de la région, soit les acteurs publics, les associations, les citoyen·nes et les ONG.</p>
@@ -59,7 +59,7 @@
                 >
                     <app-project-theme
                         :img-src="null"
-                        project-type="imaginaires"
+                        project-type="imaginary"
                         title="Un vecteur de transformation des comportements"
                         content="
                                 <p>La Fabrique des Imaginaires doit faire évoluer la perception et permettre de valoriser certaines pratiques de mobilité durable. Son objectif est de devenir un moteur de communication essentiel pour transformer les représentations et les valeurs sociales liées aux mobilités, tout en proposant des alternatives pour modifier en profondeur les comportements.</p>
@@ -73,7 +73,7 @@
                 >
                     <app-project-theme
                         :img-src="null"
-                        project-type="plantation"
+                        project-type="planting"
                         title="Un catalyseur d'initiatives innovantes dans la mobilité"
                         content="
                                 <p>La Plantation se positionne comme un catalyseur pour les initiatives innovantes qui participent à la transition vers de nouvelles formes de mobilité. Elle les soutient financièrement et accompagne leur croissance. Elle propose un accès à des ressources essentielles, à des réseaux d'expert·es et à des collaborations qui leur permettent de créer des solutions novatrices et durables. Elle joue un rôle clé dans la transformation et la promotion des mobilités.</p>

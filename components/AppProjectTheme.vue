@@ -56,23 +56,23 @@ const props = defineProps<{
 }>()
 
 const imageUrlMap: ApiProjectMap = {
-    'bibliotheque':   'img_bibliotheque.svg',
-    'imaginaires':   'img_imaginaires.svg',
-    'laboratoire': 'img_laboratoire.svg',
-    'plantation':  'img_plantation.svg',
-    'plateforme':  'img_plateforme.svg',
+    'library':   'img_bibliotheque.svg',
+    'imaginary':   'img_imaginaires.svg',
+    'laboratory': 'img_laboratoire.svg',
+    'planting':  'img_plantation.svg',
+    'platform':  'img_plateforme.svg',
 }
 
 const imgSrcMap: ApiProjectMap = {
-    'bibliotheque': '240603_Modus-bibliothque.jpg',
-    'imaginaires':  '240603_Modus-fabriquedesimaginaires.jpg',
-    'laboratoire':  '240603_Modus-laboratoire.jpg',
-    'plantation':   '240603_Modus-plantation.jpg',
-    'plateforme':   '240603_Modus-plateforme.jpg',
+    'library': '240603_Modus-bibliothque.jpg',
+    'imaginary':  '240603_Modus-fabriquedesimaginaires.jpg',
+    'laboratory':  '240603_Modus-laboratoire.jpg',
+    'planting':   '240603_Modus-plantation.jpg',
+    'platform':   '240603_Modus-plateforme.jpg',
 }
 
-const iconUrl   = computed(() => imageUrlMap[props.projectType] )
-const imgSrc    = computed(() => `/images_dispositifs/${imgSrcMap[props.projectType]}` )
+const iconUrl   = computed(() => props.projectType ? imageUrlMap[props.projectType] : '' )
+const imgSrc    = computed(() => props.projectType ? `/images_dispositifs/${imgSrcMap[props.projectType]}` : '' )
 
 </script>
 
