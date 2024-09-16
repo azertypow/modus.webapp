@@ -10,17 +10,53 @@
 
       <div class="v-project__content app-show-background-on-nav">
         <div class="v-project__content__grid">
-          <div class="v-project__section"
-               v-for="projectItem of projects"
-          >
-            <app-project-item
-                    :title="projectItem.content.title"
-                    :content="projectItem.content.headertitle"
-                    :project-type="projectItem.content.device"
-                    :img_src="projectItem.headerImage[0].resize.reg"
-                    :slug="projectItem.slug"
-            />
+          <div class="v-project__section v-project__section--full" >
+            <div style="display: flex; align-items: center; justify-content: center">
+              <div class="v-project__filter"
+                   @click="router.push({ query: {} })"
+                      v-if="activeFilterIcon">
+                <img class="v-project__filter__img"
+                     v-if="iconUrl"
+                     alt="project icon"
+                     :src="`/project_type_icons/${iconUrl}`"
+                />
+                <div class="v-project__filter__text">
+                  {{activeFilterIcon}}
+                </div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-x-circle-fill" viewBox="0 0 16 16">
+                  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z"/>
+                </svg>
+              </div>
+            </div>
           </div>
+
+          <template v-if="filteredProjects && filteredProjects.length > 0"
+          >
+            <div class="v-project__section"
+                 v-for="projectItem of filteredProjects"
+            >
+              <app-project-item
+                      :title="projectItem.content.title"
+                      :content="projectItem.content.headertitle"
+                      :project-type="projectItem.content.device"
+                      :img_src="projectItem.headerImage[0].resize.reg"
+                      :slug="projectItem.slug"
+              />
+            </div>
+          </template>
+          <template v-else >
+            <div class="v-project__section"
+                 v-for="projectItem of projects"
+            >
+              <app-project-item
+                      :title="projectItem.content.title"
+                      :content="projectItem.content.headertitle"
+                      :project-type="projectItem.content.device"
+                      :img_src="projectItem.headerImage[0].resize.reg"
+                      :slug="projectItem.slug"
+              />
+            </div>
+          </template>
         </div>
       </div>
 
@@ -33,12 +69,14 @@
 
 
 <script setup lang="ts">
-import {defineProps, Ref, UnwrapRef} from 'vue'
+import {ComputedRef, defineProps, Ref, UnwrapRef} from 'vue'
 import AppPage from "~/components/AppPage.vue";
 import {LocationQueryValue} from "vue-router";
-import {IApiBody, IApiProjects, IApiSingleProject} from "~/composable/adminApi/apiDefinitions";
-import {ApiFetchPage, ApiFetchProjects} from "~/composable/adminApi/apiFetch";
-import AppProfiles from "~/components/AppProfiles.vue";
+import {
+    apiProjectMap,
+    IApiSingleProject, imageUrlMap, isApiProjectType
+} from "~/composable/adminApi/apiDefinitions";
+import {ApiFetchProjects} from "~/composable/adminApi/apiFetch";
 
 
 
@@ -50,6 +88,15 @@ const headerText: Ref<UnwrapRef<undefined | string>> = ref(undefined)
 
 const projects: Ref<UnwrapRef<undefined | {[key: string]: IApiSingleProject}>> = ref(undefined)
 
+const filteredProjects: ComputedRef<UnwrapRef<null | IApiSingleProject[]>> = computed(() => {
+    if( !filter ) return null
+    if( !projects.value ) return null
+
+    return Object.values( projects.value ).filter(project => {
+        return project.content.device === filter.value
+    })
+})
+
 onMounted(async () => {
     const pageData = await ApiFetchProjects('projects')
 
@@ -60,8 +107,23 @@ onMounted(async () => {
 
 const filter: Ref<UnwrapRef<string | LocationQueryValue[] | null>> = ref( route.query.q || null)
 
+const activeFilterIcon: ComputedRef<string | null> = computed(() => {
+    if (filter.value === null) return null
+    if (typeof filter.value !== 'string') return null
+    if(isApiProjectType(filter.value)) return apiProjectMap[filter.value]
+    return null
+})
+
 watch(() => route.query.q, (newSearch) => {
     filter.value = newSearch
+})
+
+const iconUrl: ComputedRef<string | null> = computed(() => {
+
+    if (filter.value === null) return null
+    if (typeof filter.value !== 'string') return null
+    if(isApiProjectType(filter.value)) return imageUrlMap[filter.value]
+    return null
 })
 
 </script>
@@ -71,7 +133,24 @@ watch(() => route.query.q, (newSearch) => {
 
 
 <style lang="scss" scoped >
-.v-projects {
+.v-project__filter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  border-radius: 5rem;
+  flex-wrap: nowrap;
+  border: solid 2px var(--app-color-main);
+  box-sizing: border-box;
+  padding: 1rem;
+  user-select: none;
+  cursor: pointer;
+
+  .v-project__filter__img {
+    display: block;
+    height: 2rem;
+    width: auto;
+  }
 }
 
 .v-project__content {

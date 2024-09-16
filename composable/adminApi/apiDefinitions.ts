@@ -15,6 +15,27 @@ export const apiProjectMap: ApiProjectMap = {
     'planting' : 'La Plantation',
 }
 
+const apiProjectTypes: ApiProjectType[] = (() => {
+    return [
+        'platform',
+        'laboratory',
+        'library',
+        'imaginary',
+        'planting',
+    ];
+})();
+
+export const isApiProjectType = (str: string): str is ApiProjectType => {
+    return apiProjectTypes.includes(str as ApiProjectType);
+};
+
+export const imageUrlMap: ApiProjectMap = {
+    'library':   'img_bibliotheque.svg',
+    'imaginary':   'img_imaginaires.svg',
+    'laboratory': 'img_laboratoire.svg',
+    'planting':  'img_plantation.svg',
+    'platform':  'img_plateforme.svg',
+}
 
 
 

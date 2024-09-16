@@ -18,8 +18,10 @@
             />
         </div>
         <div class="v-app-project-item__bottom">
-            <div class="v-app-project-item__bottom__container" >
-                <div class="v-app-project-item__bottom__icon-box">
+            <div class="v-app-project-item__bottom__container">
+                <div class="v-app-project-item__bottom__icon-box"
+                     @click="useRouter().push({ query: {'q': projectType} })"
+                >
                     <img class="v-app-project-item__bottom__icon-box__img"
                          v-if="iconUrl"
                          alt="project icon"
@@ -45,7 +47,7 @@
 
 <script setup lang="ts">
 import {ComputedRef, defineProps} from 'vue'
-import {ApiProjectMap, apiProjectMap, ApiProjectType} from "~/composable/adminApi/apiDefinitions";
+import {ApiProjectMap, apiProjectMap, ApiProjectType, imageUrlMap} from "~/composable/adminApi/apiDefinitions";
 
 const props = defineProps<{
     projectType?: ApiProjectType
@@ -54,14 +56,6 @@ const props = defineProps<{
     img_src?: string
     slug?: string
 }>()
-
-const imageUrlMap: ApiProjectMap = {
-    'library':   'img_bibliotheque.svg',
-    'imaginary':   'img_imaginaires.svg',
-    'laboratory': 'img_laboratoire.svg',
-    'planting':  'img_plantation.svg',
-    'platform':  'img_plateforme.svg',
-}
 
 const iconUrl: ComputedRef<string | null> = computed(() => props.projectType ? imageUrlMap[props.projectType] : null )
 
@@ -128,6 +122,8 @@ const iconUrl: ComputedRef<string | null> = computed(() => props.projectType ? i
     border: solid 2px var(--app-color-main);
     border-radius: var(--app-radius-reg);
     padding: .5rem 1rem;
+    user-select: none;
+    cursor: pointer;
 }
 
 .v-app-project-item__bottom__icon-box__img {
