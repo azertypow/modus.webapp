@@ -194,7 +194,7 @@ useRouter().beforeEach((to, from, next) => {
 }
 
 .page-leave-to {
-    transform: translate3d(-5vw, 0, 0);
+    transform: translate3d(0, -1vh, 0);
     opacity: 0;
 }
 </style>
