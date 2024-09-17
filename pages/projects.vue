@@ -38,19 +38,26 @@
             </div>
           </div>
 
-          <template v-if="filteredProjects && filteredProjects.length > 0"
+          <template v-if="filteredProjects"
           >
-            <div class="v-project__section"
-                 v-for="projectItem of filteredProjects"
-            >
-              <app-project-item
-                      :title="projectItem.content.title"
-                      :content="projectItem.content.headertitle"
-                      :project-type="projectItem.content.device"
-                      :img_src="projectItem.headerImage[0].resize.reg"
-                      :slug="projectItem.slug"
-              />
-            </div>
+            <template v-if="filteredProjects.length > 0">
+              <div class="v-project__section"
+                   v-for="projectItem of filteredProjects"
+              >
+                <app-project-item
+                        :title="projectItem.content.title"
+                        :content="projectItem.content.headertitle"
+                        :project-type="projectItem.content.device"
+                        :img_src="projectItem.headerImage[0].resize.reg"
+                        :slug="projectItem.slug"
+                />
+              </div>
+            </template>
+            <template v-else>
+              <div style="min-height: 50vh; display: flex; align-items: center; justify-content: center">
+                <h4>Il n'y a pas encore de projet pour {{filter}}</h4>
+              </div>
+            </template>
           </template>
           <template v-else >
             <div class="v-project__section"
