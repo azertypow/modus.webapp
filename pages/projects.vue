@@ -55,7 +55,7 @@
             </template>
             <template v-else>
               <div style="min-height: 50vh; display: flex; align-items: center; justify-content: center">
-                <h4>Il n'y a pas encore de projet pour {{filter}}</h4>
+                <h4 style="text-align: center">Il n'y a pas encore de projet pour {{filter}}</h4>
               </div>
             </template>
           </template>
@@ -105,7 +105,7 @@ const headerText: Ref<UnwrapRef<undefined | string>> = ref(undefined)
 const projects: Ref<UnwrapRef<undefined | {[key: string]: IApiSingleProject}>> = ref(undefined)
 
 const filteredProjects: ComputedRef<UnwrapRef<null | IApiSingleProject[]>> = computed(() => {
-    if( !filter ) return null
+    if( !filter.value ) return null
     if( !projects.value ) return null
 
     return Object.values( projects.value ).filter(project => {
