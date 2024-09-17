@@ -54,8 +54,16 @@
               </div>
             </template>
             <template v-else>
-              <div style="min-height: 50vh; display: flex; align-items: center; justify-content: center">
-                <h4 style="text-align: center">Il n'y a pas encore de projet pour {{filter}}</h4>
+              <div class="v-project__section v-project__section--full">
+                <div style="min-height: 50vh; display: flex; align-items: center; justify-content: center; width: 100%">
+                  <h4 v-if="typeof filter === 'string' && isApiProjectType(filter)"
+                      style="text-align: center">Il n'y a pas encore de projet pour
+                    <span class="app-button app-button--small"
+                          @click="router.push({ query: {q: ''} })"
+
+                    >{{apiProjectMap[filter]}}</span>
+                  </h4>
+                </div>
               </div>
             </template>
           </template>
