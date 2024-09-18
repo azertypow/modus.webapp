@@ -25,7 +25,7 @@
       </div>
       <div class="v-proto__embed"
       >
-        <iframe src="https://app.powerbi.com/view?r=eyJrIjoiMjk3YTYxN2UtYjA3Mi00Njk5LThkYjgtNWE5NzkwMGJhMWVkIiwidCI6IjU1NjY4Nzc3LTYwZTYtNDlkZC1iODY1LTYyZjg0YjZlNGRkYiJ9&pageName=ReportSection2&filter=fitToPage"
+        <iframe src="https://app.powerbi.com/view?r=eyJrIjoiYWQ1YmEwYzQtODJlMS00OTRiLWFiZDctZmU0OTc1NGM3NWE0IiwidCI6IjU1NjY4Nzc3LTYwZTYtNDlkZC1iODY1LTYyZjg0YjZlNGRkYiJ9"
                 class="v-proto__embed__iframe"
         ></iframe>
       </div>
@@ -170,16 +170,20 @@ const props = defineProps<{
 
 .v-proto__embed {
   display: block;
-  width: calc(100vw - 20px);
+  width: calc(100% / 12 * 8);
   margin-left: auto;
   margin-right: auto;
-  height: calc( (100vw - 20px) * 1.5 );
+  height: calc( 100vh / 5 * 4 );
+  padding-top: 5rem;
+  padding-bottom: calc(100vh / 5);
 }
 
 .v-proto__embed__iframe {
   display: block;
-  border: none;
   width: 100%;
   height: 100%;
+  border: solid 1px var(--app-color-main--dark);
+  border-radius: .5rem;
+  box-shadow: 0 20px 10px -10px rgba(1, 152, 59, .25);
 }
 </style>
