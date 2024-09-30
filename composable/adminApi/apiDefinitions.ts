@@ -46,6 +46,9 @@ export interface IApiPage {
         "headerTitle": string,
         "headerImage": IApiImage | null
         "category": ApiProjectType | undefined
+        dateStart: string,
+        isProjectWithDuration: "true" | "false",
+        dateEnd: string,
     },
     "body": IApiBody,
     title?: {

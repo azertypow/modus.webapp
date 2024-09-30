@@ -32,17 +32,33 @@
         >
             <div class="v-app-page__path__content">
                 <nuxt-link href="/">Home</nuxt-link> / <nuxt-link href="/projects/">Les Projets Modus</nuxt-link> / {{titleContent?.split(' ').slice(0, 3).join(' ')}}…
-                <div style="padding-top: .5rem"
+                <div style="padding-top: .5rem; display: flex; justify-content: space-between; flex-direction: row; gap: 1rem"
                      v-if="category"
                 >
                   <div style="
                           font-weight: 500;
                           font-size: 1rem;
                           border: solid;
-                          display: inline-block;
+                          display: block;
                           border-radius: 2rem;
                           padding: .15rem .5rem .25rem;
                         ">{{apiProjectMap[category]}}</div>
+                  <div class="v-app-project-item__status-button"
+                       style="
+                          font-weight: 500;
+                          border: solid;
+                          border-radius: 2rem;
+                          padding: .15rem .5rem .25rem;
+                          min-width: 4rem;
+                          text-align: center;
+                          font-size: .75rem;
+                          display: flex;
+                          align-items: center;
+                          justify-content: flex-end;
+                          gap: .5rem;
+                          "
+                       v-if="status"
+                  >{{status}} <div style="background-color: currentColor; width: .5rem; height: .5rem; border-radius: 1rem"></div></div>
                 </div>
             </div>
         </div>
@@ -208,11 +224,26 @@ const props = defineProps<{
   titleContent?: string
   path?: boolean
   category?: ApiProjectType
+  date_start?: string,
+  is_project_with_duration?: "true" | "false",
+  date_end?: string,
 }>()
 
 function getIdParamInVideoYoutubeURL(url: string): string {
     return new URL(url).searchParams.get('v') || ''
 }
+
+const status: ComputedRef<null | 'en cours' | 'fini'> = computed(() => {
+    if(props.is_project_with_duration === 'false') return null
+
+    if( props.date_end === undefined ) return 'en cours'
+
+    return new Date(props.date_end).getTime() < new Date().getTime() ? 'fini' : 'en cours'
+})
+
+const statusColor: ComputedRef< 'red' | 'var(--app-color-main--dark)'> = computed(() => {
+    return status.value ===  'en cours' ? 'red' : 'var(--app-color-main--dark)'
+})
 
 
 nextTick(() => {
@@ -413,6 +444,10 @@ nextTick(() => {
     height: 12vw;
     max-height: 224px;
   }
+}
+
+.v-app-page__status-button {
+  color: v-bind(statusColor);
 }
 </style>
 

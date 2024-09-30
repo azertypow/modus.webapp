@@ -10,6 +10,9 @@
             :header-size="'small'"
             :header-text="headerText"
             :category="category"
+            :date_start="dateStart"
+            :is_project_with_duration="isProjectWithDuration"
+            :date_end="dateEnd"
         />
         <app-page-footer/>
     </section>
@@ -33,12 +36,18 @@ const bodyContent: Ref<UnwrapRef<undefined | IApiBody>> = ref(undefined)
 
 const category: Ref<UnwrapRef<ApiProjectType | undefined>> = ref(undefined)
 
+const dateStart: Ref<UnwrapRef<undefined | string>>              = ref(undefined)
+const isProjectWithDuration: Ref<UnwrapRef<undefined | string>>  = ref(undefined)
+const dateEnd: Ref<UnwrapRef<undefined | string>>                = ref(undefined)
+
 onMounted(async () => {
     const slug = useRoute()?.params?.slug
 
     if(typeof slug !== 'string') return
 
     const pageData = await ApiFetchPage(`projects/${slug}`)
+
+    console.log(pageData)
 
     headerCover.value = pageData.options.headerImage?.mediaUrl
     headerText.value = pageData?.title?.value
@@ -47,6 +56,10 @@ onMounted(async () => {
     bodyContent.value = pageData.body
 
     category.value = pageData.options.category
+
+    dateStart.value = pageData.options.dateStart
+    isProjectWithDuration.value = pageData.options.isProjectWithDuration
+    dateEnd.value = pageData.options.dateEnd
 })
 </script>
 

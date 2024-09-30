@@ -50,6 +50,9 @@
                         :project-type="projectItem.content.device"
                         :img_src="projectItem.headerImage[0].resize.reg"
                         :slug="projectItem.slug"
+                        :date_start="projectItem.content.datestart"
+                        :is_project_with_duration="projectItem.content.isprojectwithduration"
+                        :date_end="projectItem.content.dateend"
                 />
               </div>
             </template>
@@ -77,6 +80,9 @@
                       :project-type="projectItem.content.device"
                       :img_src="projectItem.headerImage[0].resize.reg"
                       :slug="projectItem.slug"
+                      :date_start="projectItem.content.datestart"
+                      :is_project_with_duration="projectItem.content.isprojectwithduration"
+                      :date_end="projectItem.content.dateend"
               />
             </div>
           </template>

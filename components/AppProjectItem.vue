@@ -32,10 +32,28 @@
                     >{{ apiProjectMap[projectType] }}</h4>
                 </div>
             </div>
-            <div class="v-app-project-item__bottom__container">
-                <nuxt-link class="app-button app-button--small"
-                           :href="`/project/${slug}`"
-                >Découvrir</nuxt-link>
+            <div STYLE="display: flex; flex-direction: column; gap: .5rem; align-items: flex-end">
+                <div class="v-app-project-item__status-button"
+                     style="
+                            font-weight: 600;
+                            font-size: .75rem;
+                            border: solid 2px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: flex-end;
+                            gap: .5rem;
+                            border-radius: 2rem;
+                            padding: .015rem .5rem .025rem;
+                            min-width: 3rem;
+                            text-align: center;
+                          "
+                     v-if="status"
+                >{{status}} <div style="background-color: currentColor; width: .5rem; height: .5rem; border-radius: 1rem"></div></div>
+                <div class="v-app-project-item__bottom__container">
+                    <nuxt-link class="app-button app-button--small"
+                               :href="`/project/${slug}`"
+                    >Découvrir</nuxt-link>
+                </div>
             </div>
         </div>
     </section>
@@ -55,9 +73,24 @@ const props = defineProps<{
     content?: string
     img_src?: string
     slug?: string
+    date_start: string,
+    is_project_with_duration?: "true" | "false",
+    date_end?: string,
 }>()
 
 const iconUrl: ComputedRef<string | null> = computed(() => props.projectType ? imageUrlMap[props.projectType] : null )
+
+const status: ComputedRef<null | 'en cours' | 'fini'> = computed(() => {
+    if(props.is_project_with_duration === 'false') return null
+
+    if( props.date_end === undefined ) return 'en cours'
+
+    return new Date(props.date_end).getTime() < new Date().getTime() ? 'fini' : 'en cours'
+})
+
+const statusColor: ComputedRef<'red' | 'var(--app-color-main--dark)'> = computed(() => {
+    return status.value === 'en cours' ? 'red' : 'var(--app-color-main--dark)'
+})
 
 </script>
 
@@ -85,7 +118,8 @@ const iconUrl: ComputedRef<string | null> = computed(() => props.projectType ? i
     }
 }
 
-.v-app-project-item__title {
+.v-app-project-item__status-button {
+  color: v-bind(statusColor);
 }
 
 .v-app-project-item__content {
