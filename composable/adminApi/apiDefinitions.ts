@@ -258,6 +258,9 @@ export interface IApiSingleProject {
         "pdffile": string,
         "uuid": string,
         device: ApiProjectType
+        datestart: string,
+        isprojectwithduration: "true" | "false",
+        dateend: string,
     }
 }
 
