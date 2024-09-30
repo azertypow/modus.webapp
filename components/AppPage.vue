@@ -203,11 +203,11 @@ const props = defineProps<{
   headerText?: string
   headerCover?: string
   bodyContent?: IApiBody
-    headerSize?: 'small'
-    withoutBody?: boolean
-    titleContent?: string
-    path?: boolean
-    category?: ApiProjectType
+  headerSize?: 'small'
+  withoutBody?: boolean
+  titleContent?: string
+  path?: boolean
+  category?: ApiProjectType
 }>()
 
 function getIdParamInVideoYoutubeURL(url: string): string {
