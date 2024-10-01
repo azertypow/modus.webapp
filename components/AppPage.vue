@@ -32,7 +32,7 @@
         >
             <div class="v-app-page__path__content">
                 <nuxt-link href="/">Home</nuxt-link> / <nuxt-link href="/projects/">Les Projets Modus</nuxt-link> / {{headerText?.split(' ').slice(0, 5).join(' ')}}…
-                <div style="padding-top: .5rem; display: flex; justify-content: space-between; flex-direction: row; gap: 1rem"
+                <div style="padding-top: .5rem; display: flex; justify-content: space-between; flex-direction: row; gap: 1rem; flex-wrap: wrap"
                      v-if="category"
                 >
                   <div style="
