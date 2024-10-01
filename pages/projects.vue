@@ -130,10 +130,18 @@ const filteredProjects: ComputedRef<UnwrapRef<null | IApiSingleProject[]>> = com
 onMounted(async () => {
     const pageData = await ApiFetchProjects('projects')
 
-    headerCover.value = pageData.options.headerImage?.resize.large
+    headerCover.value = pageData.options.headerImage?.resize.tiny
     headerText.value = pageData.options.headerTitle
     projects.value = pageData.children
+
+    lazyLoadHeadImage(pageData.options.headerImage?.url || '')
 })
+
+function lazyLoadHeadImage(largeImageUrl: string) {
+    const imageToLoad = new Image()
+    imageToLoad.src = largeImageUrl
+    imageToLoad.addEventListener('load', () => headerCover.value = largeImageUrl)
+}
 
 const filter: Ref<UnwrapRef<string | LocationQueryValue[] | null>> = ref( route.query.q || null)
 
