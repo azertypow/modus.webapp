@@ -22,8 +22,11 @@
                  v-html="description"
             />
             <div class="v-app-actuality__content__bottom">
-                <nuxt-link v-if="url" class="app-button app-button--small" href="projects">-> Découvrir</nuxt-link>
-                <nuxt-link v-else class="app-button app-button--small" href="projects">-> Découvrir des projets</nuxt-link>
+                <a v-if="url" class="app-button app-button--small"
+                   :href="url"
+                   target="_blank"
+                >-> Découvrir</a>
+                <nuxt-link v-else class="app-button app-button--small" href="/projects">-> Découvrir des projets</nuxt-link>
             </div>
         </div>
 
