@@ -19,7 +19,9 @@
           </div>
 
 
-          <div>
+          <div style="display: flex; flex-direction: column; gap: 1rem">
+            <nuxt-link href="/protection-des-donnees-personnelles"
+            >Protection des données personnelles</nuxt-link>
             <div class="app__icon">
               <a href="https://ch.linkedin.com/company/fondation-modus" target="_blank">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-linkedin" viewBox="0 0 16 16">
