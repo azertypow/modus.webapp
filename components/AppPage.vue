@@ -43,7 +43,7 @@
                           border-radius: 2rem;
                           padding: .15rem .5rem .25rem;
                         ">{{apiProjectMap[category]}}</div>
-                  <div class="v-app-project-item__status-button"
+                  <div class="v-app-page__status-button"
                        style="
                           font-weight: 500;
                           border: solid;
