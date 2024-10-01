@@ -14,7 +14,7 @@
                   v-model="formData.description"
                   required
                   maxlength="1250"
-                  placeholder="Courte description du projet (objectifs, partenaires, etc./ 250 mots max)"
+                  placeholder="Courte description du projet (objectifs, partenaires, montant du projet, etc./ 250 mots max)"
         ></textarea>
         <button class="app-button--small"
                 v-if="status === 'nothing' || status === 'sending ERROR'"
