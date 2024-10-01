@@ -48,8 +48,7 @@
                           font-weight: 500;
                           border: solid;
                           border-radius: 2rem;
-                          padding: .15rem .5rem .25rem;
-                          min-width: 4rem;
+                          padding: .15rem .5rem .25rem 2.5rem;
                           text-align: center;
                           font-size: .75rem;
                           display: flex;
@@ -58,7 +57,7 @@
                           gap: .5rem;
                           "
                        v-if="status"
-                  >{{status}} <div style="background-color: currentColor; width: .5rem; height: .5rem; border-radius: 1rem"></div></div>
+                  >{{status}} <div style="background-color: currentColor; width: .75rem; height: .75rem; border-radius: 1rem"></div></div>
                 </div>
             </div>
         </div>
@@ -251,16 +250,16 @@ function getIdParamInVideoYoutubeURL(url: string): string {
     return new URL(url).searchParams.get('v') || ''
 }
 
-const status: ComputedRef<null | 'en cours' | 'fini'> = computed(() => {
+const status: ComputedRef<null | 'En cours' | 'Fini'> = computed(() => {
     if(props.is_project_with_duration === 'false') return null
 
-    if( props.date_end === undefined ) return 'en cours'
+    if( props.date_end === undefined ) return 'En cours'
 
-    return new Date(props.date_end).getTime() < new Date().getTime() ? 'fini' : 'en cours'
+    return new Date(props.date_end).getTime() < new Date().getTime() ? 'Fini' : 'En cours'
 })
 
-const statusColor: ComputedRef< 'red' | 'var(--app-color-main--dark)'> = computed(() => {
-    return status.value ===  'en cours' ? 'red' : 'var(--app-color-main--dark)'
+const statusColor: ComputedRef< 'var(--app-color-orange)' | 'var(--app-color-main--dark)'> = computed(() => {
+    return status.value ===  'En cours' ? 'var(--app-color-orange)' : 'var(--app-color-main--dark)'
 })
 
 

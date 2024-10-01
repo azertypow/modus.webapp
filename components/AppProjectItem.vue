@@ -40,7 +40,7 @@
                             border: solid 2px;
                             display: flex;
                             align-items: center;
-                            justify-content: flex-end;
+                            justify-content: center;
                             gap: .5rem;
                             border-radius: 2rem;
                             padding: .015rem .5rem .025rem;
@@ -48,7 +48,7 @@
                             text-align: center;
                           "
                      v-if="status"
-                >{{status}} <div style="background-color: currentColor; width: .5rem; height: .5rem; border-radius: 1rem"></div></div>
+                >{{status}}</div>
                 <div class="v-app-project-item__bottom__container">
                     <nuxt-link class="app-button app-button--small"
                                :href="`/project/${slug}`"
@@ -80,16 +80,16 @@ const props = defineProps<{
 
 const iconUrl: ComputedRef<string | null> = computed(() => props.projectType ? imageUrlMap[props.projectType] : null )
 
-const status: ComputedRef<null | 'en cours' | 'fini'> = computed(() => {
+const status: ComputedRef<null | 'En cours' | 'Fini'> = computed(() => {
     if(props.is_project_with_duration === 'false') return null
 
-    if( props.date_end === undefined ) return 'en cours'
+    if( props.date_end === undefined ) return 'En cours'
 
-    return new Date(props.date_end).getTime() < new Date().getTime() ? 'fini' : 'en cours'
+    return new Date(props.date_end).getTime() < new Date().getTime() ? 'Fini' : 'En cours'
 })
 
-const statusColor: ComputedRef<'red' | 'var(--app-color-main--dark)'> = computed(() => {
-    return status.value === 'en cours' ? 'red' : 'var(--app-color-main--dark)'
+const statusColor: ComputedRef<'var(--app-color-orange)' | 'var(--app-color-main--dark)'> = computed(() => {
+    return status.value === 'En cours' ? 'var(--app-color-orange)' : 'var(--app-color-main--dark)'
 })
 
 </script>
@@ -119,7 +119,9 @@ const statusColor: ComputedRef<'red' | 'var(--app-color-main--dark)'> = computed
 }
 
 .v-app-project-item__status-button {
-  color: v-bind(statusColor);
+  color: white;
+  background-color: v-bind(statusColor);
+  border-color: v-bind(statusColor) !important;
 }
 
 .v-app-project-item__content {
