@@ -120,7 +120,7 @@
 
               <template v-else-if="bodyContentItem.content.type === 'body'">
                 <div class="v-app-page__section v-app-page__section--body v-app-page__section--full">
-                  <div v-html="bodyContentItem.content.content.text"/>
+                  <div v-html="addIdsToH2(bodyContentItem.content.content.text)"/>
                 </div>
               </template>
 
@@ -214,6 +214,7 @@ import {useIsIntersected} from "~/composable/main";
 import {apiProjectMap, ApiProjectMap, ApiProjectType, IApiBody} from "~/composable/adminApi/apiDefinitions";
 import AppProfiles from "~/components/AppProfiles.vue";
 import AppListPoints from "~/components/AppListPoints.vue";
+import {addIdsToH2} from "~/utils/addIdsToH2";
 
 const props = defineProps<{
   headerText?: string
@@ -367,6 +368,18 @@ nextTick(() => {
   &.v-app-page__section--body {
     &:deep(h2) {
       text-align: left;
+    }
+
+    &:deep(h2 a) {
+      opacity: .5;
+      text-decoration: none;
+      position: relative;
+      display: inline-block;
+      transform: translate(-25%, 0) rotate(-15deg) scale(1.25);
+
+      &:hover {
+        opacity: 1;
+      }
     }
 
     &:deep(ul),

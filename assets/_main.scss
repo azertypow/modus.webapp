@@ -225,3 +225,7 @@ body, html {
   opacity: 0;
   filter: blur(.5rem);
 }
+
+h2 {
+  scroll-margin-top: 100px; /* Ajuste cette valeur selon la hauteur du header fixe */
+}
