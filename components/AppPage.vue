@@ -45,19 +45,20 @@
                         ">{{apiProjectMap[category]}}</div>
                   <div class="v-app-page__status-button"
                        style="
-                          font-weight: 500;
-                          border: solid;
-                          border-radius: 2rem;
-                          padding: .15rem .5rem .25rem 2.5rem;
-                          text-align: center;
+                          font-weight: 600;
                           font-size: .75rem;
+                          border: solid 2px;
                           display: flex;
                           align-items: center;
-                          justify-content: flex-end;
+                          justify-content: center;
                           gap: .5rem;
+                          border-radius: 2rem;
+                          padding: .015rem .5rem .025rem;
+                          min-width: 3rem;
+                          text-align: center;
                           "
                        v-if="status"
-                  >{{status}} <div style="background-color: currentColor; width: .75rem; height: .75rem; border-radius: 1rem"></div></div>
+                  >{{status}}</div>
                 </div>
             </div>
         </div>
@@ -461,7 +462,9 @@ nextTick(() => {
 }
 
 .v-app-page__status-button {
-  color: v-bind(statusColor);
+  color: white;
+  background-color: v-bind(statusColor);
+  border-color: v-bind(statusColor) !important;
 }
 </style>
 
