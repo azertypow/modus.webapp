@@ -195,7 +195,14 @@
             chargement du contenu…
           </template>
         </div>
+        <div style="display: flex; justify-content: center; flex-direction: column; align-items: center; gap: .5rem; cursor: pointer"
+             @click="shareClicked"
+        >
+          <button class="app-button app-button--small">{{textButton}}</button>
+          <div style="font-size: .85rem">{{textBaseline}}</div>
+        </div>
       </div>
+
 
 
 
@@ -215,6 +222,7 @@ import {apiProjectMap, ApiProjectMap, ApiProjectType, IApiBody} from "~/composab
 import AppProfiles from "~/components/AppProfiles.vue";
 import AppListPoints from "~/components/AppListPoints.vue";
 import {addIdsToH2} from "~/utils/addIdsToH2";
+import {copyCurrentUrlToClipboard} from "~/utils/copyCurrentUrlToClipboard";
 
 const props = defineProps<{
   headerText?: string
@@ -229,6 +237,15 @@ const props = defineProps<{
   is_project_with_duration?: "true" | "false",
   date_end?: string,
 }>()
+
+const textButton = ref('copier le lien de cette page')
+const textBaseline = ref('pour le partager')
+
+function shareClicked() {
+    copyCurrentUrlToClipboard()
+    textButton.value = 'lien copier'
+    textBaseline.value = 'patagez le!'
+}
 
 function getIdParamInVideoYoutubeURL(url: string): string {
     return new URL(url).searchParams.get('v') || ''
