@@ -75,7 +75,7 @@ const textButton = ref('copier le lien de cette page')
 
 function shareClicked() {
     copyCurrentUrlToClipboard()
-    textButton.value = 'lien copier'
+    textButton.value = 'lien copié'
 }
 
 
