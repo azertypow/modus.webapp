@@ -199,34 +199,23 @@ const iconUrl: ComputedRef<string | null> = computed(() => {
 }
 
 .v-project__content__grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
   width: 100%;
   box-sizing: border-box;
-  max-width: 1300px;
-  margin-left: auto;
-  margin-right: auto;
   gap: 2rem;
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-  padding-left: var(--app-gutter);
-  padding-right: var(--app-gutter);
+  padding: 2rem var(--app-gutter);
 }
 
 .v-project__section {
   box-sizing: border-box;
-  max-width: 1300px;
-  margin-left: auto;
-  margin-right: auto;
   position: relative;
+  max-width: 35rem;
   width: 100%;
 
-  @media (max-width: 900px) {
-    grid-column: span 2;
-  }
-
   &.v-project__section--full {
-    grid-column: span 2;
+    max-width: none;
   }
 
   &.v-project__section--no-padding {
