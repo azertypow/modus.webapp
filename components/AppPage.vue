@@ -236,12 +236,12 @@ function getIdParamInVideoYoutubeURL(url: string): string {
     return new URL(url).searchParams.get('v') || ''
 }
 
-const status: ComputedRef<null | 'En cours' | 'Fini'> = computed(() => {
+const status: ComputedRef<null | 'En cours' | 'Terminé'> = computed(() => {
     if(props.is_project_with_duration === 'false') return null
 
     if( props.date_end === undefined ) return 'En cours'
 
-    return new Date(props.date_end).getTime() < new Date().getTime() ? 'Fini' : 'En cours'
+    return new Date(props.date_end).getTime() < new Date().getTime() ? 'Terminé' : 'En cours'
 })
 
 const statusColor: ComputedRef< 'var(--app-color-orange)' | 'var(--app-color-main--dark)'> = computed(() => {
