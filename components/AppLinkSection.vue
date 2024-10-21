@@ -40,6 +40,12 @@ const props = defineProps<{
 
 
 <style lang="scss" scoped >
+.v-app-link-section__box {
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+}
+
 .v-app-link-section__box__item {
   display: flex;
   border: solid;
@@ -52,12 +58,6 @@ const props = defineProps<{
   &:hover {
     color: var(--app-color-main);
   }
-}
-
-.v-app-link-section__box {
-  display: flex;
-  gap: 1rem;
-  flex-direction: column;
 }
 
 svg {
