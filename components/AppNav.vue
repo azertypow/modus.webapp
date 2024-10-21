@@ -50,11 +50,11 @@
           </div>
         </transition>
 
-        <div
-            class="v-app-nav__menu"
-            @click="toggleNav"
+        <div class="v-app-nav__menu"
+             @click="toggleNav"
         >
           <img alt="ouvrire le menu"
+               draggable="false"
                src="@/assets/menu_icon.svg"
           />
         </div>
