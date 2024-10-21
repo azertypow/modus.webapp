@@ -32,7 +32,7 @@
                     >{{ apiProjectMap[projectType] }}</h4>
                 </div>
             </div>
-            <div STYLE="display: flex; flex-direction: column; gap: .5rem; align-items: flex-end">
+            <div class="v-app-project-item__bottom__container" >
                 <div class="v-app-project-item__status-button"
                      style="
                             font-weight: 600;
@@ -194,13 +194,21 @@ const statusColor: ComputedRef<'var(--app-color-orange)' | 'var(--app-color-main
 
     @media (max-width: 700px) {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: flex-end;
         gap: var(--app-gutter);
     }
 }
 
 .v-app-project-item__bottom__container {
-    display: flex;
+  display: flex;
+  gap: .5rem;
+  flex-direction: column;
+  align-items: flex-end;
+
+  @media (max-width: 700px) {
+    flex-direction: row;
+    align-items: flex-start;
+  }
 }
 
 
