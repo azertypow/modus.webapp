@@ -71,11 +71,11 @@ onMounted(async () => {
     dateEnd.value = pageData.options.dateEnd
 })
 
-const textButton = ref('copier le lien de cette page')
+const textButton = ref('Copier le lien de cette page')
 
 function shareClicked() {
     copyCurrentUrlToClipboard()
-    textButton.value = 'lien copié'
+    textButton.value = 'Lien copié'
 }
 
 
