@@ -43,7 +43,8 @@ const props = defineProps<{
 .v-app-link-section__box {
   display: flex;
   gap: 1rem;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .v-app-link-section__box__item {
@@ -54,6 +55,7 @@ const props = defineProps<{
   color: var(--app-color-main--dark);
   text-decoration: none;
   justify-content: space-between;
+  max-width: 25rem;
 
   &:hover {
     color: var(--app-color-main);
@@ -64,5 +66,6 @@ svg {
   display: block;
   height: 1.5rem;
   width: auto;
+  padding-left: 1rem;
 }
 </style>
