@@ -131,9 +131,7 @@ function toggleNav() {
     width: 100%;
     pointer-events: none;
     z-index: -1;
-    background: rgba(255, 255, 255, 0.75);
-    backdrop-filter: blur(10px);
-    transition: height .25s ease-in-out;
+    background: var(--app-color-grey);
     height: 0;
   }
 
