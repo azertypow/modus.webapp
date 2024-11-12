@@ -53,7 +53,7 @@
         <div class="v-app-nav__menu"
              @click="toggleNav"
         >
-          <img alt="ouvrire le menu"
+          <img alt="ouvrir le menu"
                draggable="false"
                src="@/assets/menu_icon.svg"
           />
