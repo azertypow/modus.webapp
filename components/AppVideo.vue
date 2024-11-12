@@ -36,7 +36,7 @@ import {cookieIsValidate} from "~/composable/main";
 
 const props = defineProps<{
     video_id: string,
-    videoCover?: string,
+    video_caption: string,
 }>()
 
 const vimeoIframe: Ref<UnwrapRef<null | HTMLIFrameElement>> = ref(null)

@@ -153,7 +153,7 @@
                 <div class="v-app-page__section v-app-page__section--full" style="max-width: 60rem">
                   <app-video
                           :video_id="getIdParamInVideoYoutubeURL(bodyContentItem.content.content.url)"
-                          :video-cover="bodyContentItem.image[0]?.resize.reg"
+                          :video_caption="bodyContentItem.content.content.caption"
                   />
                 </div>
               </template>
