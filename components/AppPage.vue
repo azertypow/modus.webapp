@@ -158,6 +158,15 @@
                 </div>
               </template>
 
+              <template v-else-if="bodyContentItem.content.type === 'spotify'">
+                <div class="v-app-page__section v-app-page__section--full" style="max-width: 60rem">
+                  <app-spotify
+                          :podcast_link="bodyContentItem.content.content.url"
+                          :podcast_caption="bodyContentItem.content.content.caption"
+                  />
+                </div>
+              </template>
+
               <template v-else-if="bodyContentItem.content.type === 'listPoints'">
                 <div class="v-app-page__section">
                   <app-list-points

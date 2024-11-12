@@ -76,12 +76,24 @@ export interface IApiBody {
             content: {
                 content: {
                     url: string,
-                    image: string[],
                     caption: string
                 },
                 id: string,
                 isHidden: false,
                 type: "video"
+            }
+        }
+        |
+        {
+            "image": IApiImage[],
+            content: {
+                content: {
+                    url: string,
+                    caption: string
+                },
+                id: string,
+                isHidden: false,
+                type: "spotify"
             }
         }
         |
