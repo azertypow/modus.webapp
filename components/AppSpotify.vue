@@ -59,5 +59,6 @@ const podcastId: ComputedRef<string | null> = computed(() => {
   font-size: 1rem;
   line-height: 1.2em;
   margin-top: .2em;
+  margin-bottom: 1.2em;
 }
 </style>
