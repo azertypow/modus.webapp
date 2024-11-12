@@ -206,13 +206,20 @@ body, html {
   gap: 1rem;
 
   a {
-    display: block;
+    background: var(--app-color-main--dark);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:  1.675rem;
+    height: 1.675rem;
+    border-radius: 2rem;
   }
 
   svg {
     display: block;
-    height: 2rem;
+    height: .85rem !important;
     width: auto;
+    fill: white;
   }
 }
 
