@@ -36,12 +36,14 @@
                      v-if="category"
                 >
                   <div style="
-                          font-weight: 500;
-                          font-size: 1rem;
+                          font-weight: 600;
+                          font-size: .75rem;
                           border: solid;
                           display: block;
                           border-radius: 2rem;
                           padding: .15rem .5rem .25rem;
+                          color: white;
+                          background: var(--app-color-main--dark);
                         ">{{apiProjectMap[category]}}</div>
                   <div class="v-app-page__status-button"
                        style="
