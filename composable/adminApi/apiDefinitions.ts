@@ -225,6 +225,7 @@ export interface IApiProfilesImages {
         id: string,
         image: string[],
         name: string
+        link?: string
     },
     image: IApiImage[]
 }

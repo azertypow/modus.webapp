@@ -1,7 +1,7 @@
 <template>
     <section class="v-app-profiles child-remove-margin"
     >
-      <h3 class="v-app-profiles__title">{{profilesData.title}}</h3>
+      <h3 v-if="profilesData" class="v-app-profiles__title">{{profilesData.title}}</h3>
 
       <div class="v-app-profiles__content">
         <template v-for="profileImageItem of profilesImagesData">
@@ -23,6 +23,13 @@
                     >{{profileImageItem.content.name}}</div>
                     <div class="v-app-profiles__item__description"
                     >{{profileImageItem.content.description}}</div>
+                    <div style="display: flex; justify-content: center; margin-top: .5rem">
+                      <a class="app-button app-button--small"
+                         v-if="profileImageItem.content.link"
+                         :href="profileImageItem.content.link"
+                         target="_blank"
+                      >LinkedIn</a>
+                    </div>
                   </div>
                 </div>
               </div>
