@@ -2,12 +2,15 @@
     <section class="v-app-project-item"
     >
 
+
         <div class="v-app-project-item__header"
         >
             <img class="v-app-project-item__header__img"
                  alt="project cover"
                  :src="img_src"
             />
+            <div class="v-app-project-item__header__date"
+            >{{formatDateRange(date_start, date_end)}}</div>
         </div>
 
         <div class="v-app-project-item__body child-remove-margin"
@@ -66,6 +69,7 @@
 <script setup lang="ts">
 import {ComputedRef, defineProps} from 'vue'
 import {ApiProjectMap, apiProjectMap, ApiProjectType, imageUrlMap} from "~/composable/adminApi/apiDefinitions";
+import {formatDateRange} from "~/utils/formatDateRange";
 
 const props = defineProps<{
     projectType?: ApiProjectType
@@ -137,11 +141,23 @@ const statusColor: ComputedRef<'var(--app-color-orange)' | 'var(--app-color-main
     width: 100%;
 }
 
+.v-app-project-item__header__date {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  background: var(--app-color-main--dark);
+  border-radius: 1rem;
+  color: white;
+  padding: .25rem 1rem;
+  font-size: .75rem;
+
+}
+
 .v-app-project-item__header__img {
     display: block;
     width: 100%;
     border-bottom-left-radius: 2rem;
-    border-bottom-right-radius: 2rem;
+    border-bottom-right-radius: 0;
     background-color: #D3DABF;
     object-fit: cover;
     aspect-ratio: 7/5;
