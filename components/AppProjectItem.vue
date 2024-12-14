@@ -143,8 +143,8 @@ const statusColor: ComputedRef<'var(--app-color-orange)' | 'var(--app-color-main
 
 .v-app-project-item__header__date {
   position: absolute;
-  bottom: 1rem;
-  right: 1rem;
+  top: 1rem;
+  left: 1rem;
   background: var(--app-color-main--dark);
   border-radius: 1rem;
   color: white;
