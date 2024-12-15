@@ -38,11 +38,11 @@
             </div>
           </div>
 
-          <template v-if="filteredProjects"
+          <template v-if="projectsToShow"
           >
-            <template v-if="filteredProjects.length > 0">
+            <template v-if="projectsToShow.length > 0">
               <div class="v-project__section"
-                   v-for="projectItem of filteredProjects"
+                   v-for="projectItem of projectsToShow"
               >
                 <app-project-item
                         :title="projectItem.content.title"
@@ -116,23 +116,48 @@ const router = useRouter()
 const headerCover: Ref<UnwrapRef<undefined | string>> = ref(undefined)
 const headerText: Ref<UnwrapRef<undefined | string>> = ref(undefined)
 
-const projects: Ref<UnwrapRef<undefined | {[key: string]: IApiSingleProject}>> = ref(undefined)
+const projects: Ref<UnwrapRef<undefined | IApiSingleProject[]>> = ref(undefined)
 
-const filteredProjects: ComputedRef<UnwrapRef<null | IApiSingleProject[]>> = computed(() => {
+const projectsToShow: ComputedRef<UnwrapRef<null | IApiSingleProject[]>> = computed(() => {
     if( !filter.value ) return null
     if( !projects.value ) return null
 
-    return Object.values( projects.value ).filter(project => {
+    return filteredProjects(projects.value)
+})
+
+function filteredProjects(projects: IApiSingleProject[]): IApiSingleProject[] {
+    return Object.values( projects ).filter(project => {
         return project.content.device === filter.value
     })
-})
+}
+
+function shortedEventByDate(projects: {[key: string]: IApiSingleProject}): IApiSingleProject[] {
+    // Convert object to array for sorting
+    const projectArray = Object.values(projects)
+
+    return projectArray.sort((a, b) => {
+        const dateStartA = new Date(a.content.datestart).getTime()
+        const dateStartB = new Date(b.content.datestart).getTime()
+
+        // Compare by start date
+        if (dateStartA !== dateStartB) {
+            return dateStartB - dateStartA
+        }
+
+        // If start dates are equal, compare by end date (if they exist)
+        const dateEndA = a.content.dateend ? new Date(a.content.dateend).getTime() : 0
+        const dateEndB = b.content.dateend ? new Date(b.content.dateend).getTime() : 0
+
+        return dateEndB - dateEndA
+    })
+}
 
 onMounted(async () => {
     const pageData = await ApiFetchProjects('projects')
 
     headerCover.value = pageData.options.headerImage?.resize.tiny
     headerText.value = pageData.options.headerTitle
-    projects.value = pageData.children
+    projects.value = shortedEventByDate(pageData.children)
 
     lazyLoadHeadImage(pageData.options.headerImage?.url || '')
 })
