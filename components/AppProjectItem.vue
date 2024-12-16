@@ -145,7 +145,7 @@ const statusColor: ComputedRef<'var(--app-color-orange)' | 'var(--app-color-main
   position: absolute;
   top: 1rem;
   left: 1rem;
-  background: var(--app-color-main--dark);
+  background: var(--app-color-main);
   border-radius: 1rem;
   color: white;
   padding: .25rem 1rem;
@@ -157,7 +157,7 @@ const statusColor: ComputedRef<'var(--app-color-orange)' | 'var(--app-color-main
     display: block;
     width: 100%;
     border-bottom-left-radius: 2rem;
-    border-bottom-right-radius: 0;
+    border-bottom-right-radius: 2rem;
     background-color: #D3DABF;
     object-fit: cover;
     aspect-ratio: 7/5;
