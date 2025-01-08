@@ -90,6 +90,7 @@ import {
 } from "~/composable/main";
 import AppCookie from "~/components/AppCookie.vue";
 import {ApiFetchPagesInfo} from "~/composable/adminApi/apiFetch";
+import {getCookieBannerValue, setCookieBannerValue} from "~/utils/cookieBannerLocalStorage";
 
 const isIntersected = useIsIntersected()
 
@@ -104,6 +105,14 @@ onMounted(async () => {
 useRouter().beforeEach((to, from, next) => {
     showMenu().value = false
     next()
+})
+
+watch(cookieIsValidate, (value, oldValue, onCleanup) => {
+    setCookieBannerValue(value.value)
+})
+
+onBeforeMount(() => {
+    if( getCookieBannerValue() === true ) cookieIsValidate().value = true
 })
 
 </script>
