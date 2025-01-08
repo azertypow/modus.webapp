@@ -4,6 +4,7 @@
     >
         <app-page
             :header-cover="headerCover"
+            :header_focus="headerFocus"
             :title-content="bodyTitle"
             :body-content="bodyContent"
             :path="true"
@@ -40,6 +41,7 @@ import {ApiFetchPage} from "~/composable/adminApi/apiFetch";
 import {copyCurrentUrlToClipboard} from "~/utils/copyCurrentUrlToClipboard";
 
 const headerCover: Ref<UnwrapRef<undefined | string>> = ref(undefined)
+const headerFocus: Ref<UnwrapRef<undefined | string>> = ref(undefined)
 const headerText: Ref<UnwrapRef<undefined | string>> = ref(undefined)
 
 const bodyTitle: Ref<UnwrapRef<undefined | string>> = ref(undefined)
@@ -59,6 +61,7 @@ onMounted(async () => {
     const pageData = await ApiFetchPage(`projects/${slug}`)
 
     headerCover.value = pageData.options.headerImage?.mediaUrl
+    headerFocus.value = pageData.options.headerImage?.focus
     headerText.value = pageData?.title?.value
 
     bodyTitle.value = pageData.options.headerTitle

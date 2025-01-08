@@ -232,6 +232,8 @@ export interface IApiProfilesImages {
 
 
 export interface IApiImage {
+    /** like 54.5% 45.8% */
+    "focus": string
     "caption": string,
     "alt": string | null,
     "link": string | null,

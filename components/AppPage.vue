@@ -17,6 +17,7 @@
                     :headerSize="headerSize"
                     :text="headerText"
                     :bg-image="headerCover"
+                    :bg_focus="header_focus"
             />
           </template>
         </template>
@@ -232,6 +233,7 @@ import {copyCurrentUrlToClipboard} from "~/utils/copyCurrentUrlToClipboard";
 const props = defineProps<{
   headerText?: string
   headerCover?: string
+  header_focus?: string
   bodyContent?: IApiBody
   headerSize?: 'small'
   withoutBody?: boolean

@@ -16,6 +16,9 @@
                     class="v-app-header__graphic-box__module_1"
                     alt="image graphique de ville pour habiller le header du site"
                     :src="bgImage ? bgImage : '/header--default.jpg'"
+                    :style="{
+                        objectPosition: props.bg_focus,
+                    }"
                 />
             </div>
         </div>
@@ -36,10 +39,11 @@
 
 
 <script lang="ts" setup>
-defineProps<{
+const props = defineProps<{
   bgImage?: string,
+  bg_focus?: string,
   text?: string,
-    headerSize?: 'small',
+  headerSize?: 'small',
 }>()
 
 import {bodyScrollInfo} from "~/composable/main";
@@ -130,7 +134,7 @@ const bodyScrollInfoStore = bodyScrollInfo()
 .v-app-header__graphic-box__module_1 {
     position: relative;
     top: var(--app-nav__height);
-    height: calc( 125% );
+    height: calc(100% - var(--app-nav__height) - 5rem);
     width: 100%;
     object-fit: cover;
     user-select: none;
