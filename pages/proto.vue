@@ -3,7 +3,7 @@
     >
       <div class="v-proto__embed"
       >
-        <iframe src="https://app.powerbi.com/view?r=eyJrIjoiYWQ1YmEwYzQtODJlMS00OTRiLWFiZDctZmU0OTc1NGM3NWE0IiwidCI6IjU1NjY4Nzc3LTYwZTYtNDlkZC1iODY1LTYyZjg0YjZlNGRkYiJ9"
+        <iframe src="https://app.powerbi.com/view?r=eyJrIjoiMjEwNGEzMDMtZDg5Yy00OGQ5LTk1NDEtM2ExZWRmZDZjMmFkIiwidCI6IjU1NjY4Nzc3LTYwZTYtNDlkZC1iODY1LTYyZjg0YjZlNGRkYiJ9"
                 class="v-proto__embed__iframe"
         ></iframe>
       </div>
@@ -33,7 +33,7 @@ const props = defineProps<{
   margin-left: auto;
   margin-right: auto;
   height: 100vh;
-  padding-top: 5rem;
+  padding-top: var(--app-nav__height);
   box-sizing: border-box;
 }
 
@@ -41,8 +41,8 @@ const props = defineProps<{
   display: block;
   width: 100%;
   height: 100%;
-  border: solid 1px var(--app-color-main--dark);
-  border-radius: .5rem;
+  border: none;
+  border-top: solid 1px var(--app-color-main--dark);
   box-shadow: 0 20px 10px -10px rgba(1, 152, 59, .25);
   box-sizing: border-box;
 }
