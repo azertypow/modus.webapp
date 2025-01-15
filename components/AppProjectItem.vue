@@ -1,8 +1,7 @@
 <template>
     <section class="v-app-project-item"
+             @click="projectItemClicked"
     >
-
-
         <div class="v-app-project-item__header"
         >
             <img class="v-app-project-item__header__img"
@@ -23,7 +22,7 @@
         <div class="v-app-project-item__bottom">
             <div class="v-app-project-item__bottom__container">
                 <div class="v-app-project-item__bottom__icon-box"
-                     @click="useRouter().push({ query: {'q': projectType} })"
+                     @click.stop="useRouter().push({ query: {'q': projectType} })"
                 >
                     <img class="v-app-project-item__bottom__icon-box__img"
                          v-if="iconUrl"
@@ -96,6 +95,10 @@ const statusColor: ComputedRef<'var(--app-color-orange)' | 'var(--app-color-main
     return status.value === 'En cours' ? 'var(--app-color-orange)' : 'var(--app-color-main--dark)'
 })
 
+function projectItemClicked() {
+    useRouter().push(`/project/${props.slug}`)
+}
+
 </script>
 
 
@@ -115,6 +118,7 @@ const statusColor: ComputedRef<'var(--app-color-orange)' | 'var(--app-color-main
     position: relative;
     overflow: hidden;
     height: 100%;
+    cursor: pointer;
 
     @media (max-width: 900px) {
         border-top-right-radius: 0;
