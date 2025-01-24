@@ -236,7 +236,7 @@ const iconUrl: ComputedRef<string | null> = computed(() => {
 .v-project__section {
   box-sizing: border-box;
   position: relative;
-  max-width: 35rem;
+  max-width: 25rem;
   width: 100%;
 
   &.v-project__section--full {
