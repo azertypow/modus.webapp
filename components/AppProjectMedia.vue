@@ -74,7 +74,7 @@ const firstMediaInBodyBlocks = computed(() => findMediaInProject(props.projectMe
   cursor: pointer;
   background: var(--app-color-main--dark);
   box-sizing: border-box;
-  padding: var(--v-app-project-media__padin-top) 0 6rem;
+  padding: var(--v-app-project-media__padin-top) 0 13rem;
   min-height: 20rem;
   user-select: none;
 }
@@ -102,9 +102,6 @@ const firstMediaInBodyBlocks = computed(() => findMediaInProject(props.projectMe
 }
 
 .v-app-project-media__header {
-  position: absolute;
-  top: var(--v-app-project-media__padin-top);
-  left: 0;
   box-sizing: border-box;
   overflow: hidden;
 }
