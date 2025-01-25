@@ -34,8 +34,17 @@
                   </div>
                 </template>
               </div>
-
             </div>
+
+            <div style="padding-top: 1rem; display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: .5rem 1rem">
+                <template v-for="value of filterListe">
+                  <div class="app-button app-button--small"
+                       style="height: 1.5rem; font-size: .8rem; padding: .3rem 1rem; white-space: nowrap"
+                  >{{value}}
+                  </div>
+                </template>
+            </div>
+
           </div>
 
           <template v-if="projectsToShow"
@@ -44,7 +53,12 @@
               <div class="v-project__section"
                    v-for="projectItem of projectsToShow"
               >
+                <app-project-media
+                        v-if="projectItem.content.device === 'library'"
+                        :project-media-data="projectItem"
+                />
                 <app-project-item
+                        v-else
                         :title="projectItem.content.title"
                         :content="projectItem.content.headertitle"
                         :project-type="projectItem.content.device"
@@ -71,20 +85,27 @@
             </template>
           </template>
           <template v-else >
-            <div class="v-project__section"
-                 v-for="projectItem of projects"
+            <template
+                    v-for="projectItem of projects"
             >
-              <app-project-item
-                      :title="projectItem.content.title"
-                      :content="projectItem.content.headertitle"
-                      :project-type="projectItem.content.device"
-                      :img_src="projectItem.headerImage[0].resize.reg"
-                      :slug="projectItem.slug"
-                      :date_start="projectItem.content.datestart"
-                      :is_project_with_duration="projectItem.content.isprojectwithduration"
-                      :date_end="projectItem.content.dateend"
-              />
-            </div>
+              <div class="v-project__section">
+                <app-project-media
+                        v-if="projectItem.content.device === 'library'"
+                        :project-media-data="projectItem"
+                />
+                <app-project-item
+                        v-else
+                        :title="projectItem.content.title"
+                        :content="projectItem.content.headertitle"
+                        :project-type="projectItem.content.device"
+                        :img_src="projectItem.headerImage[0].resize.reg"
+                        :slug="projectItem.slug"
+                        :date_start="projectItem.content.datestart"
+                        :is_project_with_duration="projectItem.content.isprojectwithduration"
+                        :date_end="projectItem.content.dateend"
+                />
+              </div>
+            </template>
           </template>
         </div>
       </div>
@@ -99,6 +120,7 @@
 
 <script setup lang="ts">
 import {ComputedRef, defineProps, Ref, UnwrapRef} from 'vue'
+import {findMediaInProject} from '~/utils/findMediaInProject'
 import AppPage from "~/components/AppPage.vue";
 import {LocationQueryValue} from "vue-router";
 import {
@@ -107,8 +129,32 @@ import {
     IApiSingleProject, imageUrlMap, isApiProjectType
 } from "~/composable/adminApi/apiDefinitions";
 import {ApiFetchProjects} from "~/composable/adminApi/apiFetch";
+import AppProjectMedia from "~/components/AppProjectMedia.vue";
 
-
+const filterListe = [
+"PODCAST",
+"VIDEO",
+"PHOTOGRAPHIE",
+"PRÉSENTATION",
+"ENQUÊTE",
+"RAPPORT",
+"MOBILITÉ PIÉTONNE",
+"VÉLO",
+"MICRO-LOGISITIQUE",
+"LOGISTIQUE URBAINE",
+"AMÉNAGEMENT DU TERRITOIRE",
+"FORMATION",
+"TRAIN",
+"RECHERCHE",
+"PLAN DE MOBILITÉ",
+"COVOITURAGE",
+"ÉVÉNEMENT",
+"EXPÉRIMENTATION",
+"TRANSPORTS PUBLICS",
+"ENFANCE",
+"SANTÉ",
+"SENIORS",
+]
 
 const route = useRoute()
 const router = useRouter()
