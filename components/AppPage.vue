@@ -31,7 +31,7 @@
         <div class="v-app-page__path"
              v-if="path"
         >
-            <div class="v-app-page__path__content">
+            <div class="v-app-page__path__content app-font-small">
                 <nuxt-link href="/">Home</nuxt-link> / <nuxt-link href="/projects/">Les Projets Modus</nuxt-link> <span class="v-app-page__path__content__title">/ {{headerText?.split(' ').slice(0, 8).join(' ')}}…</span>
                 <div style="padding-top: .5rem; display: flex; justify-content: space-between; flex-direction: row; gap: 1rem; flex-wrap: wrap"
                      v-if="category"
@@ -340,8 +340,6 @@ nextTick(() => {
     padding-right: var(--app-gutter);
     margin: auto;
     max-width: 1300px;
-    font-size: 1rem;
-    line-height: 1.25em;
 }
 
 .v-app-page__path__content__title {
