@@ -270,23 +270,28 @@ const iconUrl: ComputedRef<string | null> = computed(() => {
 }
 
 .v-project__content__grid {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 1fr);
   justify-content: center;
   flex-wrap: wrap;
   width: 100%;
   box-sizing: border-box;
-  gap: 2rem;
+  gap: 1rem;
   padding: 2rem var(--app-gutter);
+
+  @media (min-width: 600px) {
+    grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
+  }
 }
 
 .v-project__section {
   box-sizing: border-box;
   position: relative;
-  max-width: 25rem;
   width: 100%;
 
   &.v-project__section--full {
     max-width: none;
+    grid-column: 1 / -1;
   }
 
   &.v-project__section--no-padding {
