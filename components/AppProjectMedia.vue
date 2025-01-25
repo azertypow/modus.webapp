@@ -4,18 +4,29 @@
       <img class="v-app-project-media__cover"
            :src="projectMediaData.headerImage[0].resize.reg"
       />
-      <div class="v-app-project-media__title">
-        {{projectMediaData.content.title}}
-      </div>
+        <div class="v-app-project-media__header">
+          <div class="v-app-project-media__header__title app-font-h1">
+            {{projectMediaData.content.title}}
+          </div>
 
-      <div class="v-app-project-media__headerTitle">
-        {{projectMediaData.content.headertitle}}
-      </div>
+          <div class="v-app-project-media__header__headerTitle app-font-h4">
+            {{projectMediaData.content.headertitle}}
+          </div>
+        </div>
 
 <!--      <div class="v-app-project-media__date"-->
 <!--      >{{formatDateRange(projectMediaData.content.datestart, projectMediaData.content.dateend)}}</div>-->
 
-      <div class="v-app-project-media__player-wrap">
+      <div class="v-app-project-media__details"
+           v-if="firstMediaInBodyBlocks"
+      >
+        <div class="app-font-small">{{firstMediaInBodyBlocks.content.credits}}</div>
+        <div class="app-font-small">publié le {{formatDate( firstMediaInBodyBlocks.content.date )}}</div>
+      </div>
+
+      <div class="v-app-project-media__player-wrap"
+           v-if="firstMediaInBodyBlocks"
+      >
         <div class="v-app-project-media__player-wrap__title app-font-small"
         >
           lancer le podcast
@@ -38,10 +49,13 @@
 import { defineProps } from 'vue'
 import {IApiSingleProject} from "~/composable/adminApi/apiDefinitions";
 import {formatDateRange} from "~/utils/formatDateRange";
+import {formatDate} from "../utils/formatDate";
 
 const props = defineProps<{
     projectMediaData: IApiSingleProject
 }>()
+
+const firstMediaInBodyBlocks = computed(() => findMediaInProject(props.projectMediaData.content.body))
 </script>
 
 
@@ -50,6 +64,8 @@ const props = defineProps<{
 
 <style lang="scss" scoped >
 .v-app-project-media {
+  --v-app-project-media__padin-top: 3rem;
+
   width: 100%;
   height: 100%;
   position: relative;
@@ -57,6 +73,10 @@ const props = defineProps<{
   border-radius: 2rem;
   cursor: pointer;
   background: var(--app-color-main--dark);
+  box-sizing: border-box;
+  padding: var(--v-app-project-media__padin-top) 0 6rem;
+  min-height: 20rem;
+  user-select: none;
 }
 
 .v-app-project-media__cover {
@@ -81,12 +101,18 @@ const props = defineProps<{
   }
 }
 
-.v-app-project-media__title {
-  position: relative;
-  font-size: 2.15rem;
-  line-height: 1.15em;
+.v-app-project-media__header {
+  position: absolute;
+  top: var(--v-app-project-media__padin-top);
+  left: 0;
   box-sizing: border-box;
-  padding: 5rem var(--app-gutter) 2rem;
+  overflow: hidden;
+}
+
+.v-app-project-media__header__title {
+  position: relative;
+  box-sizing: border-box;
+  padding: 0 var(--app-gutter);
   width: 100%;
   color: white;
   transform-origin: bottom;
@@ -101,14 +127,13 @@ const props = defineProps<{
   }
 }
 
-.v-app-project-media__headerTitle {
+.v-app-project-media__header__headerTitle {
   position: relative;
-  font-size: 1.25rem;
-  line-height: 1.3em;
   box-sizing: border-box;
   padding: 0 var(--app-gutter);
   width: 100%;
   color: white;
+  padding-top: 2rem;
   transform-origin: top;
   transition: all .15s .2s linear;
   opacity: 1;
@@ -132,6 +157,47 @@ const props = defineProps<{
 //  font-size: .75rem;
 //
 //}
+
+.v-app-project-media__details {
+  --v-app-project-media__gradient-height: 2rem;
+
+  color: white;
+  position: absolute;
+  height: calc(100% / 3 );
+  bottom: 0;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 2rem var(--app-gutter) 2rem;
+  background: linear-gradient(to bottom, rgba(1, 96, 82, 0) var(--v-app-project-media__gradient-height), rgba(1, 96, 82, 1) var(--v-app-project-media__gradient-height));
+  pointer-events: none;
+
+  transform-origin: top;
+  transition: all .15s .25s linear;
+  opacity: 1;
+  transform: scale(1);
+
+  .v-app-project-media:hover & {
+    transition: all .25s 0s linear;
+    opacity: 0;
+    transform: scale(.95);
+  }
+
+  &:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--v-app-project-media__gradient-height);
+    background: linear-gradient(to bottom, rgba(1, 96, 82, 0), rgba(1, 96, 82, 1));
+  }
+
+  > * {
+    font-weight: 500;
+
+  }
+}
 
 .v-app-project-media__player-wrap {
   position: absolute;

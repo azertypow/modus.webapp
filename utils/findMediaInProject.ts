@@ -9,6 +9,8 @@ export function findMediaInProject(projectBody: unknown) {
             content: {
                 url: string,
                 caption: string
+                credits: string
+                date: string
             },
             id: string,
             isHidden: false,
@@ -19,6 +21,8 @@ export function findMediaInProject(projectBody: unknown) {
             content: {
                 url: string,
                 caption: string
+                credits: string
+                date: string
             },
             id: string,
             isHidden: false,
