@@ -1,5 +1,6 @@
 <template>
     <section class="v-app-project-media"
+             @click="projectMediaClicked"
     >
       <img class="v-app-project-media__cover"
            :src="projectMediaData.headerImage[0].resize.reg"
@@ -56,6 +57,10 @@ const props = defineProps<{
 }>()
 
 const firstMediaInBodyBlocks = computed(() => findMediaInProject(props.projectMediaData.content.body))
+
+function projectMediaClicked() {
+    useRouter().push(`/project/${props.projectMediaData.slug}`)
+}
 </script>
 
 

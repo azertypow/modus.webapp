@@ -27,6 +27,7 @@ import { defineProps } from 'vue'
 const props = defineProps<{
     podcast_link: string,
     podcast_caption: string,
+    spotifyData: ISpo
 }>()
 
 const podcastId: ComputedRef<string | null> = computed(() => {
