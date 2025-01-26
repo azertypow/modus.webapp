@@ -73,28 +73,12 @@ export interface IApiBody {
         |
         {
             "image": IApiImage[],
-            content: {
-                content: {
-                    url: string,
-                    caption: string
-                },
-                id: string,
-                isHidden: false,
-                type: "video"
-            }
+            content: IApiBodyContent_video
         }
         |
         {
             "image": IApiImage[],
-            content: {
-                content: {
-                    url: string,
-                    caption: string
-                },
-                id: string,
-                isHidden: false,
-                type: "spotify"
-            }
+            content: IApiBodyContent_spotify
         }
         |
         {
@@ -209,6 +193,29 @@ export interface IApiBody {
             }
         }
 }
+
+export interface IApiBodyContent_video {
+    content: {
+        url: string,
+        caption: string
+    },
+    id: string,
+    isHidden: false,
+    type: "video"
+}
+
+export interface IApiBodyContent_spotify {
+    content: {
+        url: string,
+        caption: string
+        credits: string
+        date: string
+    },
+    id: string,
+    isHidden: false,
+    type: "spotify"
+}
+
 
 export interface IApiProfiles {
     "title": string,
