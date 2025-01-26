@@ -4,6 +4,9 @@
     >
       <img class="v-app-project-media__cover"
            :src="projectMediaData.headerImage[0].resize.reg"
+           :style="{
+                        objectPosition: projectMediaData.headerImage[0].focus,
+                    }"
       />
         <div class="v-app-project-media__header">
           <div class="v-app-project-media__header__title app-font-h1">
@@ -93,6 +96,7 @@ function projectMediaClicked() {
   left: 0;
   z-index: 1;
   pointer-events: none;
+  object-fit: cover;
 
   transition: all .5s ease-in-out;
   transform: scale(1);
