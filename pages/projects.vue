@@ -280,7 +280,7 @@ const iconUrl: ComputedRef<string | null> = computed(() => {
   padding: 2rem var(--app-gutter);
 
   @media (min-width: 600px) {
-    grid-template-columns: repeat(auto-fit, minmax(28rem, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(26rem, 1fr));
   }
 }
 
