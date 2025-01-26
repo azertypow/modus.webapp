@@ -13,6 +13,7 @@
       </div>
       <div class="v-app-spotify__caption">
         {{podcast_caption}}
+        <br>{{spotifyData.content.credits}}, publié le {{formatDate(spotifyData.content.date)}}
       </div>
     </section>
 </template>
@@ -23,11 +24,13 @@
 
 <script setup lang="ts">
 import { defineProps } from 'vue'
+import {IApiBodyContent_spotify} from "~/composable/adminApi/apiDefinitions";
+import {formatDate} from "../utils/formatDate";
 
 const props = defineProps<{
     podcast_link: string,
     podcast_caption: string,
-    spotifyData: ISpo
+    spotifyData: IApiBodyContent_spotify
 }>()
 
 const podcastId: ComputedRef<string | null> = computed(() => {
