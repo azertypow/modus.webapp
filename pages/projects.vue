@@ -35,16 +35,6 @@
                 </template>
               </div>
             </div>
-
-            <div style="padding-top: 1rem; display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: .5rem 1rem">
-                <template v-for="value of filterListe">
-                  <div class="app-button app-button--small"
-                       style="height: 1.5rem; font-size: .8rem; padding: .3rem 1rem; white-space: nowrap"
-                  >{{value}}
-                  </div>
-                </template>
-            </div>
-
           </div>
 
           <template v-if="projectsToShow"
@@ -130,31 +120,6 @@ import {
 } from "~/composable/adminApi/apiDefinitions";
 import {ApiFetchProjects} from "~/composable/adminApi/apiFetch";
 import AppProjectMedia from "~/components/AppProjectMedia.vue";
-
-const filterListe = [
-"PODCAST",
-"VIDEO",
-"PHOTOGRAPHIE",
-"PRÉSENTATION",
-"ENQUÊTE",
-"RAPPORT",
-"MOBILITÉ PIÉTONNE",
-"VÉLO",
-"MICRO-LOGISITIQUE",
-"LOGISTIQUE URBAINE",
-"AMÉNAGEMENT DU TERRITOIRE",
-"FORMATION",
-"TRAIN",
-"RECHERCHE",
-"PLAN DE MOBILITÉ",
-"COVOITURAGE",
-"ÉVÉNEMENT",
-"EXPÉRIMENTATION",
-"TRANSPORTS PUBLICS",
-"ENFANCE",
-"SANTÉ",
-"SENIORS",
-]
 
 const route = useRoute()
 const router = useRouter()
