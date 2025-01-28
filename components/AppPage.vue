@@ -166,6 +166,7 @@
                   <app-spotify
                           :podcast_link="bodyContentItem.content.content.url"
                           :podcast_caption="bodyContentItem.content.content.caption"
+                          :spotify-data="bodyContentItem.content"
                   />
                 </div>
               </template>
