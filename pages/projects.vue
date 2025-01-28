@@ -12,6 +12,8 @@
         <div class="v-project__content__grid">
           <div class="v-project__section v-project__section--full" >
             <div style="display: flex; align-items: center; justify-content: center">
+
+
               <div class="v-project__filter"
                    @click="router.push({ query: {} })"
                    v-if="activeFilterIcon"
@@ -23,8 +25,10 @@
                   <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293z"/>
                 </svg>
               </div>
-
-              <div v-else style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center">
+              <div class="v-project__filter--list"
+                   style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center"
+                   v-else
+              >
                 <template v-for="(value, key) of apiProjectMap">
                   <div class="app-button app-button--small"
                           @click="router.push({ query: {
@@ -35,6 +39,18 @@
                 </template>
               </div>
             </div>
+
+            <div v-if="activeFilterIcon && activeFilterIcon === 'La Bibliothèque'"
+                 style="padding-top: 2rem; padding-bottom: 1rem; display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: .5rem 1rem"
+            >
+              <template v-for="value of filterList">
+                <div class="app-button app-button--small"
+                     style="height: 1.5rem; font-size: .8rem; padding: .3rem 1rem; white-space: nowrap"
+                >{{value}}
+                </div>
+              </template>
+            </div>
+
           </div>
 
           <template v-if="projectsToShow"
@@ -135,6 +151,31 @@ const projectsToShow: ComputedRef<UnwrapRef<null | IApiSingleProject[]>> = compu
 
     return filteredProjects(projects.value)
 })
+
+const filterList = [
+    "Podcast",
+    "Video",
+    "Photographie",
+    "Présentation",
+    "Enquête",
+    "Rapport",
+    "Mobilité Piétonne",
+    "Vélo",
+    "Micro-logistique",
+    "Logistique Urbaine",
+    "Aménagement du Territoire",
+    "Formation",
+    "Train",
+    "Recherche",
+    "Plan de Mobilité",
+    "Covoiturage",
+    "Événement",
+    "Expérimentation",
+    "Transports Publics",
+    "Enfance",
+    "Santé",
+    "Seniors",
+];
 
 function filteredProjects(projects: IApiSingleProject[]): IApiSingleProject[] {
     return Object.values( projects ).filter(project => {

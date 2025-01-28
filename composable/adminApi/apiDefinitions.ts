@@ -10,9 +10,9 @@ export type ApiProjectMap = {[key in ApiProjectType]: string}
 export const apiProjectMap: ApiProjectMap = {
     'imaginary' : 'La Fabrique des Imaginaires',
     'laboratory' : 'Le Laboratoire',
-    'library' : 'La Bibliothèque',
     'platform' : 'La Plateforme',
     'planting' : 'La Plantation',
+    'library' : 'La Bibliothèque',
 }
 
 const apiProjectTypes: ApiProjectType[] = (() => {
@@ -197,7 +197,9 @@ export interface IApiBody {
 export interface IApiBodyContent_video {
     content: {
         url: string,
-        caption: string
+        caption?: string
+        credits?: string
+        date?: string
     },
     id: string,
     isHidden: false,
@@ -207,9 +209,9 @@ export interface IApiBodyContent_video {
 export interface IApiBodyContent_spotify {
     content: {
         url: string,
-        caption: string
-        credits: string
-        date: string
+        caption?: string
+        credits?: string
+        date?: string
     },
     id: string,
     isHidden: false,
