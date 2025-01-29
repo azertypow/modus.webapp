@@ -4,6 +4,7 @@
         :class="{
             'v-app-header--small': headerSize === 'small',
             'v-app-header--no-bg': !bgImage,
+            'v-app-header--no-signature-text': !text,
         }"
     >
         <div class="v-app-header__container"
@@ -139,6 +140,12 @@ const bodyScrollInfoStore = bodyScrollInfo()
     object-fit: cover;
     user-select: none;
     pointer-events: none;
+
+  .v-app-header--no-signature-text & {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
 }
 
 .v-app-header__graphic-box__item {
