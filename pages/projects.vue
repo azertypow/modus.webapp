@@ -40,16 +40,16 @@
               </div>
             </div>
 
-            <div v-if="activeFilterIcon && activeFilterIcon === 'La Bibliothèque'"
-                 style="padding-top: 2rem; padding-bottom: 1rem; display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: .5rem 1rem"
-            >
-              <template v-for="value of filterList">
-                <div class="app-button app-button--small"
-                     style="height: 1.5rem; font-size: .8rem; padding: .3rem 1rem; white-space: nowrap"
-                >{{value}}
-                </div>
-              </template>
-            </div>
+<!--            <div v-if="activeFilterIcon && activeFilterIcon === 'La Bibliothèque'"-->
+<!--                 style="padding-top: 2rem; padding-bottom: 1rem; display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: .5rem 1rem"-->
+<!--            >-->
+<!--              <template v-for="value of filterList">-->
+<!--                <div class="app-button app-button&#45;&#45;small"-->
+<!--                     style="height: 1.5rem; font-size: .8rem; padding: .3rem 1rem; white-space: nowrap"-->
+<!--                >{{value}}-->
+<!--                </div>-->
+<!--              </template>-->
+<!--            </div>-->
 
           </div>
 
