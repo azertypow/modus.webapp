@@ -1,5 +1,6 @@
 @import "var";
 @import "font-loader";
+@import "form";
 
 html {
   background: var(--app-color-main--dark);
@@ -64,6 +65,12 @@ h4, .app-font-h4 {
   font-size: 1.45rem;
   line-height: 1.225em;
   font-weight: 900;
+  max-width: 60rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+h6 {
   max-width: 60rem;
   margin-left: auto;
   margin-right: auto;
