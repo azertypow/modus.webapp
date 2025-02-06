@@ -43,3 +43,6 @@ export const showMenu: () => Ref<boolean> =
 
 export const siteInfo: () => Ref<IApiSiteInfo | null > =
     () => useState('siteInfo', () => null)
+
+export const useStateNavBarreMsgMessage: () => Ref<null | string> =
+    () => useState('FixedHeaderMessage', () => null)

@@ -15,11 +15,13 @@
 
 
 <script setup lang="ts">
-import { defineProps } from 'vue'
 
-const props = defineProps<{
-    message?: string
-}>()
+import {useStateNavBarreMsgMessage} from "~/composable/main";
+
+onMounted(() => {
+    useStateNavBarreMsgMessage().value = 'Observatoire des mobilités'
+})
+
 </script>
 
 

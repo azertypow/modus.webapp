@@ -86,7 +86,7 @@ import {
     showCookieBanner,
     showMenu,
     siteInfo,
-    useIsIntersected
+    useIsIntersected, useStateNavBarreMsgMessage
 } from "~/composable/main";
 import AppCookie from "~/components/AppCookie.vue";
 import {ApiFetchPagesInfo} from "~/composable/adminApi/apiFetch";
@@ -104,6 +104,7 @@ onMounted(async () => {
 
 useRouter().beforeEach((to, from, next) => {
     showMenu().value = false
+    useStateNavBarreMsgMessage().value = null
     next()
 })
 
