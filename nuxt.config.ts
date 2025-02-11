@@ -1,4 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import {generatedRoutes} from "./_PreNuxtConfigScripts/generatedRoutes";
+
 export default defineNuxtConfig({
 
     app: {
@@ -31,5 +33,7 @@ export default defineNuxtConfig({
     ],
     ssr: false,
 
-
+    generate: {
+        routes: generatedRoutes
+    }
 })

@@ -1,0 +1,30 @@
+// Généré automatiquement
+
+export const generatedRoutes: string[] = [
+  "/project/exposition-la-mobilite",
+  "/project/afterwork-de-la-mobilite-comment-le-tram-a-mis-geneve-sur-les-rails-d-une-autre-mobilite",
+  "/project/la-centrale-de-mobilite-lance-une-campagne-pour-l-utilisation-du-velo-et-le-covoiturage-dans-la-ziplo",
+  "/project/premier-projet",
+  "/project/mobilite-seniors",
+  "/project/afterwork-comment-l-automobile-peut-elle-se-reinventer",
+  "/project/casiers-connectes-wechip",
+  "/project/etude-modus",
+  "/project/plan-de-mobilite-a-velo-pour-les-employe-e-s-du-cicr",
+  "/project/unireso",
+  "/project/une-etude-de-faisabilite-pour-tester-la-mobilite-partagee-dans-les-cooperatives-d-habitation-genevoises",
+  "/project/atelier-covoiturage",
+  "/project/comment-pietons-et-cyclistes-cohabitent-ils-dans-l-espace-urbain",
+  "/project/parade-a-velo-pour-les-etudiant-e-s-de-l-unige",
+  "/project/quel-futur-pour-la-mobilite-a-geneve",
+  "/project/afterwork-de-la-mobilite-est-ce-que-le-velo-est-un-outil-de-massification-de-report-modal",
+  "/project/collecte-de-lavure-en-triporteur-cycloo",
+  "/project/etude-des-plans-de-mobilite-scolaire",
+  "/project/organisation-d-un-congres-de-la-commission-transport-and-urban-life-de-l-uitp",
+  "/project/toolkit-pme",
+  "/project/verticale-mobilite-fongit",
+  "/project/atelier-micro-logistique",
+  "/project/afterwork-de-la-mobilite-4-afterwork-de-la-mobilite-quelles-solutions-pour-une-logistique-urbaine-decarbonee",
+  "/project/collecte-de-donnees-pour-la-course-de-l-escalade",
+  "/project/mobility-grand-geneve",
+  "/project/chrysalide-monitoring-de-la-gratuite"
+];
