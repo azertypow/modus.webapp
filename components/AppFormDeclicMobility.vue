@@ -156,7 +156,6 @@
       <div class="app-form__section">
         <label>De quel(s) abonnement(s) de transports publics disposez-vous ?</label>
 
-
         <select name="permis">
           <option value="unireso">Abonnement de zone unireso</option>
           <option value="cff">Abonnement de parcours CFF</option>
@@ -169,24 +168,96 @@
           <label>Autres (précisez)</label>
           <textarea type="text" name="abonnement_autres" placeholder="Autres (précisez)"></textarea>
         </div>
+      </div>
 
+
+
+
+      <div class="app-form__section">
+
+        <label>Avez-vous personnellement accès à l’un de ces véhicules ?</label>
+
+        <div class="app-form__section__subsections">
+          <input type="checkbox" name="vehicule" value="vae">
+          <label>Vélo à assistance électrique</label>
+        </div>
+
+        <div class="app-form__section__subsections">
+          <input type="checkbox" name="vehicule" value="velo_cargo">
+          <label>Vélo cargo</label>
+        </div>
+
+        <div class="app-form__section__subsections">
+          <input type="checkbox" name="vehicule" value="velo">
+          <label>Vélo conventionnel (mécanique)</label>
+        </div>
 
       </div>
 
 
 
-<!--      <label>Avez-vous personnellement accès à l’un de ces véhicules ?</label>-->
-<!--      <input type="checkbox" name="vehicule" value="vae"> Vélo à assistance électrique-->
-<!--      <input type="checkbox" name="vehicule" value="velo_cargo"> Vélo cargo-->
-<!--      <input type="checkbox" name="vehicule" value="velo"> Vélo conventionnel (mécanique)-->
 
-<!--      <label>Souhaitez-vous faire évoluer vos pratiques de déplacement pour un mode de vie plus durable ?</label>-->
-<!--      <select name="evolution_deplacement">-->
-<!--        <option value="oui_tout">Oui, tout à fait</option>-->
-<!--        <option value="plutot_oui">Plutôt oui</option>-->
-<!--        <option value="plutot_non">Plutôt non</option>-->
-<!--        <option value="pas_du_tout">Pas du tout</option>-->
-<!--      </select>-->
+
+
+
+      <div class="app-form__section">
+
+        <label>Souhaitez-vous faire évoluer vos pratiques de déplacement pour un mode de vie plus durable ?</label>
+
+        <select name="evolution_deplacement">
+          <option value="oui_tout">Oui, tout à fait</option>
+          <option value="plutot_oui">Plutôt oui</option>
+          <option value="plutot_non">Plutôt non</option>
+          <option value="pas_du_tout">Pas du tout</option>
+        </select>
+
+      </div>
+
+
+      <p>Si nb d’adultes>nb de voiture+nb moto/scooter
+        Toutes les personnes de votre ménage doivent participer au défi. Merci de remplir les informations personnelles pour chaque participant.</p>
+
+      <p>Si nb d’adultes>nb de voiture+nb moto/scooter et nb adulte>1
+        Merci de remplir ces quelques questions complémentaires pour la seconde personne majeure de votre ménage.</p>
+
+
+      <div class="app-form__section">
+        <label>Quelle situation professionnelle lui correspond actuellement ?</label>
+
+        <div class="app-form__section__subsections">
+          <input type="checkbox" name="" value="Actif/active à temps plein">
+          <label>Actif/active à temps plein</label>
+        </div>
+
+        <div class="app-form__section__subsections">
+          <input type="checkbox" name="" value="Actif/active à temps partiel">
+          <label>Actif/active à temps partiel</label>
+        </div>
+
+        <div class="app-form__section__subsections">
+          <input type="checkbox" name="" value="Sans emploi / au chômage">
+          <label>Sans emploi / au chômage</label>
+        </div>
+
+        <div class="app-form__section__subsections">
+          <input type="checkbox" name="" value="Etudiant·e">
+          <label>Etudiant·e</label>
+        </div>
+
+        <div class="app-form__section__subsections">
+          <input type="checkbox" name="" value="Retraité·e">
+          <label>Retraité·e</label>
+        </div>
+
+        <div class="app-form__section__subsections">
+          <input type="checkbox" name="" value="Autres">
+          <label>Autres</label>
+        </div>
+      </div>
+
+
+
+
 
       <button type="submit">Envoyer</button>
     </template>
