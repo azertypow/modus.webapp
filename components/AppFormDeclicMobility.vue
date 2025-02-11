@@ -413,6 +413,96 @@
 
 
 
+      Possède-t-elle le permis de conduire ?
+      [Une seule réponse possible]
+      Oui
+      Non
+      Momentanément pas (par exemple retrait)
+
+
+
+
+
+      A quelle fréquence se déplace-t-elle en moto/scooter ? (Si moto/scooter>0)
+      [Une seule réponse possible]
+      Tous les jours ou presque
+      Une à plusieurs fois par semaine
+      Moins d’une fois par semaine
+
+
+
+
+
+
+
+      A quelle fréquence se déplace-t-elle en voiture ? (Si voiture>0)
+      [Une seule réponse possible]
+      Tous les jours ou presque
+      Une à plusieurs fois par semaine
+      Moins d’une fois par semaine
+
+
+
+
+
+
+
+
+      De quel(s) abonnement(s) de transports publics dispose-t-elle ?
+      [Plusieurs réponses possibles]
+      Aucun
+      Abonnement de zone unireso
+      Abonnement de parcours CFF
+      Abonnement demi-tarif
+      Abonnement général (AG)
+      Autres : précisez [zone de texte]
+
+
+
+
+
+
+
+
+      A-t-elle personnellement accès à l’un de ces véhicules :
+
+      [Plusieurs réponses possibles]
+      Vélo à assistance électrique
+      Vélo cargo
+      Vélo conventionnel (mécanique)
+
+
+
+
+
+
+
+
+
+      <p>Si nb d’adultes>nb de voiture+nb moto/scooter et nb enfant>0
+        Merci de remplir ces quelques questions complémentaires pour le premier enfant mineur de votre ménage. Si vous avez plusieurs enfants, merci de répondre dans l’ordre du plus grand au plus petit.</p>
+
+
+
+      A quelle fréquence se déplace-t-il en moto/scooter ? (Si moto/scooter>0)
+      [Une seule réponse possible]
+      Tous les jours ou presque
+      Une à plusieurs fois par semaine
+      Moins d’une fois par semaine
+
+
+
+
+
+
+
+
+
+      A quelle fréquence se déplace-t-il en voiture ? (y compris passager) (Si voiture>0)
+      [Une seule réponse possible]
+      Tous les jours ou presque
+      Une à plusieurs fois par semaine
+      Moins d’une fois par semaine
 
 
 
@@ -423,11 +513,201 @@
 
 
 
+      De quel(s) abonnement(s) de transports publics dispose-t-il ?
+      [Plusieurs réponses possibles]
+      Aucun
+      Abonnement de zone unireso
+      Abonnement de parcours CFF
+      Abonnement demi-tarif
+      Abonnement général (AG)
+      Autres : précisez [zone de texte]
 
 
 
 
 
+
+
+
+
+
+      A-t-il personnellement accès à l’un de ces véhicules :
+
+      [Plusieurs réponses possibles]
+      Vélo à assistance électrique
+      Vélo conventionnel (mécanique)
+
+
+
+
+
+      <p>Si nb d’adultes>nb de voiture+nb moto/scooter et nb enfant>1
+        Merci de remplir ces quelques questions complémentaires pour le deuxième enfant mineur de votre ménage.</p>
+
+
+
+
+
+
+
+      A quelle fréquence se déplace-t-il en moto/scooter ? (Si moto/scooter>0)
+      [Une seule réponse possible]
+      Tous les jours ou presque
+      Une à plusieurs fois par semaine
+      Moins d’une fois par semaine
+
+
+
+
+
+
+      A quelle fréquence se déplace-t-il en voiture ? (y compris passager) (Si voiture>0)
+      [Une seule réponse possible]
+      Tous les jours ou presque
+      Une à plusieurs fois par semaine
+      Moins d’une fois par semaine
+
+
+
+
+
+
+      De quel(s) abonnement(s) de transports publics dispose-t-il ?
+      [Plusieurs réponses possibles]
+      Aucun
+      Abonnement de zone unireso
+      Abonnement de parcours CFF
+      Abonnement demi-tarif
+      Abonnement général (AG)
+      Autres : précisez [zone de texte]
+
+
+
+
+
+
+
+      A-t-il personnellement accès à l’un de ces véhicules :
+      [Plusieurs réponses possibles]
+      Vélo à assistance électrique
+      Vélo conventionnel (mécanique)
+
+
+      <p>Si nb d’adultes>nb de voiture+nb moto/scooter et nb enfant>1
+        Merci de remplir ces quelques questions complémentaires pour le deuxième enfant mineur de votre ménage. </p>
+
+
+
+
+
+
+      A quelle fréquence se déplace-t-il en moto/scooter ? (Si moto/scooter>0)
+      [Une seule réponse possible]
+      Tous les jours ou presque
+      Une à plusieurs fois par semaine
+      Moins d’une fois par semaine
+
+
+
+
+
+
+
+      A quelle fréquence se déplace-t-il en voiture ? (y compris passager) (Si voiture>0)
+      [Une seule réponse possible]
+      Tous les jours ou presque
+      Une à plusieurs fois par semaine
+      Moins d’une fois par semaine
+
+
+
+
+
+      De quel(s) abonnement(s) de transports publics dispose-t-il ?
+      [Plusieurs réponses possibles]
+      Aucun
+      Abonnement de zone unireso
+      Abonnement de parcours CFF
+      Abonnement demi-tarif
+      Abonnement général (AG)
+      Autres : précisez [zone de texte]
+
+
+
+
+
+
+
+      A-t-il personnellement accès à l’un de ces véhicules :
+      [Plusieurs réponses possibles]
+      Vélo à assistance électrique
+      Vélo conventionnel (mécanique)
+
+
+      <p>Si nb d’adultes>nb de voiture+nb moto/scooter et nb enfant>2
+        Merci de remplir ces quelques questions complémentaires pour le troisième enfant mineur de votre ménage. </p>
+
+
+
+
+      A quelle fréquence se déplace-t-il en moto/scooter ? (Si moto/scooter>0)
+      [Une seule réponse possible]
+      Tous les jours ou presque
+      Une à plusieurs fois par semaine
+      Moins d’une fois par semaine
+
+
+
+
+
+      A quelle fréquence se déplace-t-il en voiture ? (y compris passager) (Si voiture>0)
+      [Une seule réponse possible]
+      Tous les jours ou presque
+      Une à plusieurs fois par semaine
+      Moins d’une fois par semaine
+
+
+
+
+
+
+
+
+      De quel(s) abonnement(s) de transports publics dispose-t-il ?
+      [Plusieurs réponses possibles]
+      Aucun
+      Abonnement de zone unireso
+      Abonnement de parcours CFF
+      Abonnement demi-tarif
+      Abonnement général (AG)
+      Autres : précisez [zone de texte]
+
+
+
+
+
+
+      A-t-il personnellement accès à l’un de ces véhicules :
+      [Plusieurs réponses possibles]
+      Vélo à assistance électrique
+      Vélo conventionnel (mécanique)
+
+
+
+
+
+
+      Le questionnaire est presque terminé maintenant.
+      Pour être recontacté si votre candidature est sélectrionnée, merci de renseigner votre adresse email.
+
+      Adresse email :
+      [zone de texte]
+
+
+
+      <p>En inscrivant votre adresse email, vous acceptez qu’elle soit enregistrée dans la base de données des personnes susceptibles de participer au défi. Les données renseignées dans ce formulaire ne seront utilisées que dans le cadre de l’organisation de l’initiative « Déclic Mobilité » et en aucun cas ne seront transmises à des tiers. Elles seront détruites sous 12 mois maximum.</p>
+
+      <p>Merci pour votre intérêt ! Les personnes sélectionnées seront recontactées prochainement.</p>
 
 
 
