@@ -44,7 +44,8 @@
           </defs>
         </svg>
 
-        <div v-if="useStateNavBarreMsgMessage().value">
+        <div  v-if="useStateNavBarreMsgMessage().value"
+              style="color: var(--app-color-main)">
           {{ useStateNavBarreMsgMessage().value }}
         </div>
       </div>
