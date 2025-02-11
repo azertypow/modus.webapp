@@ -293,6 +293,7 @@ form {
     flex-direction: column;
     width: 100%;
     gap: 8rem;
+    counter-reset: section; /* Initialise le compteur */
 }
 
 button {
@@ -319,8 +320,13 @@ button {
     }
 }
 
-input {
-
+.app-form__section {
+  > label::before {
+    counter-increment: section; /* Incrémente le compteur */
+    content: counter(section) ". "; /* Affiche le numéro */
+    font-weight: bold;
+    margin-right: 5px;
+  }
 }
 
 </style>
