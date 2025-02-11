@@ -63,7 +63,7 @@
       </div>
 
       <div class="app-form__section">
-        <p>Combien de personnes composent votre ménage ?</p>
+        <label>Combien de personnes composent votre ménage ?</label>
         <div class="app-form__section__subsections app-form__section__subsections--number">
 
         </div>
@@ -113,7 +113,7 @@
       </div>
 
       <div class="app-form__section">
-        <p>Quelle situation professionnelle vous correspond actuellement ?</p>
+        <label>Quelle situation professionnelle vous correspond actuellement ?</label>
 
         <div class="app-form__section__subsections">
           <input type="checkbox" name="emploi" value="temps_plein">
@@ -140,12 +140,8 @@
           <label>Autres</label>
           <input type="checkbox" name="emploi" value="autres">
         </div>
-
-
-
-
-
       </div>
+
 
 
       <div class="app-form__section">
@@ -158,32 +154,16 @@
       </div>
 
       <div class="app-form__section">
-        <p>De quel(s) abonnement(s) de transports publics disposez-vous ?</p>
+        <label>De quel(s) abonnement(s) de transports publics disposez-vous ?</label>
 
-        <div class="app-form__section__subsections">
-          <label>Abonnement de zone unireso</label>
-          <input type="checkbox" name="abonnement" value="unireso">
-        </div>
 
-        <div class="app-form__section__subsections">
-          <label>Abonnement de parcours CFF</label>
-          <input type="checkbox" name="abonnement" value="cff">
-        </div>
-
-        <div class="app-form__section__subsections">
-          <label>Abonnement demi-tarif</label>
-          <input type="checkbox" name="abonnement" value="demi_tarif">
-        </div>
-
-        <div class="app-form__section__subsections">
-          <label>Abonnement général (AG)</label>
-          <input type="checkbox" name="abonnement" value="ag">
-        </div>
-
-        <div class="app-form__section__subsections">
-          <label>Aucun</label>
-          <input type="checkbox" name="abonnement" value="aucun">
-        </div>
+        <select name="permis">
+          <option value="unireso">Abonnement de zone unireso</option>
+          <option value="cff">Abonnement de parcours CFF</option>
+          <option value="demi_tarif">Abonnement demi-tarif</option>
+          <option value="ag">Abonnement général (AG)</option>
+          <option value="autre">Autre</option>
+        </select>
 
         <div class="app-form__section__subsections" style="width: 100%">
           <label>Autres (précisez)</label>
