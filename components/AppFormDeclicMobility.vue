@@ -214,11 +214,15 @@
       </div>
 
 
+
+
       <p>Si nb d’adultes>nb de voiture+nb moto/scooter
         Toutes les personnes de votre ménage doivent participer au défi. Merci de remplir les informations personnelles pour chaque participant.</p>
 
       <p>Si nb d’adultes>nb de voiture+nb moto/scooter et nb adulte>1
         Merci de remplir ces quelques questions complémentaires pour la seconde personne majeure de votre ménage.</p>
+
+
 
 
       <div class="app-form__section">
@@ -254,6 +258,177 @@
           <label>Autres</label>
         </div>
       </div>
+
+
+
+
+
+      <div class="app-form__section">
+
+        <label>Possède-t-elle le permis de conduire ?</label>
+
+        <select name="evolution_deplacement">
+          <option value="Oui">Oui</option>
+          <option value="Non">Non</option>
+          <option value="Momentanément pas (par exemple retrait)">Momentanément pas (par exemple retrait)</option>
+        </select>
+
+      </div>
+
+
+
+
+
+
+
+      <div class="app-form__section">
+
+        <label>A quelle fréquence se déplace-t-elle en moto/scooter ? (Si moto/scooter>0)</label>
+
+        <select name="evolution_deplacement">
+          <option value="Tous les jours ou presque">Tous les jours ou presque</option>
+          <option value="Une à plusieurs fois par semaine">Une à plusieurs fois par semaine</option>
+          <option value="Moins d’une fois par semaine">Moins d’une fois par semaine</option>
+        </select>
+
+      </div>
+
+
+      <div class="app-form__section">
+
+        <label>A quelle fréquence se déplace-t-elle en voiture ? (Si voiture>0)</label>
+
+        <select name="evolution_deplacement">
+          <option value="Tous les jours ou presque">Tous les jours ou presque</option>
+          <option value="Une à plusieurs fois par semaine">Une à plusieurs fois par semaine</option>
+          <option value="Moins d’une fois par semaine">Moins d’une fois par semaine</option>
+        </select>
+
+      </div>
+
+
+
+
+      <div class="app-form__section">
+        <label>De quel(s) abonnement(s) de transports publics dispose-t-elle ?</label>
+
+        <div class="app-form__section__subsections">
+          <input type="checkbox" name="" value="Aucun">
+          <label>Aucun</label>
+        </div>
+
+        <div class="app-form__section__subsections">
+          <input type="checkbox" name="" value="Abonnement de zone unireso">
+          <label>Abonnement de zone unireso</label>
+        </div>
+
+        <div class="app-form__section__subsections">
+          <input type="checkbox" name="" value="Abonnement de parcours CFF">
+          <label>Abonnement de parcours CFF</label>
+        </div>
+
+        <div class="app-form__section__subsections">
+          <input type="checkbox" name="" value="Abonnement demi-tarif">
+          <label>Abonnement demi-tarif</label>
+        </div>
+
+        <div class="app-form__section__subsections">
+          <input type="checkbox" name="" value="Abonnement général (AG)">
+          <label>Abonnement général (AG)</label>
+        </div>
+
+        <div class="app-form__section__subsections">
+          <input type="checkbox" name="" value="Autres : précisez [zone de texte]">
+          <label>Autres : précisez [zone de texte]</label>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+      <div class="app-form__section">
+        <label>A-t-elle personnellement accès à l’un de ces véhicules :</label>
+
+        <div class="app-form__section__subsections">
+          <input type="checkbox" name="" value="Vélo à assistance électrique">
+          <label>Vélo à assistance électrique</label>
+        </div>
+
+        <div class="app-form__section__subsections">
+          <input type="checkbox" name="" value="Vélo cargo">
+          <label>Vélo cargo</label>
+        </div>
+
+        <div class="app-form__section__subsections">
+          <input type="checkbox" name="" value="Vélo conventionnel (mécanique)">
+          <label>Vélo conventionnel (mécanique)</label>
+        </div>
+      </div>
+
+
+      <p>Si nb d’adultes>nb de voiture+nb moto/scooter et nb adulte>2
+        Merci de remplir ces quelques questions complémentaires pour la troisième personne majeure de votre ménage.</p>
+
+
+      <div class="app-form__section">
+        <label>Quelle situation professionnelle lui correspond actuellement ?</label>
+
+        <div class="app-form__section__subsections">
+          <input type="checkbox" name="" value="Actif/active à temps plein">
+          <label>Actif/active à temps plein</label>
+        </div>
+
+        <div class="app-form__section__subsections">
+          <input type="checkbox" name="" value="Actif/active à temps partiel">
+          <label>Actif/active à temps partiel</label>
+        </div>
+
+        <div class="app-form__section__subsections">
+          <input type="checkbox" name="" value="Sans emploi / au chômage">
+          <label>Sans emploi / au chômage</label>
+        </div>
+
+        <div class="app-form__section__subsections">
+          <input type="checkbox" name="" value="Etudiant·e">
+          <label>Etudiant·e</label>
+        </div>
+
+        <div class="app-form__section__subsections">
+          <input type="checkbox" name="" value="Retraité·e">
+          <label>Retraité·e</label>
+        </div>
+
+        <div class="app-form__section__subsections">
+          <input type="checkbox" name="" value="Autres">
+          <label>Autres</label>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
