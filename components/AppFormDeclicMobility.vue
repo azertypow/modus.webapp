@@ -413,49 +413,42 @@
 
 
 
-      Possède-t-elle le permis de conduire ?
-      [Une seule réponse possible]
-      Oui
-      Non
-      Momentanément pas (par exemple retrait)
 
 
 
 
+      <div class="app-form__section">
 
-      A quelle fréquence se déplace-t-elle en moto/scooter ? (Si moto/scooter>0)
-      [Une seule réponse possible]
-      Tous les jours ou presque
-      Une à plusieurs fois par semaine
-      Moins d’une fois par semaine
+        <label>Possède-t-elle le permis de conduire ?</label>
 
+        <select name="evolution_deplacement">
+          <option value="Oui">Oui</option>
+          <option value="Non">Non</option>
+          <option value="Momentanément pas (par exemple retrait)">Momentanément pas (par exemple retrait)</option>
+        </select>
 
-
-
-
-
-
-      A quelle fréquence se déplace-t-elle en voiture ? (Si voiture>0)
-      [Une seule réponse possible]
-      Tous les jours ou presque
-      Une à plusieurs fois par semaine
-      Moins d’une fois par semaine
+      </div>
 
 
 
 
 
 
+      <div class="app-form__section">
 
+        <label>A quelle fréquence se déplace-t-elle en moto/scooter ? (Si moto/scooter>0)</label>
 
-      De quel(s) abonnement(s) de transports publics dispose-t-elle ?
-      [Plusieurs réponses possibles]
-      Aucun
-      Abonnement de zone unireso
-      Abonnement de parcours CFF
-      Abonnement demi-tarif
-      Abonnement général (AG)
-      Autres : précisez [zone de texte]
+        <select>
+          <option value="">Tous les jours ou presque</option>
+        </select>
+        <select>
+          <option value="">Une à plusieurs fois par semaine</option>
+        </select>
+        <select>
+          <option value="">Moins d’une fois par semaine</option>
+        </select>
+
+      </div>
 
 
 
@@ -464,12 +457,100 @@
 
 
 
-      A-t-elle personnellement accès à l’un de ces véhicules :
 
-      [Plusieurs réponses possibles]
-      Vélo à assistance électrique
-      Vélo cargo
-      Vélo conventionnel (mécanique)
+
+
+      <div class="app-form__section">
+
+        <label>A quelle fréquence se déplace-t-elle en voiture ? (Si voiture>0)</label>
+
+        <select>
+          <option value="">Tous les jours ou presque</option>
+        </select>
+        <select>
+          <option value="">Une à plusieurs fois par semaine</option>
+        </select>
+        <select>
+          <option value="">Moins d’une fois par semaine</option>
+        </select>
+
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+      <div class="app-form__section">
+        <label>De quel(s) abonnement(s) de transports publics dispose-t-elle ?</label>
+
+        <div class="app-form__section__subsections">
+          <input type="checkbox" name="" value="">
+          <label>Aucun</label>
+        </div>
+        <div class="app-form__section__subsections">
+          <input type="checkbox" name="" value="">
+          <label>Abonnement de zone unireso</label>
+        </div>
+        <div class="app-form__section__subsections">
+          <input type="checkbox" name="" value="">
+          <label>Abonnement de parcours CFF</label>
+        </div>
+        <div class="app-form__section__subsections">
+          <input type="checkbox" name="" value="">
+          <label>Abonnement demi-tarif</label>
+        </div>
+        <div class="app-form__section__subsections">
+          <input type="checkbox" name="" value="">
+          <label>Abonnement général (AG)</label>
+        </div>
+        <div class="app-form__section__subsections">
+          <input type="checkbox" name="" value="">
+          <label>Autres : précisez [zone de texte]</label>
+        </div>
+
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <div class="app-form__section">
+        <label>A-t-elle personnellement accès à l’un de ces véhicules :</label>
+
+        <div class="app-form__section__subsections">
+          <input type="checkbox" name="" value="">
+          <label>Vélo à assistance électrique</label>
+        </div>
+
+        <div class="app-form__section__subsections">
+          <input type="checkbox" name="" value="">
+          <label>Vélo cargo</label>
+        </div>
+
+        <div class="app-form__section__subsections">
+          <input type="checkbox" name="" value="">
+          <label>Vélo conventionnel (mécanique)</label>
+        </div>
+      </div>
+
+
+
+
 
 
 
@@ -483,26 +564,21 @@
         Merci de remplir ces quelques questions complémentaires pour le premier enfant mineur de votre ménage. Si vous avez plusieurs enfants, merci de répondre dans l’ordre du plus grand au plus petit.</p>
 
 
+      <div class="app-form__section">
 
-      A quelle fréquence se déplace-t-il en moto/scooter ? (Si moto/scooter>0)
-      [Une seule réponse possible]
-      Tous les jours ou presque
-      Une à plusieurs fois par semaine
-      Moins d’une fois par semaine
+        <label>A quelle fréquence se déplace-t-il en moto/scooter ? (Si moto/scooter>0)</label>
 
+        <select>
+          <option value="">Tous les jours ou presque</option>
+        </select>
+        <select>
+          <option value="">Une à plusieurs fois par semaine</option>
+        </select>
+        <select>
+          <option value="">Moins d’une fois par semaine</option>
+        </select>
 
-
-
-
-
-
-
-
-      A quelle fréquence se déplace-t-il en voiture ? (y compris passager) (Si voiture>0)
-      [Une seule réponse possible]
-      Tous les jours ou presque
-      Une à plusieurs fois par semaine
-      Moins d’une fois par semaine
+      </div>
 
 
 
@@ -513,14 +589,23 @@
 
 
 
-      De quel(s) abonnement(s) de transports publics dispose-t-il ?
-      [Plusieurs réponses possibles]
-      Aucun
-      Abonnement de zone unireso
-      Abonnement de parcours CFF
-      Abonnement demi-tarif
-      Abonnement général (AG)
-      Autres : précisez [zone de texte]
+
+
+
+      <div class="app-form__section">
+
+        <label>A quelle fréquence se déplace-t-il en voiture ? (y compris passager) (Si voiture>0)</label>
+
+        <select>
+          <option value="">Tous les jours ou presque</option>
+        </select>
+        <select>
+          <option value="">Une à plusieurs fois par semaine</option>
+        </select>
+        <select>
+          <option value="">Moins d’une fois par semaine</option>
+        </select>
+      </div>
 
 
 
@@ -531,11 +616,68 @@
 
 
 
-      A-t-il personnellement accès à l’un de ces véhicules :
 
-      [Plusieurs réponses possibles]
-      Vélo à assistance électrique
-      Vélo conventionnel (mécanique)
+
+
+      <div class="app-form__section">
+        <label>De quel(s) abonnement(s) de transports publics dispose-t-il ?</label>
+
+        <div class="app-form__section__subsections">
+          <input type="checkbox" name="" value="">
+          <label>Aucun</label>
+        </div>
+        <div class="app-form__section__subsections">
+          <input type="checkbox" name="" value="">
+          <label>Abonnement de zone unireso</label>
+        </div>
+        <div class="app-form__section__subsections">
+          <input type="checkbox" name="" value="">
+          <label>Abonnement de parcours CFF</label>
+        </div>
+        <div class="app-form__section__subsections">
+          <input type="checkbox" name="" value="">
+          <label>Abonnement demi-tarif</label>
+        </div>
+        <div class="app-form__section__subsections">
+          <input type="checkbox" name="" value="">
+          <label>Abonnement général (AG)</label>
+        </div>
+        <div class="app-form__section__subsections">
+          <input type="checkbox" name="" value="">
+          <label>Autres : précisez [zone de texte]</label>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <div class="app-form__section">
+        <label>A-t-il personnellement accès à l’un de ces véhicules :</label>
+
+        <div class="app-form__section__subsections">
+          <input type="checkbox" name="" value="">
+          <label>Vélo à assistance électrique</label>
+        </div>
+        <div class="app-form__section__subsections">
+          <input type="checkbox" name="" value="">
+          <label>Vélo conventionnel (mécanique)</label>
+        </div>
+      </div>
+
+
+
 
 
 
@@ -549,37 +691,20 @@
 
 
 
+      <div class="app-form__section">
 
-      A quelle fréquence se déplace-t-il en moto/scooter ? (Si moto/scooter>0)
-      [Une seule réponse possible]
-      Tous les jours ou presque
-      Une à plusieurs fois par semaine
-      Moins d’une fois par semaine
+        <label>A quelle fréquence se déplace-t-il en moto/scooter ? (Si moto/scooter>0)</label>
 
-
-
-
-
-
-      A quelle fréquence se déplace-t-il en voiture ? (y compris passager) (Si voiture>0)
-      [Une seule réponse possible]
-      Tous les jours ou presque
-      Une à plusieurs fois par semaine
-      Moins d’une fois par semaine
-
-
-
-
-
-
-      De quel(s) abonnement(s) de transports publics dispose-t-il ?
-      [Plusieurs réponses possibles]
-      Aucun
-      Abonnement de zone unireso
-      Abonnement de parcours CFF
-      Abonnement demi-tarif
-      Abonnement général (AG)
-      Autres : précisez [zone de texte]
+        <select>
+          <option value="">Tous les jours ou presque</option>
+        </select>
+        <select>
+          <option value="">Une à plusieurs fois par semaine</option>
+        </select>
+        <select>
+          <option value="">Moins d’une fois par semaine</option>
+        </select>
+      </div>
 
 
 
@@ -587,10 +712,88 @@
 
 
 
-      A-t-il personnellement accès à l’un de ces véhicules :
-      [Plusieurs réponses possibles]
-      Vélo à assistance électrique
-      Vélo conventionnel (mécanique)
+
+
+      <div class="app-form__section">
+
+        <label>A quelle fréquence se déplace-t-il en voiture ? (y compris passager) (Si voiture>0)</label>
+
+        <select>
+          <option value="">Tous les jours ou presque</option>
+        </select>
+        <select>
+          <option value="">Une à plusieurs fois par semaine</option>
+        </select>
+        <select>
+          <option value="">Moins d’une fois par semaine</option>
+        </select>
+      </div>
+
+
+
+
+
+
+
+
+
+      <div class="app-form__section">
+        <label>De quel(s) abonnement(s) de transports publics dispose-t-il ?</label>
+
+        <div class="app-form__section__subsections">
+          <input type="checkbox" name="" value="">
+          <label>Aucun</label>
+        </div>
+        <div class="app-form__section__subsections">
+          <input type="checkbox" name="" value="">
+          <label>Abonnement de zone unireso</label>
+        </div>
+        <div class="app-form__section__subsections">
+          <input type="checkbox" name="" value="">
+          <label>Abonnement de parcours CFF</label>
+        </div>
+        <div class="app-form__section__subsections">
+          <input type="checkbox" name="" value="">
+          <label>Abonnement demi-tarif</label>
+        </div>
+        <div class="app-form__section__subsections">
+          <input type="checkbox" name="" value="">
+          <label>Abonnement général (AG)</label>
+        </div>
+
+        <div class="app-form__section__subsections" style="width: 100%">
+          <label>Autres (précisez)</label>
+          <textarea type="text" name="abonnement_autres" placeholder="Autres (précisez)"></textarea>
+        </div>
+
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <div class="app-form__section">
+        <label>A-t-il personnellement accès à l’un de ces véhicules :</label>
+
+        <div class="app-form__section__subsections">
+          <input type="checkbox" name="" value="">
+          <label>Vélo à assistance électrique</label>
+        </div>
+        <div class="app-form__section__subsections">
+          <input type="checkbox" name="" value="">
+          <label>Vélo conventionnel (mécanique)</label>
+        </div>
+      </div>
+
+
 
 
       <p>Si nb d’adultes>nb de voiture+nb moto/scooter et nb enfant>1
@@ -600,37 +803,21 @@
 
 
 
+      <div class="app-form__section">
 
-      A quelle fréquence se déplace-t-il en moto/scooter ? (Si moto/scooter>0)
-      [Une seule réponse possible]
-      Tous les jours ou presque
-      Une à plusieurs fois par semaine
-      Moins d’une fois par semaine
+        <label>A quelle fréquence se déplace-t-il en moto/scooter ? (Si moto/scooter>0)</label>
 
+        <select>
+          <option value="">Tous les jours ou presque</option>
+        </select>
+        <select>
+          <option value="">Une à plusieurs fois par semaine</option>
+        </select>
+        <select>
+          <option value="">Moins d’une fois par semaine</option>
+        </select>
 
-
-
-
-
-
-      A quelle fréquence se déplace-t-il en voiture ? (y compris passager) (Si voiture>0)
-      [Une seule réponse possible]
-      Tous les jours ou presque
-      Une à plusieurs fois par semaine
-      Moins d’une fois par semaine
-
-
-
-
-
-      De quel(s) abonnement(s) de transports publics dispose-t-il ?
-      [Plusieurs réponses possibles]
-      Aucun
-      Abonnement de zone unireso
-      Abonnement de parcours CFF
-      Abonnement demi-tarif
-      Abonnement général (AG)
-      Autres : précisez [zone de texte]
+      </div>
 
 
 
@@ -638,10 +825,88 @@
 
 
 
-      A-t-il personnellement accès à l’un de ces véhicules :
-      [Plusieurs réponses possibles]
-      Vélo à assistance électrique
-      Vélo conventionnel (mécanique)
+
+
+
+      <div class="app-form__section">
+
+        <label>A quelle fréquence se déplace-t-il en voiture ? (y compris passager) (Si voiture>0)</label>
+
+        <select>
+          <option value="">Tous les jours ou presque</option>
+        </select>
+        <select>
+          <option value="">Une à plusieurs fois par semaine</option>
+        </select>
+        <select>
+          <option value="">Moins d’une fois par semaine</option>
+        </select>
+      </div>
+
+
+
+
+
+
+
+
+      <div class="app-form__section">
+        <label>De quel(s) abonnement(s) de transports publics dispose-t-il ?</label>
+
+        <div class="app-form__section__subsections">
+          <input type="checkbox" name="" value="">
+          <labelAucun></labelAucun>
+        </div>
+        <div class="app-form__section__subsections">
+          <input type="checkbox" name="" value="">
+          <label>Abonnement de zone unireso</label>
+        </div>
+        <div class="app-form__section__subsections">
+          <input type="checkbox" name="" value="">
+          <label>Abonnement de parcours CFF</label>
+        </div>
+        <div class="app-form__section__subsections">
+          <input type="checkbox" name="" value="">
+          <label>Abonnement demi-tarif</label>
+        </div>
+        <div class="app-form__section__subsections">
+          <input type="checkbox" name="" value="">
+          <label>Abonnement général (AG)</label>
+        </div>
+
+        <div class="app-form__section__subsections" style="width: 100%">
+          <label>Autres (précisez)</label>
+          <textarea type="text" name="abonnement_autres" placeholder="Autres (précisez)"></textarea>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <div class="app-form__section">
+        <label>A-t-il personnellement accès à l’un de ces véhicules :</label>
+
+        <div class="app-form__section__subsections">
+          <input type="checkbox" name="" value="">
+          <label>Vélo à assistance électrique</label>
+        </div>
+        <div class="app-form__section__subsections">
+          <input type="checkbox" name="" value="">
+          <label>Vélo conventionnel (mécanique)</label>
+        </div>
+      </div>
+
+
+
 
 
       <p>Si nb d’adultes>nb de voiture+nb moto/scooter et nb enfant>2
@@ -649,22 +914,20 @@
 
 
 
+      <div class="app-form__section">
 
-      A quelle fréquence se déplace-t-il en moto/scooter ? (Si moto/scooter>0)
-      [Une seule réponse possible]
-      Tous les jours ou presque
-      Une à plusieurs fois par semaine
-      Moins d’une fois par semaine
+        <label>A quelle fréquence se déplace-t-il en moto/scooter ? (Si moto/scooter>0)</label>
 
-
-
-
-
-      A quelle fréquence se déplace-t-il en voiture ? (y compris passager) (Si voiture>0)
-      [Une seule réponse possible]
-      Tous les jours ou presque
-      Une à plusieurs fois par semaine
-      Moins d’une fois par semaine
+        <select>
+          <option value="">Tous les jours ou presque</option>
+        </select>
+        <select>
+          <option value="">Une à plusieurs fois par semaine</option>
+        </select>
+        <select>
+          <option value="">Moins d’une fois par semaine</option>
+        </select>
+      </div>
 
 
 
@@ -673,35 +936,100 @@
 
 
 
-      De quel(s) abonnement(s) de transports publics dispose-t-il ?
-      [Plusieurs réponses possibles]
-      Aucun
-      Abonnement de zone unireso
-      Abonnement de parcours CFF
-      Abonnement demi-tarif
-      Abonnement général (AG)
-      Autres : précisez [zone de texte]
+      <div class="app-form__section">
+
+        <label>A quelle fréquence se déplace-t-il en voiture ? (y compris passager) (Si voiture>0)</label>
+
+        <select>
+          <option value="">Tous les jours ou presque</option>
+        </select>
+        <select>
+          <option value="">Une à plusieurs fois par semaine</option>
+        </select>
+        <select>
+          <option value="">Moins d’une fois par semaine</option>
+        </select>
+      </div>
 
 
 
 
 
 
-      A-t-il personnellement accès à l’un de ces véhicules :
-      [Plusieurs réponses possibles]
-      Vélo à assistance électrique
-      Vélo conventionnel (mécanique)
 
 
 
 
 
 
-      Le questionnaire est presque terminé maintenant.
-      Pour être recontacté si votre candidature est sélectrionnée, merci de renseigner votre adresse email.
+      <div class="app-form__section">
+        <label>De quel(s) abonnement(s) de transports publics dispose-t-il ?</label>
 
-      Adresse email :
-      [zone de texte]
+        <div class="app-form__section__subsections">
+          <input type="checkbox" name="" value="">
+          <label>Aucun</label>
+        </div>
+        <div class="app-form__section__subsections">
+          <input type="checkbox" name="" value="">
+          <label>Abonnement de zone unireso</label>
+        </div>
+        <div class="app-form__section__subsections">
+          <input type="checkbox" name="" value="">
+          <label>Abonnement de parcours CFF</label>
+        </div>
+        <div class="app-form__section__subsections">
+          <input type="checkbox" name="" value="">
+          <label>Abonnement demi-tarif</label>
+        </div>
+        <div class="app-form__section__subsections">
+          <input type="checkbox" name="" value="">
+          <label>Abonnement général (AG)</label>
+        </div>
+
+        <div class="app-form__section__subsections" style="width: 100%">
+          <label>Autres (précisez)</label>
+          <textarea type="text" name="abonnement_autres" placeholder="Autres (précisez)"></textarea>
+        </div>
+
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+      <div class="app-form__section">
+        <label>A-t-il personnellement accès à l’un de ces véhicules :</label>
+
+        <div class="app-form__section__subsections">
+          <input type="checkbox" name="" value="">
+          <label>Vélo à assistance électrique</label>
+        </div>
+        <div class="app-form__section__subsections">
+          <input type="checkbox" name="" value="">
+          <label>Vélo conventionnel (mécanique)</label>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
+      <p>Le questionnaire est presque terminé maintenant.
+      Pour être recontacté si votre candidature est sélectrionnée, merci de renseigner votre adresse email.</p>
+
+      <p>Adresse email :
+        [zone de texte]</p>
 
 
 
