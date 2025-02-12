@@ -1,39 +1,9 @@
 <template>
-<!--    <form class="app-form-declic-mobility"-->
-<!--        @submit.prevent="handleSubmit">-->
-<!--        <div class="app-form-declic-mobility__group">-->
-<!--            <input type="text" id="nom" placeholder="Nom" v-model="formData.nom" required>-->
-<!--            <input type="text" id="prenom" placeholder="Prénom" v-model="formData.prenom" required>-->
-<!--        </div>-->
-<!--        <div class="app-form-declic-mobility__group">-->
-<!--            <input type="text" id="institution" placeholder="Institution" v-model="formData.institution" required>-->
-<!--            <input type="email" id="email" placeholder="E-mail" v-model="formData.email" required>-->
-<!--        </div>-->
-<!--        <input type="text" id="nomProjet" placeholder="Titre du projet" v-model="formData.nomProjet" required>-->
-<!--        <textarea id="description"-->
-<!--                  v-model="formData.description"-->
-<!--                  required-->
-<!--                  maxlength="1250"-->
-<!--                  placeholder="Courte description du projet (objectifs, partenaires, montant du projet, etc./ 250 mots max)"-->
-<!--        ></textarea>-->
-<!--        <button class="app-button&#45;&#45;small"-->
-<!--                v-if="status === 'nothing' || status === 'sending ERROR'"-->
-<!--                type="submit"-->
-<!--        >Envoyer</button>-->
-<!--        <div style="text-align: center"-->
-<!--                v-else-if="status === 'sending PROGRESS'"-->
-<!--        >Envoie en cours…</div>-->
-
-<!--        <div style="text-align: center"-->
-<!--             v-if="responseMassage.length > 0"-->
-<!--        >{{responseMassage}}</div>-->
-<!--    </form>-->
-
   <form class="app-form-declic-mobility">
 
     <div class="app-form__section app-form__section--valid">
       <label>
-        Dans quelle commune votre domicile principal est-il situé ?
+        Dans quelle commune votre domicile principal est-il situé&nbsp;?
       </label>
       <select name="commune"
               v-model="option_1"
@@ -53,7 +23,7 @@
     <template v-else>
 
       <div class="app-form__section app-form__section--error">
-        <label>Depuis combien de temps résidez-vous dans cette commune ?</label>
+        <label>Depuis combien de temps résidez-vous dans cette commune&nbsp;?</label>
         <select name="duree_residence">
           <option value="moins2">Moins de 2 ans</option>
           <option value="2-5">Entre 2 et 5 ans</option>
@@ -63,7 +33,7 @@
       </div>
 
       <div class="app-form__section">
-        <label>Combien de personnes composent votre ménage ?</label>
+        <label>Combien de personnes composent votre ménage&nbsp;?</label>
         <div class="app-form__section__subsections app-form__section__subsections--number">
 
         </div>
@@ -74,13 +44,13 @@
 
 
       <div class="app-form__section">
-        <label>De combien de véhicules disposez-vous au sein de votre ménage ?</label>
+        <label>De combien de véhicules disposez-vous au sein de votre ménage&nbsp;?</label>
         <input type="number" name="motos" placeholder="Nombre de motos/scooters">
         <input type="number" name="voitures" placeholder="Nombre de voitures">
       </div>
 
       <div class="app-form__section">
-        <label>A quelle fréquence vous déplacez-vous en moto/scooter ?</label>
+        <label>A quelle fréquence vous déplacez-vous en moto/scooter&nbsp;?</label>
         <select name="frequence_moto">
           <option value="quotidien">Tous les jours ou presque</option>
           <option value="hebdo">Une à plusieurs fois par semaine</option>
@@ -89,7 +59,7 @@
       </div>
 
       <div class="app-form__section">
-        <label>A quelle fréquence vous déplacez-vous en voiture ?</label>
+        <label>A quelle fréquence vous déplacez-vous en voiture&nbsp;?</label>
         <select name="frequence_voiture">
           <option value="quotidien">Tous les jours ou presque</option>
           <option value="hebdo">Une à plusieurs fois par semaine</option>
@@ -98,13 +68,13 @@
       </div>
 
       <div class="app-form__section">
-        <label>Quelle est votre année de naissance ?</label>
+        <label>Quelle est votre année de naissance&nbsp;?</label>
         <input type="number" name="annee_naissance" placeholder="P.ex. 1983">
       </div>
 
 
       <div class="app-form__section">
-        <label>Quel est votre genre ?</label>
+        <label>Quel est votre genre&nbsp;?</label>
         <select name="genre">
           <option value="femme">Une femme</option>
           <option value="homme">Un homme</option>
@@ -113,7 +83,7 @@
       </div>
 
       <div class="app-form__section">
-        <label>Quelle situation professionnelle vous correspond actuellement ?</label>
+        <label>Quelle situation professionnelle vous correspond actuellement&nbsp;?</label>
 
         <div class="app-form__section__subsections">
           <input type="checkbox" name="emploi" value="temps_plein">
@@ -145,7 +115,7 @@
 
 
       <div class="app-form__section">
-        <label>Avez-vous le permis de conduire ?</label>
+        <label>Avez-vous le permis de conduire&nbsp;?</label>
         <select name="permis">
           <option value="oui">Oui</option>
           <option value="non">Non</option>
@@ -154,7 +124,7 @@
       </div>
 
       <div class="app-form__section">
-        <label>De quel(s) abonnement(s) de transports publics disposez-vous ?</label>
+        <label>De quel(s) abonnement(s) de transports publics disposez-vous&nbsp;?</label>
 
         <select name="permis">
           <option value="unireso">Abonnement de zone unireso</option>
@@ -175,7 +145,7 @@
 
       <div class="app-form__section">
 
-        <label>Avez-vous personnellement accès à l’un de ces véhicules ?</label>
+        <label>Avez-vous personnellement accès à l’un de ces véhicules&nbsp;?</label>
 
         <div class="app-form__section__subsections">
           <input type="checkbox" name="vehicule" value="vae">
@@ -202,7 +172,7 @@
 
       <div class="app-form__section">
 
-        <label>Souhaitez-vous faire évoluer vos pratiques de déplacement pour un mode de vie plus durable ?</label>
+        <label>Souhaitez-vous faire évoluer vos pratiques de déplacement pour un mode de vie plus durable&nbsp;?</label>
 
         <select name="evolution_deplacement">
           <option value="oui_tout">Oui, tout à fait</option>
@@ -226,7 +196,7 @@
 
 
       <div class="app-form__section">
-        <label>Quelle situation professionnelle lui correspond actuellement ?</label>
+        <label>Quelle situation professionnelle lui correspond actuellement&nbsp;?</label>
 
         <div class="app-form__section__subsections">
           <input type="checkbox" name="" value="Actif/active à temps plein">
@@ -283,7 +253,7 @@
 
       <div class="app-form__section">
 
-        <label>A quelle fréquence se déplace-t-elle en moto/scooter ? (Si moto/scooter>0)</label>
+        <label>A quelle fréquence se déplace-t-elle en moto/scooter&nbsp;? (Si moto/scooter>0)</label>
 
         <select name="evolution_deplacement">
           <option value="Tous les jours ou presque">Tous les jours ou presque</option>
@@ -296,7 +266,7 @@
 
       <div class="app-form__section">
 
-        <label>A quelle fréquence se déplace-t-elle en voiture ? (Si voiture>0)</label>
+        <label>A quelle fréquence se déplace-t-elle en voiture&nbsp;? (Si voiture>0)</label>
 
         <select name="evolution_deplacement">
           <option value="Tous les jours ou presque">Tous les jours ou presque</option>
@@ -311,11 +281,6 @@
 
       <div class="app-form__section">
         <label>De quel(s) abonnement(s) de transports publics dispose-t-elle ?</label>
-
-        <div class="app-form__section__subsections">
-          <input type="checkbox" name="" value="Aucun">
-          <label>Aucun</label>
-        </div>
 
         <div class="app-form__section__subsections">
           <input type="checkbox" name="" value="Abonnement de zone unireso">
@@ -338,9 +303,15 @@
         </div>
 
         <div class="app-form__section__subsections">
-          <input type="checkbox" name="" value="Autres : précisez [zone de texte]">
-          <label>Autres : précisez [zone de texte]</label>
+          <input type="checkbox" name="" value="Aucun">
+          <label>Aucun</label>
         </div>
+
+        <div class="app-form__section__subsections" style="width: 100%">
+          <label>Autres (précisez)</label>
+          <textarea type="text" name="abonnement_autres" placeholder="Autres (précisez)"></textarea>
+        </div>
+
       </div>
 
 
@@ -378,7 +349,7 @@
 
 
       <div class="app-form__section">
-        <label>Quelle situation professionnelle lui correspond actuellement ?</label>
+        <label>Quelle situation professionnelle lui correspond actuellement&nbsp;?</label>
 
         <div class="app-form__section__subsections">
           <input type="checkbox" name="" value="Actif/active à temps plein">
@@ -436,7 +407,7 @@
 
       <div class="app-form__section">
 
-        <label>A quelle fréquence se déplace-t-elle en moto/scooter ? (Si moto/scooter>0)</label>
+        <label>A quelle fréquence se déplace-t-elle en moto/scooter&nbsp;? (Si moto/scooter>0)</label>
 
         <select>
           <option value="">Tous les jours ou presque</option>
@@ -462,7 +433,7 @@
 
       <div class="app-form__section">
 
-        <label>A quelle fréquence se déplace-t-elle en voiture ? (Si voiture>0)</label>
+        <label>A quelle fréquence se déplace-t-elle en voiture&nbsp;? (Si voiture>0)</label>
 
         <select>
           <option value="">Tous les jours ou presque</option>
@@ -491,10 +462,6 @@
 
         <div class="app-form__section__subsections">
           <input type="checkbox" name="" value="">
-          <label>Aucun</label>
-        </div>
-        <div class="app-form__section__subsections">
-          <input type="checkbox" name="" value="">
           <label>Abonnement de zone unireso</label>
         </div>
         <div class="app-form__section__subsections">
@@ -509,9 +476,15 @@
           <input type="checkbox" name="" value="">
           <label>Abonnement général (AG)</label>
         </div>
+
         <div class="app-form__section__subsections">
           <input type="checkbox" name="" value="">
-          <label>Autres : précisez [zone de texte]</label>
+          <label>Aucun</label>
+        </div>
+
+        <div class="app-form__section__subsections" style="width: 100%">
+          <label>Autres (précisez)</label>
+          <textarea type="text" name="abonnement_autres" placeholder="Autres (précisez)"></textarea>
         </div>
 
       </div>
@@ -566,7 +539,7 @@
 
       <div class="app-form__section">
 
-        <label>A quelle fréquence se déplace-t-il en moto/scooter ? (Si moto/scooter>0)</label>
+        <label>A quelle fréquence se déplace-t-il en moto/scooter&nbsp;? (Si moto/scooter>0)</label>
 
         <select>
           <option value="">Tous les jours ou presque</option>
@@ -594,7 +567,7 @@
 
       <div class="app-form__section">
 
-        <label>A quelle fréquence se déplace-t-il en voiture ? (y compris passager) (Si voiture>0)</label>
+        <label>A quelle fréquence se déplace-t-il en voiture&nbsp;? (y&nbsp;compris passager) (Si voiture>0)</label>
 
         <select>
           <option value="">Tous les jours ou presque</option>
@@ -624,10 +597,6 @@
 
         <div class="app-form__section__subsections">
           <input type="checkbox" name="" value="">
-          <label>Aucun</label>
-        </div>
-        <div class="app-form__section__subsections">
-          <input type="checkbox" name="" value="">
           <label>Abonnement de zone unireso</label>
         </div>
         <div class="app-form__section__subsections">
@@ -642,12 +611,17 @@
           <input type="checkbox" name="" value="">
           <label>Abonnement général (AG)</label>
         </div>
+
         <div class="app-form__section__subsections">
           <input type="checkbox" name="" value="">
-          <label>Autres : précisez [zone de texte]</label>
+          <label>Aucun</label>
+        </div>
+
+        <div class="app-form__section__subsections" style="width: 100%">
+          <label>Autres (précisez)</label>
+          <textarea type="text" name="abonnement_autres" placeholder="Autres (précisez)"></textarea>
         </div>
       </div>
-
 
 
 
@@ -693,7 +667,7 @@
 
       <div class="app-form__section">
 
-        <label>A quelle fréquence se déplace-t-il en moto/scooter ? (Si moto/scooter>0)</label>
+        <label>A quelle fréquence se déplace-t-il en moto/scooter&nbsp;? (Si moto/scooter>0)</label>
 
         <select>
           <option value="">Tous les jours ou presque</option>
@@ -716,7 +690,7 @@
 
       <div class="app-form__section">
 
-        <label>A quelle fréquence se déplace-t-il en voiture ? (y compris passager) (Si voiture>0)</label>
+        <label>A quelle fréquence se déplace-t-il en voiture&nbsp;? (y&nbsp;compris passager) (Si voiture>0)</label>
 
         <select>
           <option value="">Tous les jours ou presque</option>
@@ -742,10 +716,6 @@
 
         <div class="app-form__section__subsections">
           <input type="checkbox" name="" value="">
-          <label>Aucun</label>
-        </div>
-        <div class="app-form__section__subsections">
-          <input type="checkbox" name="" value="">
           <label>Abonnement de zone unireso</label>
         </div>
         <div class="app-form__section__subsections">
@@ -759,6 +729,11 @@
         <div class="app-form__section__subsections">
           <input type="checkbox" name="" value="">
           <label>Abonnement général (AG)</label>
+        </div>
+
+        <div class="app-form__section__subsections">
+          <input type="checkbox" name="" value="">
+          <label>Aucun</label>
         </div>
 
         <div class="app-form__section__subsections" style="width: 100%">
@@ -805,7 +780,7 @@
 
       <div class="app-form__section">
 
-        <label>A quelle fréquence se déplace-t-il en moto/scooter ? (Si moto/scooter>0)</label>
+        <label>A quelle fréquence se déplace-t-il en moto/scooter&nbsp;? (Si moto/scooter>0)</label>
 
         <select>
           <option value="">Tous les jours ou presque</option>
@@ -830,7 +805,7 @@
 
       <div class="app-form__section">
 
-        <label>A quelle fréquence se déplace-t-il en voiture ? (y compris passager) (Si voiture>0)</label>
+        <label>A quelle fréquence se déplace-t-il en voiture&nbsp;? (y&nbsp;compris passager) (Si voiture>0)</label>
 
         <select>
           <option value="">Tous les jours ou presque</option>
@@ -855,10 +830,6 @@
 
         <div class="app-form__section__subsections">
           <input type="checkbox" name="" value="">
-          <labelAucun></labelAucun>
-        </div>
-        <div class="app-form__section__subsections">
-          <input type="checkbox" name="" value="">
           <label>Abonnement de zone unireso</label>
         </div>
         <div class="app-form__section__subsections">
@@ -872,6 +843,10 @@
         <div class="app-form__section__subsections">
           <input type="checkbox" name="" value="">
           <label>Abonnement général (AG)</label>
+        </div>
+        <div class="app-form__section__subsections">
+          <input type="checkbox" name="" value="">
+          <label>Aucun</label>
         </div>
 
         <div class="app-form__section__subsections" style="width: 100%">
@@ -916,7 +891,7 @@
 
       <div class="app-form__section">
 
-        <label>A quelle fréquence se déplace-t-il en moto/scooter ? (Si moto/scooter>0)</label>
+        <label>A quelle fréquence se déplace-t-il en moto/scooter&nbsp;? (Si moto/scooter>0)</label>
 
         <select>
           <option value="">Tous les jours ou presque</option>
@@ -938,7 +913,7 @@
 
       <div class="app-form__section">
 
-        <label>A quelle fréquence se déplace-t-il en voiture ? (y compris passager) (Si voiture>0)</label>
+        <label>A quelle fréquence se déplace-t-il en voiture&nbsp;? (y&nbsp;compris passager) (Si voiture>0)</label>
 
         <select>
           <option value="">Tous les jours ou presque</option>
@@ -967,10 +942,6 @@
 
         <div class="app-form__section__subsections">
           <input type="checkbox" name="" value="">
-          <label>Aucun</label>
-        </div>
-        <div class="app-form__section__subsections">
-          <input type="checkbox" name="" value="">
           <label>Abonnement de zone unireso</label>
         </div>
         <div class="app-form__section__subsections">
@@ -984,6 +955,10 @@
         <div class="app-form__section__subsections">
           <input type="checkbox" name="" value="">
           <label>Abonnement général (AG)</label>
+        </div>
+        <div class="app-form__section__subsections">
+          <input type="checkbox" name="" value="">
+          <label>Aucun</label>
         </div>
 
         <div class="app-form__section__subsections" style="width: 100%">
@@ -1081,59 +1056,11 @@ const handleSubmit = async () => {
     // formData.nomProjet = "";
     // formData.description = "";
 
-    sendMessageData()
+    // sendMessageData()
 
 };
 
 async function sendMessageData() {
-    status.value = "sending PROGRESS"
-    responseMassage.value  = ''
-
-    if(formData.email.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g) === null) {
-        status.value           = 'sending ERROR'
-        responseMassage.value  = 'Adresse mail incorrecte'
-        return
-    }
-
-    const contactUrl = new URL('https://modus-admin.sdrvl.ch/contact?')
-
-    for(const itemKey in formData) {
-        contactUrl.searchParams.append(itemKey, formData[itemKey] )
-    }
-
-    try {
-        const response = await fetch(
-            contactUrl.href,
-            {
-                method: 'POST',
-            }
-        )
-
-        const jsonResponse = await response.json()
-
-        console.log(jsonResponse)
-
-        window.setTimeout(() => {
-
-            if(jsonResponse.succes === false) {
-                responseMassage.value  = 'Problème(s):'
-                    + '-' + 'error: ' + jsonResponse.alert.error
-                    + '-' + 'name: ' + jsonResponse.alert.name
-                status.value           = 'sending ERROR'
-
-            } else {
-                responseMassage.value = "Votre message a bien été envoyé. Nous revenons vers vous au plus vite!\n"
-                status.value           = 'sending OK'
-            }
-
-        }, 2500)
-
-
-    } catch {
-        responseMassage.value  = 'Erreur de connection, réesséyez…'
-        status.value           = 'sending ERROR'
-    }
-
 }
 
 const option_1 = ref(null)

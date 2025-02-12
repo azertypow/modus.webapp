@@ -59,6 +59,26 @@
 
   textarea {
     height: 5.5rem;
+    box-sizing: border-box;
+    width: 100%;
+  }
+
+  .app-form__section__subsections {
+    display: flex;
+    align-items: center;
+    gap: .25rem;
+    flex-wrap: wrap;
+
+    input[type=checkbox] {
+      display: block;
+      width: 1rem;
+      height: 1rem;
+      border-radius: 1rem;
+    }
+
+    &.app-form__section__subsections--number {
+
+    }
   }
 
 
@@ -66,6 +86,11 @@
   STATUS
   */
   input {
+    border-color: hsl(143, 5%, 75%);
+    color: hsl(143, 5%, 20%);
+  }
+
+  textarea {
     border-color: hsl(143, 5%, 75%);
     color: hsl(143, 5%, 20%);
   }
@@ -86,6 +111,11 @@
 
 
     input {
+      border-color: var(--app-color-main);
+      color: var(--app-color-main);
+    }
+
+    textarea {
       border-color: var(--app-color-main);
       color: var(--app-color-main);
     }
@@ -115,23 +145,6 @@
   /**
   STATUS
    */
-  .app-form__section__subsections {
-    display: flex;
-    align-items: center;
-    gap: .25rem;
-    //width: 100%;
-
-    input[type=checkbox] {
-      display: block;
-      width: 1rem;
-      height: 1rem;
-      border-radius: 1rem;
-    }
-
-    &.app-form__section__subsections--number {
-
-    }
-  }
 }
 
 
