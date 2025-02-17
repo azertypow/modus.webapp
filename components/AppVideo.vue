@@ -1,6 +1,7 @@
 <template>
     <div
         class="v-app-video"
+        id="media-anchor"
         :class="{
             'show-video': showVideo
         }"
@@ -50,6 +51,8 @@ onMounted(() => {
         if(vimeoIframe.value) {
             vimeoIframe.value.src = ''
         }
+
+        if(useRoute().query.target === 'media') navigateToMediaFile()
     })
 })
 </script>

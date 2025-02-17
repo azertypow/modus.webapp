@@ -1,7 +1,7 @@
 <template>
     <section class="v-app-spotify"
     >
-      <div class="v-app-spotify__iframe-box">
+      <div class="v-app-spotify__iframe-box" id="media-anchor">
         <iframe style="border-radius:12px"
                 :src="`https://open.spotify.com/embed/episode/${podcastId}?utm_source=generator`"
                 width="100%"
@@ -43,6 +43,13 @@ const podcastId: ComputedRef<string | null> = computed(() => {
 
     return episodeId
 })
+
+onMounted(() => {
+    nextTick(() => {
+        if(useRoute().query.target === 'media') navigateToMediaFile()
+    })
+})
+
 
 </script>
 

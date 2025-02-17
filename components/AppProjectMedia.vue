@@ -31,6 +31,13 @@
 
       <div class="v-app-project-media__player-wrap"
            v-if="firstMediaInBodyBlocks"
+           @click.stop="useRouter().push({
+            query: {
+                target: 'media'
+            },
+            path: `/project/${props.projectMediaData.slug}`,
+
+           })"
       >
         <template v-if="firstMediaInBodyBlocks.type === 'spotify'">
           <div class="v-app-project-media__player-wrap__title app-font-small"
