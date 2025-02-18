@@ -96,7 +96,7 @@ type QuestionType =
     Question_select
     | Question_input
     | Question_checkbox
-    |  Question_textarea
+    | Question_textarea
     | Question_number
 
 // Données des questions
