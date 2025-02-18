@@ -1,67 +1,60 @@
 <template>
-  <form class="app-form-declic-mobility">
-    <div v-for="question in visibleQuestions" :key="question.id" class="app-form__section">
-      <label>{{ question.text }}</label>
+    <form class="app-form-declic-mobility">
+        <div v-for="question in visibleQuestions" :key="question.id" class="app-form__section">
+            <h1 style="width: 100%; margin-bottom: 0; margin-top: 10rem;">{{ question.type }}</h1>
+            <label>{{ question.text }}</label>
+            
+            <!-- Select -->
+            <div v-if="question.type === 'select'">
+                <select v-model="responses[question.id]">
+                    <option v-for="option in question.options" :key="option" :value="option">
+                        {{ option }}
+                    </option>
+                </select>
+            </div>
 
-      <!-- Select -->
-      <select
-              v-if="question.type === 'select'"
-              v-model="responses[question.id]"
-      >
-        <option v-for="option in question.options" :key="option" :value="option">
-          {{ option }}
-        </option>
-      </select>
 
-      <!-- Input (texte) -->
-      <input
-              v-else-if="question.type === 'input'"
-              v-model="responses[question.id]"
-              type="text"
-              :placeholder="question.placeholder"
-      />
 
-      <!-- Input (nombre) -->
-      <input
-              v-else-if="question.type === 'number'"
-              v-model="responses[question.id]"
-              type="number"
-              :placeholder="question.placeholder"
-      />
+            <!-- Input (texte) -->
+            <div v-else-if="question.type === 'input'">
+                <input v-model="responses[question.id]" type="text" :placeholder="question.placeholder" />
+            </div>
 
-      <!-- Checkbox -->
-      <div v-else-if="question.type === 'checkbox'" class="app-form__section__subsections">
-        <div v-for="option in question.options" :key="option">
-          <input
-                  type="checkbox"
-                  :value="option"
-                  v-model="responses[question.id]"
-          />
-          <label>{{ option }}</label>
+
+
+            <!-- Input (nombre) -->
+            <div    v-else-if="question.type === 'number'">
+                <input v-model="responses[question.id]" type="number" :placeholder="question.placeholder" />
+            </div>
+
+
+
+            <!-- Checkbox -->
+            <div    v-else-if="question.type === 'checkbox'"
+                    class="app-form__section__subsections"
+            >
+                <div v-for="option in question.options" :key="option">
+                    <input type="checkbox" :value="option" v-model="responses[question.id]" />
+                    <label>{{ option }}</label>
+                </div>
+            </div>
+
+            <!-- Textarea -->
+            <div v-else-if="question.type === 'textarea'">
+                <textarea v-model="responses[question.id]" :placeholder="question.placeholder"></textarea>
+            </div>
         </div>
-      </div>
 
-      <!-- Textarea -->
-      <textarea
-              v-else-if="question.type === 'textarea'"
-              v-model="responses[question.id]"
-              :placeholder="question.placeholder"
-      ></textarea>
-    </div>
-
-    <button type="submit" @click.prevent="submitForm">Envoyer</button>
-  </form>
+        <button type="submit" @click.prevent="submitForm">Envoyer</button>
+    </form>
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from "vue";
-
 // Définir les interfaces
 interface Question {
     id: number;
     text: string;
     type: "select" | "input" | "checkbox" | "textarea" | "number";
-    options?: string[];
     placeholder?: string;
     conditions?: {
         dependsOn: number;
@@ -69,12 +62,43 @@ interface Question {
     };
 }
 
-interface Responses {
-    [key: number]: string | number | boolean | string[];
+interface Question_select extends Question {
+    type: 'select';
+    options: string[];
 }
 
+interface Question_input extends Question {
+    type: 'input';
+    options: string[];
+}
+
+interface Question_checkbox extends Question {
+    type: 'checkbox';
+    options: string[];
+}
+
+interface Question_textarea extends Question {
+    type: 'textarea';
+    options: string[];
+}
+
+interface Question_number extends Question {
+    type: "number";
+}
+
+interface Responses {
+    [key: number]: string | number  | string[] | undefined;
+}
+
+type QuestionType = 
+    Question_select
+    | Question_input
+    | Question_checkbox
+    |  Question_textarea
+    | Question_number
+
 // Données des questions
-const questions: Question[] = [
+const questions: (QuestionType)[] = [
     {
         id: 1,
         text: "Dans quelle commune votre domicile principal est-il situé ?",
@@ -141,10 +165,11 @@ const questions: Question[] = [
 // État des réponses
 const responses = ref<Responses>({});
 
-// Questions visibles en fonction des réponses
-const visibleQuestions = computed(() => {
+const visibleQuestions: ComputedRef<QuestionType[]> = computed(() => {
+
     return questions.filter((question) => {
-        if (!question.conditions) return true;
+        if ( !question.conditions ) return true;
+
         const { dependsOn, value } = question.conditions;
         const dependentValue = responses.value[dependsOn];
 
