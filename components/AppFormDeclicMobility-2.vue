@@ -33,15 +33,16 @@
             <div    v-else-if="question.type === 'checkbox'"
                     class="app-form__section__subsections"
             >
-                <div v-for="(option, key) in question.options" :key="option">
-                    <input  type="checkbox"
-                            :true-value="true" 
-                            :false-value="false"
-                            v-model="(responses[question.id] as { [key: string]: boolean })[key]"
+                <div v-for="option in question.options" :key="option">
+                    <input  type="checkbox" 
+                            :value="option" 
+                            v-model="responses[question.id]"
                             />
                     <label>{{ option }}</label>
                 </div>
             </div>
+
+
             <!-- Textarea -->
             <div v-else-if="question.type === 'textarea'">
                 <textarea v-model="(responses[question.id] as string | number | string[] | undefined)" :placeholder="question.placeholder"></textarea>
@@ -72,7 +73,6 @@ interface Question_select extends Question {
 
 interface Question_input extends Question {
     type: 'input';
-    options: string[];
 }
 
 interface Question_checkbox extends Question {
@@ -89,10 +89,10 @@ interface Question_number extends Question {
 }
 
 interface Responses {
-    [key: number]: string | number | string[] | boolean | { [key: string]: boolean } | undefined;
+    [key: number]: string | number | string[] | boolean | undefined;
 }
 
-type QuestionType = 
+type QuestionType =
     Question_select
     | Question_input
     | Question_checkbox
@@ -100,7 +100,7 @@ type QuestionType =
     | Question_number
 
 // Données des questions
-const questions: (QuestionType)[] = [
+const questions: QuestionType[] = [
     {
         id: 1,
         text: "Dans quelle commune votre domicile principal est-il situé ?",
@@ -118,6 +118,18 @@ const questions: (QuestionType)[] = [
         id: 3,
         text: "3.\tQuelles est la structure de votre ménage ?",
         type: "textarea",
+        conditions: { dependsOn: 1, value: "carouge" }, // Exemple de condition
+    },
+    {
+        id: 4,
+        text: "nom",
+        type: "input",
+        conditions: { dependsOn: 1, value: "carouge" }, // Exemple de condition
+    },
+    {
+        id:     5,
+        text: "prénom",
+        type: "input",
         conditions: { dependsOn: 1, value: "carouge" }, // Exemple de condition
     },
     {
@@ -169,10 +181,7 @@ const responses = ref<Responses>({});
 // Initialiser les réponses pour les questions de type checkbox
 questions.forEach((question) => {
     if (question.type === 'checkbox') {
-        responses.value[question.id] = question.options.reduce((acc, option, index) => {
-            acc[index] = false; // Initialiser chaque option à false
-            return acc;
-        }, {} as { [key: string]: boolean });
+        responses.value[question.id] = []; // Tableau vide pour stocker les options cochées
     }
 });
 
