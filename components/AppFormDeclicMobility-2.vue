@@ -4,7 +4,7 @@
             <label>{{ question.text }}</label>
             
             <!-- Select -->
-            <div v-if="question.type === 'select'">
+            <template v-if="question.type === 'select'">
                 <select v-model="responses[question.id]">
                     <option v-for="option in question.options" :key="option" :value="option">
                         {{ option }}
@@ -14,46 +14,48 @@
                 </select>
 
                 <!-- Textarea pour "autre" -->
-                <div v-if="question.hasOtherOption && responses[question.id] === 'autre'">
-                    <textarea v-model="(responses[`${question.id}_other`] as string | number | string[] | undefined)"
-                        placeholder="Précisez votre réponse"></textarea>
-                </div>
-            </div>
+                <textarea   v-if="question.hasOtherOption && responses[question.id] === 'autre'"
+                            v-model="(responses[`${question.id}_other`] as string | number | string[] | undefined)"
+                            placeholder="Précisez votre réponse"
+                            ></textarea>
+            </template>
 
 
 
             <!-- Input (texte) -->
-            <div v-else-if="question.type === 'input'">
+            <template v-else-if="question.type === 'input'">
                 <input v-model="responses[question.id]" type="text" :placeholder="question.placeholder" />
-            </div>
+            </template>
 
 
 
             <!-- Input (nombre) -->
-            <div    v-else-if="question.type === 'number'">
+            <template    v-else-if="question.type === 'number'">
                 <input v-model="responses[question.id]" type="number" :placeholder="question.placeholder" />
-            </div>
+            </template>
 
 
 
             <!-- Checkbox -->
-            <div    v-else-if="question.type === 'checkbox'"
-                    class="app-form__section__subsections"
-            >
-                <div v-for="option in question.options" :key="option">
+            <template   v-else-if="question.type === 'checkbox'"
+                        >
+                <div    v-for="option in question.options"
+                        :key="option"
+                        class="app-form__section__subsections"
+                        >
                     <input  type="checkbox" 
                             :value="option" 
                             v-model="responses[question.id]"
                             />
                     <label>{{ option }}</label>
                 </div>
-            </div>
+            </template>
 
 
             <!-- Textarea -->
-            <div v-else-if="question.type === 'textarea'">
+            <template v-else-if="question.type === 'textarea'">
                 <textarea v-model="(responses[question.id] as string | number | string[] | undefined)" :placeholder="question.placeholder"></textarea>
-            </div>
+            </template>
         </div>
 
         <button type="submit" @click.prevent="submitForm">Envoyer</button>
