@@ -63,7 +63,7 @@ onMounted(async () => {
 
 const isChecked = ref(false)
 
-const formHeaderText = "Questionnaire 1 Déclic Mobilité"
+const formHeaderText = "Déclaration d’intérêt pour participer à l’initiative « Déclic mobilité »"
 
 const formBodyContent: IApiBody = {
     'intro':         {
@@ -71,7 +71,7 @@ const formBodyContent: IApiBody = {
         "content": {
             "content": {
                 "text": `
-<p>Merci pour votre intérêt pour l’initiative « Déclic Mobilité »</p>
+<p>Merci pour votre intérêt !</p>
 <h3>Déclic Mobilité, c’est quoi ?</h3>
 <p>Le concept est simple : vous stationnez (dans un parking prévu à cet effet) votre véhicule durant le mois de mai 2025 et vous recevez un accès gratuit à des alternatives de déplacement de votre choix parmi lesquelles un abonnement général CFF, un vélo/vélo électrique/vélo cargo, un abonnement Mobility, et bien d’autres services. </p>
 <h3>Quelles sont les conditions de participation ?</h3>
@@ -84,9 +84,12 @@ const formBodyContent: IApiBody = {
 </ul>
 <h6>NB : les familles ou ménages composés de plusieurs personnes peuvent participer en groupe.</h6>
 <h3>Comment s’inscrire ?</h3>
-<p>Pour participer au défi « Déclic Mobilité », vous devez vous enregistrer en répondant à quelques questions (2 minutes) sur votre profil et vos habitudes de déplacement. Une sélection sera réalisée pour garantir une diversité des profils et les personnes sélectionnées seront recontactées par email avec toutes les informations nécessaires pour commencer l’aventure.</p>
+<p>Pour participer au défi « Déclic Mobilité », vous devez vous enregistrer en répondant à quelques questions (5 minutes environs) sur votre profil et vos habitudes de déplacement. Une sélection sera réalisée pour garantir une diversité des profils et les personnes sélectionnées seront recontactées par email avec toutes les informations nécessaires pour commencer l’aventure.</p>
 <h3>Comment sont utilisées mes données personnelles ?</h3>
-<p>L’enquête est effectuée sur la plateforme de sondage Qualtrics, hébergée sur un serveur sécurisé répondant à toutes les normes de sécurité en vigueur. Les données recueillies dans le cadre de cette enquête seront traitées de manière strictement confidentielle dans le respect des dispositions applicables en matière de protection des données1. Elles seront utilisées à des fins statistiques et d'évaluation de l’impact de la prise en charge des abonnements unireso. Elles ne seront pas transmises à des tiers et seront détruites à la fin de l’opération. </p>
+<p>
+  L’enquête est organisée via le site internet de la Fondation Modus, hébergé en Suisse sur un serveur sécurisé répondant à toutes les normes de sécurité en vigueur.
+  <br>Les données recueillies dans le cadre de cette enquête seront traitées de manière strictement confidentielle dans le respect des dispositions applicables en matière de protection des données1. Elles seront utilisées à des fins statistiques et d'évaluation de l’impact de la prise en charge des abonnements unireso. Elles ne seront pas transmises à des tiers et seront détruites à la fin de l’opération.
+</p>
   `
             },
             "id": "",

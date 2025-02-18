@@ -18,7 +18,10 @@
 
     <template v-if="option_1 === null"></template>
     <template v-else-if="option_1 === 'autre'">
-      <p>Vous résidez hors du territoire couvert par l’initiative « Déclic mobilité » qui se tiendra au printemps 2025...</p>
+      <p>
+        Vous résidez hors du territoire couvert par l’initiative « Déclic mobilité » qui se tiendra au printemps 2025. Si vous connaissez des personnes qui résident dans la commune de Genève ou de Carouge, n’hésitez pas à leur partager l’information.
+        Par ailleurs et si vous souhaitez être recontacté pour participer à la seconde phase de l’initiative « Déclic mobilité » qui se tiendra à l’automne 2025 sur tout le Canton de Genève et la Région de Nyon, merci de nous envoyer un message par email en <a href="mailto:info@modus-ge.ch">cliquant ici</a>.
+      </p>
     </template>
     <template v-else>
 
@@ -31,6 +34,34 @@
           <option value="plus10">Plus de 10 ans</option>
         </select>
       </div>
+
+
+      <div class="app-form__section">
+        <label>Quelles est la structure de votre ménage ?</label>
+
+        <select name="duree_residence">
+          <option value="Personne seule">Personne seule</option>
+          <option value="Couple sans enfant(s)">Couple sans enfant(s)</option>
+          <option value="Couple avec enfant(s)">Couple avec enfant(s)</option>
+          <option value="Personne seule avec enfant(s)">Personne seule avec enfant(s)</option>
+          <option value="Colocation">Colocation</option>
+          <option value="autre">Autre</option>
+        </select>
+
+        <div class="app-form__section__subsections" style="width: 100%">
+          <label>Autres (précisez)</label>
+          <textarea type="text" name="abonnement_autres" placeholder="Autres (précisez)"></textarea>
+        </div>
+
+      </div>
+
+
+
+
+
+
+
+
 
       <div class="app-form__section">
         <label>Combien de personnes composent votre ménage&nbsp;?</label>
@@ -58,6 +89,22 @@
         </select>
       </div>
 
+
+
+      <div class="app-form__section">
+        <label>
+          Avez-vous personnellement accès à l’un de ces véhicules ?
+          <br>Veuillez mentionner uniquement le(s) véhicule(s) de votre ménage que vous pouvez utiliser.
+        </label>
+        <select name="frequence_voiture">
+          <option value="quotidien">Moto/scooter (si le ménage dispose d’au moins une moto/scooter)</option>
+          <option value="hebdo">Voiture (si le ménage dispose d’au moins une voiture)</option>
+        </select>
+        <div style="color: magenta">compliqué, on peut par contre masquer la question si il y a 0 voiture et 0 scooter, comme pour la questions suivante?</div>
+      </div>
+
+
+
       <div class="app-form__section">
         <label>A quelle fréquence vous déplacez-vous en voiture&nbsp;?</label>
         <select name="frequence_voiture">
@@ -69,12 +116,53 @@
 
       <div class="app-form__section">
         <label>Quelle est votre année de naissance&nbsp;?</label>
-        <input type="number" name="annee_naissance" placeholder="P.ex. 1983">
+        <select name="annee">
+          <option value="1990">1990</option>
+          <option value="1991">1991</option>
+          <option value="1992">1992</option>
+          <option value="1993">1993</option>
+          <option value="1994">1994</option>
+          <option value="1995">1995</option>
+          <option value="1996">1996</option>
+          <option value="1997">1997</option>
+          <option value="1998">1998</option>
+          <option value="1999">1999</option>
+          <option value="2000">2000</option>
+          <option value="2001">2001</option>
+          <option value="2002">2002</option>
+          <option value="2003">2003</option>
+          <option value="2004">2004</option>
+          <option value="2005">2005</option>
+          <option value="2006">2006</option>
+          <option value="2007">2007</option>
+          <option value="2008">2008</option>
+          <option value="2009">2009</option>
+          <option value="2010">2010</option>
+          <option value="2011">2011</option>
+          <option value="2012">2012</option>
+          <option value="2013">2013</option>
+          <option value="2014">2014</option>
+          <option value="2015">2015</option>
+          <option value="2016">2016</option>
+          <option value="2017">2017</option>
+          <option value="2018">2018</option>
+          <option value="2019">2019</option>
+          <option value="2020">2020</option>
+          <option value="2021">2021</option>
+          <option value="2022">2022</option>
+          <option value="2023">2023</option>
+          <option value="2024">2024</option>
+          <option value="2025">2025</option>
+        </select>
+
+        <div style="color: magenta">
+          Si >2007: Ce défi s’adresse uniquement aux personnes majeures. Merci pour votre compréhension. N’hésitez pas à partager l’information auprès des personnes majeures de votre entourage.
+        </div>
       </div>
 
 
       <div class="app-form__section">
-        <label>Quel est votre genre&nbsp;?</label>
+        <label>Etes-vous une femme ou un homme ?</label>
         <select name="genre">
           <option value="femme">Une femme</option>
           <option value="homme">Un homme</option>
@@ -127,6 +215,7 @@
         <label>De quel(s) abonnement(s) de transports publics disposez-vous&nbsp;?</label>
 
         <select name="permis">
+          <option value="Aucun">Aucun</option>
           <option value="unireso">Abonnement de zone unireso</option>
           <option value="cff">Abonnement de parcours CFF</option>
           <option value="demi_tarif">Abonnement demi-tarif</option>
@@ -537,28 +626,6 @@
         Merci de remplir ces quelques questions complémentaires pour le premier enfant mineur de votre ménage. Si vous avez plusieurs enfants, merci de répondre dans l’ordre du plus grand au plus petit.</p>
 
 
-      <div class="app-form__section">
-
-        <label>A quelle fréquence se déplace-t-il en moto/scooter&nbsp;? (Si moto/scooter>0)</label>
-
-        <select>
-          <option value="">Tous les jours ou presque</option>
-        </select>
-        <select>
-          <option value="">Une à plusieurs fois par semaine</option>
-        </select>
-        <select>
-          <option value="">Moins d’une fois par semaine</option>
-        </select>
-
-      </div>
-
-
-
-
-
-
-
 
 
 
@@ -633,22 +700,6 @@
 
 
 
-
-
-
-
-      <div class="app-form__section">
-        <label>A-t-il personnellement accès à l’un de ces véhicules :</label>
-
-        <div class="app-form__section__subsections">
-          <input type="checkbox" name="" value="">
-          <label>Vélo à assistance électrique</label>
-        </div>
-        <div class="app-form__section__subsections">
-          <input type="checkbox" name="" value="">
-          <label>Vélo conventionnel (mécanique)</label>
-        </div>
-      </div>
 
 
 
@@ -665,25 +716,6 @@
 
 
 
-      <div class="app-form__section">
-
-        <label>A quelle fréquence se déplace-t-il en moto/scooter&nbsp;? (Si moto/scooter>0)</label>
-
-        <select>
-          <option value="">Tous les jours ou presque</option>
-        </select>
-        <select>
-          <option value="">Une à plusieurs fois par semaine</option>
-        </select>
-        <select>
-          <option value="">Moins d’une fois par semaine</option>
-        </select>
-      </div>
-
-
-
-
-
 
 
 
@@ -751,22 +783,6 @@
 
 
 
-
-
-
-
-      <div class="app-form__section">
-        <label>A-t-il personnellement accès à l’un de ces véhicules :</label>
-
-        <div class="app-form__section__subsections">
-          <input type="checkbox" name="" value="">
-          <label>Vélo à assistance électrique</label>
-        </div>
-        <div class="app-form__section__subsections">
-          <input type="checkbox" name="" value="">
-          <label>Vélo conventionnel (mécanique)</label>
-        </div>
-      </div>
 
 
 
@@ -778,21 +794,7 @@
 
 
 
-      <div class="app-form__section">
 
-        <label>A quelle fréquence se déplace-t-il en moto/scooter&nbsp;? (Si moto/scooter>0)</label>
-
-        <select>
-          <option value="">Tous les jours ou presque</option>
-        </select>
-        <select>
-          <option value="">Une à plusieurs fois par semaine</option>
-        </select>
-        <select>
-          <option value="">Moins d’une fois par semaine</option>
-        </select>
-
-      </div>
 
 
 
@@ -865,20 +867,6 @@
 
 
 
-
-
-      <div class="app-form__section">
-        <label>A-t-il personnellement accès à l’un de ces véhicules :</label>
-
-        <div class="app-form__section__subsections">
-          <input type="checkbox" name="" value="">
-          <label>Vélo à assistance électrique</label>
-        </div>
-        <div class="app-form__section__subsections">
-          <input type="checkbox" name="" value="">
-          <label>Vélo conventionnel (mécanique)</label>
-        </div>
-      </div>
 
 
 
@@ -889,26 +877,6 @@
 
 
 
-      <div class="app-form__section">
-
-        <label>A quelle fréquence se déplace-t-il en moto/scooter&nbsp;? (Si moto/scooter>0)</label>
-
-        <select>
-          <option value="">Tous les jours ou presque</option>
-        </select>
-        <select>
-          <option value="">Une à plusieurs fois par semaine</option>
-        </select>
-        <select>
-          <option value="">Moins d’une fois par semaine</option>
-        </select>
-      </div>
-
-
-
-
-
-
 
 
       <div class="app-form__section">
@@ -971,26 +939,6 @@
 
 
 
-
-
-
-
-
-
-
-
-      <div class="app-form__section">
-        <label>A-t-il personnellement accès à l’un de ces véhicules :</label>
-
-        <div class="app-form__section__subsections">
-          <input type="checkbox" name="" value="">
-          <label>Vélo à assistance électrique</label>
-        </div>
-        <div class="app-form__section__subsections">
-          <input type="checkbox" name="" value="">
-          <label>Vélo conventionnel (mécanique)</label>
-        </div>
-      </div>
 
 
 
@@ -1018,6 +966,8 @@
 
 
       <button type="submit">Envoyer</button>
+
+      <div style="color: magenta">Prévoir un texte cliquable sur "envoyer" pour que l'enquêté valide le questionnaire". Idéalement, il faudrait qu'il arrive sur une page qui dit "Merci pour votre réponse".</div>
     </template>
 
   </form>
