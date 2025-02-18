@@ -13,11 +13,19 @@
         </option>
       </select>
 
-      <!-- Input -->
+      <!-- Input (texte) -->
       <input
               v-else-if="question.type === 'input'"
               v-model="responses[question.id]"
               type="text"
+              :placeholder="question.placeholder"
+      />
+
+      <!-- Input (nombre) -->
+      <input
+              v-else-if="question.type === 'number'"
+              v-model="responses[question.id]"
+              type="number"
               :placeholder="question.placeholder"
       />
 
@@ -52,12 +60,12 @@ import { ref, computed } from "vue";
 interface Question {
     id: number;
     text: string;
-    type: "select" | "input" | "checkbox" | "textarea";
+    type: "select" | "input" | "checkbox" | "textarea" | "number";
     options?: string[];
     placeholder?: string;
     conditions?: {
         dependsOn: number;
-        value: string | number | boolean;
+        value: string | number | boolean | ((dependentValue: any) => boolean);
     };
 }
 
@@ -76,7 +84,7 @@ const questions: Question[] = [
     {
         id: 2,
         text: "Depuis combien de temps résidez-vous dans cette commune ?",
-        type: "select",
+        type: "checkbox",
         options: ["moins2", "2-5", "5-10", "plus10"],
         conditions: { dependsOn: 1, value: "carouge" }, // Exemple de condition
     },
@@ -86,6 +94,47 @@ const questions: Question[] = [
         type: "textarea",
         options: ["moins2", "2-5", "5-10", "plus10"],
         conditions: { dependsOn: 1, value: "carouge" }, // Exemple de condition
+    },
+    {
+        id: 10,
+        text: "Combien de personnes composent votre ménage ?",
+        type: "number",
+        placeholder: "Nombre total de personnes",
+    },
+    {
+        id: 11,
+        text: "Personnes de 65 ans et plus",
+        type: "number",
+        placeholder: "Nombre de personnes de 65 ans et plus",
+        conditions: { dependsOn: 10, value: (total) => total > 0 },
+    },
+    {
+        id: 12,
+        text: "Personnes de 26 à 64 ans",
+        type: "number",
+        placeholder: "Nombre de personnes de 26 à 64 ans",
+        conditions: { dependsOn: 10, value: (total) => total > 1 },
+    },
+    {
+        id: 13,
+        text: "Personnes de 18 à 25 ans",
+        type: "number",
+        placeholder: "Nombre de personnes de 18 à 25 ans",
+        conditions: { dependsOn: 10, value: (total) => total > 2 },
+    },
+    {
+        id: 14,
+        text: "Personnes de 16 à 17 ans",
+        type: "number",
+        placeholder: "Nombre de personnes de 16 à 17 ans",
+        conditions: { dependsOn: 10, value: (total) => total > 0 },
+    },
+    {
+        id: 15,
+        text: "Personnes de moins de 16 ans",
+        type: "number",
+        placeholder: "Nombre de personnes de moins de 16 ans",
+        conditions: { dependsOn: 10, value: (total) => total > 0 },
     },
 ];
 
@@ -97,7 +146,15 @@ const visibleQuestions = computed(() => {
     return questions.filter((question) => {
         if (!question.conditions) return true;
         const { dependsOn, value } = question.conditions;
-        return responses.value[dependsOn] === value;
+        const dependentValue = responses.value[dependsOn];
+
+        // Si la condition est une fonction, on l'exécute
+        if (typeof value === "function") {
+            return value(dependentValue);
+        }
+
+        // Sinon, on compare directement les valeurs
+        return dependentValue === value;
     });
 });
 
