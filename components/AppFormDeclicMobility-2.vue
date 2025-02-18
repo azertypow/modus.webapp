@@ -1,10 +1,18 @@
 <template>
     <form class="app-form-declic-mobility">
-        <div v-for="question in visibleQuestions" :key="question.id" class="app-form__section">
+        <div v-for="question in questions" :key="question.id" class="app-form__section">
             <label>{{ question.text }}</label>
+
+            {{ isQuestionVisible(question) }}
+
+            <!-- Afficher le message si la question est bloquée -->
+            <div v-if="!isQuestionVisible(question) && question.messageIfCurrentQuestionIsBlocked"
+                class="app-form__section__message">
+                {{ question.messageIfCurrentQuestionIsBlocked }}
+            </div>
             
             <!-- Select -->
-            <template v-if="question.type === 'select'">
+            <template v-if="question.type === 'select' && isQuestionVisible(question)">
                 <select v-model="responses[question.id]">
                     <option v-for="option in question.options" :key="option" :value="option">
                         {{ option }}
@@ -23,38 +31,31 @@
 
 
             <!-- Input (texte) -->
-            <template v-else-if="question.type === 'input'">
+            <template v-else-if="question.type === 'input' && isQuestionVisible(question)">
                 <input v-model="responses[question.id]" type="text" :placeholder="question.placeholder" />
             </template>
 
 
 
             <!-- Input (nombre) -->
-            <template    v-else-if="question.type === 'number'">
+            <template v-else-if="question.type === 'number' && isQuestionVisible(question)">
                 <input v-model="responses[question.id]" type="number" :placeholder="question.placeholder" />
             </template>
 
 
 
             <!-- Checkbox -->
-            <template   v-else-if="question.type === 'checkbox'"
-                        >
-                <div    v-for="option in question.options"
-                        :key="option"
-                        class="app-form__section__subsections"
-                        >
-                    <input  type="checkbox" 
-                            :value="option" 
-                            v-model="responses[question.id]"
-                            />
+            <template v-else-if="question.type === 'checkbox' && isQuestionVisible(question)">
+                <div v-for="option in question.options" :key="option" class="app-form__section__subsections">
+                    <input type="checkbox" :value="option" v-model="responses[question.id]" />
                     <label>{{ option }}</label>
                 </div>
             </template>
 
 
             <!-- Textarea -->
-            <template v-else-if="question.type === 'textarea'">
-                <textarea v-model="(responses[question.id] as string | number | string[] | undefined)" :placeholder="question.placeholder"></textarea>
+            <template v-else-if="question.type === 'textarea' && isQuestionVisible(question)">
+                <textarea v-model="responses[question.id]" :placeholder="question.placeholder"></textarea>
             </template>
         </div>
 
@@ -75,6 +76,7 @@ interface Question {
         dependsOn: number;
         value: string | number | boolean | ((dependentValue: any) => boolean);
     };
+    messageIfCurrentQuestionIsBlocked?: string;
 }
 
 interface Question_select extends Question {
@@ -118,6 +120,7 @@ const questions: QuestionType[] = [
         text: "Dans quelle commune votre domicile principal est-il situé ?",
         type: "select",
         options: ["carouge", "geneve", "autre"],
+        messageIfCurrentQuestionIsBlocked: 'oups!',
     },
     {
         id: 2,
@@ -204,26 +207,26 @@ questions.forEach((question) => {
     }
 });
 
-const visibleQuestions = computed(() => {
-    return questions.filter((question) => {
-        if ( !question.conditions ) return true;
+// Fonction pour vérifier si une question est visible
+const isQuestionVisible = (question: QuestionType): boolean => {
+    if (!question.conditions) return true;
 
-        const { dependsOn, value } = question.conditions;
-        const dependentValue = responses.value[dependsOn];
+    const { dependsOn, value } = question.conditions;
+    const dependentValue = responses.value[dependsOn];
 
-        // Si la condition est une fonction, on l'exécute
-        if (typeof value === "function") {
-            return value(dependentValue);
-        }
+    // Si la condition est une fonction, on l'exécute
+    if (typeof value === "function") {
+        return value(dependentValue);
+    }
 
-        // Sinon, on compare directement les valeurs
-        return dependentValue === value;
-    });
-});
+    // Sinon, on compare directement les valeurs
+    return dependentValue === value;
+};
 
 // Validation du formulaire
 const isFormValid = computed(() => {
-    return visibleQuestions.value.every((question) => {
+    return questions.every((question) => {
+        if (!isQuestionVisible(question)) return true; // Ignorer les questions non visibles
         return responses.value[question.id] !== undefined && responses.value[question.id] !== "";
     });
 });
@@ -282,4 +285,8 @@ button {
   }
 }
 
+.app-form__section__message {
+    color: red;
+    margin-top: 10px;
+}
 </style>
