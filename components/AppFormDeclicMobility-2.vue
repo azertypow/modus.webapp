@@ -236,3 +236,49 @@ const submitForm = () => {
     }
 };
 </script>
+
+<style lang="scss">
+
+form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    gap: 8rem;
+    counter-reset: section; /* Initialise le compteur */
+}
+
+button {
+    background: linear-gradient(to right, var(--app-color-main), var(--app-color-main--dark));
+    border: none;
+    color: white;
+    max-width: 10rem;
+    margin: auto;
+
+    @media (max-width: 900px) {
+        display: block;
+        width: auto;
+    }
+}
+
+.app-form-declic-mobility__group {
+    display: flex;
+    justify-content: center;
+    gap: var(--app-gutter);
+    flex-wrap: nowrap;
+
+    @media (max-width: 900px) {
+        flex-wrap: wrap;
+    }
+}
+
+.app-form__section {
+  > label::before {
+    counter-increment: section; /* Incrémente le compteur */
+    content: counter(section) ". "; /* Affiche le numéro */
+    font-weight: bold;
+    margin-right: 5px;
+  }
+}
+
+</style>
