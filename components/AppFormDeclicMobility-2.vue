@@ -1,7 +1,6 @@
 <template>
     <form class="app-form-declic-mobility">
         <div v-for="question in visibleQuestions" :key="question.id" class="app-form__section">
-            <h1 style="width: 100%; margin-bottom: 0; margin-top: 10rem;">{{ question.type }}</h1>
             <label>{{ question.text }}</label>
             
             <!-- Select -->
