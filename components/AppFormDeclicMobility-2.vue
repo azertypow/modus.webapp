@@ -33,15 +33,18 @@
             <div    v-else-if="question.type === 'checkbox'"
                     class="app-form__section__subsections"
             >
-                <div v-for="option in question.options" :key="option">
-                    <input type="checkbox" :value="option" v-model="responses[question.id]" />
+                <div v-for="(option, key) in question.options" :key="option">
+                    <input  type="checkbox"
+                            :true-value="true" 
+                            :false-value="false"
+                            v-model="(responses[question.id] as { [key: string]: boolean })[key]"
+                            />
                     <label>{{ option }}</label>
                 </div>
             </div>
-
             <!-- Textarea -->
             <div v-else-if="question.type === 'textarea'">
-                <textarea v-model="responses[question.id]" :placeholder="question.placeholder"></textarea>
+                <textarea v-model="(responses[question.id] as string | number | string[] | undefined)" :placeholder="question.placeholder"></textarea>
             </div>
         </div>
 
@@ -79,7 +82,6 @@ interface Question_checkbox extends Question {
 
 interface Question_textarea extends Question {
     type: 'textarea';
-    options: string[];
 }
 
 interface Question_number extends Question {
@@ -87,7 +89,7 @@ interface Question_number extends Question {
 }
 
 interface Responses {
-    [key: number]: string | number  | string[] | undefined;
+    [key: number]: string | number | string[] | boolean | { [key: string]: boolean } | undefined;
 }
 
 type QuestionType = 
@@ -116,7 +118,6 @@ const questions: (QuestionType)[] = [
         id: 3,
         text: "3.\tQuelles est la structure de votre ménage ?",
         type: "textarea",
-        options: ["moins2", "2-5", "5-10", "plus10"],
         conditions: { dependsOn: 1, value: "carouge" }, // Exemple de condition
     },
     {
@@ -165,8 +166,17 @@ const questions: (QuestionType)[] = [
 // État des réponses
 const responses = ref<Responses>({});
 
-const visibleQuestions: ComputedRef<QuestionType[]> = computed(() => {
+// Initialiser les réponses pour les questions de type checkbox
+questions.forEach((question) => {
+    if (question.type === 'checkbox') {
+        responses.value[question.id] = question.options.reduce((acc, option, index) => {
+            acc[index] = false; // Initialiser chaque option à false
+            return acc;
+        }, {} as { [key: string]: boolean });
+    }
+});
 
+const visibleQuestions = computed(() => {
     return questions.filter((question) => {
         if ( !question.conditions ) return true;
 
