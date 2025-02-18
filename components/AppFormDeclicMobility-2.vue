@@ -10,7 +10,15 @@
                     <option v-for="option in question.options" :key="option" :value="option">
                         {{ option }}
                     </option>
+                    <!-- Option "autre" -->
+                    <option v-if="question.hasOtherOption" value="autre">Autre</option>
                 </select>
+
+                <!-- Textarea pour "autre" -->
+                <div v-if="question.hasOtherOption && responses[question.id] === 'autre'">
+                    <textarea v-model="(responses[`${question.id}_other`] as string | number | string[] | undefined)"
+                        placeholder="Précisez votre réponse"></textarea>
+                </div>
             </div>
 
 
@@ -54,6 +62,8 @@
 </template>
 
 <script setup lang="ts">
+import { ref, computed } from "vue";
+
 // Définir les interfaces
 interface Question {
     id: number;
@@ -69,6 +79,7 @@ interface Question {
 interface Question_select extends Question {
     type: 'select';
     options: string[];
+    hasOtherOption?: boolean; // Indique si une option "autre" est disponible
 }
 
 interface Question_input extends Question {
@@ -89,7 +100,7 @@ interface Question_number extends Question {
 }
 
 interface Responses {
-    [key: number]: string | number | string[] | boolean | undefined;
+    [key: number | string]: string | number | string[] | boolean | undefined;
 }
 
 type QuestionType =
@@ -131,6 +142,13 @@ const questions: QuestionType[] = [
         text: "prénom",
         type: "input",
         conditions: { dependsOn: 1, value: "carouge" }, // Exemple de condition
+    },
+    {
+        id: 6,
+        text: 'exemple pour une teste avec texte area a autre',
+        type: 'select',
+        options: ['premier', "seconde"],
+        hasOtherOption: true,
     },
     {
         id: 10,
