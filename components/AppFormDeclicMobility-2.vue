@@ -1,66 +1,98 @@
 <template>
-  <div>
-    <div v-for="question in visibleQuestions" :key="question.id">
+  <form class="app-form-declic-mobility">
+    <div v-for="question in visibleQuestions" :key="question.id" class="app-form__section">
       <label>{{ question.text }}</label>
-      <input
-              v-if="!question.options.length"
+
+      <!-- Select -->
+      <select
+              v-if="question.type === 'select'"
               v-model="responses[question.id]"
-              type="text"
-      />
-      <select v-else v-model="responses[question.id]">
+      >
         <option v-for="option in question.options" :key="option" :value="option">
           {{ option }}
         </option>
       </select>
+
+      <!-- Input -->
+      <input
+              v-else-if="question.type === 'input'"
+              v-model="responses[question.id]"
+              type="text"
+              :placeholder="question.placeholder"
+      />
+
+      <!-- Checkbox -->
+      <div v-else-if="question.type === 'checkbox'" class="app-form__section__subsections">
+        <div v-for="option in question.options" :key="option">
+          <input
+                  type="checkbox"
+                  :value="option"
+                  v-model="responses[question.id]"
+          />
+          <label>{{ option }}</label>
+        </div>
+      </div>
+
+      <!-- Textarea -->
+      <textarea
+              v-else-if="question.type === 'textarea'"
+              v-model="responses[question.id]"
+              :placeholder="question.placeholder"
+      ></textarea>
     </div>
-    <button @click="submitForm" :disabled="!isFormValid">Soumettre</button>
-  </div>
+
+    <button type="submit" @click.prevent="submitForm">Envoyer</button>
+  </form>
 </template>
 
 <script setup lang="ts">
 import { ref, computed } from "vue";
 
-// Définir des types pour les questions, conditions et les réponses
-type Condition = {
-    dependsOn: number;
-    value: string;
-};
-
-type Question = {
+// Définir les interfaces
+interface Question {
     id: number;
     text: string;
-    options: string[];
-    conditions: Condition | null;
-};
+    type: "select" | "input" | "checkbox" | "textarea";
+    options?: string[];
+    placeholder?: string;
+    conditions?: {
+        dependsOn: number;
+        value: string | number | boolean;
+    };
+}
 
-type Responses = Record<number, string>;
+interface Responses {
+    [key: number]: string | number | boolean | string[];
+}
 
-// Liste des questions avec typage
+// Données des questions
 const questions: Question[] = [
     {
         id: 1,
-        text: "Quel est votre moyen de transport ?",
-        options: ["voiture", "moto", "vélo"],
-        conditions: null,
+        text: "Dans quelle commune votre domicile principal est-il situé ?",
+        type: "select",
+        options: ["carouge", "geneve", "autre"],
     },
     {
         id: 2,
-        text: "Quelle est la marque de votre voiture ?",
-        options: [],
-        conditions: { dependsOn: 1, value: "voiture" },
+        text: "Depuis combien de temps résidez-vous dans cette commune ?",
+        type: "select",
+        options: ["moins2", "2-5", "5-10", "plus10"],
+        conditions: { dependsOn: 1, value: "carouge" }, // Exemple de condition
     },
     {
         id: 3,
-        text: "Quelle est la cylindrée de votre moto ?",
-        options: [],
-        conditions: { dependsOn: 1, value: "moto" },
+        text: "3.\tQuelles est la structure de votre ménage ?",
+        type: "textarea",
+        options: ["moins2", "2-5", "5-10", "plus10"],
+        conditions: { dependsOn: 1, value: "carouge" }, // Exemple de condition
     },
 ];
 
-// Utiliser une réponse typée
+// État des réponses
 const responses = ref<Responses>({});
 
-// Calculer les questions visibles
+// Questions visibles en fonction des réponses
 const visibleQuestions = computed(() => {
     return questions.filter((question) => {
         if (!question.conditions) return true;
@@ -69,14 +101,14 @@ const visibleQuestions = computed(() => {
     });
 });
 
-// Valider le formulaire pour vérifier que toutes les réponses obligatoires sont fournies
+// Validation du formulaire
 const isFormValid = computed(() => {
     return visibleQuestions.value.every((question) => {
         return responses.value[question.id] !== undefined && responses.value[question.id] !== "";
     });
 });
 
-// Soumettre le formulaire
+// Soumission du formulaire
 const submitForm = () => {
     if (isFormValid.value) {
         console.log("Formulaire soumis :", responses.value);
