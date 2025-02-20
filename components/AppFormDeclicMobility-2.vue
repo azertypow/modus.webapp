@@ -66,16 +66,18 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
 
-// Définir les interfaces
+
+interface QuestionConditions {
+    dependsOn: number;
+    value: string | number | boolean | ((dependentValue: any) => boolean);
+}
+
 interface Question {
     id: number;
     text: string;
     type: "select" | "input" | "checkbox" | "textarea" | "number";
     placeholder?: string;
-    conditions?: {
-        dependsOn: number;
-        value: string | number | boolean | ((dependentValue: any) => boolean);
-    };
+    conditions?: QuestionConditions;
     messageIfCurrentQuestionIsBlocked?: string;
 }
 
