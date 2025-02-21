@@ -120,33 +120,43 @@ type QuestionType =
 const questions: QuestionType[] = [
     {
         id: 1,
-        text: "Dans quelle commune votre domicile principal est-il situé ?",
+        text: "Dans quelle commune votre domicile principal est-il situé ?",
         type: "select",
         options: ["carouge", "geneve", "autre"],
-        messageIfCurrentQuestionIsBlocked: "Vous résidez hors du territoire couvert par l’initiative « Déclic mobilité » qui se tiendra au printemps 2025. Si vous connaissez des personnes qui résident dans la commune de Genève ou de Carouge, n’hésitez pas à leur partager l’information. Par ailleurs et si vous souhaitez être recontacté pour participer à la seconde phase de l’initiative « Déclic mobilité » qui se tiendra à l’automne 2025 sur tout le Canton de Genève et la Région de Nyon, merci de nous envoyer un message par email en cliquant ici.",
     },
     {
         id: 2,
-        text: "Depuis combien de temps résidez-vous dans cette commune ?",
+        text: "Depuis combien de temps résidez-vous dans cette commune ?",
         type: "checkbox",
         options: ["moins2", "2-5", "5-10", "plus10"],
         conditions: {
-            isBlocking: true, // Cette condition est bloquante
+            isBlocking: true,
             dependsOn: 1,
-            value: dependentValue => dependentValue !== "autre",
+            value: dependentValue => dependentValue === "carouge" || dependentValue === "geneve",
         },
-        messageIfCurrentQuestionIsBlocked: 'oups',
+        messageIfCurrentQuestionIsBlocked: `
+            <p>Vous résidez hors du territoire couvert par l’initiative « Déclic mobilité » qui se tiendra au printemps 2025. Si vous connaissez des personnes qui résident dans la commune de Genève ou de Carouge, n’hésitez pas à leur partager l’information.</p>
+            <p>Par ailleurs et si vous souhaitez être recontacté pour participer à la seconde phase de l’initiative « Déclic mobilité » qui se tiendra à l’automne 2025 sur tout le Canton de Genève et la Région de Nyon, merci de nous envoyer un message par email en cliquant ici.</p>
+        `,
     },
     {
         id: 3,
-        text: "3.\tQuelles est la structure de votre ménage ?",
-        type: "textarea",
-        messageIfCurrentQuestionIsBlocked: 'oups encore',
+        text: "Quelles est la structure de votre ménage ?",
+        type: "select",
+        hasOtherOption: true,
+        options: [
+            "Personne seule",
+            "Couple sans enfant(s)",
+            "Couple avec enfant(s)",
+            "Personne seule avec enfant(s)",
+            "Colocation",
+        ]
     },
     {
         id: 4,
-        text: "nom",
-        type: "input",
+        text: "Combien de personnes composent votre ménage ?",
+        type: "number",
+        placeholder: "Nombre total de personnes",
     },
     {
         id:     5,
