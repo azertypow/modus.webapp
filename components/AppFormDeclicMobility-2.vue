@@ -131,7 +131,7 @@ const questions: QuestionType[] = [
     {
         id: 2,
         text: "Depuis combien de temps résidez-vous dans cette commune ?",
-        type: "checkbox",
+        type: "select",
         options: ["moins2", "2-5", "5-10", "plus10"],
         conditions: {
             isBlocking: true,
@@ -170,59 +170,165 @@ const questions: QuestionType[] = [
     },
     {
         id:     5,
-        text: "prénom",
-        type: "input",
+        text: "De combien de moto/scooter disposez-vous au sein de votre ménage ? (Les véhicules électriques sont considérés au même titre que les véhicules thermiques)",
+        type: "number",
+        values: [
+            "nombre de moto/scooter ",
+        ],
     },
     {
-        id: 6,
-        text: 'exemple pour une teste avec texte area a autre',
-        type: 'select',
-        options: ['premier', "seconde"],
-        hasOtherOption: true,
+        id:     6,
+        text: "De combien de voiture disposez-vous au sein de votre ménage ? (Les véhicules électriques sont considérés au même titre que les véhicules thermiques)",
+        type: "number",
+        values: [
+            "nombre de voiture ",
+        ],
     },
-    // {
-    //     id: 10,
-    //     text: "Combien de personnes composent votre ménage ?",
-    //     type: "number",
-    //     placeholder: "Nombre total de personnes",
-    // },
-    // {
-    //     id: 11,
-    //     text: "Personnes de 65 ans et plus",
-    //     type: "number",
-    //     placeholder: "Nombre de personnes de 65 ans et plus",
-    //     conditions: { dependsOn: 10, value: (total) => total > 0 },
-    // },
-    // {
-    //     id: 12,
-    //     text: "Personnes de 26 à 64 ans",
-    //     type: "number",
-    //     placeholder: "Nombre de personnes de 26 à 64 ans",
-    //     conditions: { dependsOn: 10, value: (total) => total > 1 },
-    // },
-    // {
-    //     id: 13,
-    //     text: "Personnes de 18 à 25 ans",
-    //     type: "number",
-    //     placeholder: "Nombre de personnes de 18 à 25 ans",
-    //     conditions: { dependsOn: 10, value: (total) => total > 2 },
-    // },
-    // {
-    //     id: 14,
-    //     text: "Personnes de 16 à 17 ans",
-    //     type: "number",
-    //     placeholder: "Nombre de personnes de 16 à 17 ans",
-    //     conditions: { dependsOn: 10, value: (total) => total > 0 },
-    // },
-    // {
-    //     id: 15,
-    //     text: "Personnes de moins de 16 ans",
-    //     type: "number",
-    //     placeholder: "Nombre de personnes de moins de 16 ans",
-    //     conditions: { dependsOn: 10, value: (total) => total > 0 },
-    // },
-    // Ajoute d'autres questions ici...
-];
+    {
+        id: 7,
+        text: 'Avez-vous personnellement accès à l’un de ces véhicules ?',
+        type: 'checkbox',
+        options: ['Moto/scooter', "Voiture"],
+    },
+    {
+        id: 8,
+        text: 'A quelle fréquence vous déplacez-vous en moto/scooter ?',
+        type: 'select',
+        options: [
+            'Tous les jours ou presque',
+            'Une à plusieurs fois par semaine',
+            'Moins d’une fois par semaine',
+            ],
+        conditions: {
+            isBlocking: false,
+            dependsOn: 5,
+            value: dependentValue => dependentValue > 0,
+        },
+    },
+
+    {
+        id: 9,
+        text: 'A quelle fréquence vous déplacez-vous en voiture ?',
+        type: 'select',
+        options: [
+            'Tous les jours ou presque',
+            'Une à plusieurs fois par semaine',
+            'Moins d’une fois par semaine',
+        ],
+        conditions: {
+            isBlocking: false,
+            dependsOn: 6,
+            value: dependentValue => dependentValue > 0,
+        },
+    },
+
+    {
+        id: 10,
+        text: 'Quelle est votre année de naissance ?',
+        type: 'select',
+        options: [
+            "1925", "1926", "1927", "1928", "1929", "1930", "1931", "1932", "1933", "1934", "1935", "1936", "1937", "1938", "1939", "1940", "1941", "1942", "1943", "1944", "1945", "1946", "1947", "1948", "1949", "1950", "1951", "1952", "1953", "1954", "1955", "1956", "1957", "1958", "1959", "1960", "1961", "1962", "1963", "1964", "1965", "1966", "1967", "1968", "1969", "1970", "1971", "1972", "1973", "1974", "1975", "1976", "1977", "1978", "1979", "1980", "1981", "1982", "1983", "1984", "1985", "1986", "1987", "1988", "1989", "1990", "1991", "1992", "1993", "1994", "1995", "1996", "1997", "1998", "1999", "2000", "2001", "2002", "2003", "2004", "2005", "2006",
+            "2007 ou plus"
+        ],
+    },
+
+
+    {
+        id: 11,
+        text: 'Etes-vous une femme ou un homme ?',
+        type: 'select',
+        options: [
+            'Une femme',
+            'Un homme',
+            'Autre / je ne souhaite pas répondre',
+        ],
+    },
+
+    {
+        id: 12,
+        text: 'Quelle situation professionnelle vous correspond actuellement ?',
+        type: 'select',
+        hasOtherOption: true,
+        options: [
+            "Actif/active à temps plein",
+            "Actif/active à temps partiel",
+            "Sans emploi / au chômage",
+            "Etudiant·e",
+            "Retraité·e",
+        ],
+    },
+
+
+    {
+        id: 13,
+        text: 'Avez-vous le permis de conduire ?',
+        type: 'select',
+        options: [
+            "Oui",
+            "Non",
+            "Momentanément pas (par exemple retrait)",
+        ],
+    },
+
+
+    {
+        id: 14,
+        text: 'De quel(s) abonnement(s) de transports publics disposez-vous?',
+        type: 'select',
+        hasOtherOption: true,
+        options: [
+            "Aucun",
+            "Abonnement de zone unireso",
+            "Abonnement de parcours CFF",
+            "Abonnement demi-tarif",
+            "Abonnement général (AG)",
+        ],
+    },
+
+
+
+    {
+        id: 15,
+        text: 'Avez-vous personnellement accès à l’un de ces véhicules : (Veuillez mentionner uniquement le(s) véhicule(s) de votre ménage que vous pouvez utiliser.)',
+        type: 'checkbox',
+        options: [
+            "Vélo à assistance électrique",
+            "Vélo cargo",
+            "Vélo conventionnel (mécanique)",
+        ],
+    },
+
+
+
+
+    {
+        id: 16,
+        text: 'Souhaitez-vous faire évoluer vos pratiques de déplacement pour un mode de vie plus durable ?',
+        type: 'select',
+        options: [
+            "Oui, tout à fait",
+            "Plutôt oui",
+            "Plutôt non",
+            "Pas du tout",
+        ],
+    },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    ];
 
 // État des réponses
 const responses = ref<Responses>({});
