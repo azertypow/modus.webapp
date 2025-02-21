@@ -39,7 +39,10 @@
 
             <!-- Input (nombre) -->
             <template v-else-if="question.type === 'number'">
-                <input v-model="responses[question.id]" type="number" :placeholder="question.placeholder" />
+                <div v-for="(option, key) in question.values" :key="option" class="app-form__section__subsections">
+                    <label>{{ option }}</label>
+                    <input v-model="responses[question.id][key]" type="number"/>
+                </div>
             </template>
 
 
@@ -103,6 +106,7 @@ interface Question_textarea extends Question {
 
 interface Question_number extends Question {
     type: "number";
+    values: string[],
 }
 
 interface Responses {
@@ -156,7 +160,13 @@ const questions: QuestionType[] = [
         id: 4,
         text: "Combien de personnes composent votre ménage ?",
         type: "number",
-        placeholder: "Nombre total de personnes",
+        values: [
+            "Personnes de 65 ans et plus",
+            "Personnes de 26 à 64 ans",
+            "Personnes de 18 à 25 ans",
+            "Personnes de 16 à 17 ans  (si structure ménage est « couple avec enfant(s) » ou « personne seule avec enfant(s) »)",
+            "Personnes de moins de 16 ans (si structure ménage est « couple avec enfant(s) » ou « personne seule avec enfant(s) »)",
+        ],
     },
     {
         id:     5,
@@ -170,47 +180,47 @@ const questions: QuestionType[] = [
         options: ['premier', "seconde"],
         hasOtherOption: true,
     },
-    {
-        id: 10,
-        text: "Combien de personnes composent votre ménage ?",
-        type: "number",
-        placeholder: "Nombre total de personnes",
-    },
-    {
-        id: 11,
-        text: "Personnes de 65 ans et plus",
-        type: "number",
-        placeholder: "Nombre de personnes de 65 ans et plus",
-        conditions: { dependsOn: 10, value: (total) => total > 0 },
-    },
-    {
-        id: 12,
-        text: "Personnes de 26 à 64 ans",
-        type: "number",
-        placeholder: "Nombre de personnes de 26 à 64 ans",
-        conditions: { dependsOn: 10, value: (total) => total > 1 },
-    },
-    {
-        id: 13,
-        text: "Personnes de 18 à 25 ans",
-        type: "number",
-        placeholder: "Nombre de personnes de 18 à 25 ans",
-        conditions: { dependsOn: 10, value: (total) => total > 2 },
-    },
-    {
-        id: 14,
-        text: "Personnes de 16 à 17 ans",
-        type: "number",
-        placeholder: "Nombre de personnes de 16 à 17 ans",
-        conditions: { dependsOn: 10, value: (total) => total > 0 },
-    },
-    {
-        id: 15,
-        text: "Personnes de moins de 16 ans",
-        type: "number",
-        placeholder: "Nombre de personnes de moins de 16 ans",
-        conditions: { dependsOn: 10, value: (total) => total > 0 },
-    },
+    // {
+    //     id: 10,
+    //     text: "Combien de personnes composent votre ménage ?",
+    //     type: "number",
+    //     placeholder: "Nombre total de personnes",
+    // },
+    // {
+    //     id: 11,
+    //     text: "Personnes de 65 ans et plus",
+    //     type: "number",
+    //     placeholder: "Nombre de personnes de 65 ans et plus",
+    //     conditions: { dependsOn: 10, value: (total) => total > 0 },
+    // },
+    // {
+    //     id: 12,
+    //     text: "Personnes de 26 à 64 ans",
+    //     type: "number",
+    //     placeholder: "Nombre de personnes de 26 à 64 ans",
+    //     conditions: { dependsOn: 10, value: (total) => total > 1 },
+    // },
+    // {
+    //     id: 13,
+    //     text: "Personnes de 18 à 25 ans",
+    //     type: "number",
+    //     placeholder: "Nombre de personnes de 18 à 25 ans",
+    //     conditions: { dependsOn: 10, value: (total) => total > 2 },
+    // },
+    // {
+    //     id: 14,
+    //     text: "Personnes de 16 à 17 ans",
+    //     type: "number",
+    //     placeholder: "Nombre de personnes de 16 à 17 ans",
+    //     conditions: { dependsOn: 10, value: (total) => total > 0 },
+    // },
+    // {
+    //     id: 15,
+    //     text: "Personnes de moins de 16 ans",
+    //     type: "number",
+    //     placeholder: "Nombre de personnes de moins de 16 ans",
+    //     conditions: { dependsOn: 10, value: (total) => total > 0 },
+    // },
     // Ajoute d'autres questions ici...
 ];
 
@@ -219,7 +229,7 @@ const responses = ref<Responses>({});
 
 // Initialiser les réponses pour les questions de type checkbox
 questions.forEach((question) => {
-    if (question.type === 'checkbox') {
+    if (question.type === 'checkbox' || question.type === 'number') {
         responses.value[question.id] = [];
     }
 });
