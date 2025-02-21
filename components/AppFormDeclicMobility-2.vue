@@ -60,6 +60,12 @@
             <template v-else-if="question.type === 'textarea'">
                 <textarea v-model="responses[question.id]" :placeholder="question.placeholder"></textarea>
             </template>
+
+
+            <!-- Message  -->
+            <template v-else-if="question.type === 'message'">
+                <div v-html="question.text"></div>
+            </template>
         </div>
 
         <button type="submit" @click.prevent="submitForm">Envoyer</button>
@@ -83,6 +89,13 @@ interface Question {
     placeholder?: string;
     conditions?: QuestionConditions;
     messageIfCurrentQuestionIsBlocked?: string;
+}
+
+interface Question_message {
+    id: number;
+    text: string;
+    type: 'message';
+    conditions?: QuestionConditions;
 }
 
 interface Question_select extends Question {
@@ -119,6 +132,7 @@ type QuestionType =
     | Question_checkbox
     | Question_textarea
     | Question_number
+    | Question_message
 
 // Données des questions
 const questions: QuestionType[] = [
