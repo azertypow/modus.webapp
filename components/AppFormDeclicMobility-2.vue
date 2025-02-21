@@ -1,18 +1,18 @@
 <template>
     <form class="app-form-declic-mobility">
-        <div v-for="question in questions" :key="question.id" class="app-form__section">
+        <div v-for="question in visibleQuestions" :key="question.id" class="app-form__section">
             <label>{{ question.text }}</label>
 
             {{ isQuestionVisible(question) }}
 
             <!-- Afficher le message si la question est bloquée -->
-            <div v-if="!isQuestionVisible(question) && question.messageIfCurrentQuestionIsBlocked"
+            <div v-if="question.messageIfCurrentQuestionIsBlocked && !isQuestionVisible(question)"
                 class="app-form__section__message">
                 {{ question.messageIfCurrentQuestionIsBlocked }}
             </div>
-            
+
             <!-- Select -->
-            <template v-if="question.type === 'select' && isQuestionVisible(question)">
+            <template v-if="question.type === 'select'">
                 <select v-model="responses[question.id]">
                     <option v-for="option in question.options" :key="option" :value="option">
                         {{ option }}
@@ -23,7 +23,7 @@
 
                 <!-- Textarea pour "autre" -->
                 <textarea   v-if="question.hasOtherOption && responses[question.id] === 'autre'"
-                            v-model="(responses[`${question.id}_other`] as string | number | string[] | undefined)"
+                            v-model="responses[`${question.id}_other`]"
                             placeholder="Précisez votre réponse"
                             ></textarea>
             </template>
@@ -31,21 +31,21 @@
 
 
             <!-- Input (texte) -->
-            <template v-else-if="question.type === 'input' && isQuestionVisible(question)">
+            <template v-else-if="question.type === 'input'">
                 <input v-model="responses[question.id]" type="text" :placeholder="question.placeholder" />
             </template>
 
 
 
             <!-- Input (nombre) -->
-            <template v-else-if="question.type === 'number' && isQuestionVisible(question)">
+            <template v-else-if="question.type === 'number'">
                 <input v-model="responses[question.id]" type="number" :placeholder="question.placeholder" />
             </template>
 
 
 
             <!-- Checkbox -->
-            <template v-else-if="question.type === 'checkbox' && isQuestionVisible(question)">
+            <template v-else-if="question.type === 'checkbox'">
                 <div v-for="option in question.options" :key="option" class="app-form__section__subsections">
                     <input type="checkbox" :value="option" v-model="responses[question.id]" />
                     <label>{{ option }}</label>
@@ -54,7 +54,7 @@
 
 
             <!-- Textarea -->
-            <template v-else-if="question.type === 'textarea' && isQuestionVisible(question)">
+            <template v-else-if="question.type === 'textarea'">
                 <textarea v-model="responses[question.id]" :placeholder="question.placeholder"></textarea>
             </template>
         </div>
@@ -68,6 +68,7 @@ import { ref, computed } from "vue";
 
 
 interface QuestionConditions {
+    isBlocking?: boolean; // Si true, bloque les questions suivantes
     dependsOn: number;
     value: string | number | boolean | ((dependentValue: any) => boolean);
 }
@@ -122,32 +123,35 @@ const questions: QuestionType[] = [
         text: "Dans quelle commune votre domicile principal est-il situé ?",
         type: "select",
         options: ["carouge", "geneve", "autre"],
-        messageIfCurrentQuestionIsBlocked: 'oups!',
+        messageIfCurrentQuestionIsBlocked: "Vous résidez hors du territoire couvert par l’initiative « Déclic mobilité » qui se tiendra au printemps 2025. Si vous connaissez des personnes qui résident dans la commune de Genève ou de Carouge, n’hésitez pas à leur partager l’information. Par ailleurs et si vous souhaitez être recontacté pour participer à la seconde phase de l’initiative « Déclic mobilité » qui se tiendra à l’automne 2025 sur tout le Canton de Genève et la Région de Nyon, merci de nous envoyer un message par email en cliquant ici.",
     },
     {
         id: 2,
         text: "Depuis combien de temps résidez-vous dans cette commune ?",
         type: "checkbox",
         options: ["moins2", "2-5", "5-10", "plus10"],
-        conditions: { dependsOn: 1, value: "carouge" }, // Exemple de condition
+        conditions: {
+            isBlocking: true, // Cette condition est bloquante
+            dependsOn: 1,
+            value: dependentValue => dependentValue !== "autre",
+        },
+        messageIfCurrentQuestionIsBlocked: 'oups',
     },
     {
         id: 3,
         text: "3.\tQuelles est la structure de votre ménage ?",
         type: "textarea",
-        conditions: { dependsOn: 1, value: "carouge" }, // Exemple de condition
+        messageIfCurrentQuestionIsBlocked: 'oups encore',
     },
     {
         id: 4,
         text: "nom",
         type: "input",
-        conditions: { dependsOn: 1, value: "carouge" }, // Exemple de condition
     },
     {
         id:     5,
         text: "prénom",
         type: "input",
-        conditions: { dependsOn: 1, value: "carouge" }, // Exemple de condition
     },
     {
         id: 6,
@@ -197,6 +201,7 @@ const questions: QuestionType[] = [
         placeholder: "Nombre de personnes de moins de 16 ans",
         conditions: { dependsOn: 10, value: (total) => total > 0 },
     },
+    // Ajoute d'autres questions ici...
 ];
 
 // État des réponses
@@ -205,7 +210,7 @@ const responses = ref<Responses>({});
 // Initialiser les réponses pour les questions de type checkbox
 questions.forEach((question) => {
     if (question.type === 'checkbox') {
-        responses.value[question.id] = []; // Tableau vide pour stocker les options cochées
+        responses.value[question.id] = [];
     }
 });
 
@@ -217,18 +222,42 @@ const isQuestionVisible = (question: QuestionType): boolean => {
     const dependentValue = responses.value[dependsOn];
 
     // Si la condition est une fonction, on l'exécute
-    if (typeof value === "function") {
-        return value(dependentValue);
+    return typeof value === "function" ? value(dependentValue) : dependentValue === value;
+};
+
+// Calculer les questions visibles
+const visibleQuestions = computed(() => {
+    const visible: QuestionType[] = [];
+    let isBlocked = false; // Indicateur de blocage
+
+    for (const question of questions) {
+        if (isBlocked) break; // Dès qu'une question bloque, on arrête tout
+
+        // Vérifier si la question a une condition
+        if (question.conditions) {
+            const { dependsOn, value, isBlocking } = question.conditions;
+            const dependentValue = responses.value[dependsOn];
+
+            const conditionMet = typeof value === "function" ? value(dependentValue) : dependentValue === value;
+
+            // Si la question est bloquante et sa condition échoue, bloquer toutes les suivantes
+            if (!conditionMet && isBlocking) {
+                isBlocked = true;
+                break;
+            }
+
+            if (!conditionMet) continue; // Si non bloquante mais condition échouée, ne pas afficher
+        }
+
+        visible.push(question);
     }
 
-    // Sinon, on compare directement les valeurs
-    return dependentValue === value;
-};
+    return visible;
+});
 
 // Validation du formulaire
 const isFormValid = computed(() => {
-    return questions.every((question) => {
-        if (!isQuestionVisible(question)) return true; // Ignorer les questions non visibles
+    return visibleQuestions.value.every((question) => {
         return responses.value[question.id] !== undefined && responses.value[question.id] !== "";
     });
 });
@@ -251,7 +280,7 @@ form {
     flex-direction: column;
     width: 100%;
     gap: 8rem;
-    counter-reset: section; /* Initialise le compteur */
+    counter-reset: section;
 }
 
 button {
@@ -279,12 +308,12 @@ button {
 }
 
 .app-form__section {
-  > label::before {
-    counter-increment: section; /* Incrémente le compteur */
-    content: counter(section) ". "; /* Affiche le numéro */
-    font-weight: bold;
-    margin-right: 5px;
-  }
+    > label::before {
+        counter-increment: section;
+        content: counter(section) ". ";
+        font-weight: bold;
+        margin-right: 5px;
+    }
 }
 
 .app-form__section__message {
