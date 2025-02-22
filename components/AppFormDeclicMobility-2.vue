@@ -328,6 +328,22 @@ const questions: QuestionType[] = [
     },
 
 
+    {
+        id: 16.1,
+        type: 'message',
+        conditions: {
+            isBlocking: true,
+            dependsOn: 3,
+            value: (familyStructure) => {
+                if(familyStructure === 'Colocation') return false
+
+                return true
+            },
+        },
+        text: 'Toutes les personnes de votre ménage doivent participer au défi. Merci de remplir les informations personnelles pour chaque participant.',
+    },
+
+
 
 
 
