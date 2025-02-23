@@ -3,16 +3,13 @@
         <div v-for="question in visibleQuestions" :key="question.id" class="app-form__section">
             <label>{{ question.text }}</label>
 
-            {{ isQuestionVisible(question) }}
-
-            <!-- Afficher le message si la question est bloquée -->
-            <div v-if="question.messageIfCurrentQuestionIsBlocked && !isQuestionVisible(question)"
-                class="app-form__section__message">
-                {{ question.messageIfCurrentQuestionIsBlocked }}
-            </div>
+            <!-- Afficher le message si la question est de type 'message' -->
+            <template v-if="question.type === 'message'">
+                <div v-html="question.text"></div>
+            </template>
 
             <!-- Select -->
-            <template v-if="question.type === 'select'">
+            <template v-else-if="question.type === 'select'">
                 <select v-model="responses[question.id]">
                     <option v-for="option in question.options" :key="option" :value="option">
                         {{ option }}
@@ -22,30 +19,25 @@
                 </select>
 
                 <!-- Textarea pour "autre" -->
-                <textarea   v-if="question.hasOtherOption && responses[question.id] === 'autre'"
-                            v-model="responses[`${question.id}_other`]"
-                            placeholder="Précisez votre réponse"
-                            ></textarea>
+                <textarea
+                    v-if="question.hasOtherOption && responses[question.id] === 'autre'"
+                    v-model="responses[`${question.id}_other`]"
+                    placeholder="Précisez votre réponse"
+                ></textarea>
             </template>
-
-
 
             <!-- Input (texte) -->
             <template v-else-if="question.type === 'input'">
                 <input v-model="responses[question.id]" type="text" :placeholder="question.placeholder" />
             </template>
 
-
-
             <!-- Input (nombre) -->
             <template v-else-if="question.type === 'number'">
                 <div v-for="(option, key) in question.values" :key="option" class="app-form__section__subsections">
                     <label>{{ option }}</label>
-                    <input v-model="responses[question.id][key]" type="number"/>
+                    <input v-model="responses[question.id][key]" type="number" />
                 </div>
             </template>
-
-
 
             <!-- Checkbox -->
             <template v-else-if="question.type === 'checkbox'">
@@ -55,16 +47,9 @@
                 </div>
             </template>
 
-
             <!-- Textarea -->
             <template v-else-if="question.type === 'textarea'">
                 <textarea v-model="responses[question.id]" :placeholder="question.placeholder"></textarea>
-            </template>
-
-
-            <!-- Message  -->
-            <template v-else-if="question.type === 'message'">
-                <div v-html="question.text"></div>
             </template>
         </div>
 
@@ -101,7 +86,7 @@ interface Question_message {
 interface Question_select extends Question {
     type: 'select';
     options: string[];
-    hasOtherOption?: boolean; // Indique si une option "autre" est disponible
+    hasOtherOption?: boolean;
 }
 
 interface Question_input extends Question {
@@ -138,13 +123,13 @@ type QuestionType =
 const questions: QuestionType[] = [
     {
         id: 1,
-        text: "Dans quelle commune votre domicile principal est-il situé ?",
+        text: "Dans quelle commune votre domicile principal est-il situé ?",
         type: "select",
         options: ["carouge", "geneve", "autre"],
     },
     {
         id: 2,
-        text: "Depuis combien de temps résidez-vous dans cette commune ?",
+        text: "Depuis combien de temps résidez-vous dans cette commune ?",
         type: "select",
         options: ["moins2", "2-5", "5-10", "plus10"],
         conditions: {
@@ -334,13 +319,22 @@ const questions: QuestionType[] = [
         conditions: {
             isBlocking: true,
             dependsOn: 3,
-            value: (familyStructure) => {
-                if(familyStructure === 'Colocation') return false
-
-                return true
-            },
+            value: (familyStructure) => familyStructure !== 'Colocation',
         },
         text: 'Toutes les personnes de votre ménage doivent participer au défi. Merci de remplir les informations personnelles pour chaque participant.',
+    },
+
+
+    {
+        id: 17,
+        text: 'coucou haha',
+        type: 'select',
+        options: [
+            "Oui, tout à fait",
+            "Plutôt oui",
+            "Plutôt non",
+            "Pas du tout",
+        ],
     },
 
 
@@ -384,27 +378,34 @@ const isQuestionVisible = (question: QuestionType): boolean => {
 // Calculer les questions visibles
 const visibleQuestions = computed(() => {
     const visible: QuestionType[] = [];
-    let isBlocked = false; // Indicateur de blocage
+    let isBlocked = false; // Indicateur pour savoir si un bloc de type message a bloqué l'affichage
 
     for (const question of questions) {
-        if (isBlocked) break; // Dès qu'une question bloque, on arrête tout
-
-        // Vérifier si la question a une condition
-        if (question.conditions) {
-            const { dependsOn, value, isBlocking } = question.conditions;
-            const dependentValue = responses.value[dependsOn];
-
-            const conditionMet = typeof value === "function" ? value(dependentValue) : dependentValue === value;
-
-            // Si la question est bloquante et sa condition échoue, bloquer toutes les suivantes
-            if (!conditionMet && isBlocking) {
-                isBlocked = true;
-                break;
-            }
-
-            if (!conditionMet) continue; // Si non bloquante mais condition échouée, ne pas afficher
+        // Si un bloc de type message a bloqué l'affichage, masquer cette question
+        if (isBlocked) {
+            continue; // Passer à la question suivante
         }
 
+        // Vérifier si la question actuelle a une condition
+        if (question.conditions) {
+            const { dependsOn, value } = question.conditions;
+            const dependentValue = responses.value[dependsOn];
+
+            // Si la condition est une fonction, on l'exécute
+            const conditionMet = typeof value === "function" ? value(dependentValue) : dependentValue === value;
+
+            // Si la condition n'est pas remplie, masquer cette question
+            if (!conditionMet) {
+                continue; // Passer à la question suivante
+            }
+
+            // Si la question est de type 'message' et que sa condition est remplie, activer le blocage
+            if (question.type === 'message' && conditionMet) {
+                isBlocked = true; // Activer le blocage pour les questions suivantes
+            }
+        }
+
+        // Ajouter la question aux questions visibles
         visible.push(question);
     }
 
@@ -429,7 +430,6 @@ const submitForm = () => {
 </script>
 
 <style lang="scss">
-
 form {
     display: flex;
     justify-content: center;
