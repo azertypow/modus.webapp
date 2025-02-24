@@ -68,12 +68,17 @@
     align-items: center;
     gap: .25rem;
     flex-wrap: wrap;
+    width: 100%;
 
     input[type=checkbox] {
       display: block;
       width: 1rem;
       height: 1rem;
       border-radius: 1rem;
+    }
+
+    &+.app-form__section__subsections {
+      margin-top: 2rem;
     }
 
     &.app-form__section__subsections--number {
