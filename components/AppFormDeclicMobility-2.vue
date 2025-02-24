@@ -1,11 +1,13 @@
 <template>
     <form class="app-form-declic-mobility">
         <div v-for="question in visibleQuestions" :key="question.id" class="app-form__section">
-            <label>{{ question.text }}</label>
+            <label v-if="question.type !== 'message'">{{ question.text }}</label>
 
             <!-- Afficher le message si la question est de type 'message' -->
             <template v-if="question.type === 'message'">
-                <div v-html="question.text"></div>
+                <div class="app-form-declic-mobility__message"
+                     v-html="question.text"
+                ></div>
             </template>
 
             <!-- Select -->
@@ -127,20 +129,26 @@ const questions: QuestionType[] = [
         type: "select",
         options: ["carouge", "geneve", "autre"],
     },
+
+    {
+        id: 1.1,
+        type: 'message',
+        conditions: {
+            isBlocking: true,
+            dependsOn: 1,
+            value: dependentValue => dependentValue !== "carouge" && dependentValue !== "geneve",
+        },
+        text: `
+        <p>Vous résidez hors du territoire couvert par l’initiative « Déclic mobilité » qui se tiendra au printemps 2025. Si vous connaissez des personnes qui résident dans la commune de Genève ou de Carouge, n’hésitez pas à leur partager l’information.</p>
+        <p>Par ailleurs et si vous souhaitez être recontacté pour participer à la seconde phase de l’initiative « Déclic mobilité » qui se tiendra à l’automne 2025 sur tout le Canton de Genève et la Région de Nyon, merci de nous envoyer un message par email en cliquant ici.</p>
+        `,
+    },
+
     {
         id: 2,
         text: "Depuis combien de temps résidez-vous dans cette commune ?",
         type: "select",
         options: ["moins2", "2-5", "5-10", "plus10"],
-        conditions: {
-            isBlocking: true,
-            dependsOn: 1,
-            value: dependentValue => dependentValue === "carouge" || dependentValue === "geneve",
-        },
-        messageIfCurrentQuestionIsBlocked: `
-            <p>Vous résidez hors du territoire couvert par l’initiative « Déclic mobilité » qui se tiendra au printemps 2025. Si vous connaissez des personnes qui résident dans la commune de Genève ou de Carouge, n’hésitez pas à leur partager l’information.</p>
-            <p>Par ailleurs et si vous souhaitez être recontacté pour participer à la seconde phase de l’initiative « Déclic mobilité » qui se tiendra à l’automne 2025 sur tout le Canton de Genève et la Région de Nyon, merci de nous envoyer un message par email en cliquant ici.</p>
-        `,
     },
     {
         id: 3,
@@ -157,40 +165,33 @@ const questions: QuestionType[] = [
     },
     {
         id: 4,
-        text: "Combien de personnes composent votre ménage ?",
+        text: "Combien d'adultes composent votre ménage ?",
         type: "number",
         values: [
             "Personnes de 65 ans et plus",
             "Personnes de 26 à 64 ans",
             "Personnes de 18 à 25 ans",
-            "Personnes de 16 à 17 ans  (si structure ménage est « couple avec enfant(s) » ou « personne seule avec enfant(s) »)",
-            "Personnes de moins de 16 ans (si structure ménage est « couple avec enfant(s) » ou « personne seule avec enfant(s) »)",
+            "Personnes de 16 à 17 ans",
+            "Personnes de moins de 16 ans",
         ],
     },
     {
         id:     5,
-        text: "De combien de moto/scooter disposez-vous au sein de votre ménage ? (Les véhicules électriques sont considérés au même titre que les véhicules thermiques)",
+        text: "De combien de véhicules disposez-vous au sein de votre ménage ?",
         type: "number",
         values: [
             "nombre de moto/scooter ",
-        ],
-    },
-    {
-        id:     6,
-        text: "De combien de voiture disposez-vous au sein de votre ménage ? (Les véhicules électriques sont considérés au même titre que les véhicules thermiques)",
-        type: "number",
-        values: [
             "nombre de voiture ",
         ],
     },
     {
-        id: 7,
+        id: 6,
         text: 'Avez-vous personnellement accès à l’un de ces véhicules ?',
         type: 'checkbox',
         options: ['Moto/scooter', "Voiture"],
     },
     {
-        id: 8,
+        id: 7,
         text: 'A quelle fréquence vous déplacez-vous en moto/scooter ?',
         type: 'select',
         options: [
@@ -201,13 +202,16 @@ const questions: QuestionType[] = [
         conditions: {
             isBlocking: false,
             dependsOn: 5,
-            value: dependentValue => dependentValue > 0,
+            value: dependentValue => {
+                if( !Array.isArray(dependentValue) ) return false
+                return dependentValue[0] > 0
+            },
         },
     },
 
     {
-        id: 9,
-        text: 'A quelle fréquence vous déplacez-vous en voiture ?',
+        id: 8,
+        text: 'A quelle fréquence vous déplacez-vous en voiture ?',
         type: 'select',
         options: [
             'Tous les jours ou presque',
@@ -216,13 +220,16 @@ const questions: QuestionType[] = [
         ],
         conditions: {
             isBlocking: false,
-            dependsOn: 6,
-            value: dependentValue => dependentValue > 0,
+            dependsOn: 5,
+            value: dependentValue => {
+                if( !Array.isArray(dependentValue) ) return false
+                return dependentValue[1] > 0
+            },
         },
     },
 
     {
-        id: 10,
+        id: 9,
         text: 'Quelle est votre année de naissance ?',
         type: 'select',
         options: [
@@ -231,9 +238,23 @@ const questions: QuestionType[] = [
         ],
     },
 
+    {
+        id: 9.1,
+        type: 'message',
+        conditions: {
+            isBlocking: true,
+            dependsOn: 9,
+            value: dependentValue => {
+                if( !dependentValue ) return true
+                return dependentValue === "2007 ou plus"
+            },
+        },
+        text: `Ce défi s’adresse uniquement aux personnes majeures. Merci pour votre compréhension. N’hésitez pas à partager l’information auprès des personnes majeures de votre entourage.`,
+    },
+
 
     {
-        id: 11,
+        id: 10,
         text: 'Etes-vous une femme ou un homme ?',
         type: 'select',
         options: [
@@ -244,7 +265,7 @@ const questions: QuestionType[] = [
     },
 
     {
-        id: 12,
+        id: 11,
         text: 'Quelle situation professionnelle vous correspond actuellement ?',
         type: 'select',
         hasOtherOption: true,
@@ -259,7 +280,7 @@ const questions: QuestionType[] = [
 
 
     {
-        id: 13,
+        id: 12,
         text: 'Avez-vous le permis de conduire ?',
         type: 'select',
         options: [
@@ -271,7 +292,7 @@ const questions: QuestionType[] = [
 
 
     {
-        id: 14,
+        id: 13,
         text: 'De quel(s) abonnement(s) de transports publics disposez-vous?',
         type: 'select',
         hasOtherOption: true,
@@ -287,7 +308,7 @@ const questions: QuestionType[] = [
 
 
     {
-        id: 15,
+        id: 14,
         text: 'Avez-vous personnellement accès à l’un de ces véhicules : (Veuillez mentionner uniquement le(s) véhicule(s) de votre ménage que vous pouvez utiliser.)',
         type: 'checkbox',
         options: [
@@ -301,7 +322,7 @@ const questions: QuestionType[] = [
 
 
     {
-        id: 16,
+        id: 15,
         text: 'Souhaitez-vous faire évoluer vos pratiques de déplacement pour un mode de vie plus durable ?',
         type: 'select',
         options: [
@@ -314,27 +335,571 @@ const questions: QuestionType[] = [
 
 
     {
-        id: 16.1,
+        id: 15.1,
         type: 'message',
         conditions: {
-            isBlocking: true,
+            isBlocking: false,
             dependsOn: 3,
-            value: (familyStructure) => familyStructure !== 'Colocation',
+            value: () => {
+
+                const familyStructure = responses.value[3]
+                const adultsNumber = responses.value[4] as undefined | string[]
+                const vehiculsNumber = responses.value[5] as undefined | string[]
+
+                console.log("familyStructure", familyStructure)
+                console.log("adultsNumber", adultsNumber)
+                console.log("vehiculsNumber", vehiculsNumber)
+
+                // const familyStructure = responses.value[3]
+
+
+                // return true // le message s'affiche et les questions suivnates ne s'affichent pas
+
+                if( !familyStructure ) return true
+
+                if( !adultsNumber ) return true
+                if( adultsNumber.length === 0 ) return true
+
+                if( !vehiculsNumber ) return true
+                if( vehiculsNumber.length === 0 ) return true
+
+                const totalAdults   = adultsNumber.slice(0,4).reduce((acc, cur) => acc + parseFloat(cur), 0)
+                const totalVehiculs     = vehiculsNumber.reduce((acc, cur) => acc + parseFloat(cur), 0)
+
+                console.log(
+                    'totalAdults', totalAdults,
+                    'totalVehiculs', totalVehiculs,
+                )
+
+
+                return familyStructure !== 'Colocation' && totalAdults > totalVehiculs
+            },
         },
         text: 'Toutes les personnes de votre ménage doivent participer au défi. Merci de remplir les informations personnelles pour chaque participant.',
     },
 
 
+    /**
+     *
+        SECOND /////////////////////////
+     *
+     */
     {
-        id: 17,
-        text: 'coucou haha',
+        id: 15.2,
+        type: 'message',
+        conditions: {
+            isBlocking: false,
+            dependsOn: 3,
+            value: () => {
+
+                const familyStructure = responses.value[3]
+                const adultsNumber = responses.value[4] as undefined | string[]
+                const vehiculsNumber = responses.value[5] as undefined | string[]
+
+                if( !familyStructure ) return true
+                if( !adultsNumber ) return true
+                if( adultsNumber.length === 0 ) return true
+                if( !vehiculsNumber ) return true
+                if( vehiculsNumber.length === 0 ) return true
+
+                const totalAdults           = adultsNumber.slice(0,4).reduce((acc, cur) => acc + parseFloat(cur), 0)
+                const totalMoreThan18_Old   = adultsNumber.slice(0,3).reduce((acc, cur) => acc + parseFloat(cur), 0)
+                const totalVehiculs         = vehiculsNumber.reduce((acc, cur) => acc + parseFloat(cur), 0)
+
+                return familyStructure !== 'Colocation' && totalAdults > totalVehiculs && totalMoreThan18_Old > 1
+            },
+        },
+        text: 'Merci de remplir ces quelques questions complémentaires pour la <u>seconde</u> personne majeure de votre ménage. ',
+    },
+
+
+
+    {
+        id: 16,
+        text: 'Quelle situation professionnelle lui correspond actuellement ?',
         type: 'select',
         options: [
-            "Oui, tout à fait",
-            "Plutôt oui",
-            "Plutôt non",
-            "Pas du tout",
+            "Actif/active à temps plein",
+            "Actif/active à temps partiel",
+            "Sans emploi / au chômage",
+            "Etudiant·e",
+            "Retraité·e",
+            "Autres",
         ],
+        conditions: {
+            isBlocking: false,
+            dependsOn: 3,
+            value: () => {
+
+                const familyStructure = responses.value[3]
+                const adultsNumber = responses.value[4] as undefined | string[]
+                const vehiculsNumber = responses.value[5] as undefined | string[]
+
+                if( !familyStructure ) return true
+                if( !adultsNumber ) return true
+                if( adultsNumber.length === 0 ) return true
+                if( !vehiculsNumber ) return true
+                if( vehiculsNumber.length === 0 ) return true
+
+                const totalAdults           = adultsNumber.slice(0,4).reduce((acc, cur) => acc + parseFloat(cur), 0)
+                const totalMoreThan18_Old   = adultsNumber.slice(0,3).reduce((acc, cur) => acc + parseFloat(cur), 0)
+                const totalVehiculs         = vehiculsNumber.reduce((acc, cur) => acc + parseFloat(cur), 0)
+
+                return familyStructure !== 'Colocation' && totalAdults > totalVehiculs && totalMoreThan18_Old > 1
+            }
+        },
+    },
+    {
+        id: 17,
+        text: 'Possède-t-elle le permis de conduire ?',
+        type: 'select',
+        options: [
+            "Oui",
+            "Non",
+            "Momentanément pas (par exemple retrait)",
+        ],
+        conditions: {
+            isBlocking: false,
+            dependsOn: 3,
+            value: () => {
+
+                const familyStructure = responses.value[3]
+                const adultsNumber = responses.value[4] as undefined | string[]
+                const vehiculsNumber = responses.value[5] as undefined | string[]
+
+                if( !familyStructure ) return true
+                if( !adultsNumber ) return true
+                if( adultsNumber.length === 0 ) return true
+                if( !vehiculsNumber ) return true
+                if( vehiculsNumber.length === 0 ) return true
+
+                const totalAdults           = adultsNumber.slice(0,4).reduce((acc, cur) => acc + parseFloat(cur), 0)
+                const totalMoreThan18_Old   = adultsNumber.slice(0,3).reduce((acc, cur) => acc + parseFloat(cur), 0)
+                const totalVehiculs         = vehiculsNumber.reduce((acc, cur) => acc + parseFloat(cur), 0)
+
+                return familyStructure !== 'Colocation' && totalAdults > totalVehiculs && totalMoreThan18_Old > 1
+            }
+        },
+    },
+    {
+        id: 18,
+        text: 'A quelle fréquence se déplace-t-elle en moto/scooter ?',
+        type: 'select',
+        options: [
+            "Tous les jours ou presque",
+            "Une à plusieurs fois par semaine",
+            "Moins d’une fois par semaine",
+        ],
+        conditions: {
+            isBlocking: false,
+            dependsOn:5,
+            value: (dependentValue) => {
+
+                if( !Array.isArray(dependentValue) ) return false
+                if( !dependentValue[0] || dependentValue[0] === 0 ) return false
+
+                const familyStructure = responses.value[3]
+                const adultsNumber = responses.value[4] as undefined | string[]
+                const vehiculsNumber = responses.value[5] as undefined | string[]
+
+                if( !familyStructure ) return true
+                if( !adultsNumber ) return true
+                if( adultsNumber.length === 0 ) return true
+                if( !vehiculsNumber ) return true
+                if( vehiculsNumber.length === 0 ) return true
+
+                const totalAdults           = adultsNumber.slice(0,4).reduce((acc, cur) => acc + parseFloat(cur), 0)
+                const totalMoreThan18_Old   = adultsNumber.slice(0,3).reduce((acc, cur) => acc + parseFloat(cur), 0)
+                const totalVehiculs         = vehiculsNumber.reduce((acc, cur) => acc + parseFloat(cur), 0)
+
+                return familyStructure !== 'Colocation' && totalAdults > totalVehiculs && totalMoreThan18_Old > 1
+            }
+        },
+    },
+
+    {
+        id: 19,
+        text: 'A quelle fréquence se déplace-t-elle en voiture ?',
+        type: 'select',
+        options: [
+            "Tous les jours ou presque",
+            "Une à plusieurs fois par semaine",
+            "Moins d’une fois par semaine",
+        ],
+        conditions: {
+            isBlocking: false,
+            dependsOn:5,
+            value: (dependentValue) => {
+
+                if( !Array.isArray(dependentValue) ) return false
+                if( !dependentValue[1] || dependentValue[1] === 0 ) return false
+
+                const familyStructure = responses.value[3]
+                const adultsNumber = responses.value[4] as undefined | string[]
+                const vehiculsNumber = responses.value[5] as undefined | string[]
+
+                if( !familyStructure ) return true
+                if( !adultsNumber ) return true
+                if( adultsNumber.length === 0 ) return true
+                if( !vehiculsNumber ) return true
+                if( vehiculsNumber.length === 0 ) return true
+
+                const totalAdults           = adultsNumber.slice(0,4).reduce((acc, cur) => acc + parseFloat(cur), 0)
+                const totalMoreThan18_Old   = adultsNumber.slice(0,3).reduce((acc, cur) => acc + parseFloat(cur), 0)
+                const totalVehiculs         = vehiculsNumber.reduce((acc, cur) => acc + parseFloat(cur), 0)
+
+                return familyStructure !== 'Colocation' && totalAdults > totalVehiculs && totalMoreThan18_Old > 1
+            }
+        },
+    },
+
+    {
+        id: 20,
+        text: 'De quel(s) abonnement(s) de transports publics dispose-t-elle ?',
+        type: 'checkbox',
+        options: [
+            "Aucun",
+            "Abonnement de zone unireso",
+            "Abonnement de parcours CFF",
+            "Abonnement demi-tarif",
+            "Abonnement général (AG)",
+            "Autres : précisez [zone de texte]",
+        ],
+        conditions: {
+            isBlocking: false,
+            dependsOn:5,
+            value: (dependentValue) => {
+
+                if( !Array.isArray(dependentValue) ) return false
+                if( !dependentValue[1] || dependentValue[1] === 0 ) return false
+
+                const familyStructure = responses.value[3]
+                const adultsNumber = responses.value[4] as undefined | string[]
+                const vehiculsNumber = responses.value[5] as undefined | string[]
+
+                if( !familyStructure ) return true
+                if( !adultsNumber ) return true
+                if( adultsNumber.length === 0 ) return true
+                if( !vehiculsNumber ) return true
+                if( vehiculsNumber.length === 0 ) return true
+
+                const totalAdults           = adultsNumber.slice(0,4).reduce((acc, cur) => acc + parseFloat(cur), 0)
+                const totalMoreThan18_Old   = adultsNumber.slice(0,3).reduce((acc, cur) => acc + parseFloat(cur), 0)
+                const totalVehiculs         = vehiculsNumber.reduce((acc, cur) => acc + parseFloat(cur), 0)
+
+                return familyStructure !== 'Colocation' && totalAdults > totalVehiculs && totalMoreThan18_Old > 1
+            }
+        },
+    },
+
+    {
+        id: 21,
+        text: 'A-t-elle personnellement accès à l’un de ces véhicules :',
+        type: 'checkbox',
+        options: [
+            "Vélo à assistance électrique",
+            "Vélo cargo",
+            "Vélo conventionnel (mécanique)",
+
+        ],
+        conditions: {
+            isBlocking: false,
+            dependsOn:5,
+            value: (dependentValue) => {
+
+                if( !Array.isArray(dependentValue) ) return false
+                if( !dependentValue[1] || dependentValue[1] === 0 ) return false
+
+                const familyStructure = responses.value[3]
+                const adultsNumber = responses.value[4] as undefined | string[]
+                const vehiculsNumber = responses.value[5] as undefined | string[]
+
+                if( !familyStructure ) return true
+                if( !adultsNumber ) return true
+                if( adultsNumber.length === 0 ) return true
+                if( !vehiculsNumber ) return true
+                if( vehiculsNumber.length === 0 ) return true
+
+                const totalAdults           = adultsNumber.slice(0,4).reduce((acc, cur) => acc + parseFloat(cur), 0)
+                const totalMoreThan18_Old   = adultsNumber.slice(0,3).reduce((acc, cur) => acc + parseFloat(cur), 0)
+                const totalVehiculs         = vehiculsNumber.reduce((acc, cur) => acc + parseFloat(cur), 0)
+
+                return familyStructure !== 'Colocation' && totalAdults > totalVehiculs && totalMoreThan18_Old > 1
+            }
+        },
+    },
+
+
+
+    /**
+     *
+     TROISIEME /////////////////////////
+     *
+     */
+    {
+        id: 21.1,
+        type: 'message',
+        conditions: {
+            isBlocking: false,
+            dependsOn: 3,
+            value: () => {
+
+                const familyStructure = responses.value[3]
+                const adultsNumber = responses.value[4] as undefined | string[]
+                const vehiculsNumber = responses.value[5] as undefined | string[]
+
+                if( !familyStructure ) return true
+                if( !adultsNumber ) return true
+                if( adultsNumber.length === 0 ) return true
+                if( !vehiculsNumber ) return true
+                if( vehiculsNumber.length === 0 ) return true
+
+                const totalAdults           = adultsNumber.slice(0,4).reduce((acc, cur) => acc + parseFloat(cur), 0)
+                const totalMoreThan18_Old   = adultsNumber.slice(0,3).reduce((acc, cur) => acc + parseFloat(cur), 0)
+                const totalVehiculs         = vehiculsNumber.reduce((acc, cur) => acc + parseFloat(cur), 0)
+
+                return familyStructure !== 'Colocation' && totalAdults > totalVehiculs && totalMoreThan18_Old > 2
+            },
+        },
+        text: 'Merci de remplir ces quelques questions complémentaires pour la <u>troisième</u> personne majeure de votre ménage. ',
+    },
+
+
+
+    {
+        id: 22,
+        text: 'Quelle situation professionnelle lui correspond actuellement ?',
+        type: 'select',
+        options: [
+            "Actif/active à temps plein",
+            "Actif/active à temps partiel",
+            "Sans emploi / au chômage",
+            "Etudiant·e",
+            "Retraité·e",
+            "Autres",
+        ],
+        conditions: {
+            isBlocking: false,
+            dependsOn: 3,
+            value: () => {
+
+                const familyStructure = responses.value[3]
+                const adultsNumber = responses.value[4] as undefined | string[]
+                const vehiculsNumber = responses.value[5] as undefined | string[]
+
+                if( !familyStructure ) return true
+                if( !adultsNumber ) return true
+                if( adultsNumber.length === 0 ) return true
+                if( !vehiculsNumber ) return true
+                if( vehiculsNumber.length === 0 ) return true
+
+                const totalAdults           = adultsNumber.slice(0,4).reduce((acc, cur) => acc + parseFloat(cur), 0)
+                const totalMoreThan18_Old   = adultsNumber.slice(0,3).reduce((acc, cur) => acc + parseFloat(cur), 0)
+                const totalVehiculs         = vehiculsNumber.reduce((acc, cur) => acc + parseFloat(cur), 0)
+
+                return familyStructure !== 'Colocation' && totalAdults > totalVehiculs && totalMoreThan18_Old > 1
+            }
+        },
+    },
+    {
+        id: 23,
+        text: 'Possède-t-elle le permis de conduire ?',
+        type: 'select',
+        options: [
+            "Oui",
+            "Non",
+            "Momentanément pas (par exemple retrait)",
+        ],
+        conditions: {
+            isBlocking: false,
+            dependsOn: 3,
+            value: () => {
+
+                const familyStructure = responses.value[3]
+                const adultsNumber = responses.value[4] as undefined | string[]
+                const vehiculsNumber = responses.value[5] as undefined | string[]
+
+                if( !familyStructure ) return true
+                if( !adultsNumber ) return true
+                if( adultsNumber.length === 0 ) return true
+                if( !vehiculsNumber ) return true
+                if( vehiculsNumber.length === 0 ) return true
+
+                const totalAdults           = adultsNumber.slice(0,4).reduce((acc, cur) => acc + parseFloat(cur), 0)
+                const totalMoreThan18_Old   = adultsNumber.slice(0,3).reduce((acc, cur) => acc + parseFloat(cur), 0)
+                const totalVehiculs         = vehiculsNumber.reduce((acc, cur) => acc + parseFloat(cur), 0)
+
+                return familyStructure !== 'Colocation' && totalAdults > totalVehiculs && totalMoreThan18_Old > 1
+            }
+        },
+    },
+    {
+        id: 24,
+        text: 'A quelle fréquence se déplace-t-elle en moto/scooter ?',
+        type: 'select',
+        options: [
+            "Tous les jours ou presque",
+            "Une à plusieurs fois par semaine",
+            "Moins d’une fois par semaine",
+        ],
+        conditions: {
+            isBlocking: false,
+            dependsOn:5,
+            value: (dependentValue) => {
+
+                if( !Array.isArray(dependentValue) ) return false
+                if( !dependentValue[0] || dependentValue[0] === 0 ) return false
+
+                const familyStructure = responses.value[3]
+                const adultsNumber = responses.value[4] as undefined | string[]
+                const vehiculsNumber = responses.value[5] as undefined | string[]
+
+                if( !familyStructure ) return true
+                if( !adultsNumber ) return true
+                if( adultsNumber.length === 0 ) return true
+                if( !vehiculsNumber ) return true
+                if( vehiculsNumber.length === 0 ) return true
+
+                const totalAdults           = adultsNumber.slice(0,4).reduce((acc, cur) => acc + parseFloat(cur), 0)
+                const totalMoreThan18_Old   = adultsNumber.slice(0,3).reduce((acc, cur) => acc + parseFloat(cur), 0)
+                const totalVehiculs         = vehiculsNumber.reduce((acc, cur) => acc + parseFloat(cur), 0)
+
+                return familyStructure !== 'Colocation' && totalAdults > totalVehiculs && totalMoreThan18_Old > 1
+            }
+        },
+    },
+
+    {
+        id: 25,
+        text: 'A quelle fréquence se déplace-t-elle en voiture ?',
+        type: 'select',
+        options: [
+            "Tous les jours ou presque",
+            "Une à plusieurs fois par semaine",
+            "Moins d’une fois par semaine",
+        ],
+        conditions: {
+            isBlocking: false,
+            dependsOn:5,
+            value: (dependentValue) => {
+
+                if( !Array.isArray(dependentValue) ) return false
+                if( !dependentValue[1] || dependentValue[1] === 0 ) return false
+
+                const familyStructure = responses.value[3]
+                const adultsNumber = responses.value[4] as undefined | string[]
+                const vehiculsNumber = responses.value[5] as undefined | string[]
+
+                if( !familyStructure ) return true
+                if( !adultsNumber ) return true
+                if( adultsNumber.length === 0 ) return true
+                if( !vehiculsNumber ) return true
+                if( vehiculsNumber.length === 0 ) return true
+
+                const totalAdults           = adultsNumber.slice(0,4).reduce((acc, cur) => acc + parseFloat(cur), 0)
+                const totalMoreThan18_Old   = adultsNumber.slice(0,3).reduce((acc, cur) => acc + parseFloat(cur), 0)
+                const totalVehiculs         = vehiculsNumber.reduce((acc, cur) => acc + parseFloat(cur), 0)
+
+                return familyStructure !== 'Colocation' && totalAdults > totalVehiculs && totalMoreThan18_Old > 1
+            }
+        },
+    },
+
+    {
+        id: 26,
+        text: 'De quel(s) abonnement(s) de transports publics dispose-t-elle ?',
+        type: 'checkbox',
+        options: [
+            "Aucun",
+            "Abonnement de zone unireso",
+            "Abonnement de parcours CFF",
+            "Abonnement demi-tarif",
+            "Abonnement général (AG)",
+            "Autres : précisez [zone de texte]",
+        ],
+        conditions: {
+            isBlocking: false,
+            dependsOn:5,
+            value: (dependentValue) => {
+
+                if( !Array.isArray(dependentValue) ) return false
+                if( !dependentValue[1] || dependentValue[1] === 0 ) return false
+
+                const familyStructure = responses.value[3]
+                const adultsNumber = responses.value[4] as undefined | string[]
+                const vehiculsNumber = responses.value[5] as undefined | string[]
+
+                if( !familyStructure ) return true
+                if( !adultsNumber ) return true
+                if( adultsNumber.length === 0 ) return true
+                if( !vehiculsNumber ) return true
+                if( vehiculsNumber.length === 0 ) return true
+
+                const totalAdults           = adultsNumber.slice(0,4).reduce((acc, cur) => acc + parseFloat(cur), 0)
+                const totalMoreThan18_Old   = adultsNumber.slice(0,3).reduce((acc, cur) => acc + parseFloat(cur), 0)
+                const totalVehiculs         = vehiculsNumber.reduce((acc, cur) => acc + parseFloat(cur), 0)
+
+                return familyStructure !== 'Colocation' && totalAdults > totalVehiculs && totalMoreThan18_Old > 1
+            }
+        },
+    },
+
+    {
+        id: 27,
+        text: 'A-t-elle personnellement accès à l’un de ces véhicules :',
+        type: 'checkbox',
+        options: [
+            "Vélo à assistance électrique",
+            "Vélo cargo",
+            "Vélo conventionnel (mécanique)",
+
+        ],
+        conditions: {
+            isBlocking: false,
+            dependsOn:5,
+            value: (dependentValue) => {
+
+                if( !Array.isArray(dependentValue) ) return false
+                if( !dependentValue[1] || dependentValue[1] === 0 ) return false
+
+                const familyStructure = responses.value[3]
+                const adultsNumber = responses.value[4] as undefined | string[]
+                const vehiculsNumber = responses.value[5] as undefined | string[]
+
+                if( !familyStructure ) return true
+                if( !adultsNumber ) return true
+                if( adultsNumber.length === 0 ) return true
+                if( !vehiculsNumber ) return true
+                if( vehiculsNumber.length === 0 ) return true
+
+                const totalAdults           = adultsNumber.slice(0,4).reduce((acc, cur) => acc + parseFloat(cur), 0)
+                const totalMoreThan18_Old   = adultsNumber.slice(0,3).reduce((acc, cur) => acc + parseFloat(cur), 0)
+                const totalVehiculs         = vehiculsNumber.reduce((acc, cur) => acc + parseFloat(cur), 0)
+
+                return familyStructure !== 'Colocation' && totalAdults > totalVehiculs && totalMoreThan18_Old > 1
+            }
+        },
+    },
+
+
+
+
+
+
+    /**
+     *
+     ENFANT ??? /////////////////////////
+     *
+     */
+    {
+        id: 27.1,
+        type: 'message',
+        conditions: {
+            isBlocking: false,
+            dependsOn: 3,
+            value: () => true,
+        },
+        text: 'Question pour enfant: Comment on calcule les enfants?',
     },
 
 
@@ -346,13 +911,7 @@ const questions: QuestionType[] = [
 
 
 
-
-
-
-
-
-
-    ];
+];
 
 // État des réponses
 const responses = ref<Responses>({});
@@ -368,6 +927,7 @@ questions.forEach((question) => {
 const isQuestionVisible = (question: QuestionType): boolean => {
     if (!question.conditions) return true;
 
+    // todo: dependsOn can be undefined: for multi questions dependencies, dependOn logic has no sens
     const { dependsOn, value } = question.conditions;
     const dependentValue = responses.value[dependsOn];
 
@@ -399,9 +959,9 @@ const visibleQuestions = computed(() => {
                 continue; // Passer à la question suivante
             }
 
-            // Si la question est de type 'message' et que sa condition est remplie, activer le blocage
+            // Si la question est de type 'message'
             if (question.type === 'message' && conditionMet) {
-                isBlocked = true; // Activer le blocage pour les questions suivantes
+                isBlocked = question.conditions.isBlocking ? question.conditions.isBlocking : false
             }
         }
 
@@ -470,10 +1030,23 @@ button {
         font-weight: bold;
         margin-right: 5px;
     }
+
+    > label.no-counter::before {
+        content: none;
+    }
 }
 
 .app-form__section__message {
     color: red;
     margin-top: 10px;
+}
+
+.app-form-declic-mobility__message {
+    text-align: center;
+
+    > * {
+        text-align: center !important;
+        max-width: none !important;
+    }
 }
 </style>

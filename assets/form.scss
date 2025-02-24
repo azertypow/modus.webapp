@@ -77,6 +77,10 @@
       border-radius: 1rem;
     }
 
+    &+.app-form__section__subsections {
+      margin-top: 2rem;
+    }
+
     &.app-form__section__subsections--number {
 
     }

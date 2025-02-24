@@ -13,7 +13,7 @@
 
         <div class="app-form__section app-form__section--valid">
           <input type="checkbox" v-model="isChecked">
-          <label>Je confirme avoir plus de 18 ans et souhaiter participer à l'enquête</label>
+          <label class="no-counter">Je confirme avoir plus de 18 ans et souhaiter participer à l'enquête</label>
         </div>
 
         <h6>En cliquant sur cette case, vous donnez votre consentement pour la collecte et l'utilisation des données selon les conditions évoquées ci-dessus (En savoir plus). Les démarches pour avoir accès à vos données personnelles, les modifier ou les supprimer s’effectuent par e-mail en cliquant ici.
