@@ -64,7 +64,7 @@ onMounted(async () => {
 
 const isChecked = ref(false)
 
-const formHeaderText = "Questionnaire 1 Déclic Mobilité"
+const formHeaderText = ""
 
 const formBodyContent: IApiBody = {
     'intro':         {
@@ -72,6 +72,7 @@ const formBodyContent: IApiBody = {
         "content": {
             "content": {
                 "text": `
+<h1>Questionnaire</h1>
 <p>Merci pour votre intérêt pour l’initiative « Déclic Mobilité »</p>
 <h3>Déclic Mobilité, c’est quoi ?</h3>
 <p>Le concept est simple : vous stationnez (dans un parking prévu à cet effet) votre véhicule durant le mois de mai 2025 et vous recevez un accès gratuit à des alternatives de déplacement de votre choix parmi lesquelles un abonnement général CFF, un vélo/vélo électrique/vélo cargo, un abonnement Mobility, et bien d’autres services. </p>
