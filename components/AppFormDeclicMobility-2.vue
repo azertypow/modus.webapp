@@ -167,14 +167,14 @@ const questions: QuestionType[] = [
     },
     {
         id: 4,
-        text: "Combien d'adultes composent votre ménage ?",
+        text: "Combien de personnes composent votre ménage ?",
         type: "number",
         values: [
             "Personnes de 65 ans et plus",
             "Personnes de 26 à 64 ans",
             "Personnes de 18 à 25 ans",
             "Personnes de 16 à 17 ans",
-            "Personnes de moins de 16 ans",
+            "Personnes de 0 à 15 ans",
         ],
     },
     {
@@ -188,13 +188,13 @@ const questions: QuestionType[] = [
     },
     {
         id: 6,
-        text: 'Avez-vous personnellement accès à l’un de ces véhicules ?',
+        text: 'Avez-vous personnellement accès à l’un de ces véhicules ? -> supprimer [bug]',
         type: 'checkbox',
         options: ['Moto/scooter', "Voiture"],
     },
     {
         id: 7,
-        text: 'A quelle fréquence vous déplacez-vous en moto/scooter ?',
+        text: 'A quelle fréquence vous déplacez-vous en moto/scooter en tant que conducteur.ices ?',
         type: 'select',
         options: [
             'Tous les jours ou presque',
@@ -213,7 +213,7 @@ const questions: QuestionType[] = [
 
     {
         id: 8,
-        text: 'A quelle fréquence vous déplacez-vous en voiture ?',
+        text: 'A quelle fréquence vous déplacez-vous en voiture en tant que conducteur.ices ?',
         type: 'select',
         options: [
             'Tous les jours ou presque',
@@ -296,14 +296,13 @@ const questions: QuestionType[] = [
     {
         id: 13,
         text: 'De quel(s) abonnement(s) de transports publics disposez-vous?',
-        type: 'select',
-        hasOtherOption: true,
+        type: 'checkbox',
         options: [
             "Aucun",
-            "Abonnement de zone unireso",
+            "Abonnement de zone unireso TPG",
             "Abonnement de parcours CFF",
-            "Abonnement demi-tarif",
-            "Abonnement général (AG)",
+            "Abonnement demi-tarif CFF",
+            "Abonnement général (AG) CFF",
         ],
     },
 
