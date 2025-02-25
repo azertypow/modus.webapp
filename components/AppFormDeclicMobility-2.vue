@@ -65,8 +65,8 @@ import { ref, computed } from "vue";
 
 interface QuestionConditions {
     isBlocking?: boolean; // Si true, bloque les questions suivantes
-    dependsOn: number;
-    value: string | number | boolean | ((dependentValue: any) => boolean);
+    dependsOn?: number;
+    value: string | number | boolean | ((dependentValue?: any) => boolean);
 }
 
 interface Question {
@@ -929,10 +929,18 @@ const isQuestionVisible = (question: QuestionType): boolean => {
 
     // todo: dependsOn can be undefined: for multi questions dependencies, dependOn logic has no sens
     const { dependsOn, value } = question.conditions;
-    const dependentValue = responses.value[dependsOn];
 
-    // Si la condition est une fonction, on l'exécute
-    return typeof value === "function" ? value(dependentValue) : dependentValue === value;
+    if(dependsOn) {
+      const dependentValue = responses.value[dependsOn];
+      return typeof value === "function" ? value(dependentValue) : dependentValue === value;
+    }
+
+    if(typeof value === "function") return value()
+
+    console.error(`dependsOn is undefined and value is not a function.
+    if dependsOn is not specified, value must be nu function to check a condition.`)
+
+    return true
 };
 
 // Calculer les questions visibles
