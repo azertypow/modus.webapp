@@ -15,13 +15,6 @@
 
 
 <script setup lang="ts">
-
-import {useStateNavBarreMsgMessage} from "~/composable/main";
-
-onMounted(() => {
-    useStateNavBarreMsgMessage().value = 'Observatoire des mobilités'
-})
-
 </script>
 
 
