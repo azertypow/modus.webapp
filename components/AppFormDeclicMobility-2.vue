@@ -127,7 +127,7 @@ const questions: QuestionType[] = [
         id: 1,
         text: "Dans quelle commune votre domicile principal est-il situé ?",
         type: "select",
-        options: ["carouge", "geneve", "autre"],
+        options: ["Vile de Carouge", "Ville de Genève", "autre"],
     },
 
     {
@@ -136,7 +136,17 @@ const questions: QuestionType[] = [
         conditions: {
             isBlocking: true,
             dependsOn: 1,
-            value: dependentValue => dependentValue !== "carouge" && dependentValue !== "geneve",
+            value: dependentValue => !dependentValue,
+        },
+        text: `<p>Sélectionnez une commune ci-dessus.</p>`,
+    },
+    {
+        id: 1.2,
+        type: 'message',
+        conditions: {
+            isBlocking: true,
+            dependsOn: 1,
+            value: dependentValue => dependentValue === "autre",
         },
         text: `
         <p>Vous résidez hors du territoire couvert par l’initiative « Déclic mobilité » qui se tiendra au printemps 2025. Si vous connaissez des personnes qui résident dans la commune de Genève ou de Carouge, n’hésitez pas à leur partager l’information.</p>
@@ -148,20 +158,12 @@ const questions: QuestionType[] = [
         id: 2,
         text: "Depuis combien de temps résidez-vous dans cette commune ?",
         type: "select",
-        options: ["moins2", "2-5", "5-10", "plus10"],
-    },
-    {
-        id: 3,
-        text: "Quelles est la structure de votre ménage ?",
-        type: "select",
-        hasOtherOption: true,
         options: [
-            "Personne seule",
-            "Couple sans enfant(s)",
-            "Couple avec enfant(s)",
-            "Personne seule avec enfant(s)",
-            "Colocation",
-        ]
+            "moins de 2 ans",
+            "2 à 5 ans",
+            "5 à 10 ans",
+            "plus de 10 ans",
+        ],
     },
     {
         id: 4,
@@ -339,23 +341,13 @@ const questions: QuestionType[] = [
         type: 'message',
         conditions: {
             isBlocking: false,
-            dependsOn: 3,
             value: () => {
 
-                const familyStructure = responses.value[3]
                 const adultsNumber = responses.value[4] as undefined | string[]
                 const vehiculsNumber = responses.value[5] as undefined | string[]
 
-                console.log("familyStructure", familyStructure)
-                console.log("adultsNumber", adultsNumber)
-                console.log("vehiculsNumber", vehiculsNumber)
+                console.log(vehiculsNumber)
 
-                // const familyStructure = responses.value[3]
-
-
-                // return true // le message s'affiche et les questions suivnates ne s'affichent pas
-
-                if( !familyStructure ) return true
 
                 if( !adultsNumber ) return true
                 if( adultsNumber.length === 0 ) return true
@@ -363,7 +355,7 @@ const questions: QuestionType[] = [
                 if( !vehiculsNumber ) return true
                 if( vehiculsNumber.length === 0 ) return true
 
-                const totalAdults   = adultsNumber.slice(0,4).reduce((acc, cur) => acc + parseFloat(cur), 0)
+                const totalAdults       = adultsNumber.slice(0,4).reduce((acc, cur) => acc + parseFloat(cur), 0)
                 const totalVehiculs     = vehiculsNumber.reduce((acc, cur) => acc + parseFloat(cur), 0)
 
                 console.log(
@@ -372,7 +364,7 @@ const questions: QuestionType[] = [
                 )
 
 
-                return familyStructure !== 'Colocation' && totalAdults > totalVehiculs
+                return totalAdults > totalVehiculs
             },
         },
         text: 'Toutes les personnes de votre ménage doivent participer au défi. Merci de remplir les informations personnelles pour chaque participant.',
@@ -389,14 +381,11 @@ const questions: QuestionType[] = [
         type: 'message',
         conditions: {
             isBlocking: false,
-            dependsOn: 3,
             value: () => {
 
-                const familyStructure = responses.value[3]
                 const adultsNumber = responses.value[4] as undefined | string[]
                 const vehiculsNumber = responses.value[5] as undefined | string[]
 
-                if( !familyStructure ) return true
                 if( !adultsNumber ) return true
                 if( adultsNumber.length === 0 ) return true
                 if( !vehiculsNumber ) return true
@@ -406,7 +395,7 @@ const questions: QuestionType[] = [
                 const totalMoreThan18_Old   = adultsNumber.slice(0,3).reduce((acc, cur) => acc + parseFloat(cur), 0)
                 const totalVehiculs         = vehiculsNumber.reduce((acc, cur) => acc + parseFloat(cur), 0)
 
-                return familyStructure !== 'Colocation' && totalAdults > totalVehiculs && totalMoreThan18_Old > 1
+                return totalAdults > totalVehiculs && totalMoreThan18_Old > 1
             },
         },
         text: 'Merci de remplir ces quelques questions complémentaires pour la <u>seconde</u> personne majeure de votre ménage. ',
@@ -428,14 +417,11 @@ const questions: QuestionType[] = [
         ],
         conditions: {
             isBlocking: false,
-            dependsOn: 3,
             value: () => {
 
-                const familyStructure = responses.value[3]
                 const adultsNumber = responses.value[4] as undefined | string[]
                 const vehiculsNumber = responses.value[5] as undefined | string[]
 
-                if( !familyStructure ) return true
                 if( !adultsNumber ) return true
                 if( adultsNumber.length === 0 ) return true
                 if( !vehiculsNumber ) return true
@@ -445,7 +431,7 @@ const questions: QuestionType[] = [
                 const totalMoreThan18_Old   = adultsNumber.slice(0,3).reduce((acc, cur) => acc + parseFloat(cur), 0)
                 const totalVehiculs         = vehiculsNumber.reduce((acc, cur) => acc + parseFloat(cur), 0)
 
-                return familyStructure !== 'Colocation' && totalAdults > totalVehiculs && totalMoreThan18_Old > 1
+                return totalAdults > totalVehiculs && totalMoreThan18_Old > 1
             }
         },
     },
@@ -460,14 +446,11 @@ const questions: QuestionType[] = [
         ],
         conditions: {
             isBlocking: false,
-            dependsOn: 3,
             value: () => {
 
-                const familyStructure = responses.value[3]
                 const adultsNumber = responses.value[4] as undefined | string[]
                 const vehiculsNumber = responses.value[5] as undefined | string[]
 
-                if( !familyStructure ) return true
                 if( !adultsNumber ) return true
                 if( adultsNumber.length === 0 ) return true
                 if( !vehiculsNumber ) return true
@@ -477,7 +460,7 @@ const questions: QuestionType[] = [
                 const totalMoreThan18_Old   = adultsNumber.slice(0,3).reduce((acc, cur) => acc + parseFloat(cur), 0)
                 const totalVehiculs         = vehiculsNumber.reduce((acc, cur) => acc + parseFloat(cur), 0)
 
-                return familyStructure !== 'Colocation' && totalAdults > totalVehiculs && totalMoreThan18_Old > 1
+                return totalAdults > totalVehiculs && totalMoreThan18_Old > 1
             }
         },
     },
@@ -492,17 +475,15 @@ const questions: QuestionType[] = [
         ],
         conditions: {
             isBlocking: false,
-            dependsOn:5,
+            dependsOn: 5,
             value: (dependentValue) => {
 
                 if( !Array.isArray(dependentValue) ) return false
                 if( !dependentValue[0] || dependentValue[0] === 0 ) return false
 
-                const familyStructure = responses.value[3]
                 const adultsNumber = responses.value[4] as undefined | string[]
                 const vehiculsNumber = responses.value[5] as undefined | string[]
 
-                if( !familyStructure ) return true
                 if( !adultsNumber ) return true
                 if( adultsNumber.length === 0 ) return true
                 if( !vehiculsNumber ) return true
@@ -512,7 +493,7 @@ const questions: QuestionType[] = [
                 const totalMoreThan18_Old   = adultsNumber.slice(0,3).reduce((acc, cur) => acc + parseFloat(cur), 0)
                 const totalVehiculs         = vehiculsNumber.reduce((acc, cur) => acc + parseFloat(cur), 0)
 
-                return familyStructure !== 'Colocation' && totalAdults > totalVehiculs && totalMoreThan18_Old > 1
+                return totalAdults > totalVehiculs && totalMoreThan18_Old > 1
             }
         },
     },
@@ -528,17 +509,15 @@ const questions: QuestionType[] = [
         ],
         conditions: {
             isBlocking: false,
-            dependsOn:5,
+            dependsOn: 5,
             value: (dependentValue) => {
 
                 if( !Array.isArray(dependentValue) ) return false
                 if( !dependentValue[1] || dependentValue[1] === 0 ) return false
 
-                const familyStructure = responses.value[3]
                 const adultsNumber = responses.value[4] as undefined | string[]
                 const vehiculsNumber = responses.value[5] as undefined | string[]
 
-                if( !familyStructure ) return true
                 if( !adultsNumber ) return true
                 if( adultsNumber.length === 0 ) return true
                 if( !vehiculsNumber ) return true
@@ -548,7 +527,7 @@ const questions: QuestionType[] = [
                 const totalMoreThan18_Old   = adultsNumber.slice(0,3).reduce((acc, cur) => acc + parseFloat(cur), 0)
                 const totalVehiculs         = vehiculsNumber.reduce((acc, cur) => acc + parseFloat(cur), 0)
 
-                return familyStructure !== 'Colocation' && totalAdults > totalVehiculs && totalMoreThan18_Old > 1
+                return totalAdults > totalVehiculs && totalMoreThan18_Old > 1
             }
         },
     },
@@ -567,17 +546,15 @@ const questions: QuestionType[] = [
         ],
         conditions: {
             isBlocking: false,
-            dependsOn:5,
+            dependsOn: 5,
             value: (dependentValue) => {
 
                 if( !Array.isArray(dependentValue) ) return false
                 if( !dependentValue[1] || dependentValue[1] === 0 ) return false
 
-                const familyStructure = responses.value[3]
                 const adultsNumber = responses.value[4] as undefined | string[]
                 const vehiculsNumber = responses.value[5] as undefined | string[]
 
-                if( !familyStructure ) return true
                 if( !adultsNumber ) return true
                 if( adultsNumber.length === 0 ) return true
                 if( !vehiculsNumber ) return true
@@ -587,7 +564,7 @@ const questions: QuestionType[] = [
                 const totalMoreThan18_Old   = adultsNumber.slice(0,3).reduce((acc, cur) => acc + parseFloat(cur), 0)
                 const totalVehiculs         = vehiculsNumber.reduce((acc, cur) => acc + parseFloat(cur), 0)
 
-                return familyStructure !== 'Colocation' && totalAdults > totalVehiculs && totalMoreThan18_Old > 1
+                return totalAdults > totalVehiculs && totalMoreThan18_Old > 1
             }
         },
     },
@@ -604,17 +581,15 @@ const questions: QuestionType[] = [
         ],
         conditions: {
             isBlocking: false,
-            dependsOn:5,
+            dependsOn: 5,
             value: (dependentValue) => {
 
                 if( !Array.isArray(dependentValue) ) return false
                 if( !dependentValue[1] || dependentValue[1] === 0 ) return false
 
-                const familyStructure = responses.value[3]
                 const adultsNumber = responses.value[4] as undefined | string[]
                 const vehiculsNumber = responses.value[5] as undefined | string[]
 
-                if( !familyStructure ) return true
                 if( !adultsNumber ) return true
                 if( adultsNumber.length === 0 ) return true
                 if( !vehiculsNumber ) return true
@@ -624,7 +599,7 @@ const questions: QuestionType[] = [
                 const totalMoreThan18_Old   = adultsNumber.slice(0,3).reduce((acc, cur) => acc + parseFloat(cur), 0)
                 const totalVehiculs         = vehiculsNumber.reduce((acc, cur) => acc + parseFloat(cur), 0)
 
-                return familyStructure !== 'Colocation' && totalAdults > totalVehiculs && totalMoreThan18_Old > 1
+                return totalAdults > totalVehiculs && totalMoreThan18_Old > 1
             }
         },
     },
@@ -641,14 +616,11 @@ const questions: QuestionType[] = [
         type: 'message',
         conditions: {
             isBlocking: false,
-            dependsOn: 3,
             value: () => {
 
-                const familyStructure = responses.value[3]
                 const adultsNumber = responses.value[4] as undefined | string[]
                 const vehiculsNumber = responses.value[5] as undefined | string[]
 
-                if( !familyStructure ) return true
                 if( !adultsNumber ) return true
                 if( adultsNumber.length === 0 ) return true
                 if( !vehiculsNumber ) return true
@@ -658,7 +630,7 @@ const questions: QuestionType[] = [
                 const totalMoreThan18_Old   = adultsNumber.slice(0,3).reduce((acc, cur) => acc + parseFloat(cur), 0)
                 const totalVehiculs         = vehiculsNumber.reduce((acc, cur) => acc + parseFloat(cur), 0)
 
-                return familyStructure !== 'Colocation' && totalAdults > totalVehiculs && totalMoreThan18_Old > 2
+                return totalAdults > totalVehiculs && totalMoreThan18_Old > 2
             },
         },
         text: 'Merci de remplir ces quelques questions complémentaires pour la <u>troisième</u> personne majeure de votre ménage. ',
@@ -680,14 +652,11 @@ const questions: QuestionType[] = [
         ],
         conditions: {
             isBlocking: false,
-            dependsOn: 3,
             value: () => {
 
-                const familyStructure = responses.value[3]
                 const adultsNumber = responses.value[4] as undefined | string[]
                 const vehiculsNumber = responses.value[5] as undefined | string[]
 
-                if( !familyStructure ) return true
                 if( !adultsNumber ) return true
                 if( adultsNumber.length === 0 ) return true
                 if( !vehiculsNumber ) return true
@@ -697,7 +666,7 @@ const questions: QuestionType[] = [
                 const totalMoreThan18_Old   = adultsNumber.slice(0,3).reduce((acc, cur) => acc + parseFloat(cur), 0)
                 const totalVehiculs         = vehiculsNumber.reduce((acc, cur) => acc + parseFloat(cur), 0)
 
-                return familyStructure !== 'Colocation' && totalAdults > totalVehiculs && totalMoreThan18_Old > 1
+                return totalAdults > totalVehiculs && totalMoreThan18_Old > 1
             }
         },
     },
@@ -712,14 +681,11 @@ const questions: QuestionType[] = [
         ],
         conditions: {
             isBlocking: false,
-            dependsOn: 3,
             value: () => {
 
-                const familyStructure = responses.value[3]
                 const adultsNumber = responses.value[4] as undefined | string[]
                 const vehiculsNumber = responses.value[5] as undefined | string[]
 
-                if( !familyStructure ) return true
                 if( !adultsNumber ) return true
                 if( adultsNumber.length === 0 ) return true
                 if( !vehiculsNumber ) return true
@@ -729,7 +695,7 @@ const questions: QuestionType[] = [
                 const totalMoreThan18_Old   = adultsNumber.slice(0,3).reduce((acc, cur) => acc + parseFloat(cur), 0)
                 const totalVehiculs         = vehiculsNumber.reduce((acc, cur) => acc + parseFloat(cur), 0)
 
-                return familyStructure !== 'Colocation' && totalAdults > totalVehiculs && totalMoreThan18_Old > 1
+                return totalAdults > totalVehiculs && totalMoreThan18_Old > 1
             }
         },
     },
@@ -744,17 +710,15 @@ const questions: QuestionType[] = [
         ],
         conditions: {
             isBlocking: false,
-            dependsOn:5,
+            dependsOn: 5,
             value: (dependentValue) => {
 
                 if( !Array.isArray(dependentValue) ) return false
                 if( !dependentValue[0] || dependentValue[0] === 0 ) return false
 
-                const familyStructure = responses.value[3]
                 const adultsNumber = responses.value[4] as undefined | string[]
                 const vehiculsNumber = responses.value[5] as undefined | string[]
 
-                if( !familyStructure ) return true
                 if( !adultsNumber ) return true
                 if( adultsNumber.length === 0 ) return true
                 if( !vehiculsNumber ) return true
@@ -764,7 +728,7 @@ const questions: QuestionType[] = [
                 const totalMoreThan18_Old   = adultsNumber.slice(0,3).reduce((acc, cur) => acc + parseFloat(cur), 0)
                 const totalVehiculs         = vehiculsNumber.reduce((acc, cur) => acc + parseFloat(cur), 0)
 
-                return familyStructure !== 'Colocation' && totalAdults > totalVehiculs && totalMoreThan18_Old > 1
+                return totalAdults > totalVehiculs && totalMoreThan18_Old > 1
             }
         },
     },
@@ -780,17 +744,15 @@ const questions: QuestionType[] = [
         ],
         conditions: {
             isBlocking: false,
-            dependsOn:5,
+            dependsOn: 5,
             value: (dependentValue) => {
 
                 if( !Array.isArray(dependentValue) ) return false
                 if( !dependentValue[1] || dependentValue[1] === 0 ) return false
 
-                const familyStructure = responses.value[3]
                 const adultsNumber = responses.value[4] as undefined | string[]
                 const vehiculsNumber = responses.value[5] as undefined | string[]
 
-                if( !familyStructure ) return true
                 if( !adultsNumber ) return true
                 if( adultsNumber.length === 0 ) return true
                 if( !vehiculsNumber ) return true
@@ -800,7 +762,7 @@ const questions: QuestionType[] = [
                 const totalMoreThan18_Old   = adultsNumber.slice(0,3).reduce((acc, cur) => acc + parseFloat(cur), 0)
                 const totalVehiculs         = vehiculsNumber.reduce((acc, cur) => acc + parseFloat(cur), 0)
 
-                return familyStructure !== 'Colocation' && totalAdults > totalVehiculs && totalMoreThan18_Old > 1
+                return totalAdults > totalVehiculs && totalMoreThan18_Old > 1
             }
         },
     },
@@ -819,17 +781,15 @@ const questions: QuestionType[] = [
         ],
         conditions: {
             isBlocking: false,
-            dependsOn:5,
+            dependsOn: 5,
             value: (dependentValue) => {
 
                 if( !Array.isArray(dependentValue) ) return false
                 if( !dependentValue[1] || dependentValue[1] === 0 ) return false
 
-                const familyStructure = responses.value[3]
                 const adultsNumber = responses.value[4] as undefined | string[]
                 const vehiculsNumber = responses.value[5] as undefined | string[]
 
-                if( !familyStructure ) return true
                 if( !adultsNumber ) return true
                 if( adultsNumber.length === 0 ) return true
                 if( !vehiculsNumber ) return true
@@ -839,7 +799,7 @@ const questions: QuestionType[] = [
                 const totalMoreThan18_Old   = adultsNumber.slice(0,3).reduce((acc, cur) => acc + parseFloat(cur), 0)
                 const totalVehiculs         = vehiculsNumber.reduce((acc, cur) => acc + parseFloat(cur), 0)
 
-                return familyStructure !== 'Colocation' && totalAdults > totalVehiculs && totalMoreThan18_Old > 1
+                return totalAdults > totalVehiculs && totalMoreThan18_Old > 1
             }
         },
     },
@@ -856,17 +816,15 @@ const questions: QuestionType[] = [
         ],
         conditions: {
             isBlocking: false,
-            dependsOn:5,
+            dependsOn: 5,
             value: (dependentValue) => {
 
                 if( !Array.isArray(dependentValue) ) return false
                 if( !dependentValue[1] || dependentValue[1] === 0 ) return false
 
-                const familyStructure = responses.value[3]
                 const adultsNumber = responses.value[4] as undefined | string[]
                 const vehiculsNumber = responses.value[5] as undefined | string[]
 
-                if( !familyStructure ) return true
                 if( !adultsNumber ) return true
                 if( adultsNumber.length === 0 ) return true
                 if( !vehiculsNumber ) return true
@@ -876,7 +834,7 @@ const questions: QuestionType[] = [
                 const totalMoreThan18_Old   = adultsNumber.slice(0,3).reduce((acc, cur) => acc + parseFloat(cur), 0)
                 const totalVehiculs         = vehiculsNumber.reduce((acc, cur) => acc + parseFloat(cur), 0)
 
-                return familyStructure !== 'Colocation' && totalAdults > totalVehiculs && totalMoreThan18_Old > 1
+                return totalAdults > totalVehiculs && totalMoreThan18_Old > 1
             }
         },
     },
@@ -896,7 +854,6 @@ const questions: QuestionType[] = [
         type: 'message',
         conditions: {
             isBlocking: false,
-            dependsOn: 3,
             value: () => true,
         },
         text: 'Question pour enfant: Comment on calcule les enfants?',
@@ -944,7 +901,14 @@ const isQuestionVisible = (question: QuestionType): boolean => {
 };
 
 // Calculer les questions visibles
-const visibleQuestions = computed(() => {
+const visibleQuestions: Ref<QuestionType[]> = ref([])
+
+
+watch(responses, () => updateContent(), { deep: true });
+onMounted(() => updateContent())
+
+function updateContent() {
+
     const visible: QuestionType[] = [];
     let isBlocked = false; // Indicateur pour savoir si un bloc de type message a bloqué l'affichage
 
@@ -957,19 +921,36 @@ const visibleQuestions = computed(() => {
         // Vérifier si la question actuelle a une condition
         if (question.conditions) {
             const { dependsOn, value } = question.conditions;
-            const dependentValue = responses.value[dependsOn];
 
-            // Si la condition est une fonction, on l'exécute
-            const conditionMet = typeof value === "function" ? value(dependentValue) : dependentValue === value;
+            if( dependsOn ) {
+                const dependentValue = responses.value[dependsOn];
+                const conditionMet = typeof value === "function" ? value(dependentValue) : dependentValue === value;
 
-            // Si la condition n'est pas remplie, masquer cette question
-            if (!conditionMet) {
-                continue; // Passer à la question suivante
-            }
+                if (!conditionMet) {
+                    continue; // Passer à la question suivante
+                }
 
-            // Si la question est de type 'message'
-            if (question.type === 'message' && conditionMet) {
-                isBlocked = question.conditions.isBlocking ? question.conditions.isBlocking : false
+                if (question.type === 'message' && conditionMet) {
+                    isBlocked = question.conditions.isBlocking ? question.conditions.isBlocking : false
+                }
+            } else {
+
+                if( typeof value !== "function" ) {
+                    console.error(`dependsOn is undefined and value is not a function.
+                    if dependsOn is not specified, value must be nu function to check a condition.`)
+
+                    continue;
+                }
+
+                const conditionMet = value()
+
+                if (!conditionMet) {
+                    continue; // Passer à la question suivante
+                }
+
+                if (question.type === 'message' && conditionMet) {
+                    isBlocked = question.conditions.isBlocking ? question.conditions.isBlocking : false
+                }
             }
         }
 
@@ -977,8 +958,8 @@ const visibleQuestions = computed(() => {
         visible.push(question);
     }
 
-    return visible;
-});
+    visibleQuestions.value = visible;
+}
 
 // Validation du formulaire
 const isFormValid = computed(() => {
