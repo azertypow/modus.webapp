@@ -53,6 +53,11 @@
             <template v-else-if="question.type === 'textarea'">
                 <textarea v-model="responses[question.id]" :placeholder="question.placeholder"></textarea>
             </template>
+
+            <!-- Mail -->
+            <template v-else-if="question.type === 'mail'">
+              <input v-model="responses[question.id]" type="email" :placeholder="question.placeholder" />
+            </template>
         </div>
 
         <button type="submit" @click.prevent="submitForm">Envoyer</button>
@@ -72,7 +77,7 @@ interface QuestionConditions {
 interface Question {
     id: number;
     text: string;
-    type: "select" | "input" | "checkbox" | "textarea" | "number";
+    type: "select" | "input" | "checkbox" | "textarea" | "number" | 'mail';
     placeholder?: string;
     conditions?: QuestionConditions;
     messageIfCurrentQuestionIsBlocked?: string;
@@ -109,6 +114,10 @@ interface Question_number extends Question {
     values: string[],
 }
 
+interface Question_mail extends Question {
+    type: 'mail';
+}
+
 interface Responses {
     [key: number | string]: string | number | string[] | boolean | undefined;
 }
@@ -120,6 +129,7 @@ type QuestionType =
     | Question_textarea
     | Question_number
     | Question_message
+    | Question_mail
 
 // Données des questions
 const questions: QuestionType[] = [
@@ -127,7 +137,7 @@ const questions: QuestionType[] = [
         id: 1,
         text: "Dans quelle commune votre domicile principal est-il situé ?",
         type: "select",
-        options: ["Vile de Carouge", "Ville de Genève", "autre"],
+        options: ["Ville de Carouge", "Ville de Genève", "autre"],
     },
 
     {
@@ -150,7 +160,7 @@ const questions: QuestionType[] = [
         },
         text: `
         <p>Vous résidez hors du territoire couvert par l’initiative « Déclic mobilité » qui se tiendra au printemps 2025. Si vous connaissez des personnes qui résident dans la commune de Genève ou de Carouge, n’hésitez pas à leur partager l’information.</p>
-        <p>Par ailleurs et si vous souhaitez être recontacté pour participer à la seconde phase de l’initiative « Déclic mobilité » qui se tiendra à l’automne 2025 sur tout le Canton de Genève et la Région de Nyon, merci de nous envoyer un message par email en cliquant ici.</p>
+        <p>Par ailleurs et si vous souhaitez être recontacté pour participer à la seconde phase de l’initiative « Déclic mobilité » qui se tiendra à l’automne 2025 sur tout le Canton de Genève et la Région de Nyon, merci de nous envoyer un message par email en <a href="mailto: info@declic-mobilite.ch">cliquant ici</a>.</p>
         `,
     },
 
@@ -182,19 +192,13 @@ const questions: QuestionType[] = [
         text: "De combien de véhicules disposez-vous au sein de votre ménage ?",
         type: "number",
         values: [
-            "nombre de moto/scooter ",
-            "nombre de voiture ",
+            "nombre de motos/scooters ",
+            "nombre de voitures ",
         ],
     },
     {
-        id: 6,
-        text: 'Avez-vous personnellement accès à l’un de ces véhicules ? -> supprimer [bug]',
-        type: 'checkbox',
-        options: ['Moto/scooter', "Voiture"],
-    },
-    {
         id: 7,
-        text: 'A quelle fréquence vous déplacez-vous en moto/scooter en tant que conducteur.ices ?',
+        text: 'A quelle fréquence vous déplacez-vous en moto/scooter en tant que conducteur.ice ?',
         type: 'select',
         options: [
             'Tous les jours ou presque',
@@ -213,7 +217,7 @@ const questions: QuestionType[] = [
 
     {
         id: 8,
-        text: 'A quelle fréquence vous déplacez-vous en voiture en tant que conducteur.ices ?',
+        text: 'A quelle fréquence vous déplacez-vous en voiture en tant que conducteur.ice ?',
         type: 'select',
         options: [
             'Tous les jours ou presque',
@@ -248,6 +252,19 @@ const questions: QuestionType[] = [
             dependsOn: 9,
             value: dependentValue => {
                 if( !dependentValue ) return true
+                return false
+            },
+        },
+        text: `Selectionnez une année`,
+    },
+
+    {
+        id: 9.2,
+        type: 'message',
+        conditions: {
+            isBlocking: true,
+            dependsOn: 9,
+            value: dependentValue => {
                 return dependentValue === "2007 ou plus"
             },
         },
@@ -303,6 +320,7 @@ const questions: QuestionType[] = [
             "Abonnement de parcours CFF",
             "Abonnement demi-tarif CFF",
             "Abonnement général (AG) CFF",
+            "Autres",
         ],
     },
 
@@ -345,9 +363,6 @@ const questions: QuestionType[] = [
                 const adultsNumber = responses.value[4] as undefined | string[]
                 const vehiculsNumber = responses.value[5] as undefined | string[]
 
-                console.log(vehiculsNumber)
-
-
                 if( !adultsNumber ) return true
                 if( adultsNumber.length === 0 ) return true
 
@@ -357,16 +372,10 @@ const questions: QuestionType[] = [
                 const totalAdults       = adultsNumber.slice(0,4).reduce((acc, cur) => acc + parseFloat(cur), 0)
                 const totalVehiculs     = vehiculsNumber.reduce((acc, cur) => acc + parseFloat(cur), 0)
 
-                console.log(
-                    'totalAdults', totalAdults,
-                    'totalVehiculs', totalVehiculs,
-                )
-
-
                 return totalAdults > totalVehiculs
             },
         },
-        text: 'Toutes les personnes de votre ménage doivent participer au défi. Merci de remplir les informations personnelles pour chaque participant.',
+        text: 'Selon les informations fournies, vous partagez un ou plusieurs véhicules au sein de votre ménage. Par conséquent, toutes les personnes de votre ménage doivent participer au défi. Merci de remplir les informations personnelles pour chaque participant.e majeur.e',
     },
 
 
@@ -390,7 +399,7 @@ const questions: QuestionType[] = [
                 if( !vehiculsNumber ) return true
                 if( vehiculsNumber.length === 0 ) return true
 
-                const totalAdults           = adultsNumber.slice(0,4).reduce((acc, cur) => acc + parseFloat(cur), 0)
+                const totalAdults           = adultsNumber.slice(0,3).reduce((acc, cur) => acc + parseFloat(cur), 0)
                 const totalMoreThan18_Old   = adultsNumber.slice(0,3).reduce((acc, cur) => acc + parseFloat(cur), 0)
                 const totalVehiculs         = vehiculsNumber.reduce((acc, cur) => acc + parseFloat(cur), 0)
 
@@ -426,7 +435,7 @@ const questions: QuestionType[] = [
                 if( !vehiculsNumber ) return true
                 if( vehiculsNumber.length === 0 ) return true
 
-                const totalAdults           = adultsNumber.slice(0,4).reduce((acc, cur) => acc + parseFloat(cur), 0)
+                const totalAdults           = adultsNumber.slice(0,3).reduce((acc, cur) => acc + parseFloat(cur), 0)
                 const totalMoreThan18_Old   = adultsNumber.slice(0,3).reduce((acc, cur) => acc + parseFloat(cur), 0)
                 const totalVehiculs         = vehiculsNumber.reduce((acc, cur) => acc + parseFloat(cur), 0)
 
@@ -455,7 +464,7 @@ const questions: QuestionType[] = [
                 if( !vehiculsNumber ) return true
                 if( vehiculsNumber.length === 0 ) return true
 
-                const totalAdults           = adultsNumber.slice(0,4).reduce((acc, cur) => acc + parseFloat(cur), 0)
+                const totalAdults           = adultsNumber.slice(0,3).reduce((acc, cur) => acc + parseFloat(cur), 0)
                 const totalMoreThan18_Old   = adultsNumber.slice(0,3).reduce((acc, cur) => acc + parseFloat(cur), 0)
                 const totalVehiculs         = vehiculsNumber.reduce((acc, cur) => acc + parseFloat(cur), 0)
 
@@ -488,7 +497,7 @@ const questions: QuestionType[] = [
                 if( !vehiculsNumber ) return true
                 if( vehiculsNumber.length === 0 ) return true
 
-                const totalAdults           = adultsNumber.slice(0,4).reduce((acc, cur) => acc + parseFloat(cur), 0)
+                const totalAdults           = adultsNumber.slice(0,3).reduce((acc, cur) => acc + parseFloat(cur), 0)
                 const totalMoreThan18_Old   = adultsNumber.slice(0,3).reduce((acc, cur) => acc + parseFloat(cur), 0)
                 const totalVehiculs         = vehiculsNumber.reduce((acc, cur) => acc + parseFloat(cur), 0)
 
@@ -522,7 +531,7 @@ const questions: QuestionType[] = [
                 if( !vehiculsNumber ) return true
                 if( vehiculsNumber.length === 0 ) return true
 
-                const totalAdults           = adultsNumber.slice(0,4).reduce((acc, cur) => acc + parseFloat(cur), 0)
+                const totalAdults           = adultsNumber.slice(0,3).reduce((acc, cur) => acc + parseFloat(cur), 0)
                 const totalMoreThan18_Old   = adultsNumber.slice(0,3).reduce((acc, cur) => acc + parseFloat(cur), 0)
                 const totalVehiculs         = vehiculsNumber.reduce((acc, cur) => acc + parseFloat(cur), 0)
 
@@ -536,12 +545,9 @@ const questions: QuestionType[] = [
         text: 'De quel(s) abonnement(s) de transports publics dispose-t-elle ?',
         type: 'checkbox',
         options: [
-            "Aucun",
-            "Abonnement de zone unireso",
-            "Abonnement de parcours CFF",
-            "Abonnement demi-tarif",
-            "Abonnement général (AG)",
-            "Autres : précisez [zone de texte]",
+            "Oui",
+            "Non",
+            "Momentanément pas (par exemple retrait)",
         ],
         conditions: {
             isBlocking: false,
@@ -559,7 +565,7 @@ const questions: QuestionType[] = [
                 if( !vehiculsNumber ) return true
                 if( vehiculsNumber.length === 0 ) return true
 
-                const totalAdults           = adultsNumber.slice(0,4).reduce((acc, cur) => acc + parseFloat(cur), 0)
+                const totalAdults           = adultsNumber.slice(0,3).reduce((acc, cur) => acc + parseFloat(cur), 0)
                 const totalMoreThan18_Old   = adultsNumber.slice(0,3).reduce((acc, cur) => acc + parseFloat(cur), 0)
                 const totalVehiculs         = vehiculsNumber.reduce((acc, cur) => acc + parseFloat(cur), 0)
 
@@ -594,7 +600,7 @@ const questions: QuestionType[] = [
                 if( !vehiculsNumber ) return true
                 if( vehiculsNumber.length === 0 ) return true
 
-                const totalAdults           = adultsNumber.slice(0,4).reduce((acc, cur) => acc + parseFloat(cur), 0)
+                const totalAdults           = adultsNumber.slice(0,3).reduce((acc, cur) => acc + parseFloat(cur), 0)
                 const totalMoreThan18_Old   = adultsNumber.slice(0,3).reduce((acc, cur) => acc + parseFloat(cur), 0)
                 const totalVehiculs         = vehiculsNumber.reduce((acc, cur) => acc + parseFloat(cur), 0)
 
@@ -625,7 +631,7 @@ const questions: QuestionType[] = [
                 if( !vehiculsNumber ) return true
                 if( vehiculsNumber.length === 0 ) return true
 
-                const totalAdults           = adultsNumber.slice(0,4).reduce((acc, cur) => acc + parseFloat(cur), 0)
+                const totalAdults           = adultsNumber.slice(0,3).reduce((acc, cur) => acc + parseFloat(cur), 0)
                 const totalMoreThan18_Old   = adultsNumber.slice(0,3).reduce((acc, cur) => acc + parseFloat(cur), 0)
                 const totalVehiculs         = vehiculsNumber.reduce((acc, cur) => acc + parseFloat(cur), 0)
 
@@ -661,7 +667,7 @@ const questions: QuestionType[] = [
                 if( !vehiculsNumber ) return true
                 if( vehiculsNumber.length === 0 ) return true
 
-                const totalAdults           = adultsNumber.slice(0,4).reduce((acc, cur) => acc + parseFloat(cur), 0)
+                const totalAdults           = adultsNumber.slice(0,3).reduce((acc, cur) => acc + parseFloat(cur), 0)
                 const totalMoreThan18_Old   = adultsNumber.slice(0,3).reduce((acc, cur) => acc + parseFloat(cur), 0)
                 const totalVehiculs         = vehiculsNumber.reduce((acc, cur) => acc + parseFloat(cur), 0)
 
@@ -690,7 +696,7 @@ const questions: QuestionType[] = [
                 if( !vehiculsNumber ) return true
                 if( vehiculsNumber.length === 0 ) return true
 
-                const totalAdults           = adultsNumber.slice(0,4).reduce((acc, cur) => acc + parseFloat(cur), 0)
+                const totalAdults           = adultsNumber.slice(0,3).reduce((acc, cur) => acc + parseFloat(cur), 0)
                 const totalMoreThan18_Old   = adultsNumber.slice(0,3).reduce((acc, cur) => acc + parseFloat(cur), 0)
                 const totalVehiculs         = vehiculsNumber.reduce((acc, cur) => acc + parseFloat(cur), 0)
 
@@ -723,7 +729,7 @@ const questions: QuestionType[] = [
                 if( !vehiculsNumber ) return true
                 if( vehiculsNumber.length === 0 ) return true
 
-                const totalAdults           = adultsNumber.slice(0,4).reduce((acc, cur) => acc + parseFloat(cur), 0)
+                const totalAdults           = adultsNumber.slice(0,3).reduce((acc, cur) => acc + parseFloat(cur), 0)
                 const totalMoreThan18_Old   = adultsNumber.slice(0,3).reduce((acc, cur) => acc + parseFloat(cur), 0)
                 const totalVehiculs         = vehiculsNumber.reduce((acc, cur) => acc + parseFloat(cur), 0)
 
@@ -757,7 +763,7 @@ const questions: QuestionType[] = [
                 if( !vehiculsNumber ) return true
                 if( vehiculsNumber.length === 0 ) return true
 
-                const totalAdults           = adultsNumber.slice(0,4).reduce((acc, cur) => acc + parseFloat(cur), 0)
+                const totalAdults           = adultsNumber.slice(0,3).reduce((acc, cur) => acc + parseFloat(cur), 0)
                 const totalMoreThan18_Old   = adultsNumber.slice(0,3).reduce((acc, cur) => acc + parseFloat(cur), 0)
                 const totalVehiculs         = vehiculsNumber.reduce((acc, cur) => acc + parseFloat(cur), 0)
 
@@ -776,7 +782,7 @@ const questions: QuestionType[] = [
             "Abonnement de parcours CFF",
             "Abonnement demi-tarif",
             "Abonnement général (AG)",
-            "Autres : précisez [zone de texte]",
+            "Autres",
         ],
         conditions: {
             isBlocking: false,
@@ -794,7 +800,7 @@ const questions: QuestionType[] = [
                 if( !vehiculsNumber ) return true
                 if( vehiculsNumber.length === 0 ) return true
 
-                const totalAdults           = adultsNumber.slice(0,4).reduce((acc, cur) => acc + parseFloat(cur), 0)
+                const totalAdults           = adultsNumber.slice(0,3).reduce((acc, cur) => acc + parseFloat(cur), 0)
                 const totalMoreThan18_Old   = adultsNumber.slice(0,3).reduce((acc, cur) => acc + parseFloat(cur), 0)
                 const totalVehiculs         = vehiculsNumber.reduce((acc, cur) => acc + parseFloat(cur), 0)
 
@@ -829,7 +835,7 @@ const questions: QuestionType[] = [
                 if( !vehiculsNumber ) return true
                 if( vehiculsNumber.length === 0 ) return true
 
-                const totalAdults           = adultsNumber.slice(0,4).reduce((acc, cur) => acc + parseFloat(cur), 0)
+                const totalAdults           = adultsNumber.slice(0,3).reduce((acc, cur) => acc + parseFloat(cur), 0)
                 const totalMoreThan18_Old   = adultsNumber.slice(0,3).reduce((acc, cur) => acc + parseFloat(cur), 0)
                 const totalVehiculs         = vehiculsNumber.reduce((acc, cur) => acc + parseFloat(cur), 0)
 
@@ -845,17 +851,130 @@ const questions: QuestionType[] = [
 
     /**
      *
-     ENFANT ??? /////////////////////////
+     ENFANT 1 /////////////////////////
      *
      */
+
     {
         id: 27.1,
         type: 'message',
         conditions: {
             isBlocking: false,
-            value: () => true,
+            value: () => {
+
+                const adultsNumber = responses.value[4] as undefined | string[]
+                const vehiculsNumber = responses.value[5] as undefined | string[]
+
+                if( !adultsNumber ) return true
+                if( adultsNumber.length === 0 ) return true
+                if( !vehiculsNumber ) return true
+                if( vehiculsNumber.length === 0 ) return true
+
+                const totalAdults           = adultsNumber.slice(0,3).reduce((acc, cur) => acc + parseFloat(cur), 0)
+                const totalChild            = adultsNumber.slice(3,5).reduce((acc, cur) => acc + parseFloat(cur), 0)
+                const totalMoreThan18_Old   = adultsNumber.slice(0,3).reduce((acc, cur) => acc + parseFloat(cur), 0)
+                const totalVehiculs         = vehiculsNumber.reduce((acc, cur) => acc + parseFloat(cur), 0)
+
+                return totalAdults > totalVehiculs && totalMoreThan18_Old > 2 && totalChild > 0
+            },
         },
-        text: 'Question pour enfant: Comment on calcule les enfants?',
+        text: "Merci de remplir ces quelques questions complémentaires pour le premier enfant mineur de votre ménage. Si vous avez plusieurs enfants, merci de répondre dans l’ordre du plus grand au plus petit.",
+    },
+
+    {
+        id: 28,
+        type: 'select',
+        text: 'A quelle fréquence se déplace-t-il en voiture ? (y compris passager)',
+        options: [
+            "Tous les jours ou presque",
+            "Une à plusieurs fois par semaine",
+            "Moins d’une fois par semaine",
+        ],
+    },
+
+    {
+        id: 29,
+        type: "checkbox",
+        text: "De quel(s) abonnement(s) de transports publics dispose-t-il?",
+        options: [
+            "Aucun",
+            "Abonnement de zone unireso",
+            "Abonnement de parcours CFF",
+            "Abonnement demi-tarif",
+            "Abonnement général (AG)",
+            "Autres",
+        ],
+    },
+
+
+
+
+    /**
+     *
+     ENFANT 2 /////////////////////////
+     *
+     */
+
+    {
+        id: 29.1,
+        type: 'message',
+        conditions: {
+            isBlocking: false,
+            value: () => {
+
+                const adultsNumber = responses.value[4] as undefined | string[]
+                const vehiculsNumber = responses.value[5] as undefined | string[]
+
+                if( !adultsNumber ) return true
+                if( adultsNumber.length === 0 ) return true
+                if( !vehiculsNumber ) return true
+                if( vehiculsNumber.length === 0 ) return true
+
+                const totalAdults           = adultsNumber.slice(0,3).reduce((acc, cur) => acc + parseFloat(cur), 0)
+                const totalChild            = adultsNumber.slice(3,5).reduce((acc, cur) => acc + parseFloat(cur), 0)
+                const totalMoreThan18_Old   = adultsNumber.slice(0,3).reduce((acc, cur) => acc + parseFloat(cur), 0)
+                const totalVehiculs         = vehiculsNumber.reduce((acc, cur) => acc + parseFloat(cur), 0)
+
+                return totalAdults > totalVehiculs && totalMoreThan18_Old > 2 && totalChild > 1
+            },
+        },
+        text: "Merci de remplir ces quelques questions complémentaires pour le deuxième enfant mineur de votre ménage.",
+    },
+
+    {
+        id: 30,
+        type: 'select',
+        text: 'A quelle fréquence se déplace-t-il en voiture ? (y compris passager)',
+        options: [
+            "Tous les jours ou presque",
+            "Une à plusieurs fois par semaine",
+            "Moins d’une fois par semaine",
+        ],
+    },
+
+    {
+        id: 31,
+        type: "checkbox",
+        text: "De quel(s) abonnement(s) de transports publics dispose-t-il?",
+        options: [
+            "Aucun",
+            "Abonnement de zone unireso",
+            "Abonnement de parcours CFF",
+            "Abonnement demi-tarif",
+            "Abonnement général (AG)",
+            "Autres",
+        ],
+    },
+
+
+
+
+
+    {
+        id: 32,
+        text: "Adresse email :",
+        type: "mail",
+        placeholder: "Entrez votre adresse email",
     },
 
 
