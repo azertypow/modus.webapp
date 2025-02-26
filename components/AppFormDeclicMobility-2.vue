@@ -1080,8 +1080,15 @@ function updateContent() {
 }
 
 // Validation du formulaire
-const isFormValid = computed(() => {
+const isFormValid: ComputedRef<any> = computed(() => {
     return visibleQuestions.value.every((question) => {
+
+        if (question.type === 'mail') {
+            const email = responses.value[question.id]
+            if(typeof email !== 'string') return false
+            return email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+        }
+
         return responses.value[question.id] !== undefined && responses.value[question.id] !== "";
     });
 });
@@ -1091,7 +1098,7 @@ const submitForm = () => {
     if (isFormValid.value) {
         console.log("Formulaire soumis :", responses.value);
     } else {
-        alert("Veuillez remplir toutes les questions obligatoires.");
+        alert("Veuillez remplir toutes les questions obligatoires, y compris une adresse email valide.");
     }
 };
 </script>
