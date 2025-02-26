@@ -9,21 +9,47 @@
     />
     <div class="v-proto-form__bottom_content" >
       <div>
-        <h3>Pour commencer, cochez la case ci-après.</h3>
 
-        <div class="app-form__section app-form__section--valid">
-          <input type="checkbox" v-model="isChecked">
-          <label class="no-counter">Je confirme avoir plus de 18 ans et souhaiter participer à l'enquête</label>
-        </div>
+        <template v-if=" ! (isChecked_moreThan18YearOld && isChecked_readPolicy) ">
+          <h2 style="margin-top: 0; text-align: center; color: var(--app-color-main)"
+          >Pour commencer, cochez la case ci-après.</h2>
 
-        <h6>En cliquant sur cette case, vous donnez votre consentement pour la collecte et l'utilisation des données selon les conditions évoquées ci-dessus (En savoir plus). Les démarches pour avoir accès à vos données personnelles, les modifier ou les supprimer s’effectuent par e-mail en cliquant ici.
-          1 Loi sur l’information du public, l’accès aux documents et la protection des données personnelles, du 5 octobre 2001 (LIPAD; A 2 08) et règlement d'application de la loi sur l'information du public, l'accès aux documents et la protection des données personnelles, du 21 décembre 2011 (RIPAD; A 2 08.01).
-        </h6>
+          <div class="app-form__section"
+               :class="{'app-form__section--valid': isChecked_moreThan18YearOld}"
+          >
+            <input type="checkbox" v-model="isChecked_moreThan18YearOld">
+            <label class="no-counter">Je confirme avoir plus de 18 ans et souhaiter répondre au questionnaire</label>
+          </div>
+
+          <div class="app-form__section"
+               :class="{'app-form__section--valid': isChecked_readPolicy}"
+               style="margin-top: 2rem"
+          >
+            <input type="checkbox" v-model="isChecked_readPolicy">
+            <label class="no-counter">Je confirme comprendre et accepter la politique de protection des données</label>
+          </div>
+
+
+          <h6 style="line-height: 1.25em; letter-spacing: .025em; font-weight: 700;"
+          >En cliquant sur cette case, vous donnez votre consentement pour la collecte et l'utilisation des données selon
+            les conditions évoquées ci-dessus (En savoir plus). Les démarches pour avoir accès à vos données personnelles,
+            les modifier ou les supprimer s’effectuent par e-mail en cliquant ici.
+            1 Loi sur l’information du public, l’accès aux documents et la protection des données personnelles, du 5
+            octobre 2001 (LIPAD; A 2 08) et règlement d'application de la loi sur l'information du public, l'accès aux
+            documents et la protection des données personnelles, du 21 décembre 2011 (RIPAD; A 2 08.01).
+          </h6>
+        </template>
+
+        <template v-else>
+          <h2 style="margin-top: 0; text-align: center; color: var(--app-color-main)"
+          >C'est parti!</h2>
+        </template>
+
       </div>
     </div>
 
     <div class="v-proto-form__bottom_content"
-         v-if="isChecked"
+         v-if="isChecked_moreThan18YearOld && isChecked_readPolicy"
     >
       <div class="v-proto-form__bottom_content__section">
         <app-form-declic-mobility2 />
@@ -62,7 +88,8 @@ onMounted(async () => {
     bodyContent.value = pageData.body
 })
 
-const isChecked = ref(false)
+const isChecked_moreThan18YearOld = ref(false)
+const isChecked_readPolicy = ref(false)
 
 const formHeaderText = ""
 
@@ -72,23 +99,28 @@ const formBodyContent: IApiBody = {
         "content": {
             "content": {
                 "text": `
-<h1>Questionnaire</h1>
-<p>Merci pour votre intérêt pour l’initiative « Déclic Mobilité »</p>
-<h3>Déclic Mobilité, c’est quoi ?</h3>
-<p>Le concept est simple : vous stationnez (dans un parking prévu à cet effet) votre véhicule durant le mois de mai 2025 et vous recevez un accès gratuit à des alternatives de déplacement de votre choix parmi lesquelles un abonnement général CFF, un vélo/vélo électrique/vélo cargo, un abonnement Mobility, et bien d’autres services. </p>
-<h3>Quelles sont les conditions de participation ?</h3>
-<ul>
-<li>Avoir 18 ans ou plus</li>
-<li>Résider sur le territoire communal de Genève ou Carouge</li>
-<li>Détenir un ou plusieur(s) véhicule(s) (voiture, moto ou scooter ; thermique ou électrique)</li>
-<li>S’engager à ne pas utiliser son véhicule pendant un mois</li>
-<li>Participer à la séance de lancement (samedi 3 mai matin) et de restitution (date, heure)</li>
-</ul>
-<h6>NB : les familles ou ménages composés de plusieurs personnes peuvent participer en groupe.</h6>
-<h3>Comment s’inscrire ?</h3>
-<p>Pour participer au défi « Déclic Mobilité », vous devez vous enregistrer en répondant à quelques questions (2 minutes) sur votre profil et vos habitudes de déplacement. Une sélection sera réalisée pour garantir une diversité des profils et les personnes sélectionnées seront recontactées par email avec toutes les informations nécessaires pour commencer l’aventure.</p>
-<h3>Comment sont utilisées mes données personnelles ?</h3>
-<p>L’enquête est effectuée sur la plateforme de sondage Qualtrics, hébergée sur un serveur sécurisé répondant à toutes les normes de sécurité en vigueur. Les données recueillies dans le cadre de cette enquête seront traitées de manière strictement confidentielle dans le respect des dispositions applicables en matière de protection des données1. Elles seront utilisées à des fins statistiques et d'évaluation de l’impact de la prise en charge des abonnements unireso. Elles ne seront pas transmises à des tiers et seront détruites à la fin de l’opération. </p>
+                        <h1>Demande d’inscription au "Déclic Mobilité"</h1>
+
+                        <h3>Déclic Mobilité, c’est quoi ?</h3>
+                        <p>Le concept est simple : vous stationnez votre véhicule (dans un parking prévu à cet effet) durant le mois de mai 2025</p>
+
+
+                        <h3>Conditions de participation</h3>
+                        <ul>
+                          <li>
+                            S’engager à ne pas utiliser son/ses véhicule(s) pendant un mois
+                          </li>
+                          <li>
+                            Séance de restitution (lundi 2 juin soir)
+                          </li>
+                        </ul>
+
+
+                        <h3>Comment sont utilisées mes données personnelles?</h3>
+
+                        <p>
+                          Les données recueillies dans le cadre de ce questionnaire seront traitées conformément à <a target="_blank" href="/notice_de_protection_des_donnees.pdf">la notice de protection des données</a>.
+                        </p>
   `
             },
             "id": "",
