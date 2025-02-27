@@ -72,7 +72,7 @@ const bodyContent: Ref<UnwrapRef<undefined | IApiBody>> = ref(undefined)
 onMounted(async () => {
     const pageData = await ApiFetchPage('proposer-un-projet')
 
-    headerCover.value = pageData.options.headerImage?.resize.xxl
+    headerCover.value = '/25DECLIC_MOBILITE_banner.png'
     headerText.value = pageData.options.headerTitle
 
     bodyContent.value = pageData.body
