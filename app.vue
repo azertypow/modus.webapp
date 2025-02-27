@@ -100,6 +100,8 @@ onMounted(async () => {
     })
 
     siteInfo().value = await ApiFetchPagesInfo()
+
+    if(useRouter().currentRoute.value.path === '/declic-mobilite') useRouter().push('/forms/declic-mobilite')
 })
 
 useRouter().beforeEach((to, from, next) => {
