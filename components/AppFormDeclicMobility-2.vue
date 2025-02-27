@@ -160,7 +160,7 @@ const questions: QuestionType[] = [
         },
         text: `
         <p>Vous résidez hors du territoire couvert par l’initiative « Déclic mobilité » qui se tiendra au printemps 2025. Si vous connaissez des personnes qui résident dans la commune de Genève ou de Carouge, n’hésitez pas à leur partager l’information.</p>
-        <p>Par ailleurs et si vous souhaitez être recontacté pour participer à la seconde phase de l’initiative « Déclic mobilité » qui se tiendra à l’automne 2025 sur tout le Canton de Genève et la Région de Nyon, merci de nous envoyer un message par email en <a href="mailto: info@declic-mobilite.ch">cliquant ici</a>.</p>
+        <p>Par ailleurs et si vous souhaitez être recontacté pour participer à la seconde phase de l’initiative « Déclic mobilité » qui se tiendra à l’automne 2025 sur tout le Canton de Genève et la Région de Nyon, merci de nous envoyer un message par email à <strong style="color: var(--app-color-main)">info@declic-mobilite.ch</strong>.</p>
         `,
     },
 
@@ -320,7 +320,7 @@ const questions: QuestionType[] = [
             "Abonnement de parcours CFF",
             "Abonnement demi-tarif CFF",
             "Abonnement général (AG) CFF",
-            "Autres",
+            "Autre",
         ],
     },
 
@@ -778,11 +778,11 @@ const questions: QuestionType[] = [
         type: 'checkbox',
         options: [
             "Aucun",
-            "Abonnement de zone unireso",
+            "Abonnement de zone unireso TPG",
             "Abonnement de parcours CFF",
-            "Abonnement demi-tarif",
-            "Abonnement général (AG)",
-            "Autres",
+            "Abonnement demi-tarif CFF",
+            "Abonnement général (AG) CFF",
+            "Autre",
         ],
         conditions: {
             isBlocking: false,
@@ -878,7 +878,7 @@ const questions: QuestionType[] = [
                 return totalAdults > totalVehiculs && totalMoreThan18_Old > 2 && totalChild > 0
             },
         },
-        text: "Merci de remplir ces quelques questions complémentaires pour le premier enfant mineur de votre ménage. Si vous avez plusieurs enfants, merci de répondre dans l’ordre du plus grand au plus petit.",
+        text: "Merci de remplir ces quelques questions complémentaires pour le premier enfant de votre ménage. Si vous avez plusieurs enfants, merci de répondre dans l’ordre du plus grand au plus petit.",
     },
 
     {
@@ -898,11 +898,11 @@ const questions: QuestionType[] = [
         text: "De quel(s) abonnement(s) de transports publics dispose-t-il?",
         options: [
             "Aucun",
-            "Abonnement de zone unireso",
+            "Abonnement de zone unireso TPG",
             "Abonnement de parcours CFF",
-            "Abonnement demi-tarif",
-            "Abonnement général (AG)",
-            "Autres",
+            "Abonnement demi-tarif CFF",
+            "Abonnement général (AG) CFF",
+            "Autre",
         ],
     },
 
@@ -938,7 +938,7 @@ const questions: QuestionType[] = [
                 return totalAdults > totalVehiculs && totalMoreThan18_Old > 2 && totalChild > 1
             },
         },
-        text: "Merci de remplir ces quelques questions complémentaires pour le deuxième enfant mineur de votre ménage.",
+        text: "Merci de remplir ces quelques questions complémentaires pour le deuxième enfant de votre ménage.",
     },
 
     {
@@ -958,11 +958,11 @@ const questions: QuestionType[] = [
         text: "De quel(s) abonnement(s) de transports publics dispose-t-il?",
         options: [
             "Aucun",
-            "Abonnement de zone unireso",
+            "Abonnement de zone unireso TPG",
             "Abonnement de parcours CFF",
-            "Abonnement demi-tarif",
-            "Abonnement général (AG)",
-            "Autres",
+            "Abonnement demi-tarif CFF",
+            "Abonnement général (AG) CFF",
+            "Autre",
         ],
     },
 

@@ -28,16 +28,6 @@
             <input type="checkbox" v-model="isChecked_readPolicy">
             <label class="no-counter">Je confirme comprendre et accepter la politique de protection des données</label>
           </div>
-
-
-          <h6 style="line-height: 1.25em; letter-spacing: .025em; font-weight: 700;"
-          >En cliquant sur cette case, vous donnez votre consentement pour la collecte et l'utilisation des données selon
-            les conditions évoquées ci-dessus (En savoir plus). Les démarches pour avoir accès à vos données personnelles,
-            les modifier ou les supprimer s’effectuent par e-mail en cliquant ici.
-            1 Loi sur l’information du public, l’accès aux documents et la protection des données personnelles, du 5
-            octobre 2001 (LIPAD; A 2 08) et règlement d'application de la loi sur l'information du public, l'accès aux
-            documents et la protection des données personnelles, du 21 décembre 2011 (RIPAD; A 2 08.01).
-          </h6>
         </template>
 
         <template v-else>
@@ -106,15 +96,15 @@ const formBodyContent: IApiBody = {
 
 
                         <h3>Conditions de participation</h3>
-                        <ul>
-                          <li>
-                            S’engager à ne pas utiliser son/ses véhicule(s) pendant un mois
-                          </li>
-                          <li>
-                            Séance de restitution (lundi 2 juin soir)
-                          </li>
-                        </ul>
 
+                        <ul>
+                          <li>Avoir 18 ans ou plus</li>
+                          <li>Résider sur le territoire communal de Genève ou Carouge</li>
+                          <li>Détenir un ou plusieur(s) véhicule(s) (voiture, moto ou scooter ; thermique ou électrique)</li>
+                          <li>S’engager à ne pas utiliser son/ses véhicule(s) pendant un mois</li>
+                          <li>Participer à la séance de lancement (samedi 3 mai matin) et de restitution (lundi 2 juin soir)</li>
+                        </ul>
+                        <h6>NB : les familles ou ménages composés de plusieurs personnes peuvent participer en groupe.</h6>
 
                         <h3>Comment sont utilisées mes données personnelles?</h3>
 
