@@ -884,30 +884,13 @@ const questions: QuestionType[] = [
     {
         id: 28,
         type: 'select',
-        text: 'A quelle fréquence se déplace-t-il en voiture ? (y compris passager)',
+        text: 'A quelle fréquence la voiture sert-elle à accompagner votre/vos enfants ?',
         options: [
             "Tous les jours ou presque",
             "Une à plusieurs fois par semaine",
             "Moins d’une fois par semaine",
         ],
     },
-
-    {
-        id: 29,
-        type: "checkbox",
-        text: "De quel(s) abonnement(s) de transports publics dispose-t-il?",
-        options: [
-            "Aucun",
-            "Abonnement de zone unireso TPG",
-            "Abonnement de parcours CFF",
-            "Abonnement demi-tarif CFF",
-            "Abonnement général (AG) CFF",
-            "Autre",
-        ],
-    },
-
-
-
 
     /**
      *
@@ -944,29 +927,13 @@ const questions: QuestionType[] = [
     {
         id: 30,
         type: 'select',
-        text: 'A quelle fréquence se déplace-t-il en voiture ? (y compris passager)',
+        text: 'A quelle fréquence la voiture sert-elle à accompagner votre/vos enfants ?',
         options: [
             "Tous les jours ou presque",
             "Une à plusieurs fois par semaine",
             "Moins d’une fois par semaine",
         ],
     },
-
-    {
-        id: 31,
-        type: "checkbox",
-        text: "De quel(s) abonnement(s) de transports publics dispose-t-il?",
-        options: [
-            "Aucun",
-            "Abonnement de zone unireso TPG",
-            "Abonnement de parcours CFF",
-            "Abonnement demi-tarif CFF",
-            "Abonnement général (AG) CFF",
-            "Autre",
-        ],
-    },
-
-
 
 
 
