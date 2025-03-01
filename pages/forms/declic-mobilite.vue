@@ -8,6 +8,26 @@
             :body-content="formBodyContent"
     />
 
+    <div class="v-proto-form__bottom_content" >
+      <div>
+          <p
+                  style="
+                    margin-top: 0;
+                    text-align: center;
+                    color: var(--app-color-main);
+                    max-width: 24em;
+                  "
+          >Entrez votre e-mail si vous souhaitez recevoir un&nbsp;rappel le mardi 4 mars </p>
+          <div class="app-form__section"
+          >
+            <input v-model="mailAddress" type="email" />
+            <button class="app-button app-button--small"
+                    @click="sendEmail"
+            >envoyer</button>
+          </div>
+      </div>
+    </div>
+
     <app-page-footer/>
   </section>
 </template>
@@ -23,9 +43,31 @@ import {IApiBody, IApiImage} from "~/composable/adminApi/apiDefinitions";
 import {ApiFetchPage} from "~/composable/adminApi/apiFetch";
 import AppFormDeclicMobility2 from "~/components/AppFormDeclicMobility-2.vue";
 
-// const props = defineProps<{
-//     message?: string
-// }>()
+
+const mailAddress = ref('')
+
+const sendEmail = async () => {
+    if (!mailAddress.value) {
+        alert('Veuillez entrer une adresse e-mail valide.');
+        return;
+    }
+
+    try {
+        // Envoyer une requête DELETE à l'API Deno
+        const response = await $fetch('https://azertypow-mail-record-36.deno.dev/emails', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ email: mailAddress.value }),
+        });
+
+        console.log('Réponse du serveur :', response);
+    } catch (error) {
+        // Gérer les erreurs
+        console.error('Erreur lors de l\'envoi de l\'e-mail :', error);
+    }
+};
 
 const headerCover: Ref<UnwrapRef<undefined | string>> = ref(undefined)
 const headerText: Ref<UnwrapRef<undefined | string>> = ref(undefined)
@@ -40,9 +82,6 @@ onMounted(async () => {
 
     bodyContent.value = pageData.body
 })
-
-const isChecked_moreThan18YearOld = ref(false)
-const isChecked_readPolicy = ref(false)
 
 const formHeaderText = ""
 
@@ -107,5 +146,25 @@ const formBodyContent: IApiBody = {
   .v-app-header__graphic-box__module_1 {
     background: #e0d1c1 !important;
   }
+}
+
+
+.v-proto-form__bottom_content {
+  background: var(--app-color-grey);
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  padding-bottom: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  padding-left: var(--app-gutter);
+  padding-right: var(--app-gutter);
+}
+
+.app-form__section {
+  display: flex;
+  justify-content: center;
 }
 </style>
