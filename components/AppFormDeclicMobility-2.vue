@@ -1490,8 +1490,21 @@ const isFormValid: ComputedRef<{
 // Soumission du formulaire
 const submitForm = () => {
     if (isFormValid.value.isValid) {
-        console.log("Formulaire soumis :", responses.value)
-        alert(`Formulaire soumis: ${JSON.stringify(responses.value)}`)
+
+        const jsonData: {
+            question: QuestionType,
+            response: string | number | string[] | boolean | undefined,
+        }[] = visibleQuestions.value.map((question) => {
+            return {
+                question: question,
+                response: responses.value[question.id],
+            }
+        })
+
+        console.log("Formulaire soumis :", jsonData)
+
+
+        alert(`Formulaire soumis: ${JSON.stringify(jsonData)}`)
     } else {
         alert( isFormValid.value.message )
     }
