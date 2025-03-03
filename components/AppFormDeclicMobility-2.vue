@@ -715,9 +715,12 @@ const questions: QuestionType[] = [
         text: 'De quel(s) abonnement(s) de transports publics dispose-t-elle ?',
         type: 'checkbox',
         options: [
-            "Oui",
-            "Non",
-            "Momentanément pas (par exemple retrait)",
+            "Aucun",
+            "Abonnement de zone unireso TPG",
+            "Abonnement de parcours CFF",
+            "Abonnement demi-tarif CFF",
+            "Abonnement général (AG) CFF",
+            "Autre",
         ],
         conditions: {
             isBlocking: false,
