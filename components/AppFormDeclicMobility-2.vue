@@ -1,6 +1,12 @@
 <template>
     <form class="app-form-declic-mobility">
         <div v-for="question in visibleQuestions" :key="question.id" class="app-form__section">
+
+          <p v-if="question.type === 'mail'" style="width: 100%; max-width: none"
+          >Le questionnaire est presque terminé maintenant.
+            <br>Pour que nous puissions vous recontacter si votre candidature est sélectionnée, merci de renseigner votre adresse email.
+          </p>
+
             <label v-if="question.type !== 'message'">{{ question.text }}</label>
 
             <!-- Afficher le message si la question est de type 'message' -->
