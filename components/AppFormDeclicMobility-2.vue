@@ -341,14 +341,6 @@ const questions: QuestionType[] = [
             'Une à plusieurs fois par semaine',
             'Moins d’une fois par semaine',
             ],
-        conditions: {
-            isBlocking: false,
-            dependsOn: 5,
-            value: dependentValue => {
-                if( !Array.isArray(dependentValue) ) return false
-                return dependentValue[0] > 0
-            },
-        },
     },
 
     {
@@ -360,14 +352,6 @@ const questions: QuestionType[] = [
             'Une à plusieurs fois par semaine',
             'Moins d’une fois par semaine',
         ],
-        conditions: {
-            isBlocking: false,
-            dependsOn: 5,
-            value: dependentValue => {
-                if( !Array.isArray(dependentValue) ) return false
-                return dependentValue[1] > 0
-            },
-        },
     },
 
     {
