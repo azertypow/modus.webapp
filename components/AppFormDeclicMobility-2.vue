@@ -1315,7 +1315,7 @@ const questions: QuestionType[] = [
                 const totalVehiculs = parseFloat(carsNumber)
                     + parseFloat(motosNumber)
 
-                return (totalAdults + totalChild) > totalVehiculs && totalChild > 0
+                return (totalAdults + totalChild) > totalVehiculs && totalChild > 1
             },
         },
     },
