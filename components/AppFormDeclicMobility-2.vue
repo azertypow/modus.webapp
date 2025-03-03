@@ -613,53 +613,6 @@ const questions: QuestionType[] = [
         },
     },
     {
-        id: 17,
-        text: 'Possède-t-elle le permis de conduire ?',
-        type: 'select',
-        options: [
-            "Oui",
-            "Non",
-            "Momentanément pas (par exemple retrait)",
-        ],
-        conditions: {
-            isBlocking: false,
-            value: () => {
-
-                const personnes_de_65_ans_et_plus = responses.value[4.1] as undefined | string
-                const personnes_de_26_a_64_ans    = responses.value[4.2] as undefined | string
-                const personnes_de_18_a_25_ans    = responses.value[4.3] as undefined | string
-                const personnes_de_16_a_17_ans    = responses.value[4.4] as undefined | string
-                const personnes_de_0_a_15_ans     = responses.value[4.5] as undefined | string
-
-                if( !personnes_de_65_ans_et_plus
-                    || !personnes_de_26_a_64_ans
-                    || !personnes_de_18_a_25_ans
-                    || !personnes_de_16_a_17_ans
-                    || !personnes_de_0_a_15_ans
-                ) return false
-
-                const totalAdults =     parseFloat(personnes_de_65_ans_et_plus)
-                    + parseFloat(personnes_de_26_a_64_ans)
-                    + parseFloat(personnes_de_18_a_25_ans)
-
-                const totalChild =      parseFloat(personnes_de_16_a_17_ans)
-                    + parseFloat(personnes_de_0_a_15_ans)
-
-                const carsNumber      = responses.value[5.1] as undefined | string
-                const motosNumber     = responses.value[5.2] as undefined | string
-
-                if( !carsNumber
-                    || !motosNumber
-                ) return false
-
-                const totalVehiculs = parseFloat(carsNumber)
-                    + parseFloat(motosNumber)
-
-                return (totalAdults + totalChild) > totalVehiculs && totalAdults > 1
-            },
-        },
-    },
-    {
         id: 18,
         text: 'A quelle fréquence se déplace-t-elle en moto/scooter ?',
         type: 'select',
@@ -919,53 +872,6 @@ const questions: QuestionType[] = [
             "Etudiant·e",
             "Retraité·e",
             "Autres",
-        ],
-        conditions: {
-            isBlocking: false,
-            value: () => {
-
-                const personnes_de_65_ans_et_plus = responses.value[4.1] as undefined | string
-                const personnes_de_26_a_64_ans    = responses.value[4.2] as undefined | string
-                const personnes_de_18_a_25_ans    = responses.value[4.3] as undefined | string
-                const personnes_de_16_a_17_ans    = responses.value[4.4] as undefined | string
-                const personnes_de_0_a_15_ans     = responses.value[4.5] as undefined | string
-
-                if( !personnes_de_65_ans_et_plus
-                    || !personnes_de_26_a_64_ans
-                    || !personnes_de_18_a_25_ans
-                    || !personnes_de_16_a_17_ans
-                    || !personnes_de_0_a_15_ans
-                ) return false
-
-                const totalAdults =     parseFloat(personnes_de_65_ans_et_plus)
-                    + parseFloat(personnes_de_26_a_64_ans)
-                    + parseFloat(personnes_de_18_a_25_ans)
-
-                const totalChild =      parseFloat(personnes_de_16_a_17_ans)
-                    + parseFloat(personnes_de_0_a_15_ans)
-
-                const carsNumber      = responses.value[5.1] as undefined | string
-                const motosNumber     = responses.value[5.2] as undefined | string
-
-                if( !carsNumber
-                    || !motosNumber
-                ) return false
-
-                const totalVehiculs = parseFloat(carsNumber)
-                    + parseFloat(motosNumber)
-
-                return (totalAdults + totalChild) > totalVehiculs && totalAdults > 2
-            },
-        },
-    },
-    {
-        id: 23,
-        text: 'Possède-t-elle le permis de conduire ?',
-        type: 'select',
-        options: [
-            "Oui",
-            "Non",
-            "Momentanément pas (par exemple retrait)",
         ],
         conditions: {
             isBlocking: false,
