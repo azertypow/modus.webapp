@@ -291,7 +291,7 @@ const questions: QuestionType[] = [
                 return totalVehiculs < 1
             },
         },
-        text: 'Vous devez avoir eu moins 1 véhicule',
+        text: 'Ce défi s’adresse uniquement aux ménages dans lesquels il y a au moins une moto/un scooter ou une voiture. Merci pour votre compréhension.',
     },
 
 
