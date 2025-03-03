@@ -1350,6 +1350,17 @@ questions.forEach((question) => {
     }
 });
 
+function clearResponse() {
+    responses.value = {};
+
+    // Initialiser les réponses pour les questions de type checkbox
+    questions.forEach((question) => {
+        if (question.type === 'checkbox' || question.type === 'number') {
+            responses.value[question.id] = [];
+        }
+    });
+}
+
 // Calculer les questions visibles
 const visibleQuestions: Ref<QuestionType[]> = ref([])
 
@@ -1488,7 +1499,7 @@ const isFormValid: ComputedRef<{
 });
 
 // Soumission du formulaire
-const submitForm = () => {
+const submitForm = async () => {
     if (isFormValid.value.isValid) {
 
         const jsonData: {
@@ -1501,10 +1512,34 @@ const submitForm = () => {
             }
         })
 
-        console.log("Formulaire soumis :", jsonData)
+        // console.log("Formulaire soumis :", jsonData)
 
+        const url = "https://azertypow-mail-record-36.deno.dev/data";
 
-        alert(`Formulaire soumis: ${JSON.stringify(jsonData)}`)
+        try {
+            const response = await fetch(url, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(jsonData),
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const result = await response.json();
+
+            alert(`Formulaire soumis, merci!`)
+            clearResponse()
+            console.log("Réponse du serveur:", result);
+        } catch (error) {
+            console.error("Erreur lors de l'envoi de la requête POST:", error);
+
+            alert(`Erreur lors de l'envoi de la requête POST: ${error}`)
+        }
+
     } else {
         alert( isFormValid.value.message )
     }
