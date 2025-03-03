@@ -92,7 +92,8 @@ const formBodyContent: IApiBody = {
                         <h1>Demande d’inscription au "Déclic Mobilité"</h1>
 
                         <h3>Déclic Mobilité, c’est quoi ?</h3>
-                        <p>Le concept est simple : vous stationnez votre véhicule (dans un parking prévu à cet effet) durant le mois de mai 2025</p>
+                        <p>Le concept est simple : vous stationnez votre véhicule (dans un parking prévu à cet effet) durant le mois de mai 2025 et vous recevez un accès gratuit à des alternatives de déplacement de votre choix parmi lesquelles un abonnement général CFF, un vélo/vélo électrique/vélo cargo, un abonnement Mobility, et bien d’autres services.</p>
+
 
 
                         <h3>Conditions de participation</h3>
