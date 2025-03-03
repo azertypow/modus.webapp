@@ -1350,26 +1350,6 @@ questions.forEach((question) => {
     }
 });
 
-// Fonction pour vérifier si une question est visible
-const isQuestionVisible = (question: QuestionType): boolean => {
-    if (!question.conditions) return true;
-
-    // todo: dependsOn can be undefined: for multi questions dependencies, dependOn logic has no sens
-    const { dependsOn, value } = question.conditions;
-
-    if(dependsOn) {
-      const dependentValue = responses.value[dependsOn];
-      return typeof value === "function" ? value(dependentValue) : dependentValue === value;
-    }
-
-    if(typeof value === "function") return value()
-
-    console.error(`dependsOn is undefined and value is not a function.
-    if dependsOn is not specified, value must be nu function to check a condition.`)
-
-    return true
-};
-
 // Calculer les questions visibles
 const visibleQuestions: Ref<QuestionType[]> = ref([])
 
