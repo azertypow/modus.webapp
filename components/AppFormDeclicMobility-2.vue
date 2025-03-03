@@ -1515,6 +1515,7 @@ const isFormValid: ComputedRef<any> = computed(() => {
 const submitForm = () => {
     if (isFormValid.value) {
         console.log("Formulaire soumis :", responses.value);
+        alert(`Formulaire soumis: ${JSON.stringify(responses.value)}`);
     } else {
         alert("Veuillez remplir toutes les questions obligatoires, y compris une adresse email valide.");
     }
