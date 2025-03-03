@@ -242,6 +242,40 @@ const questions: QuestionType[] = [
     },
 
 
+    {
+        id: 4.01,
+        type: 'message',
+        conditions: {
+            isBlocking: true,
+            value: () => {
+
+                const personnes_de_65_ans_et_plus = responses.value[4.1] as undefined | string
+                const personnes_de_26_a_64_ans    = responses.value[4.2] as undefined | string
+                const personnes_de_18_a_25_ans    = responses.value[4.3] as undefined | string
+                const personnes_de_16_a_17_ans    = responses.value[4.4] as undefined | string
+                const personnes_de_0_a_15_ans     = responses.value[4.5] as undefined | string
+
+                if( !personnes_de_65_ans_et_plus
+                    || !personnes_de_26_a_64_ans
+                    || !personnes_de_18_a_25_ans
+                    || !personnes_de_16_a_17_ans
+                    || !personnes_de_0_a_15_ans
+                ) return true
+
+                const totalAdults =     parseFloat(personnes_de_65_ans_et_plus)
+                    + parseFloat(personnes_de_26_a_64_ans)
+                    + parseFloat(personnes_de_18_a_25_ans)
+
+                const totalChild =      parseFloat(personnes_de_16_a_17_ans)
+                    + parseFloat(personnes_de_0_a_15_ans)
+
+                return (totalAdults + totalChild) < 1
+            },
+        },
+        text: 'Vous n’avez mentionné aucune personne dans votre ménage. Merci de vérifier ces informations. Attention : vous devez vous compter parmi les personnes du ménage',
+    },
+
+
 
 
     {
