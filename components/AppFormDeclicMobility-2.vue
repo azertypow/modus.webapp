@@ -1431,26 +1431,88 @@ function updateContent() {
 }
 
 // Validation du formulaire
-const isFormValid: ComputedRef<any> = computed(() => {
-    return visibleQuestions.value.every((question) => {
+const isFormValid: ComputedRef<{
+    isValid: boolean,
+    message: string,
+}> = computed(() => {
 
-        if (question.type === 'mail') {
-            const email = responses.value[question.id]
-            if(typeof email !== 'string') return false
-            return email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+    let msg: {
+        isValid: boolean,
+        message: string,
+    } = {
+        message: '',
+        isValid: true,
+    }
+
+    for (const [index, question] of visibleQuestions.value.entries()) {
+
+        if (question.type === 'message') {
+            if(question.conditions?.isBlocking) {
+                msg = {
+                    isValid: false,
+                    message: question.text,
+                }
+            }
+            continue
         }
 
-        return responses.value[question.id] !== undefined && responses.value[question.id] !== "";
-    });
+        if (question.type === 'mail') {
+            const email: string | number | string[] | boolean | undefined = responses.value[question.id]
+
+            if( email === undefined )  {
+              msg = {
+                  isValid: false,
+                  message: "oups, votre mail est vide",
+              }
+              break
+            }
+
+            else if(typeof email !== 'string') {
+                msg = {
+                    isValid: false,
+                    message: "oups, votre mail n'est pas une chaine de caractère",
+                }
+                break
+            }
+
+            else if( ! /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ) {
+                msg = {
+                    isValid: false,
+                    message: "oups, votre mail est mal formaté",
+                }
+                break
+            }
+        }
+
+        else if( responses.value[question.id] === undefined
+            || responses.value[question.id] === ""
+        ) {
+          msg = {
+              isValid: false,
+              message: `la question ${index + 1}, "${question.text}" est vide`
+          }
+          break
+        }
+
+        else if ( Array.isArray(responses.value[question.id]) && (responses.value[question.id] as string[]).length === 0 ) {
+          msg = {
+              isValid: false,
+              message: `rien est selectionné pour la question ${index + 1}, "${question.text}"`
+          }
+          break
+        }
+    }
+
+    return msg
 });
 
 // Soumission du formulaire
 const submitForm = () => {
-    if (isFormValid.value) {
-        console.log("Formulaire soumis :", responses.value);
-        alert(`Formulaire soumis: ${JSON.stringify(responses.value)}`);
+    if (isFormValid.value.isValid) {
+        console.log("Formulaire soumis :", responses.value)
+        alert(`Formulaire soumis: ${JSON.stringify(responses.value)}`)
     } else {
-        alert("Veuillez remplir toutes les questions obligatoires, y compris une adresse email valide.");
+        alert( isFormValid.value.message )
     }
 };
 </script>
