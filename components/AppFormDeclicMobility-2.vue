@@ -450,6 +450,7 @@ const questions: QuestionType[] = [
             "Vélo à assistance électrique",
             "Vélo cargo",
             "Vélo conventionnel (mécanique)",
+            "Aucun",
         ],
     },
 
@@ -776,7 +777,7 @@ const questions: QuestionType[] = [
             "Vélo à assistance électrique",
             "Vélo cargo",
             "Vélo conventionnel (mécanique)",
-
+            "Aucun",
         ],
         conditions: {
             isBlocking: false,
@@ -1078,7 +1079,7 @@ const questions: QuestionType[] = [
             "Vélo à assistance électrique",
             "Vélo cargo",
             "Vélo conventionnel (mécanique)",
-
+            "Aucun",
         ],
         conditions: {
             isBlocking: false,
