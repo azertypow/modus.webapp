@@ -4,7 +4,9 @@
     >
         <footer class="v-app-page-footer__footer">
 
-            <div class="v-app-page-footer__footer__mailto">
+            <div class="v-app-page-footer__footer__mailto"
+                 v-if="showMailTo"
+            >
                 <a class="v-app-page-footer__footer__mailto__link"
                    href="mailto:info@modus-ge.ch"
                 >
@@ -84,9 +86,11 @@ import {ComputedRef, defineProps} from 'vue'
 import {bodyScrollInfo} from "~/composable/main";
 import {getValueToPercent} from "~/utils/precent";
 
-// const props = defineProps<{
-//     message?: string
-// }>()
+withDefaults(defineProps<{
+    showMailTo?: boolean
+}>(), {
+    showMailTo: true,
+})
 
 const bodyScrollInfoStore = bodyScrollInfo()
 
