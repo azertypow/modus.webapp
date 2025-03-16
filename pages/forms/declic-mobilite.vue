@@ -11,7 +11,7 @@
       <div>
 
         <template v-if=" ! (isChecked_moreThan18YearOld && isChecked_readPolicy) ">
-          <h2 style="margin-top: 0; text-align: center; color: var(--app-color-main)"
+          <h2 style="margin-top: 0; text-align: center;"
           >Pour commencer, cochez la case ci-après.</h2>
 
           <div class="app-form__section"
@@ -31,7 +31,7 @@
         </template>
 
         <template v-else>
-          <h2 style="margin-top: 0; text-align: center; color: var(--app-color-main)"
+          <h2 style="margin-top: 0; text-align: center;"
           >C'est parti!</h2>
         </template>
 
@@ -98,7 +98,7 @@ const bodyContent: Ref<UnwrapRef<undefined | IApiBody>> = ref(undefined)
 onMounted(async () => {
     const pageData = await ApiFetchPage('proposer-un-projet')
 
-    headerCover.value = '/25DECLIC_MOBILITE_banner.png'
+    headerCover.value = '/250313MODUS_declic-mobilite_banner-web.png'
     headerText.value = pageData.options.headerTitle
 
     bodyContent.value = pageData.body
@@ -241,5 +241,29 @@ const formBodyContent: IApiBody = {
     padding-left: var(--app-gutter);
     padding-right: var(--app-gutter);
   }
+}
+</style>
+
+<style>
+.v-proto-form {
+    .v-app-header__container {
+        //background: #e0d1c1;
+    }
+
+    h1 {
+        color: #ff4d84;
+    }
+
+    h2, h3, h6 {
+        color: #5500b7;
+    }
+
+    li {
+        color: black;
+
+        &:before {
+            background: #ff4d84;
+        }
+    }
 }
 </style>
