@@ -331,3 +331,32 @@ export interface IApiSiteInfoChildren {
     "uri": string
     "url": string
 }
+
+export interface PowerBIPage {
+    title: string;
+    power_bi_link: string;
+    power_bi_pages?: string; // Optionnel
+    uuid: string;
+}
+
+export interface Page {
+    content: PowerBIPage;
+    translations?: unknown[]; // Type inconnu mais explicite
+    children?: unknown[];
+    files?: unknown[];
+    id: string;
+    mediaUrl: string;
+    mediaRoot: string;
+    num: number;
+    parent: string;
+    slug: string;
+    template?: Record<string, unknown>; // Objet générique
+    uid: string;
+    uri: string;
+    url: string;
+}
+
+export interface ApiPowerBIResponse {
+    page: Page;
+    power_bi_pages?: unknown[]; // Optionnel
+}
