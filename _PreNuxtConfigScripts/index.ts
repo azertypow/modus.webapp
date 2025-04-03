@@ -1,16 +1,23 @@
-import {ApiFetchProjects} from "../composable/adminApi/apiFetch";
+import {ApiFetchPagesInfo, ApiFetchProjects} from "../composable/adminApi/apiFetch";
 import type {IApiProjects} from "../composable/adminApi/apiDefinitions";
-import { writeFile } from "fs/promises"; // Module fs pour écrire dans un fichier (Node.js)
+import { writeFile } from "fs/promises";
+import {IApiSiteInfo} from "../composable/adminApi/apiDefinitions"; // Module fs pour écrire dans un fichier (Node.js)
 
 
 async function main() {
     const pageData: IApiProjects = await ApiFetchProjects('projects')
 
-    const arrayOfRoutes: string[] =  Object.values(pageData.children).map(project => `/project/${project.slug}`)
+    const pageInfo: IApiSiteInfo = await ApiFetchPagesInfo()
+
+    const arrayOfRoutesPages = Object.values(pageInfo.children).map(children => `/${children.slug}`)
+
+    const arrayOfRoutesPagesProject: string[] =  Object.values(pageData.children).map(project => `/project/${project.slug}`)
+
+    const arrayOfRoutes = [...arrayOfRoutesPages, ...arrayOfRoutesPagesProject]
 
     console.log( arrayOfRoutes )
 
-    const fileContent = `// Généré automatiquement\n\nexport const generatedRoutes: string[] = ${JSON.stringify(arrayOfRoutes, null, 2)};`;
+    const fileContent = `// Généré automatiquement\n\nexport const generatedRoutes: string[] = ${JSON.stringify(arrayOfRoutesPagesProject, null, 2)};`;
 
     try {
         // Écrire dans le fichier TypeScript
