@@ -17,7 +17,7 @@ async function main() {
 
     console.log( arrayOfRoutes )
 
-    const fileContent = `// Généré automatiquement\n\nexport const generatedRoutes: string[] = ${JSON.stringify(arrayOfRoutesPagesProject, null, 2)};`;
+    const fileContent = `// Généré automatiquement\n\nexport const generatedRoutes: string[] = ${JSON.stringify(arrayOfRoutes, null, 2)};`;
 
     try {
         // Écrire dans le fichier TypeScript

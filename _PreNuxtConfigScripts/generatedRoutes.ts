@@ -1,6 +1,21 @@
 // Généré automatiquement
 
 export const generatedRoutes: string[] = [
+  "/home",
+  "/projects",
+  "/dispositifs",
+  "/proposer-un-projet",
+  "/modus",
+  "/protection-des-donnees-personnelles",
+  "/movus-privacy-notice",
+  "/mo-vus-terms-and-conditions",
+  "/mo-vus-faq",
+  "/google1f02c306d974f278-html",
+  "/mo-vus-privacy-notice",
+  "/toolkit-privacy-notice",
+  "/toolkit-cgu",
+  "/declic-mobilite-privacy-notice",
+  "/declic-mobilite-charte-whatsapp",
   "/project/exposition-la-mobilite",
   "/project/afterwork-de-la-mobilite-comment-le-tram-a-mis-geneve-sur-les-rails-d-une-autre-mobilite",
   "/project/observatoire-des-mobilites",
