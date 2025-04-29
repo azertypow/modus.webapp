@@ -14,7 +14,6 @@ export const generatedRoutes: string[] = [
   "/mo-vus-privacy-notice",
   "/toolkit-privacy-notice",
   "/toolkit-cgu",
-  "/declic-mobilite-privacy-notice",
   "/declic-mobilite-charte-whatsapp",
   "/mt-privacy-notice",
   "/mt-terms-and-conditions",
@@ -56,5 +55,6 @@ export const generatedRoutes: string[] = [
   "/project/quel-est-le-diagnostic-de-la-mobilite-a-geneve",
   "/project/mobility-grand-geneve",
   "/project/declic-mobilite",
-  "/project/chrysalide-monitoring-de-la-gratuite"
+  "/project/chrysalide-monitoring-de-la-gratuite",
+  "/project/mes-trajets"
 ];
