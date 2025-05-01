@@ -192,6 +192,18 @@ export interface IApiBody {
                 type: "linksSection"
             }
         }
+        |
+        {
+            content: {
+                content: {
+                    title: string,
+                    dropdown_content: string
+                },
+                id: string,
+                isHidden: false,
+                type: "dropdown"
+            },
+        }
 }
 
 export interface IApiBodyContent_video {

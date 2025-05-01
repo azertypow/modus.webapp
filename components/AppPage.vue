@@ -200,6 +200,15 @@
                 </div>
               </template>
 
+              <template v-else-if="bodyContentItem.content.type === 'dropdown'">
+                <div class="v-app-page__section v-app-page__section--full">
+                  <app-drop-down
+                          :title="bodyContentItem.content.content.title"
+                          :dropdown_content="bodyContentItem.content.content.dropdown_content"
+                  />
+                </div>
+              </template>
+
 
             </template>
           </template>
@@ -230,6 +239,7 @@ import AppProfiles from "~/components/AppProfiles.vue";
 import AppListPoints from "~/components/AppListPoints.vue";
 import {addIdsToH2} from "~/utils/addIdsToH2";
 import {copyCurrentUrlToClipboard} from "~/utils/copyCurrentUrlToClipboard";
+import AppDropDown from "~/components/AppDropDown.vue";
 
 const props = defineProps<{
   headerText?: string
