@@ -1,5 +1,6 @@
 <template>
     <section class="v-app-drop-down"
+             :class="{'v-app-drop-down--open': isOpen}"
     >
       <div  class="v-app-drop-down__header"
             @click="isOpen = !isOpen"
@@ -99,12 +100,19 @@ const parsedDropDown: ComputedRef<
 
 .v-app-drop-down__header__title {
   text-align: left;
-  color: white;
-  background: var(--app-color-main);
+  color: var(--app-color-main);
+  background: white;
+  border: solid 2px var(--app-color-main);
   padding: 1rem 2rem;
   border-radius: 5rem;
   font-weight: 600;
   margin-top: 0;
+  margin-bottom: 0;
+
+  .v-app-drop-down--open & {
+    color: white;
+    background: var(--app-color-main);
+  }
 }
 
 .v-app-drop-down__header__icon {
@@ -112,10 +120,15 @@ const parsedDropDown: ComputedRef<
   top: 50%;
   right: 2rem;
   transform: translate(0, -50%);
-  color: white;
+  color: var(--app-color-main);
   font-size: 3rem;
   line-height: 2ex;
   font-weight: 400;
+
+  .v-app-drop-down--open & {
+    color: white;
+    padding-bottom: .4rem;
+  }
 }
 
 .v-app-drop-down__content {
