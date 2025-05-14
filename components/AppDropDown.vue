@@ -24,21 +24,22 @@
 
           <template v-else-if="item.type === 'content_table'">
             <div class="v-app-drop-down__table">
-              <div v-for="row of item.content.rows"
-                   class="v-app-drop-down__table__collecion"
-              >
-                <div class="v-app-drop-down__table__collecion__header"
+              <div class="v-app-drop-down__table__content">
+                <div v-for="row of item.content.rows"
+                     class="v-app-drop-down__table__content__collecion"
                 >
-                  <h3 class="v-app-drop-down__table__collecion__header__title" >{{row.content_table_title}}</h3>
+                  <div class="v-app-drop-down__table__content__collecion__header"
+                  >
+                    <h3 class="v-app-drop-down__table__content__collecion__header__title" >{{row.content_table_title}}</h3>
+                  </div>
+                  <div v-for="rowContentCell of JSON.parse(row.content_table_content)"
+                       class="v-app-drop-down__table__content__collecion__cell"
+                       v-html="rowContentCell.content.content_table_content_text_content"
+                  />
                 </div>
-                <div v-for="rowContentCell of JSON.parse(row.content_table_content)"
-                     class="v-app-drop-down__table__collecion__cell"
-                     v-html="rowContentCell.content.content_table_content_text_content"
-                />
               </div>
             </div>
           </template>
-
         </template>
       </div>
 
@@ -142,23 +143,40 @@ const parsedDropDown: ComputedRef<
 }
 
 .v-app-drop-down__table {
+  position: relative;
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 5rem;
+    height: 100%;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0), var(--app-color-grey));
+  }
+}
+
+.v-app-drop-down__table__content {
   display: flex;
   flex-wrap: nowrap;
   overflow: scroll;
   gap: 1rem;
+  padding-right: 10rem;
 }
 
-.v-app-drop-down__table__collecion {
+
+.v-app-drop-down__table__content__collecion {
   width: 30rem;
   flex-grow: 0;
   flex-shrink: 0;
 }
 
-.v-app-drop-down__table__collecion__header__title {
+.v-app-drop-down__table__content__collecion__header__title {
   text-align: left;
+  color: var(--app-color-main--dark);
 }
 
-.v-app-drop-down__table__collecion__cell {
+.v-app-drop-down__table__content__collecion__cell {
   background: white;
   box-sizing: border-box;
   padding: 1rem;
@@ -169,15 +187,16 @@ const parsedDropDown: ComputedRef<
   }
 }
 
-:global(.v-app-drop-down__table__collecion__cell > *:first-child) {
+:global(.v-app-drop-down__table__content__collecion__cell > *:first-child) {
   margin-top: 0;
 }
-:global(.v-app-drop-down__table__collecion__cell > *:last-child) {
+:global(.v-app-drop-down__table__content__collecion__cell > *:last-child) {
   margin-bottom: 0;
 }
 
-:global(.v-app-drop-down__table__collecion__cell > *) {
-  font-weight: 600;
+:global(.v-app-drop-down__table__content__collecion__cell > *) {
+  font-weight: 500;
+  color: var(--app-color-main--dark) !important;
 }
 
 </style>
