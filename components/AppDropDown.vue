@@ -93,6 +93,10 @@ const parsedDropDown: ComputedRef<
 
 
 <style lang="scss" scoped >
+:global(.v-app-drop-down h4) {
+  max-width: none;
+}
+
 .v-app-drop-down__header {
   position: relative;
   user-select: none;
