@@ -15,6 +15,9 @@
       </div>
 
       <div class="v-app-drop-down__content"
+           v-html="dropdown_intro"/>
+
+      <div class="v-app-drop-down__content"
            v-if="isOpen"
       >
         <template v-for="item in parsedDropDown" :key="item.id">
@@ -43,6 +46,11 @@
         </template>
       </div>
 
+      <button class="app-button app-button--small v-app-drop-down__button"
+              @click="isOpen = !isOpen"
+              v-if=" !isOpen "
+      >En savoir plus</button>
+
     </section>
 </template>
 
@@ -55,6 +63,7 @@ import { defineProps } from 'vue'
 
 const props = defineProps<{
     title: string,
+    dropdown_intro: string,
     dropdown_content: string,
 }>()
 
@@ -201,6 +210,11 @@ const parsedDropDown: ComputedRef<
 :global(.v-app-drop-down__table__content__collecion__cell > *) {
   font-weight: 500;
   color: var(--app-color-main--dark) !important;
+}
+
+.v-app-drop-down__button {
+  display: block;
+  margin-left: 2rem;
 }
 
 </style>

@@ -205,6 +205,7 @@
                   <app-drop-down
                           :title="bodyContentItem.content.content.title"
                           :dropdown_content="bodyContentItem.content.content.dropdown_content"
+                          :dropdown_intro="bodyContentItem.content.content.dropdown_intro"
                   />
                 </div>
               </template>

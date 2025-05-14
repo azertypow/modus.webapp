@@ -198,6 +198,7 @@ export interface IApiBody {
                 content: {
                     title: string,
                     dropdown_content: string
+                    dropdown_intro: string
                 },
                 id: string,
                 isHidden: false,
