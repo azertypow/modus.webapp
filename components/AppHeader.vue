@@ -90,6 +90,7 @@ const bodyScrollInfoStore = bodyScrollInfo()
     padding: var(--app-gutter);
     color: var(--app-color-main);
     z-index: 100;
+    box-shadow: 0 10rem 0 10rem var(--app-color-grey);
 
     @media (max-width: 900px) {
         font-size: 10vw;
