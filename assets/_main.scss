@@ -138,6 +138,13 @@ button,
     color: white;
   }
 
+  &.app-button--var-white {
+    background: white;
+    border: none;
+    color: var(--app-color-main);
+    border-radius: 1rem;
+  }
+
   @media (max-width: 900px) {
     font-size: 1rem;
     padding: .5rem 1rem;

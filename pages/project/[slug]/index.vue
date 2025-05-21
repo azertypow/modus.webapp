@@ -14,6 +14,7 @@
             :date_start="dateStart"
             :is_project_with_duration="isProjectWithDuration"
             :date_end="dateEnd"
+            :power_subpages="powerSubpages"
         />
         <div class="v-project-slug__footer">
           <div style="display: flex; justify-content: center; flex-direction: column; align-items: center; gap: .5rem; cursor: pointer"
@@ -36,7 +37,7 @@
 <script setup lang="ts">
 import {defineProps, Ref, UnwrapRef} from 'vue'
 import AppPage from "~/components/AppPage.vue";
-import {ApiProjectType, IApiBody} from "~/composable/adminApi/apiDefinitions";
+import {ApiProjectType, IApiBody, IApiPage__subpage} from "~/composable/adminApi/apiDefinitions";
 import {ApiFetchPage} from "~/composable/adminApi/apiFetch";
 import {copyCurrentUrlToClipboard} from "~/utils/copyCurrentUrlToClipboard";
 
@@ -53,12 +54,16 @@ const dateStart: Ref<UnwrapRef<undefined | string>>              = ref(undefined
 const isProjectWithDuration: Ref<UnwrapRef<undefined | string>>  = ref(undefined)
 const dateEnd: Ref<UnwrapRef<undefined | string>>                = ref(undefined)
 
+const powerSubpages: Ref<UnwrapRef<undefined | IApiPage__subpage[]>>            = ref(undefined)
+
 onMounted(async () => {
     const slug = useRoute()?.params?.slug
 
     if(typeof slug !== 'string') return
 
     const pageData = await ApiFetchPage(`projects/${slug}`)
+
+    console.log(pageData)
 
     headerCover.value = pageData.options.headerImage?.mediaUrl
     headerFocus.value = pageData.options.headerImage?.focus
@@ -72,6 +77,8 @@ onMounted(async () => {
     dateStart.value = pageData.options.dateStart
     isProjectWithDuration.value = pageData.options.isProjectWithDuration
     dateEnd.value = pageData.options.dateEnd
+
+    powerSubpages.value = pageData.options.subpages
 })
 
 const textButton = ref('Copier le lien de cette page')

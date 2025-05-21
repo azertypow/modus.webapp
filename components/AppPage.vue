@@ -218,7 +218,39 @@
             chargement du contenu…
           </template>
         </div>
+
+
+        <template v-if="power_subpages && power_subpages[0]">
+          <div class="v-app-page__content__grid">
+            <div v-for="subpage of power_subpages"
+                 class="v-app-page__section v-app-page__section--full"
+            >
+              <AppPowerBISubSection
+                      :url="subpage.url"
+              />
+            </div>
+          </div>
+
+
+          <div class="v-app-page__content__grid">
+            <div class="v-app-page__section v-app-page__section--full v-app-page__section--power-bi">
+              <nuxt-link class="app-button app-button--var-white v-app-page__subpage-button"
+                         :href="`${parentSlug}/${power_subpages[0].slug}`"
+              >
+                <div>Tous les chiffres →</div>
+                <svg width="106" height="83" viewBox="0 0 106 83" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="13.959" y="43.1216" width="19.1892" height="39.3784" fill="#009E3D" stroke="white"/>
+                  <rect x="43.1211" y="0.5" width="19.1892" height="82" fill="#009E3D" stroke="white"/>
+                  <rect x="72.2832" y="20.6892" width="19.1892" height="61.8108" fill="#009E3D" stroke="white"/>
+                  <line x1="-8.37027e-08" y1="82" x2="105.432" y2="82" stroke="#009E3D" stroke-width="2"/>
+                </svg>
+                </nuxt-link>
+            </div>
+          </div>
+        </template>
       </div>
+
+
 
 
 
@@ -235,12 +267,19 @@
 <script setup lang="ts">
 import { defineProps } from 'vue'
 import {useIsIntersected} from "~/composable/main";
-import {apiProjectMap, ApiProjectMap, ApiProjectType, IApiBody} from "~/composable/adminApi/apiDefinitions";
+import {
+    apiProjectMap,
+    ApiProjectMap,
+    ApiProjectType,
+    IApiBody,
+    IApiPage__subpage
+} from "~/composable/adminApi/apiDefinitions";
 import AppProfiles from "~/components/AppProfiles.vue";
 import AppListPoints from "~/components/AppListPoints.vue";
 import {addIdsToH2} from "~/utils/addIdsToH2";
 import {copyCurrentUrlToClipboard} from "~/utils/copyCurrentUrlToClipboard";
 import AppDropDown from "~/components/AppDropDown.vue";
+import {ApiFetchPage_powerBiSubPage} from "~/composable/adminApi/apiFetch";
 
 const props = defineProps<{
   headerText?: string
@@ -255,7 +294,10 @@ const props = defineProps<{
   date_start?: string,
   is_project_with_duration?: "true" | "false",
   date_end?: string,
+  power_subpages?: IApiPage__subpage[]
 }>()
+
+const parentSlug = useRoute().path
 
 function getIdParamInVideoYoutubeURL(url: string): string {
     return new URL(url).searchParams.get('v') || ''
@@ -291,6 +333,17 @@ nextTick(() => {
         })
     }, 2_000)
 })
+
+// onMounted(async () => {
+//
+//     if(props.bower_subpage && props.bower_subpage[0]) {
+//
+//         const bower_subpage = props.bower_subpage[0]
+//
+//         console.log( await ApiFetchPage_powerBiSubPage(`${bower_subpage.content.power_bi_pages_title}`) )
+//     }
+//
+// })
 
 </script>
 
@@ -452,6 +505,10 @@ nextTick(() => {
     }
   }
 
+  &.v-app-page__section--power-bi {
+    padding-bottom: 10rem;
+  }
+
   .v-app-page__section__graphic-items {
     position: absolute;
 
@@ -497,6 +554,21 @@ nextTick(() => {
   color: white;
   background-color: v-bind(statusColor);
   border-color: v-bind(statusColor) !important;
+}
+
+.v-app-page__subpage-button {
+  width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 2rem;
+  box-sizing: border-box;
+  padding: 1.5rem 1rem;
+
+  > svg {
+    height: 3rem;
+  }
 }
 </style>
 

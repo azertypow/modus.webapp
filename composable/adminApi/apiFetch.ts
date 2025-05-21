@@ -7,6 +7,13 @@ export async function ApiFetchPage(apiPath: string): Promise<IApiPage> {
     return ((await fetch(`${baseUrl}${apiPath}.json`)).json())
 }
 
+export async function ApiFetchPage_powerBiSubPage(apiPath: string): Promise<IApiPage> {
+    return ((await fetch(`${baseUrl}${apiPath}.json`)).json())
+}
+
+
+
+
 export async function ApiFetchPagePowerBIPage(apiPath: string): Promise<ApiPowerBIResponse> {
     return ((await fetch(`${baseUrl}${apiPath}.json`)).json())
 }

@@ -49,11 +49,90 @@ export interface IApiPage {
         dateStart: string,
         isProjectWithDuration: "true" | "false",
         dateEnd: string,
+        subpages: IApiPage__subpage[]
     },
     "body": IApiBody,
     title?: {
         value: string
     }
+}
+
+export interface IApiPage__subpage {
+    content: {
+        power_bi_link: string,
+        power_bi_pages: string,
+        image: string
+        power_bi_pages_number: string
+        power_bi_pages_title: string
+        power_bi_pages_description: string
+        power_bi_pages_link: string
+        uuid: string
+    },
+    translations: [],
+    children: [],
+    files: string[],
+    id: string,
+    mediaUrl: string,
+    mediaRoot: string,
+    num: number,
+    parent: string,
+    slug: string,
+    template: {},
+    uid: string,
+    uri: string,
+    url: string
+}
+
+export interface IApiPage__subpage__power_bi_pages {
+    "page": {
+        "content": {
+            "title": string
+            "power_bi_link": string
+            "power_bi_pages": string
+            "uuid": string
+        },
+        "translations": [],
+        "children": [],
+        "files": string[],
+        "id": string,
+        "mediaUrl": string,
+        "mediaRoot": string,
+        "num": number,
+        "parent": string,
+        "slug": string,
+        "template": {},
+        "uid": string,
+        "uri": string,
+        "url": string
+    },
+    "power_bi_pages":         {
+        "content": {
+            "image": string[],
+            "power_bi_pages_number": string,
+            "power_bi_pages_title": string,
+            "power_bi_pages_description": string,
+            "power_bi_pages_link": string,
+            "id": string
+        },
+        "image":             {
+            "focus": null,
+            "caption": string,
+            "alt": null,
+            "link": null,
+            "photoCredit": null,
+            "url": string,
+            "mediaUrl": string,
+            "width": number,
+            "height": number,
+            "resize": {
+                "tiny":     string,
+                "small":    string,
+                "reg":      string,
+                "large":    string,
+                "xxl":      string
+            }
+        }[]
+    }[]
 }
 
 export interface IApiBody {
@@ -371,5 +450,18 @@ export interface Page {
 
 export interface ApiPowerBIResponse {
     page: Page;
-    power_bi_pages?: unknown[]; // Optionnel
+    power_bi_pages?: ApiPowerBIResponse__power_bi_page[]; // Optionnel
+}
+
+export interface ApiPowerBIResponse__power_bi_page {
+    content: {
+        image: string[],
+        power_bi_pages_number: string,
+        power_bi_pages_title: string,
+        power_bi_pages_description: string,
+        power_bi_pages_link: string,
+        power_bi_pages_number_descritpion: string,
+        id: string
+    },
+    image: IApiImage[]
 }
