@@ -118,8 +118,8 @@ watch(bodyScrollInfoStore, (value, oldValue, onCleanup) => {
     .v-app-header--small &,
     .v-app-header--no-bg & {
         background: var(--app-color-grey);
-        padding-bottom: 5rem;
-        padding-top: 5rem;
+        padding-bottom: 2rem;
+        padding-top: 2rem;
         font-size: 4.5rem;
         font-weight: 900;
         color: var(--app-color-main--dark);
