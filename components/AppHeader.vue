@@ -8,7 +8,7 @@
         }"
     >
         <div class="v-app-header__container"
-            :style="`transform: translate(0, -${bodyScrollInfoStore.top / 4}px)`"
+             ref="headerContainer"
         >
             <div
                 class="v-app-header__container__graphic-box"
@@ -25,8 +25,8 @@
         </div>
 
         <div class="v-app-header__signature"
-             :style="`transform: translate(0, -${bodyScrollInfoStore.top / 1.05}px)`"
              v-if="text"
+             ref="headerSignature"
         >
             <div class="v-app-header__signature__content"
                  v-html="text"
@@ -50,6 +50,25 @@ const props = defineProps<{
 import {bodyScrollInfo} from "~/composable/main";
 
 const bodyScrollInfoStore = bodyScrollInfo()
+
+const headerContainer: Ref<null | HTMLElement> = ref(null)
+const headerSignature: Ref<null | HTMLElement> = ref(null)
+
+
+watch(bodyScrollInfoStore, (value, oldValue, onCleanup) => {
+
+    if( headerContainer.value instanceof HTMLElement ) {
+        requestAnimationFrame( () => headerContainer.value!.style.transform = `translate3d(0, -${value.top / 4}px, 0)`)
+
+    }
+
+    if( headerSignature.value instanceof HTMLElement ) {
+        requestAnimationFrame( () => headerSignature.value!.style.transform = `translate3d(0, -${value.top / 1.05}px, 0)`)
+
+    }
+
+
+})
 
 </script>
 
