@@ -94,6 +94,7 @@ import {
 import AppCookie from "~/components/AppCookie.vue";
 import {ApiFetchPagesInfo} from "~/composable/adminApi/apiFetch";
 import {getCookieBannerValue, setCookieBannerValue} from "~/utils/cookieBannerLocalStorage";
+import {initMatomo} from "~/utils/matomo";
 
 const isIntersected = useIsIntersected()
 
@@ -105,6 +106,8 @@ onMounted(async () => {
     siteInfo().value = await ApiFetchPagesInfo()
 
     if(useRouter().currentRoute.value.path === '/declic-mobilite') useRouter().push('/forms/declic-mobilite')
+
+    initMatomo()
 })
 
 useRouter().beforeEach((to, from, next) => {
