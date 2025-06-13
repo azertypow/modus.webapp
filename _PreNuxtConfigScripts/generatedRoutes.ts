@@ -18,9 +18,9 @@ export const generatedRoutes: string[] = [
   "/mt-privacy-notice",
   "/mt-terms-and-conditions",
   "/mt-faq",
+  "/tags",
   "/project/exposition-la-mobilite",
   "/project/afterwork-de-la-mobilite-comment-le-tram-a-mis-geneve-sur-les-rails-d-une-autre-mobilite",
-  "/project/observatoire-des-mobilites",
   "/project/la-centrale-de-mobilite-lance-une-campagne-pour-l-utilisation-du-velo-et-le-covoiturage-dans-la-ziplo",
   "/project/premier-projet",
   "/project/mobilite-seniors",
@@ -55,6 +55,7 @@ export const generatedRoutes: string[] = [
   "/project/quel-est-le-diagnostic-de-la-mobilite-a-geneve",
   "/project/mobility-grand-geneve",
   "/project/declic-mobilite",
+  "/project/observatoire-des-mobilites",
   "/project/chrysalide-monitoring-de-la-gratuite",
   "/project/mes-trajets"
 ];
