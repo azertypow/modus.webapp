@@ -38,6 +38,12 @@
                   </div>
                 </template>
               </div>
+
+            </div>
+            <div class="app-font-small"
+                 v-if="filter"
+                    style="display: flex; align-items: center; justify-content: center; margin-top: 1rem;">
+              Déscription de la typologie&nbsp;<em>{{apiProjectMap[filter]}}</em>
             </div>
 
 <!--            <div v-if="activeFilterIcon && activeFilterIcon === 'La Bibliothèque'"-->
