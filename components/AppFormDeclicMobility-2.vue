@@ -94,6 +94,7 @@ interface Question_message {
     text: string;
     type: 'message';
     conditions?: QuestionConditions;
+    messageIfCurrentQuestionIsBlocked?: string
 }
 
 interface Question_select extends Question {
@@ -1442,7 +1443,7 @@ const isFormValid: ComputedRef<{
             if(question.conditions?.isBlocking) {
                 msg = {
                     isValid: false,
-                    message: question.text,
+                    message: question.messageIfCurrentQuestionIsBlocked || question.text,
                 }
             }
             continue
