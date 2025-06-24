@@ -8,11 +8,12 @@
             :body-content="formBodyContent"
     />
     <div class="v-proto-form__bottom_content" >
-      <div>
+      <div class="v-proto-form__bottom_content__section">
 
         <template v-if=" ! (isChecked_moreThan18YearOld && isChecked_readPolicy) ">
           <h2 style="margin-top: 0; text-align: center;"
-          >Pour commencer, cochez la case ci-après.</h2>
+          >Pour commencer la procédure d’enregistrement,
+            <br>cochez la case ci-après.</h2>
 
           <div class="app-form__section"
                :class="{'app-form__section--valid': isChecked_moreThan18YearOld}"
@@ -115,28 +116,43 @@ const formBodyContent: IApiBody = {
         "content": {
             "content": {
                 "text": `
-                        <h1>Demande d’inscription au "Déclic Mobilité"</h1>
+                        <h1>Déclaration d’intérêt pour participer à l’initiative « Déclic mobilité »
+                        <br><span style="color: #5500b7">Automne 2025</span>
+                        </h1>
+
+                        <p>Merci pour votre intérêt !</p>
 
                         <h3>Déclic Mobilité, c’est quoi ?</h3>
-                        <p>Le concept est simple : vous stationnez votre véhicule (dans un parking prévu à cet effet) durant le mois de mai 2025 et vous recevez un accès gratuit à des alternatives de déplacement de votre choix parmi lesquelles un abonnement général CFF, un vélo/vélo électrique/vélo cargo, un abonnement Mobility, et bien d’autres services.</p>
+
+                        <p>Le concept est simple : vous stationnez (dans un parking prévu à cet effet) votre véhicule pendant un mois 2025 et vous recevez un accès gratuit à des alternatives de déplacement de votre choix parmi lesquelles un abonnement transports publics, un vélo/vélo électrique/vélo cargo, un abonnement Mobility, et bien d’autres services.</p>
 
 
 
-                        <h3>Conditions de participation</h3>
+                        <h3>Quelles sont les conditions de participation ?</h3>
 
                         <ul>
                           <li>Avoir 18 ans ou plus</li>
-                          <li>Résider sur le territoire communal de Genève ou Carouge</li>
+                          <li>Résider sur le territoire du Canton de Genève ou de la Région de Nyon</li>
                           <li>Détenir un ou plusieur(s) véhicule(s) (voiture, moto ou scooter ; thermique ou électrique)</li>
-                          <li>S’engager à ne pas utiliser son/ses véhicule(s) pendant un mois</li>
-                          <li>Participer à la séance de lancement (samedi 3 mai matin) et de restitution (lundi 2 juin soir)</li>
+                          <li>S’engager à ne pas utiliser son véhicule pendant un mois</li>
+                          <li>Accepter de partager votre expérience avec les organisateurs</li>
                         </ul>
                         <h6>NB : les familles ou ménages composés de plusieurs personnes peuvent participer en groupe.</h6>
 
-                        <h3>Comment sont utilisées mes données personnelles?</h3>
+                        <h3>Comment s’inscrire ?</h3>
+
+                        <p>Pour participer au défi « Déclic Mobilité », vous devez vous enregistrer en répondant à quelques questions (5 minutes environ) sur votre profil et vos habitudes de déplacement. Une sélection sera réalisée pour garantir une diversité des profils et les personnes sélectionnées seront recontactées par email dans le courant du mois d’août avec toutes les informations nécessaires pour commencer l’aventure.<p>
+
+
+                        <h3>Comment sont utilisées mes données personnelles ?</h3>
 
                         <p>
-                          Les données recueillies dans le cadre de ce questionnaire seront traitées conformément à <a target="_blank" href="/notice_de_protection_des_donnees.pdf">la notice de protection des données</a>.
+                        L’enquête est organisée via le site internet de la Fondation Modus, hébergé en Suisse sur un serveur sécurisé répondant à toutes les normes de sécurité en vigueur.
+                        </p>
+                        <p>
+                          Les données recueillies dans le cadre de cette enquête seront traitées de manière strictement confidentielle dans le respect des dispositions applicables en matière <a target="_blank" href="/notice_de_protection_des_donnees.pdf">de protection des données</a>.
+                          <br>Elles seront utilisées pour la mise en place du recrutement des participants à l’initiative « Déclic Mobilité » et à des fins statistiques pour en évaluer les effets en matière de modifications des comportements de mobilité et de l’équipement en moyens de transports individuels motorisés.
+                          <br>Elles ne seront pas transmises à des tiers et seront détruites à la fin de l’opération en Décembre 2026.
                         </p>
   `
             },
@@ -237,10 +253,10 @@ const formBodyContent: IApiBody = {
   padding: 0;
   width: 100%;
 
-  @media (max-width: 900px) {
+  //@media (max-width: 900px) {
     padding-left: var(--app-gutter);
     padding-right: var(--app-gutter);
-  }
+  //}
 }
 </style>
 
