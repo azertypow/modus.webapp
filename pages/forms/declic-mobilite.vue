@@ -29,6 +29,12 @@
             <input type="checkbox" v-model="isChecked_readPolicy">
             <label class="no-counter">Je confirme comprendre et accepter la politique de protection des données</label>
           </div>
+
+          <div class="app-form__section" style="margin-top: 2rem">
+            <p class="app-font-small" style="max-width: none;">En cliquant sur cette case, vous donnez votre consentement pour la collecte et l'utilisation des données selon les conditions évoquées ci-dessus (En savoir plus). Les démarches pour avoir accès à vos données personnelles, les modifier ou les supprimer s’effectuent par e-mail en cliquant ici.</p>
+            <p class="app-font-small" style="max-width: none;">1 Loi sur l’information du public, l’accès aux documents et la protection des données personnelles, du 5 octobre 2001 (LIPAD; A 2 08) et règlement d'application de la loi sur l'information du public, l'accès aux documents et la protection des données personnelles, du 21 décembre 2011 (RIPAD; A 2 08.01).</p>
+          </div>
+
         </template>
 
         <template v-else>
