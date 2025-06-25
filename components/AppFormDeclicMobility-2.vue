@@ -140,50 +140,225 @@ type QuestionType =
 
 // Données des questions
 const questions: QuestionType[] = [
+    /**
+     * block 1
+     */
     {
         id: 1,
-        text: "Dans quelle commune votre domicile principal est-il situé ?",
+        text: 'Avant toute chose, avez-vous un compte swisspass ?',
         type: "select",
-        options: ["Ville de Carouge", "Ville de Genève", "autre"],
+        options: [
+            'oui',
+            'non',
+        ],
     },
 
-    {
-        id: 1.1,
-        type: 'message',
-        conditions: {
-            isBlocking: true,
-            dependsOn: 1,
-            value: dependentValue => !dependentValue,
-        },
-        text: `<p>Sélectionnez une commune ci-dessus.</p>`,
-    },
     {
         id: 1.2,
         type: 'message',
         conditions: {
             isBlocking: true,
             dependsOn: 1,
-            value: dependentValue => dependentValue === "autre",
+            value: dependentValue => dependentValue === undefined || dependentValue === "non",
         },
+        messageIfCurrentQuestionIsBlocked: `Si vous n'avez pas de carte SwissPass, vous devez rapidement en commander une avant de procéder à votre enregistrement.`,
         text: `
-        <p>Vous résidez hors du territoire couvert par l’initiative « Déclic mobilité » qui se tiendra au printemps 2025. Si vous connaissez des personnes qui résident dans la commune de Genève ou de Carouge, n’hésitez pas à leur partager l’information.</p>
-        <p>Par ailleurs et si vous souhaitez être recontacté pour participer à la seconde phase de l’initiative « Déclic mobilité » qui se tiendra à l’automne 2025 sur tout le Canton de Genève et la Région de Nyon, merci de nous envoyer un message par email à <strong style="color: var(--app-color-main)">info@declic-mobilite.ch</strong>.</p>
+          <p>Si vous n'avez pas de carte SwissPass, vous devez rapidement en commander une avant de procéder à votre enregistrement. En effet, l’accès aux abonnements et services offerts pendant le défi nécessite que vous ayez <a target='_blank' href="https://www.swisspass.ch/register/1">un&nbsp;compte swisspass</a>.</p>
+          <p>Pour obtenir la carte SwissPass, vous pouvez en faire la demande auprès d’un point de vente des transports publics ou la commander via le site internet de Swisspass. Merci de faire cette commande et de revenir sur la page du questionnaire dans un second temps pour procéder à votre enregistrement.</p>
+          <p>Merci de revenir très vite pour remplir ce formulaire une fois votre compte swisspass activé.</p>
         `,
     },
 
+
+
+
+
+    /**
+     * block 2
+     */
     {
         id: 2,
-        text: "Depuis combien de temps résidez-vous dans cette commune ?",
+        text: "Dans quel territoire résidez-vous ?",
         type: "select",
+        options: ["Canton de Genève", "District de Nyon", "Autre"],
+    },
+
+    {
+        id: 2.1,
+        type: 'message',
+        conditions: {
+            isBlocking: true,
+            dependsOn: 2,
+            value: dependentValue => !dependentValue,
+        },
+        text: `<p>Sélectionnez un territoire ci-dessus.</p>`,
+    },
+
+    {
+        id: 2.2,
+        type: 'message',
+        conditions: {
+            isBlocking: true,
+            dependsOn: 2,
+            value: dependentValue => dependentValue === "Autre",
+        },
+        messageIfCurrentQuestionIsBlocked: 'Vous résidez hors du territoire couvert par l’initiative « Déclic mobilité ».',
+        text: `
+          <p>Vous résidez hors du territoire couvert par l’initiative « Déclic mobilité ».</p>
+          <p>Si vous connaissez des personnes qui résident sur le territoire du Canton de Genève ou du district de Nyon, n’hésitez pas à leur partager l’information.</p>
+        `,
+    },
+
+
+
+
+
+    /**
+     * block 3
+     */
+    {
+        id: 3,
+        text: "Dans quelle commune de Nyon votre domicile est-il situé ?",
+        type: "select",
+        conditions: {
+            dependsOn: 2,
+            value: dependentValue => dependentValue === "District de Nyon",
+        },
         options: [
-            "moins de 2 ans",
-            "2 à 5 ans",
-            "5 à 10 ans",
-            "plus de 10 ans",
+            "Arnex-sur-Nyon",
+            "Arzier-Le Muids",
+            "Bassins",
+            "Begnins",
+            "Bogis-Bossey",
+            "Borex",
+            "Bursinel",
+            "Bursins",
+            "Burtigny",
+            "Chavannes-de-Bogis",
+            "Chavannes-des-Bois",
+            "Chéserex",
+            "Coinsins",
+            "Commugny",
+            "Coppet",
+            "Crans",
+            "Crassier",
+            "Duillier",
+            "Dully",
+            "Essertines-sur-Rolle",
+            "Eysins",
+            "Founex",
+            "Genolier",
+            "Gilly",
+            "Gingins",
+            "Givrins",
+            "Gland",
+            "Grens",
+            "La Rippe",
+            "Le Vaud",
+            "Longirod",
+            "Luins",
+            "Marchissy",
+            "Mies",
+            "Mont-sur-Rolle",
+            "Nyon",
+            "Perroy",
+            "Prangins",
+            "Rolle",
+            "Saint-Cergue",
+            "Saint-George",
+            "Signy-Avenex",
+            "Tannay",
+            "Tartegnin",
+            "Trélex",
+            "Vich",
+            "Vinzel",
         ],
     },
+
+
+    /**
+     * block 4
+     */
     {
-        id: 4.1,
+        id: 4,
+        text: "Dans quelle commune de Genève votre domicile est-il situé ?",
+        type: "select",
+        options: [
+            "Aire-la-Ville",
+            "Anières",
+            "Avully",
+            "Avusy",
+            "Bardonnex",
+            "Bellevue",
+            "Bernex",
+            "Carouge",
+            "Cartigny",
+            "Céligny",
+            "Chancy",
+            "Chêne-Bougeries",
+            "Chêne-Bourg",
+            "Choulex",
+            "Collex-Bossy",
+            "Collonge-Bellerive",
+            "Cologny",
+            "Confignon",
+            "Corsier",
+            "Dardagny",
+            "Genève",
+            "Genthod",
+            "Gy",
+            "Hermance",
+            "Jussy",
+            "Laconnex",
+            "Lancy",
+            "Le Grand-Saconnex",
+            "Meinier",
+            "Meyrin",
+            "Onex",
+            "Perly-Certoux",
+            "Plan-les-Ouates",
+            "Pregny-Chambésy",
+            "Presinge",
+            "Puplinge",
+            "Russin",
+            "Satigny",
+            "Soral",
+            "Thônex",
+            "Troinex",
+            "Vandœuvres",
+            "Vernier",
+            "Versoix",
+            "Veyrier",
+        ],
+    },
+
+
+    /**
+     * block 5
+     * */
+    {
+        id: 5,
+        type: 'select',
+        text: 'Quelles est la structure de votre ménage ?',
+        options: [
+            'Personne seule',
+            'Couple sans enfant(s)',
+            'Couple avec enfant(s)',
+            'Personne seule avec enfant(s)',
+            'Colocation',
+        ],
+        hasOtherOption: true,
+    },
+
+
+
+
+
+    /**
+     * block 6
+     * */
+    {
+        id: 6.1,
         text: "Combien de personnes de 65 ans et plus composent votre ménage ?",
         type: "select",
         options: [
@@ -197,7 +372,7 @@ const questions: QuestionType[] = [
 
 
     {
-        id: 4.2,
+        id: 6.2,
         text: "Combien de personnes de 26 à 64 ans composent votre ménage ?",
         type: "select",
         options: [
@@ -210,7 +385,7 @@ const questions: QuestionType[] = [
     },
 
     {
-        id: 4.3,
+        id: 6.3,
         text: "Combien de personnes de 18 à 25 ans composent votre ménage ?",
         type: "select",
         options: [
@@ -223,9 +398,16 @@ const questions: QuestionType[] = [
     },
 
     {
-        id: 4.4,
+        id: 6.4,
         text: "Combien de personnes de 16 à 17 ans composent votre ménage ?",
         type: "select",
+        conditions: {
+            dependsOn: 5,
+            value: dependentValue =>
+                dependentValue === "Couple avec enfant(s)"
+                || dependentValue === "Personne seule avec enfant(s)"
+            ,
+        },
         options: [
             "0",
             "1",
@@ -236,9 +418,16 @@ const questions: QuestionType[] = [
     },
 
     {
-        id: 4.5,
-        text: "Combien de personnes de 0 à 15 ans composent votre ménage ?",
+        id: 6.5,
+        text: "Combien de personnes de personnes de moins de 16 ans composent votre ménage ?",
         type: "select",
+        conditions: {
+            dependsOn: 5,
+            value: dependentValue =>
+                dependentValue === "Couple avec enfant(s)"
+                || dependentValue === "Personne seule avec enfant(s)"
+            ,
+        },
         options: [
             "0",
             "1",
@@ -247,6 +436,49 @@ const questions: QuestionType[] = [
             "4",
         ],
     },
+
+
+
+
+
+
+
+
+
+    /**
+     * block 7
+     * */
+    {
+        id: 7,
+        text: "De combien de voitures disposez-vous au sein de votre ménage ?",
+        type: "select",
+        options: [
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "plus de 4",
+        ],
+    },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     {
