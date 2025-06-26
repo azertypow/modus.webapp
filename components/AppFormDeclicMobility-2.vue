@@ -220,7 +220,7 @@ const questions: QuestionType[] = [
      */
     {
         id: 3,
-        text: "Dans quelle commune de Nyon votre domicile est-il situé ?",
+        text: "Dans quelle commune de Nyon votre domicile est-il situé ?",
         type: "select",
         conditions: {
             dependsOn: 2,
@@ -283,7 +283,7 @@ const questions: QuestionType[] = [
      */
     {
         id: 4,
-        text: "Dans quelle commune de Genève votre domicile est-il situé ?",
+        text: "Dans quelle commune de Genève votre domicile est-il situé ?",
         conditions: {
             dependsOn: 2,
             value: dependentValue => dependentValue === "Canton de Genève",
@@ -477,7 +477,7 @@ const questions: QuestionType[] = [
      * */
     {
         id: 8,
-        text: "A quelle fréquence vous déplacez-vous en voiture ?",
+        text: "A quelle fréquence vous déplacez-vous en voiture ?",
         type: "select",
         conditions: {
             dependsOn: 7,
@@ -556,7 +556,7 @@ const questions: QuestionType[] = [
      * */
     {
         id: 13,
-        text: 'Quelle situation professionnelle vous correspond actuellement ?',
+        text: 'Quelle situation professionnelle vous correspond actuellement ?',
         type: 'select',
         hasOtherOption: true,
         options: [
@@ -578,7 +578,7 @@ const questions: QuestionType[] = [
      * */
     {
         id: 14,
-        text: 'Quel est votre niveau de formation ?',
+        text: 'Quel est votre niveau de formation ?',
         type: 'textarea',
         placeholder: 'Entrez votre niveau de formation',
     },
@@ -608,7 +608,7 @@ const questions: QuestionType[] = [
      * */
     {
         id: 16,
-        text: 'De quel(s) abonnement(s) de transports publics disposez-vous?',
+        text: 'De quel(s) abonnement(s) de transports publics disposez-vous ?',
         type: 'checkbox',
         options: [
             "Aucun",
@@ -760,7 +760,7 @@ const questions: QuestionType[] = [
      * */
     {
         id: 43,
-        text: "Pour être recontacté si votre candidature est sélectionnée, merci de renseigner votre adresse email&nbsp;:",
+        text: "Pour être recontacté si votre candidature est sélectionnée,<br>merci de renseigner votre adresse email&nbsp;:",
         type: "mail",
         placeholder: "Entrez votre adresse email",
     },
@@ -772,7 +772,7 @@ const questions: QuestionType[] = [
      * */
     {
         id: 44.0,
-        text: "Et souhétez-vous partager votre adresse postale&nbsp;?",
+        text: "Et souhétez-vous partager<br>votre adresse postale&nbsp;?",
         type: "select",
         options: [
             'Je ne souhaites pas communiquer mon adresse postale',
@@ -780,10 +780,6 @@ const questions: QuestionType[] = [
         ],
 
     },
-
-    /**
-     * block 44
-     * */
     {
         id: 44,
         text: "Votre adresse postale&nbsp;:",
@@ -794,6 +790,7 @@ const questions: QuestionType[] = [
         },
         placeholder: "Entrez votre adresse postale",
     },
+
 ];
 
 // État des réponses
