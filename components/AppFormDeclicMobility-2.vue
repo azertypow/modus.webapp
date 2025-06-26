@@ -687,10 +687,10 @@ const questions: QuestionType[] = [
                     + parseInt(personnes_de_26_a_64_ans)
                     + parseInt(personnes_de_18_a_25_ans)
 
-                if (dependentValue !== undefined && dependentValue === "0") return false
-                if (dependentValue !== undefined && dependentValue === "plus de 4") return true
-                if( dependentValue !== undefined && parseInt(dependentValue) > totalAdults) return true
-                return false
+                if (dependentValue !== undefined && dependentValue === "0") return true
+                if (dependentValue !== undefined && dependentValue === "plus de 4") return false
+                if( dependentValue !== undefined && parseInt(dependentValue) > totalAdults) return false
+                return true
             }
             ,
         },
