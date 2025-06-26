@@ -660,6 +660,102 @@ const questions: QuestionType[] = [
 
 
     /**
+     * block 19
+     * */
+    {
+        id: 19,
+        text: 'La voiture que vous n’utiliserez pas pendant le défi est-elle partagée avec d’autres adultes de votre ménage ?',
+        type: 'select',
+        conditions: {
+            dependsOn: 7,
+            value: dependentValue => {
+
+                let personnes_de_65_ans_et_plus = responses.value[6.1] as undefined | string
+                let personnes_de_26_a_64_ans    = responses.value[6.2] as undefined | string
+                let personnes_de_18_a_25_ans    = responses.value[6.3] as undefined | string
+                let personnes_de_16_a_17_ans    = responses.value[6.4] as undefined | string
+                let personnes_de_0_a_15_ans     = responses.value[6.5] as undefined | string
+
+                if( !personnes_de_65_ans_et_plus) personnes_de_65_ans_et_plus = '0'
+                if( !personnes_de_26_a_64_ans)    personnes_de_26_a_64_ans    = '0'
+                if( !personnes_de_18_a_25_ans)    personnes_de_18_a_25_ans    = '0'
+                if( !personnes_de_16_a_17_ans)    personnes_de_16_a_17_ans    = '0'
+                if( !personnes_de_0_a_15_ans)     personnes_de_0_a_15_ans     = '0'
+
+                const totalAdults =
+                      parseInt(personnes_de_65_ans_et_plus)
+                    + parseInt(personnes_de_26_a_64_ans)
+                    + parseInt(personnes_de_18_a_25_ans)
+
+                if (dependentValue !== undefined && dependentValue === "0") return false
+                if (dependentValue !== undefined && dependentValue === "plus de 4") return true
+                if( dependentValue === undefined && parseInt(dependentValue) > totalAdults) return true
+                return false
+            }
+            ,
+        },
+        options: [
+            "Oui, tout à fait",
+            "Plutôt oui",
+            "Plutôt non",
+            "Pas du tout",
+        ],
+    },
+
+    /**
+     * block 20
+     * */
+    {
+        id: 20,
+        text: `Code famille :
+          <span class="app-font-small">
+            <br>Toutes les personnes de votre ménage doivent participer au défi.
+            <br>Merci de demander aux autres utilisateurs de la voiture de remplir ce formulaire d’enregistrement.
+            <br>
+            <br>Définissez un code famille et renseignez-le ici pour que nous puissions faire le lien entre vos réponses (exemple de code famille : les trois premières lettres de votre nom de famille et 3 chiffres de votre choix).
+          </span>
+        `,
+        type: 'input',
+        conditions: {
+            dependsOn: 7,
+            value: dependentValue => {
+
+                let personnes_de_65_ans_et_plus = responses.value[6.1] as undefined | string
+                let personnes_de_26_a_64_ans    = responses.value[6.2] as undefined | string
+                let personnes_de_18_a_25_ans    = responses.value[6.3] as undefined | string
+                let personnes_de_16_a_17_ans    = responses.value[6.4] as undefined | string
+                let personnes_de_0_a_15_ans     = responses.value[6.5] as undefined | string
+
+                let voiture_patagee             = responses.value[19]  as undefined | string
+
+                if( !personnes_de_65_ans_et_plus) personnes_de_65_ans_et_plus = '0'
+                if( !personnes_de_26_a_64_ans)    personnes_de_26_a_64_ans    = '0'
+                if( !personnes_de_18_a_25_ans)    personnes_de_18_a_25_ans    = '0'
+                if( !personnes_de_16_a_17_ans)    personnes_de_16_a_17_ans    = '0'
+                if( !personnes_de_0_a_15_ans)     personnes_de_0_a_15_ans     = '0'
+
+                const totalAdults =
+                    parseInt(personnes_de_65_ans_et_plus)
+                    + parseInt(personnes_de_26_a_64_ans)
+                    + parseInt(personnes_de_18_a_25_ans)
+
+                if (dependentValue !== undefined && dependentValue === "0") return false
+                if (dependentValue !== undefined && dependentValue === "plus de 4"          &&  (voiture_patagee === 'Oui, tout à fait' || voiture_patagee === 'Plutôt oui') ) return true
+                if( dependentValue === undefined && parseInt(dependentValue) > totalAdults  &&  (voiture_patagee === 'Oui, tout à fait' || voiture_patagee === 'Plutôt oui') ) return true
+                return false
+            },
+        },
+        placeholder: "JOHN_1234",
+    },
+
+
+
+
+
+
+
+
+    /**
      * block 43
      * */
     {
