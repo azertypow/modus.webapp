@@ -760,12 +760,10 @@ const questions: QuestionType[] = [
      * */
     {
         id: 43,
-        text: "Pour être recontacté si votre candidature est sélectionnée, merci de renseigner votre adresse email,",
+        text: "Pour être recontacté si votre candidature est sélectionnée, merci de renseigner votre adresse email&nbsp;:",
         type: "mail",
         placeholder: "Entrez votre adresse email",
     },
-
-
 
 
 
@@ -773,9 +771,27 @@ const questions: QuestionType[] = [
      * block 44
      * */
     {
+        id: 44.0,
+        text: "Et souhétez-vous partager votre adresse postale&nbsp;?",
+        type: "select",
+        options: [
+            'Je ne souhaites pas communiquer mon adresse postale',
+            'oui!'
+        ],
+
+    },
+
+    /**
+     * block 44
+     * */
+    {
         id: 44,
-        text: "ainsi que votre adresse postale :",
+        text: "Votre adresse postale&nbsp;:",
         type: "textarea",
+        conditions: {
+            dependsOn: 44.0,
+            value: dependentValue => dependentValue === 'oui!'
+        },
         placeholder: "Entrez votre adresse postale",
     },
 ];
