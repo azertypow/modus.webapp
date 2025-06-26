@@ -345,7 +345,7 @@ const questions: QuestionType[] = [
     {
         id: 5,
         type: 'select',
-        text: 'Quelles est la structure de votre ménage ?',
+        text: 'Quelle est la structure de votre ménage ?',
         options: [
             'Personne seule',
             'Couple sans enfant(s)',
