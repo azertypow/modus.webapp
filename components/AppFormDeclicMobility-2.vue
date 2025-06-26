@@ -629,7 +629,8 @@ const questions: QuestionType[] = [
      * */
     {
         id: 17,
-        text: 'Avez-vous personnellement accès à l’un de ces véhicules : (Veuillez mentionner uniquement le(s) véhicule(s) de votre ménage que vous pouvez utiliser.)',
+        text: `Avez-vous personnellement accès à l’un de ces véhicules :
+              <span class="app-font-small">(Veuillez mentionner uniquement le(s) véhicule(s) de votre ménage que vous pouvez utiliser.)</span>`,
         type: 'checkbox',
         options: [
             "Vélo à assistance électrique",
