@@ -689,7 +689,7 @@ const questions: QuestionType[] = [
 
                 if (dependentValue !== undefined && dependentValue === "0") return false
                 if (dependentValue !== undefined && dependentValue === "plus de 4") return true
-                if( dependentValue === undefined && parseInt(dependentValue) > totalAdults) return true
+                if( dependentValue !== undefined && parseInt(dependentValue) > totalAdults) return true
                 return false
             }
             ,
