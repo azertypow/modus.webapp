@@ -7,9 +7,11 @@
             :header-text="formHeaderText"
             :body-content="formBodyContent"
     />
-    <div>
-      <h2 style="margin-top: 0; text-align: center;"
-      >Les demandes sont terminées!</h2>
+    <div class="v-proto-form__bottom_content" >
+      <div>
+        <h2 style="margin-top: 0; text-align: center;"
+        >Les demandes sont terminées!</h2>
+      </div>
     </div>
 
 
@@ -81,8 +83,8 @@ const formBodyContent: IApiBody = {
         "content": {
             "content": {
                 "text": `
-                      <h1>Demande d’inscription au "Déclic Mobilité"</h1>
-                `
+                        <h1>Demande d’inscription au "Déclic Mobilité"</h1>
+  `
             },
             "id": "",
             "isHidden": false,
