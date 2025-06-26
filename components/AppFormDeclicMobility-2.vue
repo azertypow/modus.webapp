@@ -579,9 +579,8 @@ const questions: QuestionType[] = [
     {
         id: 14,
         text: 'Quel est votre niveau de formation ?',
-        type: 'select',
-        hasOtherOption: true,
-        options: [],
+        type: 'textarea',
+        placeholder: 'Entrez votre niveau de formation',
     },
 
 
@@ -630,7 +629,7 @@ const questions: QuestionType[] = [
     {
         id: 17,
         text: `Avez-vous personnellement accès à l’un de ces véhicules :
-              <span class="app-font-small">(Veuillez mentionner uniquement le(s) véhicule(s) de votre ménage que vous pouvez utiliser.)</span>`,
+              <br><span class="app-font-small">(Veuillez mentionner uniquement le(s) véhicule(s) de votre ménage que vous pouvez utiliser.)</span>`,
         type: 'checkbox',
         options: [
             "Vélo à assistance électrique",
