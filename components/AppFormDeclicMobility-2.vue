@@ -771,7 +771,7 @@ const questions: QuestionType[] = [
      * block 44
      * */
     {
-        id: 44.0,
+        id: 44.1,
         text: "Et souhétez-vous partager<br>votre adresse postale&nbsp;?",
         type: "select",
         options: [
@@ -781,11 +781,11 @@ const questions: QuestionType[] = [
 
     },
     {
-        id: 44,
+        id: 44.2,
         text: "Votre adresse postale&nbsp;:",
         type: "textarea",
         conditions: {
-            dependsOn: 44.0,
+            dependsOn: 44.1,
             value: dependentValue => dependentValue === 'oui!'
         },
         placeholder: "Entrez votre adresse postale",
