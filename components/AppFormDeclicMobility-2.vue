@@ -7,7 +7,9 @@
               <br>Pour que nous puissions vous recontacter si votre candidature est sélectionnée, merci de renseigner votre adresse email.
             </p>
 
-            <label v-if="question.type !== 'message'">{{ question.text }}</label>
+            <label v-if="question.type !== 'message'"
+                   v-html="question.text"
+            />
 
             <!-- Afficher le message si la question est de type 'message' -->
             <template v-if="question.type === 'message'">
