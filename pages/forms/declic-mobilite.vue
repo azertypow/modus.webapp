@@ -10,7 +10,10 @@
     <div class="v-proto-form__bottom_content" >
       <div>
         <h2 style="margin-top: 0; text-align: center;"
-        >Les demandes sont terminées!</h2>
+        >Les inscriptions au prochain Déclic Mobilité qui aura lieu sur tout le canton de Genève seront bientôt ouvertes&nbsp;!</h2>
+        <p style="text-align: center;">Si vous souhaitez être tenu au courant, laissez-nous votre mail&nbsp;:</p>
+
+        <input type="email" placeholder="Votre email" />
       </div>
     </div>
 
@@ -82,9 +85,7 @@ const formBodyContent: IApiBody = {
         "image": [],
         "content": {
             "content": {
-                "text": `
-                        <h1>Demande d’inscription au "Déclic Mobilité"</h1>
-  `
+                "text": ``
             },
             "id": "",
             "isHidden": false,
@@ -206,6 +207,26 @@ const formBodyContent: IApiBody = {
         &:before {
             background: #ff4d84;
         }
+    }
+}
+
+input[type='email'] {
+    all: unset;
+    font-family: inherit;
+    background: white;
+    height: 2.5rem;
+    border-radius: 3rem;
+    padding: 0 1rem;
+    width: 100%;
+    max-width: 20rem;
+    margin: auto;
+    font-style: italic;
+    box-sizing: border-box;
+    display: block;
+
+    &::placeholder {
+        color: black;
+        font-style: italic;
     }
 }
 </style>
