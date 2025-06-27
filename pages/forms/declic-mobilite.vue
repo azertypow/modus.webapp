@@ -11,9 +11,6 @@
       <div>
         <h2 style="margin-top: 0; text-align: center;"
         >Les inscriptions au prochain Déclic Mobilité qui aura lieu sur tout le canton de Genève seront bientôt ouvertes&nbsp;!</h2>
-        <p style="text-align: center;">Si vous souhaitez être tenu au courant, laissez-nous votre mail&nbsp;:</p>
-
-        <input type="email" placeholder="Votre email" />
       </div>
     </div>
 
