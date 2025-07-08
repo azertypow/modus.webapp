@@ -88,6 +88,11 @@ interface Question {
     type: "select" | "input" | "checkbox" | "textarea" | "number" | 'mail';
     placeholder?: string;
     conditions?: QuestionConditions;
+    /**
+     * A string variable that optionally holds a message to be displayed in modal window
+     * when the current question is blocked.
+     * This message provides context or explanation regarding the obstruction.
+     */
     messageIfCurrentQuestionIsBlocked?: string;
 }
 
@@ -96,6 +101,11 @@ interface Question_message {
     text: string;
     type: 'message';
     conditions?: QuestionConditions;
+    /**
+     * A string variable that optionally holds a message to be displayed in modal window
+     * when the current question is blocked.
+     * This message provides context or explanation regarding the obstruction.
+     */
     messageIfCurrentQuestionIsBlocked?: string
 }
 
@@ -204,9 +214,9 @@ const questions: QuestionType[] = [
             dependsOn: 2,
             value: dependentValue => dependentValue === "Autre",
         },
-        messageIfCurrentQuestionIsBlocked: 'Vous résidez hors du territoire couvert par l’initiative « Déclic mobilité ».',
+        messageIfCurrentQuestionIsBlocked: 'Vous résidez hors du territoire couvert par l’initiative « Déclic Mobilité ».',
         text: `
-          <p>Vous résidez hors du territoire couvert par l’initiative « Déclic mobilité ».</p>
+          <p>Vous résidez hors du territoire couvert par l’initiative « Déclic Mobilité ».</p>
           <p>Si vous connaissez des personnes qui résident sur le territoire du Canton de Genève ou du district de Nyon, n’hésitez pas à leur partager l’information.</p>
         `,
     },
@@ -473,6 +483,27 @@ const questions: QuestionType[] = [
 
 
     /**
+     * block 7.5
+     * */
+    {
+        id: 7.5,
+        text: "de combien de deux-roues motorisés (moto/scooter) disposez-vous au sein de votre ménage ?",
+        type: "select",
+        options: [
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "plus de 4",
+        ],
+    },
+
+
+
+
+
+    /**
      * block 8
      * */
     {
@@ -481,6 +512,29 @@ const questions: QuestionType[] = [
         type: "select",
         conditions: {
             dependsOn: 7,
+            value: dependentValue => dependentValue !==undefined && dependentValue !== "0"
+            ,
+        },
+        options: [
+            "Tous les jours ou presque",
+            "Une à plusieurs fois par semaine",
+            "Moins d’une fois par semaine",
+        ],
+    },
+
+
+
+
+
+    /**
+     * block 8.5
+     * */
+    {
+        id: 8.5,
+        text: "A quelle fréquence vous déplacez-vous en deux roues motorisés ?",
+        type: "select",
+        conditions: {
+            dependsOn: 7.5,
             value: dependentValue => dependentValue !==undefined && dependentValue !== "0"
             ,
         },
@@ -579,8 +633,35 @@ const questions: QuestionType[] = [
     {
         id: 14,
         text: 'Quel est votre niveau de formation ?',
-        type: 'textarea',
-        placeholder: 'Entrez votre niveau de formation',
+        type: 'select',
+        options: [
+            "Scolarité obligatoire",
+            "Formation professionnelle (CFC, école de commerce, apprentissage, etc.)",
+            "Formation générale sans maturité (école de culture générale, diplôme d’administration, etc.)",
+            "Maturité ou formation de type gymnasial (collège, lycée, maturité professionnelle ou spécialisée)",
+            "Formation supérieure (HES, université, école supérieure, brevet/diplôme fédéral, etc.)",
+            "Autre / Ne sait pas",
+        ],
+    },
+
+
+
+    /**
+     * block 14.5
+     * */
+    {
+        id: 14.5,
+        text: 'Avez-vous un permis moto/scooter (A1, A limité ou A) ?  ',
+        type: 'select',
+        conditions: {
+            dependsOn: 7.5,
+            value: dependentValue => dependentValue !==undefined && dependentValue !== "0"
+        },
+        options: [
+            "Oui",
+            "Non",
+            "Momentanément pas (par exemple retrait)",
+        ],
     },
 
 
@@ -601,6 +682,37 @@ const questions: QuestionType[] = [
     },
 
 
+    /**
+     * block 15.9
+     * */
+    {
+        id: 15.9,
+        type: 'message',
+        text: 'Le défi est réservé aux personnes qui (ont une voiture ou un deux-roues motorisés) et (le permis de conduire ou le permis A1 ou A).',
+        conditions: {
+            isBlocking: true,
+            dependsOn: NaN,
+            value: () => {
+
+                type PermisResponse  = "Oui" | "Non" | "Momentanément pas (par exemple retrait)"
+
+                const voitures_au_sein_du_menage    = responses.value[7]    as undefined | "plus de 4" | string
+                const deux_roues_au_sein_du_menage  = responses.value[7.5]  as undefined | "plus de 4" | string
+                const permis_moto                   = responses.value[14.5] as PermisResponse
+                const permis_voiture                = responses.value[15]   as PermisResponse
+
+                if( voitures_au_sein_du_menage === '0'
+                    && deux_roues_au_sein_du_menage === '0' ) return true
+
+                if(permis_moto !== 'Oui' && permis_voiture !== 'Oui') return true
+
+                return false
+            },
+        },
+        messageIfCurrentQuestionIsBlocked: 'Les participants doivent avoir un véhicule motorisé et le permis correspondant.',
+    },
+
+
 
 
     /**
@@ -608,7 +720,7 @@ const questions: QuestionType[] = [
      * */
     {
         id: 16,
-        text: 'De quel(s) abonnement(s) de transports publics disposez-vous ?',
+        text: 'De quel(s) abonnement(s) de transports publics disposez-vous ?<br><small>Plusieurs réponses possibles.</small>',
         type: 'checkbox',
         options: [
             "Aucun",
@@ -664,11 +776,11 @@ const questions: QuestionType[] = [
      * */
     {
         id: 19,
-        text: 'La voiture que vous n’utiliserez pas pendant le défi est-elle partagée avec d’autres adultes de votre ménage ?',
+        text: 'la voiture ou le deux-roues motorisés que vous n’utiliserez pas pendant le défi est-elle partagée avec d’autres adultes de votre ménage ?',
         type: 'select',
         conditions: {
-            dependsOn: 7,
-            value: dependentValue => {
+            dependsOn: NaN,
+            value: () => {
 
                 let personnes_de_65_ans_et_plus = responses.value[6.1] as undefined | string
                 let personnes_de_26_a_64_ans    = responses.value[6.2] as undefined | string
@@ -687,9 +799,19 @@ const questions: QuestionType[] = [
                     + parseInt(personnes_de_26_a_64_ans)
                     + parseInt(personnes_de_18_a_25_ans)
 
-                if (dependentValue !== undefined && dependentValue === "0") return true
-                if (dependentValue !== undefined && dependentValue === "plus de 4") return false
-                if( dependentValue !== undefined && parseInt(dependentValue) > totalAdults) return false
+                let voitures_au_sein_du_menage    = responses.value[7]    as undefined | "plus de 4" | string
+                let deux_roues_au_sein_du_menage  = responses.value[7.5]  as undefined | "plus de 4" | string
+
+                if (voitures_au_sein_du_menage !== undefined    && voitures_au_sein_du_menage === "plus de 4") return false
+                if (deux_roues_au_sein_du_menage !== undefined  && deux_roues_au_sein_du_menage === "plus de 4") return false
+
+                if( voitures_au_sein_du_menage !== undefined    && parseInt(voitures_au_sein_du_menage) > totalAdults) return false
+                if( deux_roues_au_sein_du_menage !== undefined  && parseInt(deux_roues_au_sein_du_menage) > totalAdults) return false
+
+                if( deux_roues_au_sein_du_menage !== undefined
+                    && voitures_au_sein_du_menage !== undefined
+                    && parseInt(voitures_au_sein_du_menage) + parseInt(deux_roues_au_sein_du_menage) > totalAdults) return false
+
                 return true
             }
             ,
@@ -760,7 +882,7 @@ const questions: QuestionType[] = [
      * */
     {
         id: 43,
-        text: "Pour être recontacté si votre candidature est sélectionnée,<br>merci de renseigner votre adresse email&nbsp;:",
+        text: "Pour être recontacté si votre candidature est sélectionnée, merci de renseigner votre adresse email&nbsp;:",
         type: "mail",
         placeholder: "Entrez votre adresse email",
     },
