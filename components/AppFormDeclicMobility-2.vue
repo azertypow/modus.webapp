@@ -153,11 +153,29 @@ type QuestionType =
 // Données des questions
 const questions: QuestionType[] = [
     /**
+     * block 0
+     */
+    {
+        id: 0,
+        text: 'Comment avez-vous eu connaissance de l\'initiative Déclic Mobilité ?',
+        type: "select",
+        options: [
+            "Je l’ai vu sur une affiche dans les trams/bus",
+            "J’ai reçu un e-mail de SwissPass",
+            "J’ai reçu une lettre du Canton",
+            "Des proches m'en ont parlé",
+            "J'ai lu un article sur l’initiative dans un journal",
+            "J'en ai entendu parler à la radio",
+            "Autre",
+        ],
+    },
+
+    /**
      * block 1
      */
     {
         id: 1,
-        text: 'Avant toute chose, avez-vous un compte swisspass ?',
+        text: 'Avant toute chose, avez-vous un compte SwissPass ?',
         type: "select",
         options: [
             'oui',
@@ -175,9 +193,9 @@ const questions: QuestionType[] = [
         },
         messageIfCurrentQuestionIsBlocked: `Si vous n'avez pas de carte SwissPass, vous devez rapidement en commander une avant de procéder à votre enregistrement.`,
         text: `
-          <p>Si vous n'avez pas de carte SwissPass, vous devez rapidement en commander une avant de procéder à votre enregistrement. En effet, l’accès aux abonnements et services offerts pendant le défi nécessite que vous ayez <a target='_blank' href="https://www.swisspass.ch/register/1">un&nbsp;compte swisspass</a>.</p>
-          <p>Pour obtenir la carte SwissPass, vous pouvez en faire la demande auprès d’un point de vente des transports publics ou la commander via le site internet de Swisspass. Merci de faire cette commande et de revenir sur la page du questionnaire dans un second temps pour procéder à votre enregistrement.</p>
-          <p>Merci de revenir très vite pour remplir ce formulaire une fois votre compte swisspass activé.</p>
+          <p>Si vous n'avez pas de carte SwissPass, vous devez rapidement en commander une avant de procéder à votre enregistrement. En effet, l’accès aux abonnements et services offerts pendant le défi nécessite que vous ayez <a target='_blank' href="https://www.swisspass.ch/register/1">un&nbsp;compte SwissPass</a>.</p>
+          <p>Pour obtenir la carte SwissPass, vous pouvez en faire la demande auprès d’un point de vente des transports publics ou la commander via le site internet de SwissPass. Merci de faire cette commande et de revenir sur la page du questionnaire dans un second temps pour procéder à votre enregistrement.</p>
+          <p>Merci de revenir très vite pour remplir ce formulaire une fois votre compte SwissPass activé.</p>
         `,
     },
 
