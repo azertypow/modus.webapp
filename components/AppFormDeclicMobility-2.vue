@@ -891,6 +891,50 @@ const questions: QuestionType[] = [
     },
 
 
+    /**
+     * block 22
+     * */
+    {
+        id: 22,
+        text: `Si votre candidature est sélectionnée, vous pourrez choisir parmi les services suivants (qui vous seront intégralement offerts)
+          <ul>
+            <li>Abonnement transports public Unireso, Mobilis ou AG découverte</li>
+            <li>Vélo à assistance électrique 25, 45 ou vélocargo (sous réserve de disponibilité)</li>
+            <li>Abonnement et crédit de circulation Mobility,</li>
+            <li>Abonnement Donkey Republic</li>
+            <li>Abonnement et crédits de circulation Carvélo</li>
+            <li>Bons taxi</li>
+            <li>Bons pour livraison de courses</li>
+            <li>Bons de réparation pour votre vélo personnel</li>
+            <li>Atelier de remise en selle ou coaching vélo individualisé</li>
+            <li>Bons pour accès à un espace de coworking</li>
+          </ul>
+          <p>
+            Trois périodes sont possibles pour l’activation du kit mobilité, merci de mentionner la ou les périodes pour lesquelles vous seriez intéressé.e à participer :
+            <br><small>Plusieurs réponses possibles</small>
+          </p>
+        `,
+        type: 'checkbox',
+        options: [
+            "De mi-septembre à mi-octobre",
+            "De mi-octobre à mi-novembre",
+            "De mi-novembre à mi-décembre",
+
+        ]
+    },
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
