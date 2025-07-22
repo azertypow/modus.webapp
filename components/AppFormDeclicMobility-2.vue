@@ -881,7 +881,7 @@ const questions: QuestionType[] = [
      * */
     {
         id: 44.1,
-        text: "Et souhétez-vous partager<br>votre adresse postale&nbsp;?",
+        text: "Et souhaitez-vous partager<br>votre adresse postale&nbsp;?",
         type: "select",
         options: [
             'Je ne souhaites pas communiquer mon adresse postale',
