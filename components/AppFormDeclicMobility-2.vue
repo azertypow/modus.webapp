@@ -800,37 +800,26 @@ const questions: QuestionType[] = [
             dependsOn: NaN,
             value: () => {
 
-                let personnes_de_65_ans_et_plus = responses.value[6.1] as undefined | string
-                let personnes_de_26_a_64_ans    = responses.value[6.2] as undefined | string
-                let personnes_de_18_a_25_ans    = responses.value[6.3] as undefined | string
-                let personnes_de_16_a_17_ans    = responses.value[6.4] as undefined | string
-                let personnes_de_0_a_15_ans     = responses.value[6.5] as undefined | string
-
-                if( !personnes_de_65_ans_et_plus) personnes_de_65_ans_et_plus = '0'
-                if( !personnes_de_26_a_64_ans)    personnes_de_26_a_64_ans    = '0'
-                if( !personnes_de_18_a_25_ans)    personnes_de_18_a_25_ans    = '0'
-                if( !personnes_de_16_a_17_ans)    personnes_de_16_a_17_ans    = '0'
-                if( !personnes_de_0_a_15_ans)     personnes_de_0_a_15_ans     = '0'
+                const personnes_de_65_ans_et_plus = responses.value[6.1] ? responses.value[6.1] as string : '0'
+                const personnes_de_26_a_64_ans    = responses.value[6.2] ? responses.value[6.2] as string : '0'
+                const personnes_de_18_a_25_ans    = responses.value[6.3] ? responses.value[6.3] as string : '0'
+                const personnes_de_16_a_17_ans    = responses.value[6.4] ? responses.value[6.4] as string : '0'
+                const personnes_de_0_a_15_ans     = responses.value[6.5] ? responses.value[6.5] as string : '0'
 
                 const totalAdults =
                       parseInt(personnes_de_65_ans_et_plus)
                     + parseInt(personnes_de_26_a_64_ans)
                     + parseInt(personnes_de_18_a_25_ans)
 
-                let voitures_au_sein_du_menage    = responses.value[7]    as undefined | "plus de 4" | string
-                let deux_roues_au_sein_du_menage  = responses.value[7.5]  as undefined | "plus de 4" | string
+                const voitures_au_sein_du_menage    = responses.value[7]    ? responses.value[7]    as "plus de 4" | string : "0"
+                const deux_roues_au_sein_du_menage  = responses.value[7.5]  ? responses.value[7.5]  as "plus de 4" | string : "0"
 
-                if (voitures_au_sein_du_menage !== undefined    && voitures_au_sein_du_menage === "plus de 4") return false
-                if (deux_roues_au_sein_du_menage !== undefined  && deux_roues_au_sein_du_menage === "plus de 4") return false
+                if (voitures_au_sein_du_menage    === "plus de 4")  return true
+                if (deux_roues_au_sein_du_menage  === "plus de 4")  return true
 
-                if( voitures_au_sein_du_menage !== undefined    && parseInt(voitures_au_sein_du_menage) > totalAdults) return false
-                if( deux_roues_au_sein_du_menage !== undefined  && parseInt(deux_roues_au_sein_du_menage) > totalAdults) return false
+                const totalVehicules = parseInt(voitures_au_sein_du_menage) + parseInt(deux_roues_au_sein_du_menage)
 
-                if( deux_roues_au_sein_du_menage !== undefined
-                    && voitures_au_sein_du_menage !== undefined
-                    && parseInt(voitures_au_sein_du_menage) + parseInt(deux_roues_au_sein_du_menage) <= totalAdults) return false
-
-                return true
+                return totalVehicules > totalAdults
             }
             ,
         },
@@ -857,31 +846,11 @@ const questions: QuestionType[] = [
         `,
         type: 'input',
         conditions: {
-            dependsOn: 7,
-            value: dependentValue => {
+            dependsOn: 19,
+            value: le_vehicule_est_partage => {
 
-                let personnes_de_65_ans_et_plus = responses.value[6.1] as undefined | string
-                let personnes_de_26_a_64_ans    = responses.value[6.2] as undefined | string
-                let personnes_de_18_a_25_ans    = responses.value[6.3] as undefined | string
-                let personnes_de_16_a_17_ans    = responses.value[6.4] as undefined | string
-                let personnes_de_0_a_15_ans     = responses.value[6.5] as undefined | string
-
-                let voiture_patagee             = responses.value[19]  as undefined | string
-
-                if( !personnes_de_65_ans_et_plus) personnes_de_65_ans_et_plus = '0'
-                if( !personnes_de_26_a_64_ans)    personnes_de_26_a_64_ans    = '0'
-                if( !personnes_de_18_a_25_ans)    personnes_de_18_a_25_ans    = '0'
-                if( !personnes_de_16_a_17_ans)    personnes_de_16_a_17_ans    = '0'
-                if( !personnes_de_0_a_15_ans)     personnes_de_0_a_15_ans     = '0'
-
-                const totalAdults =
-                    parseInt(personnes_de_65_ans_et_plus)
-                    + parseInt(personnes_de_26_a_64_ans)
-                    + parseInt(personnes_de_18_a_25_ans)
-
-                if (dependentValue !== undefined && dependentValue === "0") return false
-                if (dependentValue !== undefined && dependentValue === "plus de 4"          &&  (voiture_patagee === 'Oui, tout à fait' || voiture_patagee === 'Plutôt oui') ) return true
-                if( dependentValue === undefined && parseInt(dependentValue) > totalAdults  &&  (voiture_patagee === 'Oui, tout à fait' || voiture_patagee === 'Plutôt oui') ) return true
+                if (le_vehicule_est_partage === "Oui, tout à fait") return true
+                if (le_vehicule_est_partage === "Plutôt oui") return true
                 return false
             },
         },
