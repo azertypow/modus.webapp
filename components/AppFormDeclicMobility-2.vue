@@ -706,7 +706,7 @@ const questions: QuestionType[] = [
     {
         id: 15.9,
         type: 'message',
-        text: 'Le défi est réservé aux personnes qui (ont une voiture ou un deux-roues motorisés) et (le permis de conduire ou le permis A1 ou A).',
+        text: 'Le défi est réservé aux personnes qui ont une voiture ou un deux-roues motorisés et le permis de conduire ou le permis A1 ou A.',
         conditions: {
             isBlocking: true,
             dependsOn: NaN,
@@ -794,7 +794,7 @@ const questions: QuestionType[] = [
      * */
     {
         id: 19,
-        text: 'la voiture ou le deux-roues motorisés que vous n’utiliserez pas pendant le défi est-elle partagée avec d’autres adultes de votre ménage ?',
+        text: 'La voiture ou le deux-roues motorisé que vous n’utiliserez pas pendant le défi est-elle ou est-il partagée avec d’autres adultes de votre ménage ?',
         type: 'select',
         conditions: {
             dependsOn: NaN,
@@ -828,7 +828,7 @@ const questions: QuestionType[] = [
 
                 if( deux_roues_au_sein_du_menage !== undefined
                     && voitures_au_sein_du_menage !== undefined
-                    && parseInt(voitures_au_sein_du_menage) + parseInt(deux_roues_au_sein_du_menage) > totalAdults) return false
+                    && parseInt(voitures_au_sein_du_menage) + parseInt(deux_roues_au_sein_du_menage) <= totalAdults) return false
 
                 return true
             }
