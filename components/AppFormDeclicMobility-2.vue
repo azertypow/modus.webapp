@@ -860,6 +860,39 @@ const questions: QuestionType[] = [
 
 
 
+    /**
+     * block 21
+     * */
+    {
+        id: 21,
+        text: `<strong>Merci de remplir cette question complémentaire.</strong>
+          <br>À quelle fréquence accompagnez-vous votre enfant ou vos enfants&nbsp;?
+        `,
+        type: 'select',
+        conditions: {
+            dependsOn: NaN,
+            value: () => {
+                const personnes_de_65_ans_et_plus = responses.value[6.1] ? responses.value[6.1] as string : '0'
+                const personnes_de_26_a_64_ans    = responses.value[6.2] ? responses.value[6.2] as string : '0'
+                const personnes_de_18_a_25_ans    = responses.value[6.3] ? responses.value[6.3] as string : '0'
+                const personnes_de_16_a_17_ans    = responses.value[6.4] ? responses.value[6.4] as string : '0'
+                const personnes_de_0_a_15_ans     = responses.value[6.5] ? responses.value[6.5] as string : '0'
+
+                const total_minors = parseInt( personnes_de_16_a_17_ans ) + parseInt( personnes_de_0_a_15_ans )
+
+                return total_minors > 0
+            },
+        },
+        options: [
+            "Tous les jours ou presque",
+            "Une à plusieurs fois par semaine",
+            "Moins d’une fois par semaine",
+        ]
+    },
+
+
+
+
 
 
 
