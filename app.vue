@@ -94,8 +94,16 @@ import {
 import AppCookie from "~/components/AppCookie.vue";
 import {ApiFetchPagesInfo} from "~/composable/adminApi/apiFetch";
 import {getCookieBannerValue, setCookieBannerValue} from "~/utils/cookieBannerLocalStorage";
+import {matomo, updateMatomoWithNavigation} from "~/utils/matomo";
 
 const isIntersected = useIsIntersected()
+
+if (import.meta.client) {
+    matomo()
+    useRouter().afterEach((to, from) => {
+        updateMatomoWithNavigation(from.fullPath)
+    })
+}
 
 onMounted(async () => {
     window.addEventListener('scroll', () => {
