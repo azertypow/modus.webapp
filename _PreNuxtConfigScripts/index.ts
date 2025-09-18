@@ -1,7 +1,6 @@
 import {ApiFetchPagesInfo, ApiFetchProjects} from "../composable/adminApi/apiFetch";
-import type {IApiProjects} from "../composable/adminApi/apiDefinitions";
-import { writeFile } from "fs/promises";
-import {IApiSiteInfo} from "../composable/adminApi/apiDefinitions"; // Module fs pour écrire dans un fichier (Node.js)
+import type {IApiProjects, IApiSiteInfo} from "../composable/adminApi/apiDefinitions";
+import { writeFile } from "node:fs/promises";
 
 
 async function main() {

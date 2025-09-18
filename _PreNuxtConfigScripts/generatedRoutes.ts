@@ -57,5 +57,7 @@ export const generatedRoutes: string[] = [
   "/project/declic-mobilite",
   "/project/observatoire-des-mobilites",
   "/project/chrysalide-monitoring-de-la-gratuite",
-  "/project/mes-trajets"
+  "/project/mes-trajets",
+  "/project/mobilite-durable-un-catalogue-d-offres-pense-pour-les-habitants",
+  "/project/moving-with-trees"
 ];
