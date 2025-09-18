@@ -7,6 +7,9 @@
             <img class="v-app-project-item__header__img"
                  alt="project cover"
                  :src="img_src"
+                 :style="{
+                        objectPosition: object_position,
+                 }"
             />
             <div class="v-app-project-item__header__date"
             >{{formatDateRange(date_start, date_end)}}</div>
@@ -75,6 +78,7 @@ const props = defineProps<{
     title?: string
     content?: string
     img_src?: string
+    object_position?: string
     slug?: string
     date_start: string,
     is_project_with_duration?: "true" | "false",
