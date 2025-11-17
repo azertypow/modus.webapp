@@ -130,7 +130,7 @@ const formBodyContent: IApiBody = {
 
                         <h3>Déclic Mobilité, c’est quoi ?</h3>
 
-                        <p>Le concept est simple : vous stationnez (dans un parking prévu à cet effet) votre véhicule pendant un mois au choix entre les trois périodes allant de mi-septembre à mi-octobre 2025, et vous recevez un accès gratuit à des alternatives de déplacement de votre choix parmi lesquelles un abonnement transports publics, un vélo/vélo électrique/vélo cargo, un abonnement Mobility, et bien d’autres services.</p>
+                        <p>Le concept est simple : vous stationnez (dans un parking prévu à cet effet) votre véhicule pendant un mois au choix entre trois périodes qui vous seront proposées et qui s’étalent sur la période allant de mars à juin, et vous recevez un accès gratuit à des alternatives de déplacement de votre choix parmi lesquelles un abonnement transports publics, un vélo/vélo électrique/vélo cargo, un abonnement Mobility, et bien d’autres services.</p>
 
 
 
