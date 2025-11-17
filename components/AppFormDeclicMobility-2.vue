@@ -850,7 +850,7 @@ const questions: QuestionType[] = [
             value: le_vehicule_est_partage => {
 
                 if (le_vehicule_est_partage === "Oui, tout à fait") return true
-                if (le_vehicule_est_partage === "Plutôt oui") return true
+                else if (le_vehicule_est_partage === "Plutôt oui") return true
                 return false
             },
         },
