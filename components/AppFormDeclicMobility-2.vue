@@ -526,7 +526,7 @@ const questions: QuestionType[] = [
      * */
     {
         id: 8,
-        text: "A quelle fréquence vous déplacez-vous en voiture ?",
+        text: "À quelle fréquence vous déplacez-vous en voiture ?",
         type: "select",
         conditions: {
             dependsOn: 7,
@@ -549,7 +549,7 @@ const questions: QuestionType[] = [
      * */
     {
         id: 8.5,
-        text: "A quelle fréquence vous déplacez-vous en deux roues motorisés ?",
+        text: "À quelle fréquence vous déplacez-vous en deux roues motorisés ?",
         type: "select",
         conditions: {
             dependsOn: 7.5,
@@ -610,7 +610,7 @@ const questions: QuestionType[] = [
      * */
     {
         id: 10,
-        text: 'Etes-vous une femme ou un homme ?',
+        text: 'Êtes-vous une femme ou un homme ?',
         type: 'select',
         options: [
             'Une femme',
