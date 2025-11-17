@@ -38,7 +38,7 @@
 
             <!-- Input (texte) -->
             <template v-else-if="question.type === 'input'">
-                <input v-model="responses[question.id]" type="text" :placeholder="question.placeholder" />
+                <input v-model="responses[question.id]" type="text" :placeholder="question.placeholder" :readonly="question.id === 20" />
             </template>
 
             <!-- Input (nombre) -->
@@ -66,6 +66,26 @@
             <template v-else-if="question.type === 'mail'">
               <input v-model="responses[question.id]" type="email" :placeholder="question.placeholder" />
             </template>
+
+            <!-- Family Code -->
+            <template v-else-if="question.type === 'family_code'">
+                <div class="app-form__family-code">
+                    <div class="app-form__family-code__inputs">
+                        <div class="app-form__family-code__field">
+                            <label>Prénom :</label>
+                            <input v-model="responses[`${question.id}_prenom`]" type="text" placeholder="Votre prénom" />
+                        </div>
+                        <div class="app-form__family-code__field">
+                            <label>Nom :</label>
+                            <input v-model="responses[`${question.id}_nom`]" type="text" placeholder="Votre nom" />
+                        </div>
+                    </div>
+                    <div class="app-form__family-code__result">
+                        <label>Code famille généré :</label>
+                        <input v-model="responses[question.id]" type="text" :placeholder="question.placeholder" readonly />
+                    </div>
+                </div>
+            </template>
         </div>
 
         <button type="submit" @click.prevent="submitForm">Envoyer</button>
@@ -85,7 +105,7 @@ interface QuestionConditions {
 interface Question {
     id: number;
     text: string;
-    type: "select" | "input" | "checkbox" | "textarea" | "number" | 'mail';
+    type: "select" | "input" | "checkbox" | "textarea" | "number" | 'mail' | 'family_code';
     placeholder?: string;
     conditions?: QuestionConditions;
     /**
@@ -137,6 +157,10 @@ interface Question_mail extends Question {
     type: 'mail';
 }
 
+interface Question_family_code extends Question {
+    type: 'family_code';
+}
+
 interface Responses {
     [key: number | string]: string | number | string[] | boolean | undefined;
 }
@@ -149,6 +173,7 @@ type QuestionType =
     | Question_number
     | Question_message
     | Question_mail
+    | Question_family_code
 
 // Données des questions
 const questions: QuestionType[] = [
@@ -841,10 +866,10 @@ const questions: QuestionType[] = [
             <br>Toutes les personnes de votre ménage doivent participer au défi.
             <br>Merci de demander aux autres utilisateurs de la voiture de remplir ce formulaire d’enregistrement.
             <br>
-            <br>Définissez un code famille et renseignez-le ici pour que nous puissions faire le lien entre vos réponses (exemple de code famille : les trois premières lettres de votre nom de famille et 3 chiffres de votre choix).
+            <br>Ce code famille est généré automatiquement à partir de votre prénom et nom pour que nous puissions faire le lien entre vos réponses.
           </span>
         `,
-        type: 'input',
+        type: 'family_code',
         conditions: {
             dependsOn: 19,
             value: le_vehicule_est_partage => {
@@ -854,7 +879,7 @@ const questions: QuestionType[] = [
                 return false
             },
         },
-        placeholder: "JOHN_1234",
+        placeholder: "Code généré automatiquement",
     },
 
 
@@ -989,6 +1014,56 @@ questions.forEach((question) => {
     }
 });
 
+// Fonction pour générer un hash simple à partir d'une chaîne
+function simpleHash(str: string): number {
+    let hash = 0;
+    for (let i = 0; i < str.length; i++) {
+        const char = str.charCodeAt(i);
+        hash = ((hash << 5) - hash) + char;
+        hash = hash & hash; // Convertir en entier 32 bits
+    }
+    return Math.abs(hash);
+}
+
+// Fonction pour générer le code famille
+function generateFamilyCode(prenom: string, nom: string): string {
+    if (!prenom || !nom) return '';
+
+    // Normaliser les chaînes (enlever les accents, mettre en majuscules)
+    const normalizeString = (str: string) => {
+        return str
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "")
+            .toUpperCase()
+            .replace(/[^A-Z]/g, '');
+    };
+
+    const prenomNormalized = normalizeString(prenom);
+    const nomNormalized = normalizeString(nom);
+
+    // Prendre les 3 premières lettres de chaque
+    const prenomPart = prenomNormalized.substring(0, 3).padEnd(3, 'X');
+    const nomPart = nomNormalized.substring(0, 3).padEnd(3, 'X');
+
+    // Générer un nombre basé sur le prénom et nom complets
+    const fullName = prenomNormalized + nomNormalized;
+    const hashNumber = simpleHash(fullName) % 10000; // Nombre entre 0 et 9999
+    const numberPart = hashNumber.toString().padStart(4, '0');
+
+    return `${prenomPart}${nomPart}_${numberPart}`;
+}
+
+// Watcher pour mettre à jour automatiquement le code famille
+watch(
+    () => [responses.value['20_prenom'], responses.value['20_nom']],
+    ([prenom, nom]) => {
+        if (typeof prenom === 'string' && typeof nom === 'string') {
+            responses.value[20] = generateFamilyCode(prenom, nom);
+        }
+    },
+    { deep: true }
+);
+
 function clearResponse() {
     responses.value = {};
 
@@ -1115,6 +1190,36 @@ const isFormValid: ComputedRef<{
             }
         }
 
+        else if (question.type === 'family_code') {
+            const prenom = responses.value[`${question.id}_prenom`]
+            const nom = responses.value[`${question.id}_nom`]
+            const code = responses.value[question.id]
+
+            if (!prenom || typeof prenom !== 'string' || prenom.trim() === '') {
+                msg = {
+                    isValid: false,
+                    message: "Veuillez renseigner votre prénom pour le code famille",
+                }
+                break
+            }
+
+            if (!nom || typeof nom !== 'string' || nom.trim() === '') {
+                msg = {
+                    isValid: false,
+                    message: "Veuillez renseigner votre nom pour le code famille",
+                }
+                break
+            }
+
+            if (!code || typeof code !== 'string' || code.trim() === '') {
+                msg = {
+                    isValid: false,
+                    message: "Le code famille n'a pas été généré correctement",
+                }
+                break
+            }
+        }
+
         else if( responses.value[question.id] === undefined
             || responses.value[question.id] === ""
         ) {
@@ -1195,6 +1300,12 @@ form {
     counter-reset: section;
 }
 
+input[readonly] {
+    background-color: #f0f0f0;
+    cursor: not-allowed;
+    color: #666;
+}
+
 button {
     background: linear-gradient(to right, var(--app-color-main), var(--app-color-main--dark));
     border: none;
@@ -1243,6 +1354,56 @@ button {
     > * {
         text-align: center !important;
         max-width: none !important;
+    }
+}
+
+.app-form__family-code {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 1rem;
+
+    &__inputs {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+
+    &__field {
+        flex: 1;
+        min-width: 200px;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+
+        label {
+            font-weight: normal;
+            font-size: 0.9em;
+        }
+
+        label::before {
+            content: none !important;
+        }
+    }
+
+    &__result {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+
+        label {
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+
+        label::before {
+            content: none !important;
+        }
+
+        input {
+            font-weight: bold;
+            font-size: 1.1em;
+        }
     }
 }
 </style>
