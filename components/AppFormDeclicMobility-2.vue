@@ -505,7 +505,7 @@ const questions: QuestionType[] = [
      * */
     {
         id: 7.5,
-        text: "de combien de deux-roues motorisés (moto/scooter) disposez-vous au sein de votre ménage ?",
+        text: "De combien de deux-roues motorisés (moto/scooter) disposez-vous au sein de votre ménage ?",
         type: "select",
         options: [
             "0",
