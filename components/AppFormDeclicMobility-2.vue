@@ -941,16 +941,62 @@ const questions: QuestionType[] = [
         `,
         type: 'checkbox',
         options: [
-            "De mi-septembre à mi-octobre",
-            "De mi-octobre à mi-novembre",
-            "De mi-novembre à mi-décembre",
-
+          "du 9 mars au 8 avril",
+          "du 13 avril au 12 mai",
+          "du 18 mai au 17 juin",
         ]
     },
 
 
 
 
+  /**
+   * block 23
+   * */
+  {
+    id: 23,
+    text: `<p>L’équipe d’organisation du « Déclic mobilité » offre la possibilité aux participant.e.s de laisser leur voiture ou leur deux-roues motorisé dans un parking de la Fondation des parkings pendant toute la durée du défi. Il s’agit du Parking Quai Ernest-Ansermet.</p>
+           <p>Seriez-vous intéressé.e par cette offre (tous les frais seront à notre charge), sachant que vous garderez la possibilité de récupérer votre véhicule à n’importe quel moment pendant le défi (une seule sortie sera autorisée).</p>
+        `,
+    type: 'select',
+    options: [
+      "Oui, j’aimerais pouvoir profiter de cette offre",
+      "Non, je ne suis pas intéressé.e",
+    ]
+  },
+
+
+  /**
+   * block 24
+   * */
+  {
+    id: 24,
+    text: `<p>Pour pouvoir transmettre à la Fondation des Parkings la liste des véhicules concernés par le défi, nous avons besoin du numéro de la plaque d’immatriculation de la voiture ou du deux-roues motorisé que vous souhaiteriez garer dans le parking du Quai Ansermet.</p>
+          <p>Ce numéro ne sera utilisé qu’à cette fin et cette donnée ne sera pas conservée au-delà du 31 aout 2026.</p>
+        `,
+    type: 'input',
+    conditions: {
+      dependsOn: 23,
+      value: place_de_parking => {
+        return place_de_parking === "Oui, j’aimerais pouvoir profiter de cette offre"
+      },
+    },
+  },
+
+
+  /**
+   * block 25
+   * */
+  {
+    id: 25,
+    text: `Les personnes qui seront sélectionnées seront invitées à déposer leur véhicule (sans frais) dans un des parkings de la Fondation des parkings pendant la période du défi. Souhaitez-vous profiter de cette offre :
+        `,
+    type: 'select',
+    options: [
+      "Oui",
+      "Non, je préfère laisser mon véhicule à domicile en m’engageant à ne pas l’utiliser",
+    ]
+  },
 
 
 
@@ -971,7 +1017,7 @@ const questions: QuestionType[] = [
      * */
     {
         id: 43,
-        text: "Pour être recontacté si votre candidature est sélectionnée, merci de renseigner votre adresse email&nbsp;:",
+        text: "Pour être recontacté.e si votre candidature est sélectionnée, merci de renseigner votre adresse email&nbsp;:",
         type: "mail",
         placeholder: "Entrez votre adresse email",
     },
