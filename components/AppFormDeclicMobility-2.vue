@@ -191,6 +191,7 @@ const questions: QuestionType[] = [
             "Des proches m'en ont parlé",
             "J'ai lu un article sur l’initiative dans un journal",
             "J'en ai entendu parler à la radio",
+            "Média Modus (site internet, newsletter, réseaux sociaux…)",
             "Autre",
         ],
     },
@@ -219,7 +220,7 @@ const questions: QuestionType[] = [
         messageIfCurrentQuestionIsBlocked: `Si vous n'avez pas de carte SwissPass, vous devez rapidement en commander une avant de procéder à votre enregistrement.`,
         text: `
           <p>Si vous n'avez pas de carte SwissPass, vous devez rapidement en commander une avant de procéder à votre enregistrement. En effet, l’accès aux abonnements et services offerts pendant le défi nécessite que vous ayez <a target='_blank' href="https://www.swisspass.ch/register/1">un&nbsp;compte SwissPass</a>.</p>
-          <p>Pour obtenir la carte SwissPass, vous pouvez en faire la demande auprès d’un point de vente des transports publics ou la commander via le site internet de SwissPass. Merci de faire cette commande et de revenir sur la page du questionnaire dans un second temps pour procéder à votre enregistrement.</p>
+          <p>Pour obtenir la carte SwissPass, vous pouvez en faire la demande auprès d’un point de vente des transports publics ou la commander via le site internet de SwissPass.</p>
           <p>Merci de revenir très vite pour remplir ce formulaire une fois votre compte SwissPass activé.</p>
         `,
     },
@@ -844,7 +845,7 @@ const questions: QuestionType[] = [
 
                 const totalVehicules = parseInt(voitures_au_sein_du_menage) + parseInt(deux_roues_au_sein_du_menage)
 
-                return totalVehicules > totalAdults
+                return totalVehicules >= totalAdults
             }
             ,
         },
@@ -863,7 +864,7 @@ const questions: QuestionType[] = [
         id: 20,
         text: `Code famille :
           <span class="app-font-small">
-            <br>Toutes les personnes de votre ménage doivent participer au défi.
+            <br>Toutes les personnes de votre ménage doivent participer à l'initiative.
             <br>Merci de demander aux autres utilisateurs de la voiture de remplir ce formulaire d’enregistrement.
             <br>
             <br>Ce code famille est généré automatiquement à partir de votre prénom et nom pour que nous puissions faire le lien entre vos réponses.
@@ -886,37 +887,6 @@ const questions: QuestionType[] = [
 
 
     /**
-     * block 21
-     * */
-    {
-        id: 21,
-        text: `<strong>Merci de remplir cette question complémentaire.</strong>
-          <br>À quelle fréquence accompagnez-vous votre enfant ou vos enfants&nbsp;?
-        `,
-        type: 'select',
-        conditions: {
-            dependsOn: NaN,
-            value: () => {
-                const personnes_de_65_ans_et_plus = responses.value[6.1] ? responses.value[6.1] as string : '0'
-                const personnes_de_26_a_64_ans    = responses.value[6.2] ? responses.value[6.2] as string : '0'
-                const personnes_de_18_a_25_ans    = responses.value[6.3] ? responses.value[6.3] as string : '0'
-                const personnes_de_16_a_17_ans    = responses.value[6.4] ? responses.value[6.4] as string : '0'
-                const personnes_de_0_a_15_ans     = responses.value[6.5] ? responses.value[6.5] as string : '0'
-
-                const total_minors = parseInt( personnes_de_16_a_17_ans ) + parseInt( personnes_de_0_a_15_ans )
-
-                return total_minors > 0
-            },
-        },
-        options: [
-            "Tous les jours ou presque",
-            "Une à plusieurs fois par semaine",
-            "Moins d’une fois par semaine",
-        ]
-    },
-
-
-    /**
      * block 22
      * */
     {
@@ -925,7 +895,7 @@ const questions: QuestionType[] = [
           <ul>
             <li>Abonnement transports public Unireso, Mobilis ou AG découverte</li>
             <li>Vélo à assistance électrique 25, 45 ou vélocargo (sous réserve de disponibilité)</li>
-            <li>Abonnement et crédit de circulation Mobility,</li>
+            <li>Abonnement et crédits de circulation Mobility,</li>
             <li>Abonnement Donkey Republic</li>
             <li>Abonnement et crédits de circulation Carvélo</li>
             <li>Bons taxi</li>
@@ -956,7 +926,7 @@ const questions: QuestionType[] = [
   {
     id: 23,
     text: `<p>L’équipe d’organisation du « Déclic mobilité » offre la possibilité aux participant.e.s de laisser leur voiture ou leur deux-roues motorisé dans un parking de la Fondation des parkings pendant toute la durée du défi. Il s’agit du Parking Quai Ernest-Ansermet.</p>
-           <p>Seriez-vous intéressé.e par cette offre (tous les frais seront à notre charge), sachant que vous garderez la possibilité de récupérer votre véhicule à n’importe quel moment pendant le défi (une seule sortie sera autorisée).</p>
+           <p>Seriez-vous intéressé.e par cette offre (tous les frais seront à notre charge), sachant que vous garderez la possibilité de récupérer votre véhicule à n’importe quel moment pendant l'initiative (une seule sortie sera autorisée).</p>
         `,
     type: 'select',
     options: [
@@ -971,7 +941,7 @@ const questions: QuestionType[] = [
    * */
   {
     id: 24,
-    text: `<p>Pour pouvoir transmettre à la Fondation des Parkings la liste des véhicules concernés par le défi, nous avons besoin du numéro de la plaque d’immatriculation de la voiture ou du deux-roues motorisé que vous souhaiteriez garer dans le parking du Quai Ansermet.</p>
+    text: `<p>Pour pouvoir transmettre à la Fondation des Parkings la liste des véhicules concernés par l'initiative, nous avons besoin du numéro de la plaque d’immatriculation de la voiture ou du deux-roues motorisé que vous souhaiteriez garer dans le parking du Quai Ansermet.</p>
           <p>Ce numéro ne sera utilisé qu’à cette fin et cette donnée ne sera pas conservée au-delà du 31 aout 2026.</p>
         `,
     type: 'input',
@@ -982,29 +952,6 @@ const questions: QuestionType[] = [
       },
     },
   },
-
-
-  /**
-   * block 25
-   * */
-  {
-    id: 25,
-    text: `Les personnes qui seront sélectionnées seront invitées à déposer leur véhicule (sans frais) dans un des parkings de la Fondation des parkings pendant la période du défi. Souhaitez-vous profiter de cette offre :
-        `,
-    type: 'select',
-    options: [
-      "Oui",
-      "Non, je préfère laisser mon véhicule à domicile en m’engageant à ne pas l’utiliser",
-    ]
-  },
-
-
-
-
-
-
-
-
 
 
 

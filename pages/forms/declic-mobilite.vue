@@ -123,14 +123,21 @@ const formBodyContent: IApiBody = {
             "content": {
                 "text": `
                         <h1>Déclaration d’intérêt pour participer à l’initiative « Déclic Mobilité »
-                        <br><span style="color: #5500b7">Automne 2025</span>
+                        <br><span style="color: #5500b7">AUTOMNE 2025 à PRINTEMPS 2026</span>
                         </h1>
 
                         <p>Merci pour votre intérêt !</p>
 
                         <h3>Déclic Mobilité, c’est quoi ?</h3>
 
-                        <p>Le concept est simple : vous stationnez (dans un parking prévu à cet effet) votre véhicule pendant un mois au choix entre trois périodes qui vous seront proposées et qui s’étalent sur la période allant de mars à juin, et vous recevez un accès gratuit à des alternatives de déplacement de votre choix parmi lesquelles un abonnement transports publics, un vélo/vélo électrique/vélo cargo, un abonnement Mobility, et bien d’autres services.</p>
+                        <p>Le concept est simple : </p>
+                        <ol>
+                        <li>Parquez durant un mois votre véhicule individuel motorisé (voiture, moto, scooter)</li>
+                        <li>Choisissez des alternatives mises à disposition:  abonnement aux transports publics, vélo, vélo électrique ou vélo cargo, abonnement Mobility, et bien d’autres services adaptés à vos déplacements.</li>
+                        <li>Testez ces nouveaux modes de déplacement en bénéficiant d’un accompagnement</li>
+                        <li>Partagez votre expérience avec nos expert·e·s</li>
+                        </ol>
+
 
 
 
@@ -141,7 +148,7 @@ const formBodyContent: IApiBody = {
                           <li>Résider sur le territoire du Canton de Genève ou du district de Nyon</li>
                           <li>Détenir un ou plusieur(s) véhicule(s) (voiture, moto ou scooter ; thermique ou électrique)</li>
                           <li>S’engager à ne pas utiliser son véhicule pendant un mois</li>
-                          <li>Accepter de partager votre expérience avec les organisateurs</li>
+                          <li>Accepter de partager votre expérience avec l’équipe organisatrice</li>
                         </ul>
                         <h6>NB : les familles ou ménages composés de plusieurs personnes peuvent participer en groupe. Pour cela, nous invitons chaque personne à remplir ce questionnaire.</h6>
 
@@ -150,7 +157,7 @@ const formBodyContent: IApiBody = {
                         <p>Pour participer au défi « Déclic Mobilité », vous devez vous enregistrer en répondant à quelques questions (5 minutes environ) sur votre profil et vos habitudes de déplacement. Une sélection sera réalisée pour garantir une diversité des profils et les personnes sélectionnées seront recontactées par email dans le courant du mois de février 2026 avec toutes les informations nécessaires pour commencer l’aventure.<p>
 
 
-                        <h3>Comment sont utilisées mes données personnelles ?</h3>
+                        <h3>Comment sont utilisées les données personnelles ?</h3>
 
                         <p>
                         L’enquête est organisée via le site internet de la Fondation Modus, hébergé en Suisse sur un serveur sécurisé répondant à toutes les normes de sécurité en vigueur.
