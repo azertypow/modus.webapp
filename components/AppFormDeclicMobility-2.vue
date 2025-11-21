@@ -1202,17 +1202,28 @@ const isFormValid: ComputedRef<{
 const submitForm = async () => {
     if (isFormValid.value.isValid) {
 
+      const idOfQuestionForMailAdress = 44
+      const questionForMailAdresse = visibleQuestions.value.find(q => q.id === idOfQuestionForMailAdress)
+
+      const mailOfUser = questionForMailAdresse ? responses.value[questionForMailAdresse.id] : undefined
+      const mailToSendValidationMail = (typeof mailOfUser === 'string')? mailOfUser : 'nico+logerror@villa1203.ch'
+
         const jsonData: {
+          value: {
             question: QuestionType,
             response: string | number | string[] | boolean | undefined,
-        }[] = visibleQuestions.value.map((question) => {
+          }[],
+          mail: string
+        } = {
+          mail: mailToSendValidationMail,
+          value: visibleQuestions.value.map((question) => {
             return {
-                question: question,
-                response: responses.value[question.id],
+              question: question,
+              response: responses.value[question.id],
             }
-        })
-
-        // console.log("Formulaire soumis :", jsonData)
+          })
+        }
+        console.log("Formulaire soumis :", jsonData)
 
         const url = "https://azertypow-mail-record-36.deno.dev/data";
 
