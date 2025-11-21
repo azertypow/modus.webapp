@@ -2,11 +2,6 @@
     <form class="app-form-declic-mobility">
         <div v-for="question in visibleQuestions" :key="question.id" class="app-form__section">
 
-            <p v-if="question.type === 'mail'" style="width: 100%; max-width: none"
-            >Le questionnaire est presque terminé maintenant.
-              <br>Pour que nous puissions vous recontacter si votre candidature est sélectionnée, merci de renseigner votre adresse email.
-            </p>
-
             <label v-if="question.type !== 'message'"
                    v-html="question.text"
             />
@@ -871,6 +866,7 @@ const questions: QuestionType[] = [
           </span>
         `,
         type: 'family_code',
+      // todo: virer le readonly colé à l'arache pour le question No 20 (voir dans le template la condition if question.id === 20
         conditions: {
             dependsOn: 19,
             value: le_vehicule_est_partage => {
@@ -925,7 +921,7 @@ const questions: QuestionType[] = [
    * */
   {
     id: 23,
-    text: `<p>L’équipe d’organisation du « Déclic mobilité » offre la possibilité aux participant.e.s de laisser leur voiture ou leur deux-roues motorisé dans un parking de la Fondation des parkings pendant toute la durée de l'initiative. Il s’agit du Parking Quai Ernest-Ansermet.</p>
+    text: `L’équipe d’organisation du « Déclic mobilité » offre la possibilité aux participant.e.s de laisser leur voiture ou leur deux-roues motorisé dans un parking de la Fondation des parkings pendant toute la durée de l'initiative. Il s’agit du Parking Quai Ernest-Ansermet.
            <p>Seriez-vous intéressé.e par cette offre (tous les frais seront à notre charge), sachant que vous garderez la possibilité de récupérer votre véhicule à n’importe quel moment pendant l'initiative (une seule sortie sera autorisée).</p>
         `,
     type: 'select',
@@ -941,7 +937,7 @@ const questions: QuestionType[] = [
    * */
   {
     id: 24,
-    text: `<p>Pour pouvoir transmettre à la Fondation des Parkings la liste des véhicules concernés par l'initiative, nous avons besoin du numéro de la plaque d’immatriculation de la voiture ou du deux-roues motorisé que vous souhaiteriez garer dans le parking du Quai Ansermet.</p>
+    text: `Pour pouvoir transmettre à la Fondation des Parkings la liste des véhicules concernés par l'initiative, nous avons besoin du numéro de la plaque d’immatriculation de la voiture ou du deux-roues motorisé que vous souhaiteriez garer dans le parking du Quai Ansermet.
           <p>Ce numéro ne sera utilisé qu’à cette fin et cette donnée ne sera pas conservée au-delà du 31 aout 2026.</p>
         `,
     type: 'input',
@@ -953,29 +949,86 @@ const questions: QuestionType[] = [
     },
   },
 
+  /**
+   * block 41
+   * */
+  {
+    id: 41,
+    type: 'message',
+    text: `
+        <p style="text-align: left !important;">
+          Le questionnaire est presque terminé maintenant.
+        </p>
+        <p style="text-align: left !important;">
+          Pour évaluer l’efficacité de la démarche « Déclic mobilité » et faire un retour sur les enseignements à tirer de l’expérience, nous avons besoin de mesurer la manière dont les participant.e.s font évoluer leurs pratiques de mobilité à l’occasion de cet évènement.
+        </p>
+        <p style="text-align: left !important;">
+          Pour cela, l’équipe d’organisation du « Déclic mobilité » vous invite à participer à une campagne de suivi GPS avec l’application Mov’us. Ce suivi permettra de mesurer et analyser les évolutions des pratiques pendant deux semaines en amont du défi, pendant le défi, puis pendant deux semaines après celui-ci. Votre participation à ce suivi est importante pour le bon fonctionnement du projet. Vous pouvez en savoir plus sur l’utilisation de vos données et les mesures de protection mises en place en cliquant sur ce lien : <a target="_blank" href="https://modus-admin.sdrvl.ch/declic-mobilite-notice-protection-globale.pdf" >LIEN PRIVACY NOTICE MOVUS</a>
+        </p>`
+  },
 
 
+  /**
+   * block 42
+   * */
+  {
+    id: 42,
+    type: 'select',
+    options: [
+      'oui',
+      'non',
+    ],
+    text: `Confirmez-vous avoir lu la <a target="_blank" href="https://modus-admin.sdrvl.ch/declic-mobilite-notice-protection-globale.pdf" >notice d’utilisation des données</a> et accepteriez-vous de participer au tracking GPS ?`
+  },
 
 
+  /**
+   * block 43
+   * */
+  {
+    id: 43,
+    type: 'message',
+    text: `
+        <p style="text-align: left !important;">
+          Pour être recontacté si votre candidature est sélectionnée, merci de renseigner votre adresse email et postale.
+        </p>
+        <p class="app-font-small" style="text-align: left !important;">
+        En inscrivant votre adresse email et postale, vous acceptez qu’elles soient enregistrées dans la base de données des personnes susceptibles de participer au défi. Les données renseignées dans ce formulaire ne seront utilisées que dans le cadre de l’organisation de l’initiative « Déclic Mobilité » et en aucun cas ne seront transmises à des tiers.
+        </p>
+        <p class="app-font-small" style="text-align: left !important;">
+        Elles seront détruites au plus tard le 31 décembre 2026.
+        </p>
+        `
+  },
 
-
-    /**
-     * block 43
-     * */
+  /**
+   * block 44
+   * */
     {
-        id: 43,
-        text: "Pour être recontacté.e si votre candidature est sélectionnée, merci de renseigner votre adresse email&nbsp;:",
+        id: 44,
+        text: `Adresse email :`,
         type: "mail",
         placeholder: "Entrez votre adresse email",
     },
 
 
-
     /**
-     * block 44
+     * block 45
      * */
     {
-        id: 44.1,
+      id: 45,
+      text: `Nom et numéro de rue :`,
+      type: "input",
+      placeholder: "Exemple: Rte de la Galaise 15",
+    },
+
+
+
+    /**
+     * block 46
+     * */
+    {
+        id: 46,
         text: "Et souhaitez-vous partager<br>votre adresse postale&nbsp;?",
         type: "select",
         options: [
@@ -985,11 +1038,11 @@ const questions: QuestionType[] = [
 
     },
     {
-        id: 44.2,
+        id: 47,
         text: "Votre adresse postale&nbsp;:",
         type: "textarea",
         conditions: {
-            dependsOn: 44.1,
+            dependsOn: 46,
             value: dependentValue => dependentValue === 'oui!'
         },
         placeholder: "Entrez votre adresse postale",
