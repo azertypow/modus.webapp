@@ -31,7 +31,7 @@
           </div>
 
           <div class="app-form__section" style="margin-top: 2rem">
-            <p class="app-font-small" style="max-width: none;">En cliquant sur cette case, vous donnez votre consentement pour la collecte et l'utilisation des données selon les conditions évoquées ci-dessus <a target="_blank" href="https://modus-ge.ch/media/site/declic-mobilite-notice-protection-globale.pdf" >(En&nbsp;savoir&nbsp;plus)</a>. Les démarches pour avoir accès à vos données personnelles, les modifier ou les supprimer s’effectuent par e-mail en <a target="_blank" href="mailto:info+nRGPD@declic-mobilite.ch">cliquant&nbsp;ici.</a></p>
+            <p class="app-font-small" style="max-width: none;">En cliquant sur cette case, vous donnez votre consentement pour la collecte et l'utilisation des données selon les conditions évoquées ci-dessus <a target="_blank" href="https://modus-ge.ch/media/site/declic-mobilite-notice-protection-globale.pdf" >(En&nbsp;savoir&nbsp;plus)</a>. Les démarches pour avoir accès à vos données personnelles, les modifier ou les supprimer s’effectuent par e-mail en <a target="_blank" href="mailto:info@declic-mobilite.ch">cliquant&nbsp;ici.</a></p>
             <p class="app-font-small" style="max-width: none;">1 Loi sur l’information du public, l’accès aux documents et la protection des données personnelles, du 5 octobre 2001 (LIPAD; A 2 08) et règlement d'application de la loi sur l'information du public, l'accès aux documents et la protection des données personnelles, du 21 décembre 2011 (RIPAD; A 2 08.01).</p>
           </div>
 
