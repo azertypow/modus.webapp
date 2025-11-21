@@ -231,7 +231,7 @@ const questions: QuestionType[] = [
         id: 2,
         text: "Dans quel territoire résidez-vous ?",
         type: "select",
-        options: ["Canton de Genève", "District de Nyon", "Autre"],
+        options: ["Canton de Genève", "Autre"],
     },
 
     {
@@ -256,75 +256,12 @@ const questions: QuestionType[] = [
         messageIfCurrentQuestionIsBlocked: 'Vous résidez hors du territoire couvert par l’initiative « Déclic Mobilité ».',
         text: `
           <p>Vous résidez hors du territoire couvert par l’initiative « Déclic Mobilité ».</p>
-          <p>Si vous connaissez des personnes qui résident sur le territoire du Canton de Genève ou du district de Nyon, n’hésitez pas à leur partager l’information.</p>
+          <p>Si vous connaissez des personnes qui résident sur le territoire du Canton de Genève, n’hésitez pas à leur partager l’information.</p>
         `,
     },
 
 
 
-
-
-    /**
-     * block 3
-     */
-    {
-        id: 3,
-        text: "Dans quelle commune de Nyon votre domicile est-il situé ?",
-        type: "select",
-        conditions: {
-            dependsOn: 2,
-            value: dependentValue => dependentValue === "District de Nyon",
-        },
-        options: [
-            "Arnex-sur-Nyon",
-            "Arzier-Le Muids",
-            "Bassins",
-            "Begnins",
-            "Bogis-Bossey",
-            "Borex",
-            "Bursinel",
-            "Bursins",
-            "Burtigny",
-            "Chavannes-de-Bogis",
-            "Chavannes-des-Bois",
-            "Chéserex",
-            "Coinsins",
-            "Commugny",
-            "Coppet",
-            "Crans",
-            "Crassier",
-            "Duillier",
-            "Dully",
-            "Essertines-sur-Rolle",
-            "Eysins",
-            "Founex",
-            "Genolier",
-            "Gilly",
-            "Gingins",
-            "Givrins",
-            "Gland",
-            "Grens",
-            "La Rippe",
-            "Le Vaud",
-            "Longirod",
-            "Luins",
-            "Marchissy",
-            "Mies",
-            "Mont-sur-Rolle",
-            "Nyon",
-            "Perroy",
-            "Prangins",
-            "Rolle",
-            "Saint-Cergue",
-            "Saint-George",
-            "Signy-Avenex",
-            "Tannay",
-            "Tartegnin",
-            "Trélex",
-            "Vich",
-            "Vinzel",
-        ],
-    },
 
 
     /**
