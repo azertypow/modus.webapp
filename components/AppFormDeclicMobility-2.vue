@@ -958,33 +958,6 @@ const questions: QuestionType[] = [
       type: "input",
       placeholder: "Exemple: Rte de la Galaise 15",
     },
-
-
-
-    /**
-     * block 46
-     * */
-    {
-        id: 46,
-        text: "Et souhaitez-vous partager<br>votre adresse postale&nbsp;?",
-        type: "select",
-        options: [
-            'Je ne souhaites pas communiquer mon adresse postale',
-            'oui!'
-        ],
-
-    },
-    {
-        id: 47,
-        text: "Votre adresse postale&nbsp;:",
-        type: "textarea",
-        conditions: {
-            dependsOn: 46,
-            value: dependentValue => dependentValue === 'oui!'
-        },
-        placeholder: "Entrez votre adresse postale",
-    },
-
 ];
 
 // État des réponses
