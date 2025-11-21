@@ -123,7 +123,7 @@ const formBodyContent: IApiBody = {
             "content": {
                 "text": `
                         <h1>Déclaration d’intérêt pour participer à l’initiative « Déclic Mobilité »
-                        <br><span style="color: #5500b7">AUTOMNE 2025 à PRINTEMPS 2026</span>
+                        <br><span style="color: #5500b7">PRINTEMPS 2026</span>
                         </h1>
 
                         <p>Merci pour votre intérêt !</p>
