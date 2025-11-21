@@ -217,6 +217,7 @@ const questions: QuestionType[] = [
           <p>Si vous n'avez pas de carte SwissPass, vous devez rapidement en commander une avant de procéder à votre enregistrement. En effet, l’accès aux abonnements et services offerts pendant l'initiative nécessite que vous ayez <a target='_blank' href="https://www.swisspass.ch/register/1">un&nbsp;compte SwissPass</a>.</p>
           <p>Pour obtenir la carte SwissPass, vous pouvez en faire la demande auprès d’un point de vente des transports publics ou la commander via le site internet de SwissPass.</p>
           <p>Merci de revenir très vite pour remplir ce formulaire une fois votre compte SwissPass activé.</p>
+          <p style="color: var(--app-color-main) !important;">Si vous voulez participer à d’autres initiatives ou des études pilotées par <strong>la Fondation Modus</strong> et visant à promouvoir la mobilité durable, envoyez nous un mail sur <a href="mailto:info@modus-ge.ch" target="_blank" >info@modus-ge.ch</a>&nbsp;!</p>
         `,
     },
 
@@ -664,7 +665,10 @@ const questions: QuestionType[] = [
     {
         id: 15.9,
         type: 'message',
-        text: `L'initiative est réservé aux personnes qui ont une voiture ou un deux-roues motorisés et le permis de conduire ou le permis A1 ou A.`,
+        text: `
+                <p>L'initiative est réservé aux personnes qui ont une voiture ou un deux-roues motorisés et le permis de conduire ou le permis A1 ou A.</p>
+                <p style="color: var(--app-color-main) !important;">Si vous voulez participer à d’autres initiatives ou des études pilotées par <strong>la Fondation Modus</strong> et visant à promouvoir la mobilité durable, envoyez nous un mail sur <a href="mailto:info@modus-ge.ch" target="_blank" >info@modus-ge.ch</a>&nbsp;!</p>
+               `,
         conditions: {
             isBlocking: true,
             dependsOn: NaN,
