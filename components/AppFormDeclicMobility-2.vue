@@ -219,7 +219,7 @@ const questions: QuestionType[] = [
         },
         messageIfCurrentQuestionIsBlocked: `Si vous n'avez pas de carte SwissPass, vous devez rapidement en commander une avant de procéder à votre enregistrement.`,
         text: `
-          <p>Si vous n'avez pas de carte SwissPass, vous devez rapidement en commander une avant de procéder à votre enregistrement. En effet, l’accès aux abonnements et services offerts pendant le défi nécessite que vous ayez <a target='_blank' href="https://www.swisspass.ch/register/1">un&nbsp;compte SwissPass</a>.</p>
+          <p>Si vous n'avez pas de carte SwissPass, vous devez rapidement en commander une avant de procéder à votre enregistrement. En effet, l’accès aux abonnements et services offerts pendant l'initiative nécessite que vous ayez <a target='_blank' href="https://www.swisspass.ch/register/1">un&nbsp;compte SwissPass</a>.</p>
           <p>Pour obtenir la carte SwissPass, vous pouvez en faire la demande auprès d’un point de vente des transports publics ou la commander via le site internet de SwissPass.</p>
           <p>Merci de revenir très vite pour remplir ce formulaire une fois votre compte SwissPass activé.</p>
         `,
@@ -625,7 +625,7 @@ const questions: QuestionType[] = [
             dependsOn: 9,
             value: dependentValue => dependentValue === "2007 ou plus",
         },
-        text: `Ce défi s’adresse uniquement aux personnes majeures. Merci pour votre compréhension. N’hésitez pas à partager l’information auprès des personnes majeures de votre entourage.`,
+        text: `Cette initiative s’adresse uniquement aux personnes majeures. Merci pour votre compréhension. N’hésitez pas à partager l’information auprès des personnes majeures de votre entourage.`,
     },
 
 
@@ -732,7 +732,7 @@ const questions: QuestionType[] = [
     {
         id: 15.9,
         type: 'message',
-        text: 'Le défi est réservé aux personnes qui ont une voiture ou un deux-roues motorisés et le permis de conduire ou le permis A1 ou A.',
+        text: `L'initiative est réservé aux personnes qui ont une voiture ou un deux-roues motorisés et le permis de conduire ou le permis A1 ou A.`,
         conditions: {
             isBlocking: true,
             dependsOn: NaN,
@@ -820,7 +820,7 @@ const questions: QuestionType[] = [
      * */
     {
         id: 19,
-        text: 'La voiture ou le deux-roues motorisé que vous n’utiliserez pas pendant le défi est-elle ou est-il partagée avec d’autres adultes de votre ménage ?',
+        text: `La voiture ou le deux-roues motorisé que vous n’utiliserez pas pendant l'initiative est-elle ou est-il partagée avec d’autres adultes de votre ménage ?`,
         type: 'select',
         conditions: {
             dependsOn: NaN,
@@ -925,7 +925,7 @@ const questions: QuestionType[] = [
    * */
   {
     id: 23,
-    text: `<p>L’équipe d’organisation du « Déclic mobilité » offre la possibilité aux participant.e.s de laisser leur voiture ou leur deux-roues motorisé dans un parking de la Fondation des parkings pendant toute la durée du défi. Il s’agit du Parking Quai Ernest-Ansermet.</p>
+    text: `<p>L’équipe d’organisation du « Déclic mobilité » offre la possibilité aux participant.e.s de laisser leur voiture ou leur deux-roues motorisé dans un parking de la Fondation des parkings pendant toute la durée de l'initiative. Il s’agit du Parking Quai Ernest-Ansermet.</p>
            <p>Seriez-vous intéressé.e par cette offre (tous les frais seront à notre charge), sachant que vous garderez la possibilité de récupérer votre véhicule à n’importe quel moment pendant l'initiative (une seule sortie sera autorisée).</p>
         `,
     type: 'select',
