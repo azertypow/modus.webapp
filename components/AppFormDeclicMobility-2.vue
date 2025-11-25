@@ -1229,7 +1229,7 @@ const submitForm = async () => {
         }
         console.log("Formulaire soumis :", jsonData)
 
-        const url = "https://azertypow-mail-record-36.deno.dev/data";
+        const url = "https://mail-recording.villa1203.deno.net/data";
 
         try {
             const response = await fetch(url, {
