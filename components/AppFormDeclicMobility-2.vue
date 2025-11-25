@@ -547,7 +547,7 @@ const questions: QuestionType[] = [
             dependsOn: 9,
             value: dependentValue => !dependentValue,
         },
-        text: `Selectionnez une année`,
+        text: `Sélectionnez une année`,
     },
 
     {
@@ -1193,7 +1193,7 @@ const isFormValid: ComputedRef<{
         else if ( Array.isArray(responses.value[question.id]) && (responses.value[question.id] as string[]).length === 0 ) {
           msg = {
               isValid: false,
-              message: `rien est selectionné pour la question ${index + 1}, "${question.text}"`
+              message: `rien est sélectionné pour la question ${index + 1}, "${question.text}"`
           }
           break
         }
