@@ -929,7 +929,7 @@ const questions: QuestionType[] = [
       'oui',
       'non',
     ],
-    text: `Confirmez-vous avoir lu la <a target="_blank" href="https://modus-admin.sdrvl.ch/declic-mobilite-notice-protection-globale.pdf" >notice d’utilisation des données</a> et accepteriez-vous de participer au tracking GPS ?`
+    text: `Confirmez-vous avoir lu la notice d’utilisation et de <a target="_blank" href="https://modus-admin.sdrvl.ch/declic-mobilite-notice-protection-globale.pdf" >protection des données</a>, et accepteriez-vous de participer au suivi GPS ?`
   },
 
 
