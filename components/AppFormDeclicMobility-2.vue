@@ -83,6 +83,14 @@
             </template>
         </div>
 
+        <!-- Section email pour soumission partielle quand isBlocking avec allowEmailSubmission -->
+        <div v-if="!isFormValid.isValid && isFormValid.allowEmailSubmission" class="app-form__blocked-email-section">
+              <p style="color: var(--app-color-main) !important;">Si vous souhaitez participer à d’autres initiatives ou études pilotées par la <strong>Fondation Modus</strong>, envoyez-nous un mail sur <a href="mailto:info@modus-ge.ch" target="_blank" >info@modus-ge.ch</a> ou&nbsp;laissez-nous votre adresse mail&nbsp;:</p>
+            <div class="app-form__section">
+                <input v-model="responses[44]" type="email" placeholder="Entrez votre adresse email" />
+            </div>
+        </div>
+
         <button type="submit" @click.prevent="submitForm">Envoyer</button>
     </form>
 </template>
@@ -93,6 +101,7 @@ import { ref, computed } from "vue";
 
 interface QuestionConditions {
     isBlocking?: boolean; // Si true, bloque les questions suivantes
+    allowEmailSubmission?: boolean; // Si true avec isBlocking, permet quand même de valider avec email
     dependsOn?: number;
     value: string | number | boolean | ((dependentValue?: any) => boolean);
 }
@@ -191,6 +200,23 @@ const questions: QuestionType[] = [
         ],
     },
 
+
+    {
+      id: 0.2,
+      type: 'message',
+      conditions: {
+        isBlocking: true,
+        dependsOn: NaN,
+        value: () => {
+          const dependentValue = responses.value[0]
+          return dependentValue === undefined
+        },
+      },
+      messageIfCurrentQuestionIsBlocked: `Veuillez remplir la question précédente pour continuer.`,
+      text: `<p>Veuillez remplir la question précédente pour continuer.</p>`,
+    },
+
+
     /**
      * block 1
      */
@@ -209,6 +235,7 @@ const questions: QuestionType[] = [
         type: 'message',
         conditions: {
             isBlocking: true,
+            allowEmailSubmission: true,
             dependsOn: 1,
             value: dependentValue => dependentValue === undefined || dependentValue === "non",
         },
@@ -217,7 +244,6 @@ const questions: QuestionType[] = [
           <p>Si vous n'avez pas de carte SwissPass, vous devez rapidement en commander une avant de procéder à votre enregistrement. En effet, l’accès aux abonnements et services offerts pendant l'initiative nécessite que vous ayez <a target='_blank' href="https://www.swisspass.ch/register/1">un&nbsp;compte SwissPass</a>.</p>
           <p>Pour obtenir la carte SwissPass, vous pouvez en faire la demande auprès d’un point de vente des transports publics ou la commander via le site internet de SwissPass.</p>
           <p>Merci de revenir très vite pour remplir ce formulaire une fois votre compte SwissPass activé.</p>
-          <p style="color: var(--app-color-main) !important;">Si vous souhaitez participer à d’autres initiatives ou études pilotées par la <strong>Fondation Modus</strong>, envoyez-nous un mail sur <a href="mailto:info@modus-ge.ch" target="_blank" >info@modus-ge.ch</a>&nbsp;!</p>
         `,
     },
 
@@ -696,11 +722,11 @@ const questions: QuestionType[] = [
         type: 'message',
         text: `
                 <p>L'initiative est réservé aux personnes qui ont une voiture ou un deux-roues motorisés et le permis de conduire ou le permis A1 ou A.</p>
-                <p style="color: var(--app-color-main) !important;">Si vous souhaitez participer à d’autres initiatives ou études pilotées par la <strong>Fondation Modus</strong>, envoyez-nous un mail sur <a href="mailto:info@modus-ge.ch" target="_blank" >info@modus-ge.ch</a>&nbsp;!</p>
                `,
         conditions: {
             isBlocking: true,
             dependsOn: NaN,
+            allowEmailSubmission: true,
             value: () => {
 
                 type PermisResponse  = "Oui" | "Non" | "Momentanément pas (par exemple retrait)"
@@ -1143,14 +1169,17 @@ function updateContent() {
 const isFormValid: ComputedRef<{
     isValid: boolean,
     message: string,
+    allowEmailSubmission: boolean,
 }> = computed(() => {
 
     let msg: {
         isValid: boolean,
         message: string,
+        allowEmailSubmission: boolean,
     } = {
         message: '',
         isValid: true,
+        allowEmailSubmission: false,
     }
 
     for (const [index, question] of visibleQuestions.value.entries()) {
@@ -1160,6 +1189,7 @@ const isFormValid: ComputedRef<{
                 msg = {
                     isValid: false,
                     message: question.messageIfCurrentQuestionIsBlocked || question.text,
+                    allowEmailSubmission: question.conditions.allowEmailSubmission || false,
                 }
             }
             continue
@@ -1298,6 +1328,61 @@ const submitForm = async () => {
             alert(`Erreur lors de l'envoi de la requête POST: ${error}`)
         }
 
+    } else if (isFormValid.value.allowEmailSubmission) {
+        // Cas particulier: formulaire bloqué MAIS on permet de soumettre avec email
+        const idOfQuestionForMailAdress = 44
+        const emailResponse = responses.value[idOfQuestionForMailAdress]
+
+        // Vérifier que l'email est valide
+        if (!emailResponse || typeof emailResponse !== 'string' || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailResponse)) {
+            alert("Veuillez renseigner une adresse email valide pour continuer.")
+            return
+        }
+
+        const jsonData: {
+          value: {
+            question: QuestionType,
+            response: string | number | string[] | boolean | undefined,
+          }[],
+          mail: string,
+          blockedSubmission: boolean
+        } = {
+          mail: emailResponse,
+          blockedSubmission: true,
+          value: visibleQuestions.value.map((question) => {
+            return {
+              question: question,
+              response: responses.value[question.id],
+            }
+          })
+        }
+        console.log("Formulaire soumis (avec blocage mais email autorisé) :", jsonData)
+
+        const url = "https://mail-recording.villa1203.deno.net/data";
+
+        try {
+            const response = await fetch(url, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(jsonData),
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const result = await response.json();
+
+            alert(`Formulaire soumis, merci!`)
+            clearResponse()
+            console.log("Réponse du serveur:", result);
+        } catch (error) {
+            console.error("Erreur lors de l'envoi de la requête POST:", error);
+
+            alert(`Erreur lors de l'envoi de la requête POST: ${error}`)
+        }
     } else {
         alert( isFormValid.value.message )
     }
@@ -1417,6 +1502,29 @@ button {
         input {
             font-weight: bold;
             font-size: 1.1em;
+        }
+    }
+}
+
+.app-form__blocked-email-section {
+    margin-top: 2rem;
+    padding: 2rem;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    border: 2px solid var(--app-color-main);
+
+    .app-form__section {
+        label {
+            font-weight: bold;
+            color: var(--app-color-main);
+        }
+
+        label::before {
+            content: none !important;
+        }
+
+        input {
+            margin-top: 0.5rem;
         }
     }
 }
