@@ -344,10 +344,20 @@ const questions: QuestionType[] = [
     },
 
 
+  /**
+   *
+   */
+  {
+    id: 5.1,
+    type: 'input',
+    text: "Si vous disposez d’un code famille, merci de l’indiquer ici :"
+  },
 
 
 
-    /**
+
+
+  /**
      * block 6
      * */
     {
@@ -801,7 +811,7 @@ const questions: QuestionType[] = [
         text: `Code famille :
           <span class="app-font-small">
             <br>Toutes les personnes de votre ménage doivent participer à l'initiative.
-            <br>Merci de demander aux autres utilisateurs de la voiture de remplir ce formulaire d’enregistrement.
+            <br><strong>Merci de noter ce code famille et le transmettre aux autres utilisateurs de la voiture pour qu’ils puissent l’indiquer dans leur formulaire d’inscription.</strong>
             <br>
             <br>Ce code famille est généré automatiquement à partir de votre prénom et nom pour que nous puissions faire le lien entre vos réponses.
           </span>
