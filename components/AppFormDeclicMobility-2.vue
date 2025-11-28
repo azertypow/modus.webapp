@@ -972,6 +972,20 @@ const questions: QuestionType[] = [
       type: "input",
       placeholder: "Exemple: Rte de la Galaise 15",
     },
+
+    /**
+     * block 46
+     * */
+    {
+      id: 46,
+      text: "Accepteriez-vous d’être recontacté.e pour participer à d’autres initiatives ou des études pilotées par la Fondation Modus et visant à promouvoir la mobilité durable ?",
+      type: "select",
+      options: [
+        'Oui',
+        'Non'
+      ],
+
+    },
 ];
 
 // État des réponses
