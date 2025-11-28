@@ -349,8 +349,27 @@ const questions: QuestionType[] = [
    */
   {
     id: 5.1,
+    type: 'select',
+    options: [
+      'Oui',
+      'Non',
+    ],
+    text: "Disposez-vous d'un code famille ?"
+  },
+
+
+  /**
+   *
+   */
+  {
+    id: 5.2,
     type: 'input',
-    text: "Si vous disposez d’un code famille, merci de l’indiquer ici :"
+    conditions: {
+      isBlocking: false,
+      dependsOn: 5.1,
+      value: dependentValue => dependentValue === "Oui"
+    },
+    text: "Merci d’indiquer le code famille ici :"
   },
 
 
