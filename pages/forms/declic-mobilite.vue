@@ -152,7 +152,7 @@ const formBodyContent: IApiBody = {
                         </ul>
                         <h6>NB : les familles ou ménages composés de plusieurs personnes peuvent participer en groupe. Pour cela, nous invitons chaque personne à remplir ce questionnaire.</h6>
 
-                        <h3>Comment s’inscrire ?</h3>
+                        <h3>Comment participer ?</h3>
 
                         <p>Pour participer à l'initiative « Déclic Mobilité », vous devez vous enregistrer en répondant à quelques questions (5 minutes environ) sur votre profil et vos habitudes de déplacement. Une sélection sera réalisée pour garantir une diversité des profils et les personnes sélectionnées seront recontactées par email dans le courant du mois de février 2026 avec toutes les informations nécessaires pour commencer l’aventure.<p>
 
