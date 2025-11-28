@@ -781,7 +781,7 @@ const questions: QuestionType[] = [
 
                 const totalVehicules = parseInt(voitures_au_sein_du_menage) + parseInt(deux_roues_au_sein_du_menage)
 
-                return totalVehicules >= totalAdults
+                return totalVehicules < totalAdults
             }
             ,
         },
