@@ -85,10 +85,22 @@
 
         <!-- Section email pour soumission partielle quand isBlocking avec allowEmailSubmission -->
         <div v-if="!isFormValid.isValid && isFormValid.allowEmailSubmission" class="app-form__blocked-email-section">
-              <p style="color: var(--app-color-main) !important;">Si vous souhaitez participer à d’autres initiatives ou études pilotées par la <strong>Fondation Modus</strong>, envoyez-nous un mail sur <a href="mailto:info@modus-ge.ch" target="_blank" >info@modus-ge.ch</a> ou&nbsp;laissez-nous votre adresse mail&nbsp;:</p>
+
+          <p>Accepteriez-vous d'être recontacté.e pour participer à d'autres initiatives ou des études pilotées par la Fondation Modus et visant à promouvoir la mobilité durable&nbsp;?</p>
+
+          <div class="app-form__section">
+            <select v-model="responses[47]">
+              <option value="oui">Oui</option>
+              <option value="non">Non</option>
+            </select>
+          </div>
+
+          <template v-if="responses[47] === 'oui'">
+            <p style="color: var(--app-color-main) !important;">Si vous souhaitez participer à d'autres initiatives ou études pilotées par la <strong>Fondation Modus</strong>, envoyez-nous un mail sur <a href="mailto:info@modus-ge.ch" target="_blank" >info@modus-ge.ch</a> ou&nbsp;laissez-nous votre adresse mail&nbsp;:</p>
             <div class="app-form__section">
                 <input v-model="responses[44]" type="email" placeholder="Entrez votre adresse email" />
             </div>
+          </template>
         </div>
 
         <button type="submit" @click.prevent="submitForm">Envoyer</button>
@@ -241,9 +253,9 @@ const questions: QuestionType[] = [
         },
         messageIfCurrentQuestionIsBlocked: `Si vous n'avez pas de carte SwissPass, vous devez rapidement en commander une avant de procéder à votre enregistrement.`,
         text: `
-          <p>Si vous n'avez pas de carte SwissPass, vous devez rapidement en commander une avant de procéder à votre enregistrement. En effet, l’accès aux abonnements et services offerts pendant l'initiative nécessite que vous ayez <a target='_blank' href="https://www.swisspass.ch/register/1">un&nbsp;compte SwissPass</a>.</p>
-          <p>Pour obtenir la carte SwissPass, vous pouvez en faire la demande auprès d’un point de vente des transports publics ou la commander via le site internet de SwissPass.</p>
-          <p>Merci de revenir très vite pour remplir ce formulaire une fois votre compte SwissPass activé.</p>
+          <p style="text-align: left !important;" >Si vous n'avez pas de carte SwissPass, vous devez rapidement en commander une avant de procéder à votre enregistrement. En effet, l’accès aux abonnements et services offerts pendant l'initiative nécessite que vous ayez <a target='_blank' href="https://www.swisspass.ch/register/1">un&nbsp;compte SwissPass</a>.</p>
+          <p style="text-align: left !important;" >Pour obtenir la carte SwissPass, vous pouvez en faire la demande auprès d’un point de vente des transports publics ou la commander via le site internet de SwissPass.</p>
+          <p style="text-align: left !important;" >Merci de revenir très vite pour remplir ce formulaire une fois votre compte SwissPass activé.</p>
         `,
     },
 
