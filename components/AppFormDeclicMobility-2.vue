@@ -96,7 +96,7 @@
           </div>
 
           <template v-if="responses[47] === 'oui'">
-            <p style="color: var(--app-color-main) !important;">Si vous souhaitez participer à d'autres initiatives ou études pilotées par la <strong>Fondation Modus</strong>, envoyez-nous un mail sur <a href="mailto:info@modus-ge.ch" target="_blank" >info@modus-ge.ch</a> ou&nbsp;laissez-nous votre adresse mail&nbsp;:</p>
+            <p style="color: var(--app-color-main) !important;">Merci de nous indiquer votre adresse email pour que nous puissions vous recontacter&nbsp;:</p>
             <div class="app-form__section">
                 <input v-model="responses[44]" type="email" placeholder="Entrez votre adresse email" />
             </div>
