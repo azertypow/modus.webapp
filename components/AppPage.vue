@@ -1,6 +1,9 @@
 <template>
     <main
         class="v-app-page"
+        :class="{
+          'v-app-page--header-small': headerSize === 'regular'
+        }"
     >
       <div
         class="v-app-page__header"
@@ -286,7 +289,7 @@ const props = defineProps<{
   headerCover?: string
   header_focus?: string
   bodyContent?: IApiBody
-  headerSize?: 'small'
+  headerSize?: 'small' | 'regular'
   withoutBody?: boolean
   titleContent?: string
   path?: boolean
@@ -354,6 +357,10 @@ nextTick(() => {
 <style lang="scss" scoped >
 .v-app-page {
   padding-top: var(--app-header-height);
+
+  &.v-app-page--header-small {
+    padding-top: var(--app-nav__height);
+  }
 }
 
 .v-app-page__header {
@@ -367,6 +374,11 @@ nextTick(() => {
 
   @media (max-width: 900px) {
     height: calc( var(--app-header-height) );
+  }
+
+  .v-app-page--header-small & {
+    height: auto;
+    position: relative;
   }
 }
 
