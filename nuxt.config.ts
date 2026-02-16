@@ -3,6 +3,12 @@ import {generatedRoutes} from "./_PreNuxtConfigScripts/generatedRoutes";
 
 export default defineNuxtConfig({
 
+  runtimeConfig: {
+    public: {
+      cmsBaseUrl: process.env.CMS_BASE_URL
+    }
+  },
+
     app: {
         baseURL: '/',
         head: {
