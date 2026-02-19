@@ -915,7 +915,6 @@ const questions: QuestionType[] = [
         `,
         type: 'checkbox',
         options: [
-          "du 9 mars au 8 avril",
           "du 13 avril au 12 mai",
           "du 18 mai au 17 juin",
         ]
